@@ -31,6 +31,7 @@ jobs:
       - name: Build site
         env:
           BASE_URL: ${{ steps.pages.outputs.base_url }}
+          GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
         run: |
           set -euo pipefail
           BASE_URL="${BASE_URL%/}"
@@ -49,6 +50,19 @@ jobs:
           if grep -rl 'site-url\.invalid' _site; then
             echo "::error::자리표시 주소가 남아 있어 배포를 멈춥니다."
             exit 1
+          fi
+
+          # Search Console 확인 토큰은 저장소에 두지 않고 배포 결과물에만 넣는다.
+          if [ -n "$GOOGLE_SITE_VERIFICATION" ]; then
+            case "$GOOGLE_SITE_VERIFICATION" in
+              *[!A-Za-z0-9_-]*)
+                echo "::error::GOOGLE_SITE_VERIFICATION 값 형식이 올바르지 않아 배포를 멈춥니다."
+                exit 1 ;;
+            esac
+            sed -i "0,/<\/head>/s||  <meta name=\"google-site-verification\" content=\"${GOOGLE_SITE_VERIFICATION}\" />\n  </head>|" _site/index.html
+            grep -q 'name="google-site-verification"' _site/index.html
+          else
+            echo "::warning::GOOGLE_SITE_VERIFICATION 값이 없어 Search Console 확인 태그를 넣지 않습니다."
           fi
 
       - uses: actions/upload-pages-artifact@v4
