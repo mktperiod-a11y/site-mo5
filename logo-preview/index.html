@@ -6,281 +6,76 @@
     <meta name="robots" content="noindex,nofollow" />
     <title>로고 시안 미리보기</title>
     <style>
-      :root {
-        --blue: #087df2;
-        --navy: #17212b;
-        --bg: #f4f7fb;
-        --line: #e2e8f0;
-        --muted: #728096;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: #1d2834;
-        font-family: Arial, "Noto Sans KR", sans-serif;
-      }
-      .wrap {
-        width: min(1120px, calc(100% - 32px));
-        margin: auto;
-        padding: 40px 0 80px;
-      }
-      h1 {
-        margin: 0 0 8px;
-        font-size: 28px;
-        letter-spacing: -1px;
-      }
-      .lead {
-        margin: 0 0 32px;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.6;
-      }
-      .option {
-        margin-bottom: 24px;
-        padding: 24px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: #fff;
-      }
-      .option h2 {
-        margin: 0 0 4px;
-        font-size: 19px;
-      }
-      .option p {
-        margin: 0 0 20px;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.6;
-      }
-      .rows {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr;
-        gap: 16px;
-      }
-      .cell {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 18px;
-        border-radius: 10px;
-        border: 1px solid var(--line);
-      }
-      .cell > small {
-        color: var(--muted);
-        font-size: 11px;
-        font-weight: 700;
-      }
-      .cell.dark {
-        border-color: #0f1720;
-        background: #17212b;
-      }
-      .cell.dark > small {
-        color: #8a96a5;
-      }
-      .sizes {
-        display: flex;
-        align-items: flex-end;
-        gap: 22px;
-      }
-      .sizes img,
-      .sizes svg {
-        display: block;
-      }
-      /* header-sized lockup, same proportions as the live header */
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 9px;
-      }
-      .brand img,
-      .brand svg {
-        width: 40px;
-        height: 40px;
-      }
-      .word {
-        display: flex;
-        flex-direction: column;
-        line-height: 1;
-      }
-      .word b {
-        color: var(--navy);
-        font-size: 22px;
-        font-weight: 900;
-        letter-spacing: -1.2px;
-      }
-      .word small {
-        margin-top: 5px;
-        color: #7a8798;
-        font-size: 8.5px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-      }
-      .word.big b {
-        font-size: 24px;
-      }
-      .dark .word b {
-        color: #fff;
-      }
-      .dark .word small {
-        color: #9aa7b6;
-      }
-      /* current logo, copied from the live header */
-      .now .word b {
-        font-size: 21px;
-        letter-spacing: -1.8px;
-      }
-      .now .word small {
-        color: #8a96a5;
-        font-size: 6px;
-        font-weight: 900;
-        letter-spacing: 0.75px;
-      }
-      .now svg {
-        color: var(--blue);
-      }
-      @media (max-width: 760px) {
-        .rows {
-          grid-template-columns: 1fr;
-        }
-        .option {
-          padding: 18px;
-        }
-      }
+      :root { --blue: #087df2; --navy: #17212b; --bg: #f4f7fb; --line: #e2e8f0; --muted: #728096; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: #1d2834; font-family: Arial, "Noto Sans KR", sans-serif; }
+      .wrap { width: min(1120px, calc(100% - 32px)); margin: auto; padding: 40px 0 80px; }
+      h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: -1px; }
+      .lead { margin: 0 0 32px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+      .option { margin-bottom: 24px; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+      .option h2 { margin: 0 0 4px; font-size: 19px; }
+      .option p { margin: 0 0 20px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+      .rows { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .cell { display: flex; flex-direction: column; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 10px; }
+      .cell > small { color: var(--muted); font-size: 11px; font-weight: 700; }
+      .cell.dark { border-color: #0f1720; background: var(--navy); }
+      .cell.dark > small { color: #8a96a5; }
+      .sizes { display: flex; align-items: flex-end; gap: 22px; }
+      .sizes svg { display: block; }
+      .brand { display: inline-flex; align-items: center; gap: 9px; }
+      .word { display: flex; flex-direction: column; line-height: 1; }
+      .word b { color: var(--navy); font-size: 24px; font-weight: 900; letter-spacing: -1.2px; }
+      .word small { margin-top: 5px; color: #8a96a5; font-size: 6px; font-weight: 900; letter-spacing: 0.75px; }
+      .word.on-dark b { color: #fff; }
+      @media (max-width: 760px) { .rows { grid-template-columns: 1fr; } .option { padding: 18px; } }
     </style>
   </head>
   <body>
     <main class="wrap">
       <h1>로고 시안 미리보기</h1>
       <p class="lead">
-        지금 궤도 심볼을 다듬은 시안이에요. 실제 헤더 크기, 어두운 배경, 큰 크기,
-        브라우저 탭 아이콘 크기(32px·16px)로 비교해 보세요. 이 페이지는 메뉴에
-        없고 검색에도 잡히지 않아요.
+        보내 주신 참고 이미지처럼 단색·굵은 선·빈 공간을 쓰는 방식으로 새로 그렸어요. 형태는 참고 로고와
+        겹치지 않게 했어요. 색상, 흰색, 검정 한 가지 색, 브라우저 탭 아이콘 크기(32px·16px)로 비교해 보세요.
+        이 페이지는 메뉴에 없고 검색에도 잡히지 않아요.
       </p>
 
-      <section class="option now">
-        <h2>지금 로고</h2>
-        <p>비교용이에요. 아래 작은 영문 문구가 6px라 잘 안 읽혀요.</p>
+      <section class="option">
+        <h2>지금 로고 (비교용)</h2>
+        <p>지금 헤더에 쓰는 로고예요.</p>
         <div class="rows">
-          <div class="cell">
-            <small>헤더 크기</small>
-            <span class="brand"
-              ><svg viewBox="0 0 48 48" aria-hidden="true">
-                <circle cx="24" cy="24" r="6" fill="currentColor" />
-                <ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-28 24 24)" />
-                <circle cx="39" cy="15" r="4" fill="#9be15d" />
-                <circle cx="10" cy="32" r="3" fill="#37c6f4" /></svg
-              ><span class="word"><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span></span
-            >
-          </div>
-          <div class="cell">
-            <small>큰 크기 · 32px · 16px</small>
-            <div class="sizes" style="color: var(--blue)">
-              <svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true">
-                <circle cx="24" cy="24" r="6" fill="currentColor" />
-                <ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-28 24 24)" />
-                <circle cx="39" cy="15" r="4" fill="#9be15d" />
-                <circle cx="10" cy="32" r="3" fill="#37c6f4" />
-              </svg>
-              <svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true">
-                <circle cx="24" cy="24" r="6" fill="currentColor" />
-                <ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-28 24 24)" />
-                <circle cx="39" cy="15" r="4" fill="#9be15d" />
-                <circle cx="10" cy="32" r="3" fill="#37c6f4" />
-              </svg>
-              <svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true">
-                <circle cx="24" cy="24" r="6" fill="currentColor" />
-                <ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-28 24 24)" />
-                <circle cx="39" cy="15" r="4" fill="#9be15d" />
-                <circle cx="10" cy="32" r="3" fill="#37c6f4" />
-              </svg>
-            </div>
-          </div>
+          <div class="cell"><small>헤더 크기</small><span class="brand"><svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><circle cx="24" cy="24" r="6" fill="#087df2"/><ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="#087df2" stroke-width="2.4" transform="rotate(-28 24 24)"/><circle cx="39" cy="15" r="4" fill="#9be15d"/><circle cx="10" cy="32" r="3" fill="#37c6f4"/></svg><span class="word"><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span></span></div>
+          <div class="cell"><small>큰 크기 · 32px · 16px</small><div class="sizes"><svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true"><circle cx="24" cy="24" r="6" fill="#087df2"/><ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="#087df2" stroke-width="2.4" transform="rotate(-28 24 24)"/><circle cx="39" cy="15" r="4" fill="#9be15d"/><circle cx="10" cy="32" r="3" fill="#37c6f4"/></svg><svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><circle cx="24" cy="24" r="6" fill="#087df2"/><ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="#087df2" stroke-width="2.4" transform="rotate(-28 24 24)"/><circle cx="39" cy="15" r="4" fill="#9be15d"/><circle cx="10" cy="32" r="3" fill="#37c6f4"/></svg><svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true"><circle cx="24" cy="24" r="6" fill="#087df2"/><ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="#087df2" stroke-width="2.4" transform="rotate(-28 24 24)"/><circle cx="39" cy="15" r="4" fill="#9be15d"/><circle cx="10" cy="32" r="3" fill="#37c6f4"/></svg></div></div>
         </div>
       </section>
 
       <section class="option">
-        <h2>시안 A · 입체 궤도 + 영문 문구</h2>
-        <p>
-          궤도가 가운데 원의 앞뒤로 지나가게 해서 입체감을 줬어요. 위성 두 개를
-          궤도선 위에 정확히 올리고, 원에는 은은한 그라데이션을 넣었어요. 영문
-          문구는 8.5px로 키워 읽히게 했어요.
-        </p>
+        <h2>시안 1 · 기울어진 궤도 (평면)</h2>
+        <p>지금 로고의 궤도를 단색·굵은 선으로 다시 그렸어요. 앞쪽 궤도가 원을 빈 공간으로 가르고 지나가요. 참고 1번과 달리 원 안에 점을 넣지 않고, 위성은 궤도 위에 하나만 있어요.</p>
         <div class="rows">
-          <div class="cell">
-            <small>헤더 크기</small>
-            <span class="brand"
-              ><img src="symbol-a.svg" alt="" width="40" height="40" /><span class="word"
-                ><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span
-              ></span
-            >
-          </div>
-          <div class="cell">
-            <small>큰 크기 · 32px · 16px</small>
-            <div class="sizes">
-              <img src="symbol-a.svg" alt="" width="112" height="112" /><img src="symbol-a.svg" alt="" width="32" height="32" /><img src="symbol-a.svg" alt="" width="16" height="16" />
-            </div>
-          </div>
-          <div class="cell dark">
-            <small>어두운 배경</small>
-            <span class="brand"
-              ><img src="symbol-a.svg" alt="" width="40" height="40" /><span class="word"
-                ><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span
-              ></span
-            >
-          </div>
+          <div class="cell"><small>헤더 크기 (색상)</small><span class="brand"><svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><defs><mask id="m1" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#000" stroke-width="6.4"/></mask><mask id="s1" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><circle cx="39.81" cy="15.02" r="5.1" fill="#000"/></mask></defs><path d="M3.60 32.24A22 4.2 -22 0 1 44.40 15.76" fill="none" stroke="#087df2" stroke-width="3.4" mask="url(#s1)"/><circle cx="24" cy="24" r="12" fill="#087df2" mask="url(#m1)"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#087df2" stroke-width="3.4" stroke-linecap="round"/><circle cx="39.81" cy="15.02" r="3.6" fill="#7fd13b"/></svg><span class="word"><b>모아온</b></span></span></div>
+          <div class="cell dark"><small>어두운 배경 (흰색)</small><span class="brand"><svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><defs><mask id="m2" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#000" stroke-width="6.4"/></mask><mask id="s2" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><circle cx="39.81" cy="15.02" r="5.1" fill="#000"/></mask></defs><path d="M3.60 32.24A22 4.2 -22 0 1 44.40 15.76" fill="none" stroke="#fff" stroke-width="3.4" mask="url(#s2)"/><circle cx="24" cy="24" r="12" fill="#fff" mask="url(#m2)"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><circle cx="39.81" cy="15.02" r="3.6" fill="#fff"/></svg><span class="word on-dark"><b>모아온</b></span></span></div>
+          <div class="cell"><small>큰 크기 · 32px · 16px</small><div class="sizes"><svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true"><defs><mask id="m3" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#000" stroke-width="6.4"/></mask><mask id="s3" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><circle cx="39.81" cy="15.02" r="5.1" fill="#000"/></mask></defs><path d="M3.60 32.24A22 4.2 -22 0 1 44.40 15.76" fill="none" stroke="#087df2" stroke-width="3.4" mask="url(#s3)"/><circle cx="24" cy="24" r="12" fill="#087df2" mask="url(#m3)"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#087df2" stroke-width="3.4" stroke-linecap="round"/><circle cx="39.81" cy="15.02" r="3.6" fill="#7fd13b"/></svg><svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><defs><mask id="m4" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#000" stroke-width="6.4"/></mask><mask id="s4" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><circle cx="39.81" cy="15.02" r="5.1" fill="#000"/></mask></defs><path d="M3.60 32.24A22 4.2 -22 0 1 44.40 15.76" fill="none" stroke="#087df2" stroke-width="3.4" mask="url(#s4)"/><circle cx="24" cy="24" r="12" fill="#087df2" mask="url(#m4)"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#087df2" stroke-width="3.4" stroke-linecap="round"/><circle cx="39.81" cy="15.02" r="3.6" fill="#7fd13b"/></svg><svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true"><defs><mask id="m5" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#000" stroke-width="6.4"/></mask><mask id="s5" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><circle cx="39.81" cy="15.02" r="5.1" fill="#000"/></mask></defs><path d="M3.60 32.24A22 4.2 -22 0 1 44.40 15.76" fill="none" stroke="#087df2" stroke-width="3.4" mask="url(#s5)"/><circle cx="24" cy="24" r="12" fill="#087df2" mask="url(#m5)"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#087df2" stroke-width="3.4" stroke-linecap="round"/><circle cx="39.81" cy="15.02" r="3.6" fill="#7fd13b"/></svg></div></div>
+          <div class="cell"><small>한 가지 색 (검정)</small><div class="sizes"><svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true"><defs><mask id="m6" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#000" stroke-width="6.4"/></mask><mask id="s6" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><circle cx="39.81" cy="15.02" r="5.1" fill="#000"/></mask></defs><path d="M3.60 32.24A22 4.2 -22 0 1 44.40 15.76" fill="none" stroke="#111" stroke-width="3.4" mask="url(#s6)"/><circle cx="24" cy="24" r="12" fill="#111" mask="url(#m6)"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#111" stroke-width="3.4" stroke-linecap="round"/><circle cx="39.81" cy="15.02" r="3.6" fill="#111"/></svg><svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><defs><mask id="m7" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#000" stroke-width="6.4"/></mask><mask id="s7" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><circle cx="39.81" cy="15.02" r="5.1" fill="#000"/></mask></defs><path d="M3.60 32.24A22 4.2 -22 0 1 44.40 15.76" fill="none" stroke="#111" stroke-width="3.4" mask="url(#s7)"/><circle cx="24" cy="24" r="12" fill="#111" mask="url(#m7)"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#111" stroke-width="3.4" stroke-linecap="round"/><circle cx="39.81" cy="15.02" r="3.6" fill="#111"/></svg><svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true"><defs><mask id="m8" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#000" stroke-width="6.4"/></mask><mask id="s8" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><circle cx="39.81" cy="15.02" r="5.1" fill="#000"/></mask></defs><path d="M3.60 32.24A22 4.2 -22 0 1 44.40 15.76" fill="none" stroke="#111" stroke-width="3.4" mask="url(#s8)"/><circle cx="24" cy="24" r="12" fill="#111" mask="url(#m8)"/><path d="M44.40 15.76A22 4.2 -22 0 1 3.60 32.24" fill="none" stroke="#111" stroke-width="3.4" stroke-linecap="round"/><circle cx="39.81" cy="15.02" r="3.6" fill="#111"/></svg></div></div>
         </div>
       </section>
-
       <section class="option">
-        <h2>시안 B · 입체 궤도, 글자만</h2>
-        <p>
-          A와 같은 심볼이에요. 영문 문구를 빼고 '모아온' 글자를 조금 키워서 가장
-          깔끔하게 보이게 했어요.
-        </p>
+        <h2>시안 2 · 모여드는 궤도</h2>
+        <p>궤도의 오른쪽 위가 열려 있고, 그 자리로 점 두 개가 크기를 키우며 들어와요. '모아 온다'는 이름 뜻을 담았어요. 앞쪽 궤도는 원을 빈 공간으로 가르고 지나가요.</p>
         <div class="rows">
-          <div class="cell">
-            <small>헤더 크기</small>
-            <span class="brand"
-              ><img src="symbol-a.svg" alt="" width="40" height="40" /><span class="word big"><b>모아온</b></span></span
-            >
-          </div>
-          <div class="cell dark">
-            <small>어두운 배경</small>
-            <span class="brand"
-              ><img src="symbol-a.svg" alt="" width="40" height="40" /><span class="word big"><b>모아온</b></span></span
-            >
-          </div>
+          <div class="cell"><small>헤더 크기 (색상)</small><span class="brand"><svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><defs><mask id="m9" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#000" stroke-width="6.6"/></mask></defs><path d="M42.15 14.85A20.5 7 -24 1 1 21.15 17.61" fill="none" stroke="#087df2" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="9.5" fill="#087df2" mask="url(#m9)"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#087df2" stroke-width="3.6" stroke-linecap="round"/><circle cx="30.28" cy="14.44" r="1.9" fill="#7fd13b"/><circle cx="37.93" cy="13.51" r="3.1" fill="#7fd13b"/></svg><span class="word"><b>모아온</b></span></span></div>
+          <div class="cell dark"><small>어두운 배경 (흰색)</small><span class="brand"><svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><defs><mask id="m10" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#000" stroke-width="6.6"/></mask></defs><path d="M42.15 14.85A20.5 7 -24 1 1 21.15 17.61" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="9.5" fill="#fff" mask="url(#m10)"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="30.28" cy="14.44" r="1.9" fill="#fff"/><circle cx="37.93" cy="13.51" r="3.1" fill="#fff"/></svg><span class="word on-dark"><b>모아온</b></span></span></div>
+          <div class="cell"><small>큰 크기 · 32px · 16px</small><div class="sizes"><svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true"><defs><mask id="m11" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#000" stroke-width="6.6"/></mask></defs><path d="M42.15 14.85A20.5 7 -24 1 1 21.15 17.61" fill="none" stroke="#087df2" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="9.5" fill="#087df2" mask="url(#m11)"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#087df2" stroke-width="3.6" stroke-linecap="round"/><circle cx="30.28" cy="14.44" r="1.9" fill="#7fd13b"/><circle cx="37.93" cy="13.51" r="3.1" fill="#7fd13b"/></svg><svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><defs><mask id="m12" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#000" stroke-width="6.6"/></mask></defs><path d="M42.15 14.85A20.5 7 -24 1 1 21.15 17.61" fill="none" stroke="#087df2" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="9.5" fill="#087df2" mask="url(#m12)"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#087df2" stroke-width="3.6" stroke-linecap="round"/><circle cx="30.28" cy="14.44" r="1.9" fill="#7fd13b"/><circle cx="37.93" cy="13.51" r="3.1" fill="#7fd13b"/></svg><svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true"><defs><mask id="m13" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#000" stroke-width="6.6"/></mask></defs><path d="M42.15 14.85A20.5 7 -24 1 1 21.15 17.61" fill="none" stroke="#087df2" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="9.5" fill="#087df2" mask="url(#m13)"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#087df2" stroke-width="3.6" stroke-linecap="round"/><circle cx="30.28" cy="14.44" r="1.9" fill="#7fd13b"/><circle cx="37.93" cy="13.51" r="3.1" fill="#7fd13b"/></svg></div></div>
+          <div class="cell"><small>한 가지 색 (검정)</small><div class="sizes"><svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true"><defs><mask id="m14" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#000" stroke-width="6.6"/></mask></defs><path d="M42.15 14.85A20.5 7 -24 1 1 21.15 17.61" fill="none" stroke="#111" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="9.5" fill="#111" mask="url(#m14)"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#111" stroke-width="3.6" stroke-linecap="round"/><circle cx="30.28" cy="14.44" r="1.9" fill="#111"/><circle cx="37.93" cy="13.51" r="3.1" fill="#111"/></svg><svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><defs><mask id="m15" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#000" stroke-width="6.6"/></mask></defs><path d="M42.15 14.85A20.5 7 -24 1 1 21.15 17.61" fill="none" stroke="#111" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="9.5" fill="#111" mask="url(#m15)"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#111" stroke-width="3.6" stroke-linecap="round"/><circle cx="30.28" cy="14.44" r="1.9" fill="#111"/><circle cx="37.93" cy="13.51" r="3.1" fill="#111"/></svg><svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true"><defs><mask id="m16" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><rect width="48" height="48" fill="#fff"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#000" stroke-width="6.6"/></mask></defs><path d="M42.15 14.85A20.5 7 -24 1 1 21.15 17.61" fill="none" stroke="#111" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="24" r="9.5" fill="#111" mask="url(#m16)"/><path d="M42.73 15.66A20.5 7 -24 0 1 5.27 32.34" fill="none" stroke="#111" stroke-width="3.6" stroke-linecap="round"/><circle cx="30.28" cy="14.44" r="1.9" fill="#111"/><circle cx="37.93" cy="13.51" r="3.1" fill="#111"/></svg></div></div>
         </div>
       </section>
-
       <section class="option">
-        <h2>시안 C · 배지형</h2>
-        <p>
-          파란 둥근 사각형 안에 흰 궤도 심볼을 넣었어요. 작은 크기에서도 형태가 잘
-          보여서 브라우저 탭 아이콘으로 쓰기 좋아요.
-        </p>
+        <h2>시안 3 · 위성 궤적</h2>
+        <p>궤도선을 그리지 않고, 위성이 지나간 자리를 점점 굵어지는 초승달 띠로 표현했어요. 원 하나, 띠 하나, 위성 하나로 가장 단순하고 굵어요.</p>
         <div class="rows">
-          <div class="cell">
-            <small>헤더 크기</small>
-            <span class="brand"
-              ><img src="symbol-c.svg" alt="" width="40" height="40" /><span class="word big"><b>모아온</b></span></span
-            >
-          </div>
-          <div class="cell">
-            <small>큰 크기 · 32px · 16px</small>
-            <div class="sizes">
-              <img src="symbol-c.svg" alt="" width="112" height="112" /><img src="symbol-c.svg" alt="" width="32" height="32" /><img src="symbol-c.svg" alt="" width="16" height="16" />
-            </div>
-          </div>
-          <div class="cell dark">
-            <small>어두운 배경</small>
-            <span class="brand"
-              ><img src="symbol-c.svg" alt="" width="40" height="40" /><span class="word big"><b>모아온</b></span></span
-            >
-          </div>
+          <div class="cell"><small>헤더 크기 (색상)</small><span class="brand"><svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><defs><mask id="m17" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M24 24L44.52 -32.38L90 -40L90 90L-27.96 54.00Z" fill="#fff"/><circle cx="22.40" cy="26.77" r="15.6" fill="#000"/></mask></defs><circle cx="24" cy="24" r="19" fill="#087df2" mask="url(#m17)"/><circle cx="22.40" cy="26.77" r="10" fill="#087df2"/><circle cx="21.63" cy="7.17" r="3.9" fill="#7fd13b"/></svg><span class="word"><b>모아온</b></span></span></div>
+          <div class="cell dark"><small>어두운 배경 (흰색)</small><span class="brand"><svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><defs><mask id="m18" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M24 24L44.52 -32.38L90 -40L90 90L-27.96 54.00Z" fill="#fff"/><circle cx="22.40" cy="26.77" r="15.6" fill="#000"/></mask></defs><circle cx="24" cy="24" r="19" fill="#fff" mask="url(#m18)"/><circle cx="22.40" cy="26.77" r="10" fill="#fff"/><circle cx="21.63" cy="7.17" r="3.9" fill="#fff"/></svg><span class="word on-dark"><b>모아온</b></span></span></div>
+          <div class="cell"><small>큰 크기 · 32px · 16px</small><div class="sizes"><svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true"><defs><mask id="m19" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M24 24L44.52 -32.38L90 -40L90 90L-27.96 54.00Z" fill="#fff"/><circle cx="22.40" cy="26.77" r="15.6" fill="#000"/></mask></defs><circle cx="24" cy="24" r="19" fill="#087df2" mask="url(#m19)"/><circle cx="22.40" cy="26.77" r="10" fill="#087df2"/><circle cx="21.63" cy="7.17" r="3.9" fill="#7fd13b"/></svg><svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><defs><mask id="m20" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M24 24L44.52 -32.38L90 -40L90 90L-27.96 54.00Z" fill="#fff"/><circle cx="22.40" cy="26.77" r="15.6" fill="#000"/></mask></defs><circle cx="24" cy="24" r="19" fill="#087df2" mask="url(#m20)"/><circle cx="22.40" cy="26.77" r="10" fill="#087df2"/><circle cx="21.63" cy="7.17" r="3.9" fill="#7fd13b"/></svg><svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true"><defs><mask id="m21" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M24 24L44.52 -32.38L90 -40L90 90L-27.96 54.00Z" fill="#fff"/><circle cx="22.40" cy="26.77" r="15.6" fill="#000"/></mask></defs><circle cx="24" cy="24" r="19" fill="#087df2" mask="url(#m21)"/><circle cx="22.40" cy="26.77" r="10" fill="#087df2"/><circle cx="21.63" cy="7.17" r="3.9" fill="#7fd13b"/></svg></div></div>
+          <div class="cell"><small>한 가지 색 (검정)</small><div class="sizes"><svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true"><defs><mask id="m22" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M24 24L44.52 -32.38L90 -40L90 90L-27.96 54.00Z" fill="#fff"/><circle cx="22.40" cy="26.77" r="15.6" fill="#000"/></mask></defs><circle cx="24" cy="24" r="19" fill="#111" mask="url(#m22)"/><circle cx="22.40" cy="26.77" r="10" fill="#111"/><circle cx="21.63" cy="7.17" r="3.9" fill="#111"/></svg><svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true"><defs><mask id="m23" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M24 24L44.52 -32.38L90 -40L90 90L-27.96 54.00Z" fill="#fff"/><circle cx="22.40" cy="26.77" r="15.6" fill="#000"/></mask></defs><circle cx="24" cy="24" r="19" fill="#111" mask="url(#m23)"/><circle cx="22.40" cy="26.77" r="10" fill="#111"/><circle cx="21.63" cy="7.17" r="3.9" fill="#111"/></svg><svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true"><defs><mask id="m24" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M24 24L44.52 -32.38L90 -40L90 90L-27.96 54.00Z" fill="#fff"/><circle cx="22.40" cy="26.77" r="15.6" fill="#000"/></mask></defs><circle cx="24" cy="24" r="19" fill="#111" mask="url(#m24)"/><circle cx="22.40" cy="26.77" r="10" fill="#111"/><circle cx="21.63" cy="7.17" r="3.9" fill="#111"/></svg></div></div>
         </div>
       </section>
     </main>
