@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="모아온">
+  <defs>
+    <linearGradient id="badge" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2b9bff"/>
+      <stop offset="1" stop-color="#0659c4"/>
+    </linearGradient>
+    <mask id="gap" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48">
+      <rect width="48" height="48" fill="#fff"/>
+      <path d="M39.99 16.88A17.5 5.6 -24 0 1 8.01 31.12" fill="none" stroke="#000" stroke-width="4.8"/>
+    </mask>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#badge)"/>
+  <path d="M8.01 31.12A17.5 5.6 -24 0 1 39.99 16.88" fill="none" stroke="#fff" stroke-opacity="0.75" stroke-width="2.2"/>
+  <circle cx="24" cy="24" r="7.4" fill="#fff" mask="url(#gap)"/>
+  <path d="M39.99 16.88A17.5 5.6 -24 0 1 8.01 31.12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="34.78" cy="15.26" r="3.2" fill="#9be15d"/>
+  <circle cx="10.47" cy="32.61" r="2.6" fill="#bdeeff"/>
+</svg>

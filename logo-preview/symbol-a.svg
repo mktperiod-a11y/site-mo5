@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="모아온">
+  <defs>
+    <radialGradient id="core" cx="0.36" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#5cb6ff"/>
+      <stop offset="1" stop-color="#0866d6"/>
+    </radialGradient>
+    <linearGradient id="orbit" x1="5" y1="33" x2="43" y2="15" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22b8ee"/>
+      <stop offset="1" stop-color="#087df2"/>
+    </linearGradient>
+    <mask id="gap" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48">
+      <rect width="48" height="48" fill="#fff"/>
+      <path d="M43.18 15.46A21 7.5 -24 0 1 4.82 32.54" fill="none" stroke="#000" stroke-width="5.4"/>
+    </mask>
+  </defs>
+  <path d="M4.82 32.54A21 7.5 -24 0 1 43.18 15.46" fill="none" stroke="url(#orbit)" stroke-width="2.4"/>
+  <circle cx="24" cy="24" r="9.5" fill="url(#core)" mask="url(#gap)"/>
+  <path d="M43.18 15.46A21 7.5 -24 0 1 4.82 32.54" fill="none" stroke="url(#orbit)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="36.74" cy="13.05" r="3.7" fill="#7fd13b"/>
+  <circle cx="7.9" cy="34.64" r="3.1" fill="#22b8ee"/>
+</svg>

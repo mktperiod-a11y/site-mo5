@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>로고 시안 미리보기</title>
+    <style>
+      :root {
+        --blue: #087df2;
+        --navy: #17212b;
+        --bg: #f4f7fb;
+        --line: #e2e8f0;
+        --muted: #728096;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #1d2834;
+        font-family: Arial, "Noto Sans KR", sans-serif;
+      }
+      .wrap {
+        width: min(1120px, calc(100% - 32px));
+        margin: auto;
+        padding: 40px 0 80px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        letter-spacing: -1px;
+      }
+      .lead {
+        margin: 0 0 32px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .option {
+        margin-bottom: 24px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+      }
+      .option h2 {
+        margin: 0 0 4px;
+        font-size: 19px;
+      }
+      .option p {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .rows {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 16px;
+      }
+      .cell {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+      }
+      .cell > small {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .cell.dark {
+        border-color: #0f1720;
+        background: #17212b;
+      }
+      .cell.dark > small {
+        color: #8a96a5;
+      }
+      .sizes {
+        display: flex;
+        align-items: flex-end;
+        gap: 22px;
+      }
+      .sizes img,
+      .sizes svg {
+        display: block;
+      }
+      /* header-sized lockup, same proportions as the live header */
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .brand img,
+      .brand svg {
+        width: 40px;
+        height: 40px;
+      }
+      .word {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+      }
+      .word b {
+        color: var(--navy);
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: -1.2px;
+      }
+      .word small {
+        margin-top: 5px;
+        color: #7a8798;
+        font-size: 8.5px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+      }
+      .word.big b {
+        font-size: 24px;
+      }
+      .dark .word b {
+        color: #fff;
+      }
+      .dark .word small {
+        color: #9aa7b6;
+      }
+      /* current logo, copied from the live header */
+      .now .word b {
+        font-size: 21px;
+        letter-spacing: -1.8px;
+      }
+      .now .word small {
+        color: #8a96a5;
+        font-size: 6px;
+        font-weight: 900;
+        letter-spacing: 0.75px;
+      }
+      .now svg {
+        color: var(--blue);
+      }
+      @media (max-width: 760px) {
+        .rows {
+          grid-template-columns: 1fr;
+        }
+        .option {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>로고 시안 미리보기</h1>
+      <p class="lead">
+        지금 궤도 심볼을 다듬은 시안이에요. 실제 헤더 크기, 어두운 배경, 큰 크기,
+        브라우저 탭 아이콘 크기(32px·16px)로 비교해 보세요. 이 페이지는 메뉴에
+        없고 검색에도 잡히지 않아요.
+      </p>
+
+      <section class="option now">
+        <h2>지금 로고</h2>
+        <p>비교용이에요. 아래 작은 영문 문구가 6px라 잘 안 읽혀요.</p>
+        <div class="rows">
+          <div class="cell">
+            <small>헤더 크기</small>
+            <span class="brand"
+              ><svg viewBox="0 0 48 48" aria-hidden="true">
+                <circle cx="24" cy="24" r="6" fill="currentColor" />
+                <ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-28 24 24)" />
+                <circle cx="39" cy="15" r="4" fill="#9be15d" />
+                <circle cx="10" cy="32" r="3" fill="#37c6f4" /></svg
+              ><span class="word"><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span></span
+            >
+          </div>
+          <div class="cell">
+            <small>큰 크기 · 32px · 16px</small>
+            <div class="sizes" style="color: var(--blue)">
+              <svg viewBox="0 0 48 48" width="112" height="112" aria-hidden="true">
+                <circle cx="24" cy="24" r="6" fill="currentColor" />
+                <ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-28 24 24)" />
+                <circle cx="39" cy="15" r="4" fill="#9be15d" />
+                <circle cx="10" cy="32" r="3" fill="#37c6f4" />
+              </svg>
+              <svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true">
+                <circle cx="24" cy="24" r="6" fill="currentColor" />
+                <ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-28 24 24)" />
+                <circle cx="39" cy="15" r="4" fill="#9be15d" />
+                <circle cx="10" cy="32" r="3" fill="#37c6f4" />
+              </svg>
+              <svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true">
+                <circle cx="24" cy="24" r="6" fill="currentColor" />
+                <ellipse cx="24" cy="24" rx="19" ry="10" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-28 24 24)" />
+                <circle cx="39" cy="15" r="4" fill="#9be15d" />
+                <circle cx="10" cy="32" r="3" fill="#37c6f4" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="option">
+        <h2>시안 A · 입체 궤도 + 영문 문구</h2>
+        <p>
+          궤도가 가운데 원의 앞뒤로 지나가게 해서 입체감을 줬어요. 위성 두 개를
+          궤도선 위에 정확히 올리고, 원에는 은은한 그라데이션을 넣었어요. 영문
+          문구는 8.5px로 키워 읽히게 했어요.
+        </p>
+        <div class="rows">
+          <div class="cell">
+            <small>헤더 크기</small>
+            <span class="brand"
+              ><img src="symbol-a.svg" alt="" width="40" height="40" /><span class="word"
+                ><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span
+              ></span
+            >
+          </div>
+          <div class="cell">
+            <small>큰 크기 · 32px · 16px</small>
+            <div class="sizes">
+              <img src="symbol-a.svg" alt="" width="112" height="112" /><img src="symbol-a.svg" alt="" width="32" height="32" /><img src="symbol-a.svg" alt="" width="16" height="16" />
+            </div>
+          </div>
+          <div class="cell dark">
+            <small>어두운 배경</small>
+            <span class="brand"
+              ><img src="symbol-a.svg" alt="" width="40" height="40" /><span class="word"
+                ><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span
+              ></span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="option">
+        <h2>시안 B · 입체 궤도, 글자만</h2>
+        <p>
+          A와 같은 심볼이에요. 영문 문구를 빼고 '모아온' 글자를 조금 키워서 가장
+          깔끔하게 보이게 했어요.
+        </p>
+        <div class="rows">
+          <div class="cell">
+            <small>헤더 크기</small>
+            <span class="brand"
+              ><img src="symbol-a.svg" alt="" width="40" height="40" /><span class="word big"><b>모아온</b></span></span
+            >
+          </div>
+          <div class="cell dark">
+            <small>어두운 배경</small>
+            <span class="brand"
+              ><img src="symbol-a.svg" alt="" width="40" height="40" /><span class="word big"><b>모아온</b></span></span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="option">
+        <h2>시안 C · 배지형</h2>
+        <p>
+          파란 둥근 사각형 안에 흰 궤도 심볼을 넣었어요. 작은 크기에서도 형태가 잘
+          보여서 브라우저 탭 아이콘으로 쓰기 좋아요.
+        </p>
+        <div class="rows">
+          <div class="cell">
+            <small>헤더 크기</small>
+            <span class="brand"
+              ><img src="symbol-c.svg" alt="" width="40" height="40" /><span class="word big"><b>모아온</b></span></span
+            >
+          </div>
+          <div class="cell">
+            <small>큰 크기 · 32px · 16px</small>
+            <div class="sizes">
+              <img src="symbol-c.svg" alt="" width="112" height="112" /><img src="symbol-c.svg" alt="" width="32" height="32" /><img src="symbol-c.svg" alt="" width="16" height="16" />
+            </div>
+          </div>
+          <div class="cell dark">
+            <small>어두운 배경</small>
+            <span class="brand"
+              ><img src="symbol-c.svg" alt="" width="40" height="40" /><span class="word big"><b>모아온</b></span></span
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
