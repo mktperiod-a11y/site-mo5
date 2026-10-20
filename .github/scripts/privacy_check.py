@@ -28,6 +28,13 @@ VERIFY_NAME = re.compile(
 )
 VERIFY_FILE = re.compile(r"^(google[0-9a-f]{16}|naver[0-9a-f]{32})\.html$", re.I)
 TOKEN_CONTENT = re.compile(r"content\s*=\s*[\"']?[A-Za-z0-9_=-]{8,}", re.I)
+# 프레임워크 설정에 넣은 확인 코드, 예: verification: { google: "…" }, { "naver-site-verification": ["…"] }
+VERIFY_INLINE = re.compile(
+    r"(?:site-verification|msvalidate\.01|yandex-verification|domain-verification)[\"']?\s*:\s*\[?\s*[\"'][A-Za-z0-9_-]{8,}"
+    r"|\bverification\s*:\s*\{[^}]*?\bgoogle\s*:\s*\[?\s*[\"'][A-Za-z0-9_-]{8,}",
+    re.I,
+)
+VERIFY_HINT = "소유자 확인 없이 넣지 마세요(CLAUDE.md 신원 노출 방지 참고)."
 # (설명, 정규식) — 계정·운영자와 이어지는 값
 IDENTIFIERS = [
     ("이메일 주소", re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")),
@@ -181,7 +188,7 @@ def check_files():
         if "probe" in base.lower():
             fail("확인용 임시 파일(probe)이 남아 있습니다.", path)
         if VERIFY_FILE.match(base):
-            fail("검색 등록 확인 파일을 저장소에 두지 않습니다. 확인 토큰은 Secrets로 배포 때 넣으세요.", path)
+            fail(f"검색 등록 확인 파일이 있습니다. {VERIFY_HINT}", path)
         for number, _ in find_patterns(path, patterns):
             fail(f"파일 경로에 금지 문자열 #{number}이 들어 있습니다.", path)
         if path == SELF or not os.path.isfile(path):
@@ -204,15 +211,16 @@ def check_files():
         if match:
             line = text.count("\n", 0, match.start()) + 1
             fail("사이트 주소가 코드에 들어 있습니다. https://site-url.invalid 자리표시를 쓰세요.", path, line)
-        for match in META_TAG.finditer(text):
-            if VERIFY_NAME.search(match.group()) and TOKEN_CONTENT.search(match.group()):
-                line = text.count("\n", 0, match.start()) + 1
-                fail("검색 등록 확인 토큰이 코드에 들어 있습니다. Secrets에 넣고 배포 때 넣으세요.", path, line)
+        verify = [m for m in META_TAG.finditer(text) if VERIFY_NAME.search(m.group()) and TOKEN_CONTENT.search(m.group())]
+        verify += list(VERIFY_INLINE.finditer(text))
+        for match in verify:
+            line = text.count("\n", 0, match.start()) + 1
+            fail(f"검색 등록 확인 코드가 들어 있습니다. {VERIFY_HINT}", path, line)
         for label, regex in IDENTIFIERS:
             match = regex.search(text)
             if match:
                 line = text.count("\n", 0, match.start()) + 1
-                fail(f"{label} 형식의 값이 들어 있습니다. 지우거나 Secrets로 옮기세요.", path, line)
+                fail(f"{label} 형식의 값이 들어 있습니다. 지우거나 소유자에게 먼저 확인하세요.", path, line)
         for number, line in find_patterns(text, patterns):
             fail(f"금지 문자열 #{number}이 들어 있습니다.", path, line)
     print(f"파일 {len(paths)}개(이미지 {images}개) 검사, 문제 {len(errors)}건")
