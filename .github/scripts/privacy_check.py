@@ -19,7 +19,7 @@ import sys
 SELF = ".github/scripts/privacy_check.py"
 PAGES_HOST = re.compile(r"[a-z0-9-]+\.github\.io", re.I)
 MERGE_MESSAGE = re.compile(r"^Merge pull request #\d+ from \S+/", re.M)
-IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".svg")
+IMAGE_EXT = (".jpg", ".jpeg", ".png", ".webp", ".svg", ".ico")
 DATA_IMAGE = re.compile(rb"data:image/[a-z+.-]+;base64,([A-Za-z0-9+/=\s]+)", re.I)
 SVG_EDITOR = re.compile(rb"<metadata|sodipodi:|inkscape:|<!--\s*Generator", re.I)
 META_TAG = re.compile(r"<meta\b[^>]*>", re.I)
@@ -149,7 +149,19 @@ def raster_metadata(data):
         return png_metadata(data)
     if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
         return webp_metadata(data)
+    if data[:4] == b"\0\0\1\0":
+        return ico_metadata(data)
     return set()
+
+
+def ico_metadata(data):
+    """ICO holds several images; PNG entries can carry metadata, BMP entries cannot."""
+    found = set()
+    count = struct.unpack("<H", data[4:6])[0]
+    for k in range(count):
+        size, offset = struct.unpack("<II", data[6 + 16 * k + 8:6 + 16 * k + 16])
+        found |= raster_metadata(data[offset:offset + size])
+    return found
 
 
 def image_metadata(path, data):
