@@ -53,7 +53,7 @@
 ## 자동 검사
 
 - `.github/workflows/privacy-check.yml`이 push와 PR마다 `.github/scripts/privacy_check.py`를 실행한다.
-  - 파일: 금지 문자열, `*.github.io` 주소, `CNAME`, probe 파일, 이미지의 EXIF·XMP·IPTC·텍스트·시간 정보(base64로 넣은 이미지 포함), SVG 편집 도구 흔적, 검색 등록 확인 토큰과 확인 파일, 이메일 주소·전화번호·사업자등록번호·분석·광고 계정 ID·사용자 폴더 경로
+  - 파일: 금지 문자열, `*.github.io` 주소, `CNAME`, probe 파일, 이미지의 EXIF·XMP·IPTC·텍스트·시간 정보(base64로 넣은 이미지와 ICO 안의 이미지 포함), SVG 편집 도구 흔적, 검색 등록 확인 토큰과 확인 파일, 이메일 주소·전화번호·사업자등록번호·분석·광고 계정 ID·사용자 폴더 경로
   - 커밋: 작성자·커미터 이메일, 병합 메시지의 계정 이름, 세션 링크, 커밋 메시지의 금지 문자열
 - 금지 문자열은 Secrets의 `PRIVACY_PATTERNS`(한 줄에 하나)에만 있다. 값을 코드·대화·로그에 옮기지 않는다.
 - push 전에 로컬에서 먼저 돌린다. 로컬에는 `PRIVACY_PATTERNS`가 없어 금지 문자열만 건너뛰고 나머지는 그대로 검사한다.
