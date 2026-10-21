@@ -183,6 +183,54 @@
         font-size: 13px;
         line-height: 1.75;
       }
+      .index-box {
+        margin-top: 18px;
+        padding: 25px;
+        border: 1px solid #e2e8f0;
+        border-radius: 13px;
+        background: #fff;
+        color: #3d4856;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .index-box h2 {
+        margin: 0 0 6px;
+        color: #17212b;
+        font-size: 18px;
+      }
+      .index-box p {
+        margin: 0 0 14px;
+      }
+      .index-box table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      .index-box th,
+      .index-box td {
+        padding: 9px 8px;
+        border-bottom: 1px solid #edf0f3;
+        text-align: left;
+        vertical-align: top;
+      }
+      .index-box th {
+        color: #8a96a5;
+        font-weight: 700;
+      }
+      .index-box td:first-child {
+        color: #17212b;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .index-box td:last-child {
+        white-space: nowrap;
+      }
+      .index-box ul {
+        margin: 14px 0 0;
+        padding-left: 18px;
+        color: #5d6876;
+        font-size: 13px;
+      }
       .note {
         margin-top: 18px;
         padding: 20px;
@@ -436,6 +484,29 @@
           </p>
         </article>
       </div>
+      <section class="index-box" id="index">
+        <h2>모아온 지수 계산 방식</h2>
+        <p>
+          메인 순위는 공개된 데이터로 계산한 모아온 지수(0~100) 순서입니다. 데이터는 구글 플레이
+          한국 스토어에서 같은 날 같은 조건으로 수집합니다.
+        </p>
+        <table>
+          <thead>
+            <tr><th>지표</th><th>보는 것</th><th>데이터</th><th>비중</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>인기</td><td>얼마나 많이 찾는지</td><td>네이버 검색량(월간 조회수와 변동 폭)</td><td>40%</td></tr>
+            <tr><td>사용감</td><td>얼마나 편하게 쓰는지</td><td>앱 추정 다운로드 수(60%)와 보정 평점(40%)</td><td>35%</td></tr>
+            <tr><td>애정</td><td>얼마나 관심을 두는지</td><td>앱 평가 수(좋은 평가와 나쁜 평가 모두)</td><td>25%</td></tr>
+          </tbody>
+        </table>
+        <ul>
+          <li>다운로드 수와 평가 수는 업체 간 차이가 수십 배라 로그 척도로 바꿔 비교합니다.</li>
+          <li>평점은 평가 수가 적을수록 전체 평균 쪽으로 당겨 보정합니다. 평가 몇 건으로 점수가 크게 흔들리지 않게 하려는 것입니다.</li>
+          <li>네이버 검색량은 연동 전까지 빠져 있으며, 그동안은 사용감과 애정의 비중을 비율대로 나눠 계산합니다.</li>
+          <li>카드의 종합신뢰도는 모아온 지수를 5점 만점으로 바꾼 값입니다.</li>
+        </ul>
+      </section>
       <div class="note">
         순위는 절대적인 평가가 아니라 후보를 빠르게 좁히기 위한 참고 자료입니다.
         결제 전에는 각 서비스의 이용약관과 공식 이벤트 안내를 반드시 확인하세요.

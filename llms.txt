@@ -1,6 +1,6 @@
 # 모아온
 
-> 국내 웹하드를 순위, 선정이유, 혜택, 이용 특징으로 비교하는 한국어 가이드입니다. 순위는 운영 안정성·혜택의 명확성·이용 편의성·결제 안내 네 가지 기준을 바탕으로 정한 편집 순위이며, 마지막 갱신일은 {{updated_iso}}입니다.
+> 국내 웹하드를 순위, 선정이유, 혜택, 이용 특징으로 비교하는 한국어 가이드입니다. 순위는 {{metrics_source}}에 공개된 앱 추정 다운로드·평점·평가 수를 합산한 모아온 지수 순서이며({{metrics_date}} 수집), 마지막 갱신일은 {{updated_iso}}입니다.
 
 ## 웹하드 순위 TOP {{count}} ({{updated_ym}})
 
@@ -9,5 +9,5 @@
 ## 페이지
 
 - [웹하드 순위](https://site-url.invalid/): 순위, 선정이유, 종합신뢰도, 자주 묻는 질문
-- [순위 검증 가이드](https://site-url.invalid/criteria.html): 순위를 정하는 네 가지 기준과 확인 방법
+- [순위 검증 가이드](https://site-url.invalid/criteria.html): 모아온 지수 계산 방식과 서비스 확인 기준
 - [콘텐츠 가이드](https://site-url.invalid/content-guide.html): 영화·드라마·예능 콘텐츠를 고르는 기준
