@@ -1,0 +1,2 @@
+# Count the deploy scripts in the language stats (GitHub skips .github/ by default)
+.github/scripts/*.py linguist-vendored=false linguist-detectable=true
