@@ -231,6 +231,9 @@
         font-size: 16px;
         font-weight: 800;
       }
+      .score small {
+        font-size: inherit;
+      }
       /* keywords right under the name: who it is, then what kind of service */
       .tags {
         display: flex;
@@ -885,6 +888,87 @@
           display: none;
         }
       }
+      /* mobile cards: logo, name and score in one header row, then tags, reason and button at full width */
+      @media (max-width: 600px) {
+        .card {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr) auto;
+          grid-template-areas:
+            "logo name score"
+            "tags tags tags"
+            "reason reason reason"
+            "go go go";
+          column-gap: 10px;
+          align-items: center;
+          min-height: 0;
+          padding: 0 14px 14px;
+        }
+        .card::before {
+          content: "";
+          grid-row: 1;
+          grid-column: 1 / -1;
+          align-self: stretch;
+          margin: 0 -14px;
+          background: #f8fafc;
+        }
+        .card-body,
+        .trust {
+          display: contents;
+        }
+        .visual {
+          grid-area: logo;
+          height: auto;
+          min-height: 0;
+          padding: 10px 0 10px 32px;
+          border: 0;
+          background: none;
+        }
+        .visual img {
+          width: 82px;
+          max-width: none;
+          height: 36px;
+          mix-blend-mode: multiply;
+        }
+        .card h2 {
+          grid-area: name;
+          margin: 0;
+          font-size: 15px;
+        }
+        .trust b,
+        .stars,
+        .score small,
+        .reason b {
+          display: none;
+        }
+        .score {
+          grid-area: score;
+          margin: 0;
+          padding: 2px 7px;
+          border-radius: 10px;
+          background: #fff7e0;
+          color: #8a5a00;
+          font-size: 12px;
+          white-space: nowrap;
+        }
+        .score::before {
+          content: "★ ";
+        }
+        .tags {
+          grid-area: tags;
+          margin: 12px 0 8px;
+        }
+        .reason {
+          grid-area: reason;
+          display: block;
+          margin: 0 0 12px;
+          padding: 0;
+          border: 0;
+        }
+        .go {
+          grid-area: go;
+          margin: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -993,7 +1077,7 @@
           document.querySelector("#cards").innerHTML = services
             .map(
               (s, i) =>
-                `<article class="card ${i < 3 ? "top" : ""}" style="--brand:${s.color}"><span class="rank-flag">${i + 1}</span><div class="visual"><img src="${s.logo}" alt="${s.name} 로고" width="170" height="76" loading="lazy"></div><div class="card-body"><h2>${s.name}</h2><p class="tags">${s.tags.split(/\s+/).map((t) => `<i>${t}</i>`).join("")}</p><div class="reason"><b>선정이유</b><span>${s.reason}</span></div><div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span><span class="score">${s.score}/5</span></div><a class="go" href="go/${s.id}/" target="_blank" rel="noopener noreferrer sponsored nofollow" aria-label="${s.name} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>`,
+                `<article class="card ${i < 3 ? "top" : ""}" style="--brand:${s.color}"><span class="rank-flag">${i + 1}</span><div class="visual"><img src="${s.logo}" alt="${s.name} 로고" width="170" height="76" loading="lazy"></div><div class="card-body"><h2>${s.name}</h2><p class="tags">${s.tags.split(/\s+/).map((t) => `<i>${t}</i>`).join("")}</p><div class="reason"><b>선정이유</b><span>${s.reason}</span></div><div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span><span class="score">${s.score}<small>/5</small></span></div><a class="go" href="go/${s.id}/" target="_blank" rel="noopener noreferrer sponsored nofollow" aria-label="${s.name} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>`,
             )
             .join("");
           document.querySelector("#live").innerHTML = services
