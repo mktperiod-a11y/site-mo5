@@ -25,7 +25,7 @@
     <meta property="og:image:alt" content="모아온 2026 웹하드 순위" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "모아온", "url": "https://site-url.invalid/", "inLanguage": "ko-KR"}</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "웹하드 순위는 어떤 기준으로 정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "네이버 검색량으로 인기를, 구글 플레이 한국 스토어에 공개된 앱의 추정 다운로드 수와 평점으로 사용감을, 평가 수로 관심도를 계산해 합친 모아온 지수 순서입니다. 계산 방식은 순위 검증 가이드에 공개했고, 마지막 갱신일은 페이지 맨 위에 표시합니다."}}, {"@type": "Question", "name": "합법 웹하드인지 어떻게 확인하나요?", "acceptedAnswer": {"@type": "Answer", "text": "국내 웹하드는 전기통신사업법에 따라 특수한 유형의 부가통신사업자로 등록해야 운영할 수 있습니다. 서비스 하단의 사업자 정보와 등록 번호, 저작권 보호를 위한 필터링 안내가 있는지 확인하세요."}}, {"@type": "Question", "name": "가입 무료 포인트는 바로 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "대부분 사용 기한과 사용 범위가 정해져 있습니다. 일부 콘텐츠에는 쓸 수 없거나 기간이 지나면 사라질 수 있으니, 가입 전에 이벤트 안내의 유효기간과 제한 조건을 확인하세요."}}, {"@type": "Question", "name": "정액제 자동 결제는 어떻게 해지하나요?", "acceptedAnswer": {"@type": "Answer", "text": "보통 마이페이지의 결제 관리 메뉴에서 자동 연장을 끌 수 있습니다. 결제하기 전에 이용약관에서 해지 방법과 환불 조건을 먼저 확인하는 것이 안전합니다."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "웹하드 순위는 어떤 기준으로 정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "네이버 검색량으로 인기를, 구글 플레이 한국 스토어에 공개된 앱의 추정 다운로드 수와 평점으로 사용성을, 평가 수로 관심도를 계산해 합친 모아온 지수 순서입니다. 계산 방식은 순위 검증 가이드에 공개했고, 마지막 갱신일은 페이지 맨 위에 표시합니다."}}, {"@type": "Question", "name": "합법 웹하드인지 어떻게 확인하나요?", "acceptedAnswer": {"@type": "Answer", "text": "국내 웹하드는 전기통신사업법에 따라 특수한 유형의 부가통신사업자로 등록해야 운영할 수 있습니다. 서비스 하단의 사업자 정보와 등록 번호, 저작권 보호를 위한 필터링 안내가 있는지 확인하세요."}}, {"@type": "Question", "name": "가입 무료 포인트는 바로 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "대부분 사용 기한과 사용 범위가 정해져 있습니다. 일부 콘텐츠에는 쓸 수 없거나 기간이 지나면 사라질 수 있으니, 가입 전에 이벤트 안내의 유효기간과 제한 조건을 확인하세요."}}, {"@type": "Question", "name": "정액제 자동 결제는 어떻게 해지하나요?", "acceptedAnswer": {"@type": "Answer", "text": "보통 마이페이지의 결제 관리 메뉴에서 자동 연장을 끌 수 있습니다. 결제하기 전에 이용약관에서 해지 방법과 환불 조건을 먼저 확인하는 것이 안전합니다."}}]}</script>
     <!-- ranking:jsonld -->
     <style>
       :root {
@@ -480,10 +480,10 @@
       .bar {
         flex: 1;
         position: relative;
-        display: flex;
-        flex-direction: column-reverse;
         height: var(--h);
-        opacity: 0.92;
+        border-radius: 7px 7px 0 0;
+        background: var(--c);
+        opacity: 0.88;
         transition:
           height 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
           width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
@@ -516,128 +516,135 @@
       .chart.wait .bar b {
         opacity: 0;
       }
-      /* stacked segments: popularity at the bottom, then usability, affection on top */
-      .seg {
-        display: block;
-        flex: none;
-        height: var(--p);
-      }
-      .seg:last-of-type {
-        border-radius: 7px 7px 0 0;
-      }
-      .popularity {
-        background: #087df2;
-      }
-      .usability {
-        background: #36c2a4;
-      }
-      .affection {
-        background: #ff9466;
-      }
-      .seg.all {
-        background: #8e99a8;
-      }
+      /* hover card: one service's three scales, each against its own maximum (not against other services) */
       .tip {
         display: none;
         position: absolute;
         z-index: 3;
-        left: 50%;
-        bottom: calc(100% + 26px);
-        transform: translateX(-50%);
-        padding: 6px 9px;
+        left: calc(100% + 8px);
+        top: 0;
+        width: 220px;
+        padding: 12px 14px;
+        border: 1px solid #d5dbe3;
         border-radius: 8px;
-        background: var(--navy);
-        color: #fff;
+        background: #fff;
+        box-shadow: 0 6px 18px #1c2c3d1f;
+        color: #3d4856;
         font-size: 12px;
-        font-weight: 700;
-        white-space: nowrap;
-        box-shadow: 0 6px 16px #17212b33;
+        text-align: left;
+        cursor: default;
       }
-      .bar:first-child .tip {
-        left: 0;
-        transform: none;
-      }
-      .bar:last-child .tip {
+      /* the last two bars open their card to the left so it stays inside the chart */
+      .bar:nth-last-child(-n + 2) .tip {
         left: auto;
-        right: 0;
-        transform: none;
+        right: calc(100% + 8px);
       }
       .bar:hover .tip,
       .bar:focus .tip {
         display: block;
       }
-      .legend {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 14px;
-        margin: -8px 0 18px;
+      .tip > strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--navy);
+        font-size: 13px;
+      }
+      .scale {
+        display: grid;
+        grid-template-columns: 38px 1fr 52px;
+        gap: 8px;
+        align-items: center;
+        margin-top: 6px;
+      }
+      .scale span {
         color: #5d6876;
-        font-size: 12px;
         font-weight: 700;
       }
-      .legend em,
-      .info-pop em {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin-right: 5px;
+      .scale i {
+        display: block;
+        height: 6px;
         border-radius: 3px;
-        vertical-align: -1px;
+        background: linear-gradient(var(--blue), var(--blue)) 0 0 / var(--v) 100% no-repeat, #e9edf2;
       }
+      .scale em {
+        color: var(--navy);
+        font-style: normal;
+        font-weight: 800;
+        text-align: right;
+      }
+      .scale em small {
+        color: #98a2ae;
+        font-weight: 600;
+      }
+      /* tooltip: outlined question icon, white popover above it with a small arrow */
       .info {
         position: relative;
-        display: inline-grid;
+        display: inline-block;
+        margin-left: 2px;
+        vertical-align: -3px;
+      }
+      .info-btn {
+        display: grid;
         place-items: center;
-        width: 18px;
-        height: 18px;
-        margin-left: 4px;
-        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
         background: #e9eef4;
-        color: #5d6876;
-        font-family: Georgia, serif;
-        font-size: 12px;
-        font-style: italic;
-        font-weight: 700;
-        vertical-align: 2px;
+        color: #4a5868;
         cursor: help;
+      }
+      .info-btn svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+      }
+      .info-btn .dot {
+        fill: currentColor;
+        stroke: none;
+      }
+      .info-btn:focus-visible {
+        outline: 3px solid #62aff8;
+        outline-offset: 2px;
       }
       .info-pop {
         display: none;
         position: absolute;
         z-index: 10;
-        left: -8px;
-        top: calc(100% + 8px);
-        width: min(340px, 80vw);
-        padding: 13px 15px;
+        left: 50%;
+        bottom: calc(100% + 12px);
+        transform: translateX(-50%);
+        width: 320px;
+        padding: 16px 20px;
+        border: 1px solid #c9d1db;
         border-radius: 10px;
-        background: var(--navy);
-        color: #dfe6ee;
-        font-family: Arial, "Noto Sans KR", sans-serif;
-        font-size: 13px;
-        font-style: normal;
+        background: #fff;
+        box-shadow: 0 6px 18px #1c2c3d1f;
+        color: #3d4856;
+        font-size: 14px;
         font-weight: 400;
-        line-height: 1.6;
-        letter-spacing: 0;
+        line-height: 1.65;
+        letter-spacing: -0.2px;
         text-align: left;
-        box-shadow: 0 10px 30px #17212b40;
       }
-      .info-pop b {
-        display: block;
-        margin-bottom: 6px;
-        color: #fff;
-      }
-      .info-pop span {
-        display: block;
-        margin-top: 3px;
-      }
-      .info-pop small {
-        display: block;
-        margin-top: 8px;
-        color: #a9b4c1;
-        font-size: 12px;
+      .info-pop:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -7px;
+        width: 12px;
+        height: 12px;
+        border-right: 1px solid #c9d1db;
+        border-bottom: 1px solid #c9d1db;
+        background: #fff;
+        transform: translateX(-50%) rotate(45deg);
       }
       .info:hover .info-pop,
-      .info:focus .info-pop {
+      .info:focus-within .info-pop {
         display: block;
       }
       .bar:after {
@@ -1046,23 +1053,13 @@
         }
         .bar {
           flex: none;
-          flex-direction: row;
           height: 36px !important;
           width: var(--h);
           min-width: 112px;
+          border-radius: 6px;
           opacity: 0.95;
         }
-        .seg {
-          height: 100%;
-          width: var(--p);
-        }
-        .seg:first-of-type {
-          border-radius: 6px 0 0 6px;
-        }
-        .seg:last-of-type {
-          border-radius: 0 6px 6px 0;
-        }
-        /* the info popup spans the chart header instead of hanging off the small icon */
+        /* the tooltip spans the chart header under the title (above it would slide under the sticky header) */
         .chart-head {
           position: relative;
         }
@@ -1072,17 +1069,19 @@
         .info-pop {
           left: 0;
           right: 0;
+          bottom: auto;
           top: 40px;
           width: auto;
+          transform: none;
+        }
+        .info-pop:after {
+          display: none;
         }
         .tip,
-        .bar:first-child .tip,
-        .bar:last-child .tip {
+        .bar:nth-last-child(-n + 2) .tip {
           left: 0;
           right: auto;
-          bottom: auto;
-          top: calc(100% + 4px);
-          transform: none;
+          top: calc(100% + 6px);
         }
         .chart.wait .bar {
           width: 0;
@@ -1350,19 +1349,14 @@
         <div class="chart-head">
           <h2>
             사이트별 모아온 지수
-            <span class="info" tabindex="0" aria-describedby="indexHow">i<span class="info-pop" id="indexHow" role="tooltip"
-                ><b>모아온 지수(0~100)는 이렇게 계산해요</b>
-                <span><em class="popularity"></em>인기 {{w_popularity}}%: 네이버 데이터랩 검색량. 최근 4주 검색 수준 70% + 지난주 변동 폭 30%</span>
-                <span><em class="usability"></em>사용감 {{w_usability}}%: 구글 플레이 추정 다운로드 60% + 보정 평점 40%</span>
-                <span><em class="affection"></em>애정 {{w_affection}}%: 구글 플레이 평가 수(좋은 평가·나쁜 평가 모두)</span>
-                <small>매주 월요일 같은 조건으로 다시 수집해 계산하며, 주간 보정 점수가 더해질 수 있어요.</small></span
-              ></span
-            >
+            <span class="info">
+              <button type="button" class="info-btn" aria-label="모아온 지수 계산 방식" aria-describedby="indexHow">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.25" /><path d="M7.75 7.6a2.3 2.3 0 0 1 4.45.75c0 1.55-2.2 1.9-2.2 3.3" /><circle class="dot" cx="10" cy="14.4" r=".9" /></svg>
+              </button>
+              <span class="info-pop" id="indexHow" role="tooltip">모아온 지수(0~100)는 인기 {{w_popularity}}%(네이버 검색량), 사용성 {{w_usability}}%(구글 플레이 추정 다운로드·평점), 애정 {{w_affection}}%(평가 수)를 더해 계산해요. 매주 월요일 다시 수집하며 주간 보정 점수가 더해질 수 있어요.</span>
+            </span>
           </h2>
-          <p>{{metrics_basis}} 기준 ({{metrics_date}} 수집) · 막대를 가리키거나 누르면 항목별 점수가 보여요</p>
-          <div class="legend" aria-hidden="true">
-            <span><em class="popularity"></em>인기 {{w_popularity}}%</span><span><em class="usability"></em>사용감 {{w_usability}}%</span><span><em class="affection"></em>애정 {{w_affection}}%</span>
-          </div>
+          <p>{{metrics_basis}} 기준 ({{metrics_date}} 수집) · 막대를 가리키거나 누르면 그 서비스의 항목별 점수가 보여요</p>
         </div>
         <div class="chart wait" id="chart"><!-- ranking:chart --></div>
       </section>
@@ -1372,7 +1366,7 @@
         <dl>
           <div class="faq-item">
             <dt>웹하드 순위는 어떤 기준으로 정하나요?</dt>
-            <dd>네이버 검색량으로 인기를, 구글 플레이 한국 스토어에 공개된 앱의 추정 다운로드 수와 평점으로 사용감을, 평가 수로 관심도를 계산해 합친 모아온 지수 순서입니다. 계산 방식은 순위 검증 가이드에 공개했고, 마지막 갱신일은 페이지 맨 위에 표시합니다.</dd>
+            <dd>네이버 검색량으로 인기를, 구글 플레이 한국 스토어에 공개된 앱의 추정 다운로드 수와 평점으로 사용성을, 평가 수로 관심도를 계산해 합친 모아온 지수 순서입니다. 계산 방식은 순위 검증 가이드에 공개했고, 마지막 갱신일은 페이지 맨 위에 표시합니다.</dd>
           </div>
           <div class="faq-item">
             <dt>합법 웹하드인지 어떻게 확인하나요?</dt>
