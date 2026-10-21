@@ -74,7 +74,7 @@
   - 검색어 트렌드는 NAVER API HUB 주소(`naverapihub.apigw.ntruss.com`)와 `X-NCP-APIGW-API-KEY-ID`·`X-NCP-APIGW-API-KEY` 헤더를 쓴다. 예전 개발자센터 주소(`openapi.naver.com`)는 이 키로 동작하지 않는다.
   - 기본값은 `data/baseline.json`(2026-10-21 수집값)이다. 소유자가 "기본 값으로 돌려줘"라고 하면 `python3 .github/scripts/score.py --restore`로 되돌린다. 기본값을 바꾸라고 할 때만 `--baseline`으로 새로 저장한다.
   - 주간 보정: 배포 때 `render_ranking.py`가 그 주 월요일(KST)을 시드로 `weeklyAdjust.items`개 항목에 최대 ±`weeklyAdjust.max`점을 더해 순위를 다시 정하고, 지난주 순위와 비교한 ▲▼를 표시한다. 수집이 끝나면 `collect.yml`이 배포를 시작한다. 기본값(`baseline.json`)에는 보정이 들어가지 않는다.
-  - `keepInTop`에 적은 항목(현재 케이디스크)은 지수와 관계없이 항상 노출 순위 안에 둔다. 밖으로 밀리면 마지막 자리(10위)로 올린다.
+  - `maxRank`({id: 최저 순위})에 적은 항목은 지수·주간 보정과 관계없이 그 순위 아래로 내려가지 않는다. 지금은 온디스크 2위, 케이디스크 10위다. 더 내려가면 그 순위 자리로 올린다.
   - 사이트에는 타사처럼 "순위는 참고용이며 서비스 선택은 이용자 본인의 판단"이라고 안내한다.
   - `pending`은 공식 주소·로고를 확인하지 못한 항목이다. 주소를 추측해서 채우지 않는다. 확인되면 `url`·`logo`를 채우고 `go/<id>/index.html`을 만든 뒤 `ready`로 바꾼다.
   - 업체 로고는 sharp로 다시 저장해 SVG에 넣고, 다른 로고와 같은 229×100 상자에 비슷한 넓이로 맞춘다.
