@@ -21,11 +21,12 @@ import re
 import subprocess
 import sys
 import time
-import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+from ranking import weekly
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data/webhards.json"
@@ -66,7 +67,10 @@ def search_trend():
         return {}
     end = today - timedelta(days=today.weekday() + 1)  # last finished Sunday
     start = end - timedelta(weeks=8) + timedelta(days=1)
-    anchor = next(s for s in rows if s["id"] == data["searchAnchor"])
+    anchor = next((s for s in rows if s["id"] == data.get("searchAnchor")), None)
+    if anchor is None:
+        print("::warning::searchAnchor 업체가 목록에 없어 검색량은 건너뜁니다.")
+        return {}
     others = [s for s in rows if s is not anchor]
     words = lambda s: s.get("searchKeywords", [s["name"]])
     out = {}
@@ -117,11 +121,17 @@ def search_monthly():
     return out
 
 
+# remember the ranks the page showed during the week that is ending, for next week's ▲▼
+# (on the Monday run that is the week before; on a manual run mid-week it is the current week)
+monday = today - timedelta(days=today.weekday())
+shown_week = monday - timedelta(days=7) if today.weekday() == 0 else monday
+previous = {"week": shown_week.isoformat(), "ranks": {s["id"]: i for i, s in enumerate(weekly(data, shown_week))}}
+
 failed = []
 for s in rows:
     try:
         s["metrics"].update(play(s["metrics"]["playApp"]))
-    except (urllib.error.URLError, ValueError, KeyError) as e:
+    except (OSError, ValueError, KeyError) as e:  # OSError covers URLError, HTTPError and timeouts
         failed.append(s["name"])
         print(f"::warning::{s['name']} 구글 플레이 수집 실패({type(e).__name__}), 지난 값을 씁니다.")
 for source in (search_trend, search_monthly):
@@ -129,7 +139,7 @@ for source in (search_trend, search_monthly):
         for sid, value in source().items():
             m = next(s for s in rows if s["id"] == sid)["metrics"]
             m.update(value if isinstance(value, dict) else {"searchMonthly": value})
-    except (urllib.error.URLError, ValueError, KeyError) as e:
+    except (OSError, ValueError, KeyError) as e:
         print(f"::warning::{source.__name__} 수집 실패({type(e).__name__}), 지난 값을 씁니다.")
 
 for s in rows:
@@ -139,7 +149,10 @@ for s in rows:
 if DRY:
     sys.exit()
 
+if len(failed) == len(rows):
+    sys.exit("::error::구글 플레이 수집이 모두 실패해 이번 주 값을 저장하지 않습니다.")
 data["metricsDate"] = data["updated"] = today.isoformat()
+data["previousRanks"] = previous
 DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 history = json.loads(HISTORY.read_text(encoding="utf-8")) if HISTORY.exists() else {}
 history[today.isoformat()] = {s["id"]: {k: v for k, v in s["metrics"].items() if k != "playApp"} for s in rows}

@@ -10,11 +10,12 @@ sitemap.xml, and exits non-zero if any are left over.
 """
 import html
 import json
-import random
 import re
 import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+
+from ranking import weekly
 
 site = Path(sys.argv[1])
 data = json.loads((site / "data/webhards.json").read_text(encoding="utf-8"))
@@ -23,38 +24,13 @@ today = datetime.now(timezone(timedelta(hours=9))).date()
 week_start = today - timedelta(days=today.weekday())
 
 
-def weekly(start):
-    """Ready entries for the week starting on `start`, with that week's adjustment, best first.
-
-    Each week a few entries get an adjustment of up to ±max points. The draw is seeded by
-    the week's Monday, so every build in the same week shows the same ranking, and last
-    week's ranking can be rebuilt to show the rank changes.
-    """
-    cfg = data["weeklyAdjust"]
-    ready = [dict(s) for s in data["webhards"] if s["status"] == "ready" and "index" in s]
-    rng = random.Random(start.isoformat())
-    for s in rng.sample(ready, min(cfg["items"], len(ready))):
-        new = round(min(100, max(0, s["index"] + rng.uniform(-cfg["max"], cfg["max"]))), 1)
-        if s.get("parts") and s["index"]:
-            # spread the adjustment over the parts so the chart segments still add up to the index
-            s["parts"] = {k: round(v * new / s["index"], 1) for k, v in s["parts"].items()}
-        s["index"] = new
-    for s in ready:
-        s["score"] = f"{s['index'] / 20:.1f}"
-    return apply_max_rank(sorted(ready, key=lambda s: -s["index"]))
-
-
-def apply_max_rank(ranked):
-    """maxRank {id: lowest allowed rank}: an entry ranked below it is moved up to that rank."""
-    for sid, worst in sorted(data.get("maxRank", {}).items(), key=lambda kv: kv[1]):
-        pos = next((i for i, s in enumerate(ranked) if s["id"] == sid), None)
-        if pos is not None and pos >= worst:
-            ranked.insert(worst - 1, ranked.pop(pos))
-    return ranked
-
-
-ranked = weekly(week_start)
-last_week = {s["id"]: i for i, s in enumerate(weekly(week_start - timedelta(days=7)))}
+ranked = weekly(data, week_start)
+# ranks shown last week: saved by collect.py before it replaced the metrics; otherwise rebuilt from this data
+prev_start = week_start - timedelta(days=7)
+if data.get("previousRanks", {}).get("week") == prev_start.isoformat():
+    last_week = data["previousRanks"]["ranks"]
+else:
+    last_week = {s["id"]: i for i, s in enumerate(weekly(data, prev_start))}
 services = ranked[: data["rankLimit"]]
 updated = max(date.fromisoformat(data["updated"]), week_start)
 
@@ -67,7 +43,6 @@ def move(i, s):
     if diff < 0:
         return f'<em class="mv down" aria-label="지난주보다 {-diff}계단 하락">▼{-diff}</em>'
     return '<em class="mv same" aria-label="지난주와 같음">–</em>'
-
 
 
 top = max(s["index"] for s in services)
@@ -156,8 +131,10 @@ page = {
     "dateModified": updated.isoformat(),
     "isPartOf": {"@type": "WebSite", "name": "모아온", "url": "https://site-url.invalid/"},
 }
+# "</" is escaped so text from the data can never close the script tag early
 jsonld = "".join(
-    f'<script type="application/ld+json">{json.dumps(d, ensure_ascii=False)}</script>' for d in (page, item_list)
+    '<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace("</", "<\\/") + "</script>"
+    for d in (page, item_list)
 )
 
 tokens = {
