@@ -68,7 +68,9 @@
 ## 이 저장소
 
 - 빌드 도구 없는 정적 HTML 사이트다.
-- 메인 순위는 `index.html` 하단의 `services` 배열 순서로 정한다.
+- 웹하드 목록과 순위는 `data/webhards.json`에 있다. 배열 순서가 순위이고, `status`가 `ready`인 항목 중 앞에서 `rankLimit`(10)개만 메인에 노출한다. 나머지는 저장만 해 둔다.
+  - `pending`은 공식 주소·로고를 확인하지 못한 항목이다. 주소를 추측해서 채우지 않는다. 확인되면 `url`·`logo`를 채우고 `go/<id>/index.html`을 만든 뒤 `ready`로 바꾼다.
+  - 업체 로고는 sharp로 다시 저장해 SVG에 넣고, 다른 로고와 같은 229×100 상자에 비슷한 넓이로 맞춘다.
 - 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다.
 - 쓰는 Secret은 `PRIVACY_PATTERNS`(금지 문자열) 하나다.
 - 사이트 결과물에서 `.github`, `README.md`, `CLAUDE.md`는 빠진다. 사이트에 올리지 않을 파일을 루트에 추가하면 `deploy.yml`의 제외 목록에도 넣는다.
