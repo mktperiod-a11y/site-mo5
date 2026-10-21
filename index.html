@@ -347,6 +347,24 @@
         font-weight: 900;
         text-align: center;
       }
+      /* rank change since last week: red up, blue down, grey same */
+      .mv {
+        margin-left: 6px;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 800;
+        letter-spacing: 0;
+        vertical-align: 1px;
+      }
+      .mv.up {
+        color: #e5484d;
+      }
+      .mv.down {
+        color: #2f6fde;
+      }
+      .mv.same {
+        color: #a0aab6;
+      }
       .live-name {
         display: block;
         margin-bottom: 5px;
@@ -1202,8 +1220,8 @@
         </dl>
       </section>
       <p class="disclaimer">
-        ※ 모아온 지수는 {{metrics_source}}에 공개된 추정 다운로드·평점·평가 수로 계산합니다({{metrics_date}} 수집).
-        실제 서비스 이용 조건은 각 공식 사이트에서 확인하세요.
+        ※ 모아온 지수는 {{metrics_source}}에 공개된 추정 다운로드·평점·평가 수로 계산하며({{metrics_date}} 수집), 매주 갱신됩니다.
+        순위는 참고용이며, 서비스 선택은 이용자 본인의 판단에 따라 결정하세요. 실제 이용 조건은 각 공식 사이트에서 확인하세요.
       </p>
     </main>
     <footer class="footer">

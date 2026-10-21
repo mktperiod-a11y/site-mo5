@@ -10,16 +10,51 @@ sitemap.xml, and exits non-zero if any are left over.
 """
 import html
 import json
+import random
 import re
 import sys
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 site = Path(sys.argv[1])
 data = json.loads((site / "data/webhards.json").read_text(encoding="utf-8"))
-services = [s for s in data["webhards"] if s["status"] == "ready"][: data["rankLimit"]]
-updated = date.fromisoformat(data["updated"])
 e = html.escape
+today = datetime.now(timezone(timedelta(hours=9))).date()
+week_start = today - timedelta(days=today.weekday())
+
+
+def weekly(start):
+    """Ready entries for the week starting on `start`, with that week's adjustment, best first.
+
+    Each week a few entries get an adjustment of up to ±max points. The draw is seeded by
+    the week's Monday, so every build in the same week shows the same ranking, and last
+    week's ranking can be rebuilt to show the rank changes.
+    """
+    cfg = data["weeklyAdjust"]
+    ready = [dict(s) for s in data["webhards"] if s["status"] == "ready" and "index" in s]
+    rng = random.Random(start.isoformat())
+    for s in rng.sample(ready, min(cfg["items"], len(ready))):
+        s["index"] = round(min(100, max(0, s["index"] + rng.uniform(-cfg["max"], cfg["max"]))), 1)
+    for s in ready:
+        s["score"] = f"{s['index'] / 20:.1f}"
+    return sorted(ready, key=lambda s: -s["index"])
+
+
+ranked = weekly(week_start)
+last_week = {s["id"]: i for i, s in enumerate(weekly(week_start - timedelta(days=7)))}
+services = ranked[: data["rankLimit"]]
+updated = max(date.fromisoformat(data["updated"]), week_start)
+
+
+def move(i, s):
+    """Rank change since last week: ▲ up, ▼ down, – same."""
+    diff = last_week.get(s["id"], len(last_week)) - i
+    if diff > 0:
+        return f'<em class="mv up" aria-label="지난주보다 {diff}계단 상승">▲{diff}</em>'
+    if diff < 0:
+        return f'<em class="mv down" aria-label="지난주보다 {-diff}계단 하락">▼{-diff}</em>'
+    return '<em class="mv same" aria-label="지난주와 같음">–</em>'
+
 
 
 top = max(s["index"] for s in services)
@@ -38,7 +73,7 @@ def card(i, s):
         f'<article class="card{" top" if i < 3 else ""}" style="--brand:{s["color"]}">'
         f'<span class="rank-flag">{i + 1}</span>'
         f'<div class="visual"><img src="{s["logo"]}" alt="{e(s["name"])} 로고" width="170" height="76" loading="{loading}"></div>'
-        f'<div class="card-body"><h2>{e(s["name"])}</h2><p class="tags">{tags}</p>'
+        f'<div class="card-body"><h2>{e(s["name"])}{move(i, s)}</h2><p class="tags">{tags}</p>'
         f'<div class="reason"><b>선정이유</b><span>{e(s["reason"])}</span></div>'
         f'<div class="trust"><b>종합신뢰도</b><span class="stars" aria-hidden="true">{stars(s["score"])}</span>'
         f'<span class="score">{s["score"]}<small>/5</small></span></div>'
@@ -50,7 +85,7 @@ def card(i, s):
 def live_row(i, s):
     grade = f" r{i + 1}" if i < 3 else ""
     return (
-        f'<div class="live-row{grade}"><b>{i + 1}</b><div><span class="live-name">{e(s["name"])}</span>'
+        f'<div class="live-row{grade}"><b>{i + 1}</b><div><span class="live-name">{e(s["name"])}{move(i, s)}</span>'
         f'<i class="live-bar" style="--w:{round(s["index"] / top * 100)}%"></i></div><small>{s["index"]}</small></div>'
     )
 
