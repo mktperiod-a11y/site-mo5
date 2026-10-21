@@ -25,16 +25,18 @@
       "url": "https://new.ondisk.co.kr/",
       "logo": "assets/ondisk.svg",
       "color": "#0c82f5",
-      "score": "4.9",
+      "score": "4.7",
       "reason": "콘텐츠 범위와 이용 편의성이 균형 잡힌 종합 서비스",
       "tags": "#종합콘텐츠 #PC모바일",
       "metrics": {
         "playApp": "com.ondisk.mobile4v18M",
         "downloads": 962576,
         "rating": 4.76,
-        "ratingCount": 15254
+        "ratingCount": 15254,
+        "search": 100.0,
+        "searchChange": -0.011
       },
-      "index": 98.6
+      "index": 93.0
     },
     {
       "id": "filesun",
@@ -43,52 +45,18 @@
       "url": "https://www.filesun.com/",
       "logo": "assets/filesun.svg",
       "color": "#3b82f6",
-      "score": "4.8",
+      "score": "4.2",
       "reason": "다양한 장르와 프로모션을 함께 살펴보기 좋은 서비스",
       "tags": "#프로모션 #여러장르",
       "metrics": {
         "playApp": "com.is.filesun.version4",
         "downloads": 780581,
         "rating": 4.7,
-        "ratingCount": 14983
+        "ratingCount": 14983,
+        "search": 40.67,
+        "searchChange": -0.01
       },
-      "index": 96.3
-    },
-    {
-      "id": "smartfile",
-      "name": "스마트파일",
-      "status": "ready",
-      "url": "https://smartfile.co.kr/",
-      "logo": "assets/smartfile.svg",
-      "color": "#64748b",
-      "score": "4.2",
-      "reason": "기본 기능과 가벼운 입문 흐름을 확인하기 좋은 서비스",
-      "tags": "#입문형 #간편이용",
-      "metrics": {
-        "playApp": "kr.smartfile.smartcrew3down",
-        "downloads": 568157,
-        "rating": 4.66,
-        "ratingCount": 3923
-      },
-      "index": 84.9
-    },
-    {
-      "id": "filemong",
-      "name": "파일몽",
-      "status": "ready",
-      "url": "https://filemong.com/",
-      "logo": "assets/filemong.svg",
-      "color": "#7a5af8",
-      "score": "4.0",
-      "reason": "간결한 화면과 빠른 검색을 갖춘 서비스",
-      "tags": "#간결UI #빠른검색",
-      "metrics": {
-        "playApp": "com.me.filemong",
-        "downloads": 262264,
-        "rating": 4.81,
-        "ratingCount": 5012
-      },
-      "index": 80.7
+      "index": 84.5
     },
     {
       "id": "yesfile",
@@ -104,117 +72,31 @@
         "playApp": "com.mnt.aos.yesfile.shortcuts",
         "downloads": 682765,
         "rating": 3.81,
-        "ratingCount": 1602
+        "ratingCount": 1602,
+        "search": 53.92,
+        "searchChange": 0.098
       },
-      "index": 76.5
+      "index": 76.2
     },
     {
-      "id": "pdpop",
-      "name": "피디팝",
+      "id": "smartfile",
+      "name": "스마트파일",
       "status": "ready",
-      "url": "https://new.pdpop.com/",
-      "logo": "assets/pdpop.svg",
-      "color": "#ff4f8b",
-      "score": "3.7",
-      "reason": "방송·예능 자료를 중심으로 둘러보기 좋은 서비스",
-      "tags": "#방송예능 #최신회차",
+      "url": "https://smartfile.co.kr/",
+      "logo": "assets/smartfile.svg",
+      "color": "#64748b",
+      "score": "3.8",
+      "reason": "기본 기능과 가벼운 입문 흐름을 확인하기 좋은 서비스",
+      "tags": "#입문형 #간편이용",
       "metrics": {
-        "playApp": "com.pdpop.download4",
-        "downloads": 278330,
-        "rating": 4.88,
-        "ratingCount": 1680
+        "playApp": "kr.smartfile.smartcrew3down",
+        "downloads": 568157,
+        "rating": 4.66,
+        "ratingCount": 3924,
+        "search": 30.82,
+        "searchChange": -0.038
       },
-      "index": 74.4
-    },
-    {
-      "id": "ssadafile",
-      "name": "싸다파일",
-      "status": "ready",
-      "url": "https://ssadafile.com/",
-      "logo": "assets/ssada.svg",
-      "color": "#ff7950",
-      "score": "3.6",
-      "reason": "신규 혜택과 구독형 이용 방식을 비교하기 좋은 서비스",
-      "tags": "#신규인기 #이벤트",
-      "metrics": {
-        "playApp": "com.ssadafile.app.ssadafilev1",
-        "downloads": 230717,
-        "rating": 4.5,
-        "ratingCount": 2165
-      },
-      "index": 72.6
-    },
-    {
-      "id": "ggulfile",
-      "name": "꿀파일",
-      "status": "ready",
-      "url": "https://ggulfile.com/",
-      "logo": "assets/ggul.svg",
-      "color": "#f5af23",
-      "score": "3.6",
-      "reason": "가입 혜택과 단순한 이용 흐름으로 알려진 서비스",
-      "tags": "#가입혜택 #간결UI",
-      "metrics": {
-        "playApp": "com.ggulfile.app.ggulfile_app",
-        "downloads": 185153,
-        "rating": 4.59,
-        "ratingCount": 2745
-      },
-      "index": 72.6
-    },
-    {
-      "id": "tple",
-      "name": "티플",
-      "status": "ready",
-      "url": "https://www.tple.co.kr/",
-      "logo": "assets/tple.svg",
-      "color": "#5b6cff",
-      "score": "3.6",
-      "reason": "합법 콘텐츠 중심으로 영화·드라마를 둘러보기 좋은 서비스",
-      "tags": "#합법콘텐츠 #영화드라마",
-      "metrics": {
-        "playApp": "kr.co.tple.downapp",
-        "downloads": 169208,
-        "rating": 4.91,
-        "ratingCount": 1866
-      },
-      "index": 71.0
-    },
-    {
-      "id": "kdisk",
-      "name": "케이디스크",
-      "status": "ready",
-      "url": "https://kdisk.co.kr/",
-      "logo": "assets/kdisk.svg",
-      "color": "#16a89c",
-      "score": "2.6",
-      "reason": "간결한 화면과 직관적인 카테고리가 돋보이는 서비스",
-      "tags": "#쉬운탐색 #다양한장르",
-      "metrics": {
-        "playApp": "com.kdisk.mobileapp5",
-        "downloads": 54478,
-        "rating": 4.79,
-        "ratingCount": 527
-      },
-      "index": 52.4
-    },
-    {
-      "id": "filebogo",
-      "name": "파일보고",
-      "status": "ready",
-      "url": "https://www.filebogo.com/",
-      "logo": "assets/filebogo.svg",
-      "color": "#f2672a",
-      "score": "3.5",
-      "reason": "영상 위주 자료를 빠르게 찾아보기 좋은 서비스",
-      "tags": "#영상자료 #빠른검색",
-      "metrics": {
-        "playApp": "com.winpeople.filebogo",
-        "downloads": 192771,
-        "rating": 3.51,
-        "ratingCount": 4034
-      },
-      "index": 69.6
+      "index": 75.0
     },
     {
       "id": "filejo",
@@ -223,34 +105,118 @@
       "url": "https://www.filejo.com/main/",
       "logo": "assets/filejo.svg",
       "color": "#e9443a",
-      "score": "3.2",
+      "score": "3.6",
       "reason": "카테고리 구성이 촘촘해 자료를 고르기 쉬운 서비스",
       "tags": "#카테고리 #다양한장르",
       "metrics": {
         "playApp": "com.funbox.jlsco",
         "downloads": 298560,
         "rating": 4.5,
-        "ratingCount": 436
+        "ratingCount": 436,
+        "search": 93.57,
+        "searchChange": -0.004
       },
-      "index": 64.7
+      "index": 72.2
     },
     {
-      "id": "applefile",
-      "name": "애플파일",
+      "id": "filemong",
+      "name": "파일몽",
       "status": "ready",
-      "url": "https://www.applefile.com/",
-      "logo": "assets/applefile.svg",
-      "color": "#e2363b",
-      "score": "2.9",
-      "reason": "신규 가입 혜택을 비교해 보기 좋은 서비스",
-      "tags": "#가입혜택 #이벤트",
+      "url": "https://filemong.com/",
+      "logo": "assets/filemong.svg",
+      "color": "#7a5af8",
+      "score": "3.6",
+      "reason": "간결한 화면과 빠른 검색을 갖춘 서비스",
+      "tags": "#간결UI #빠른검색",
       "metrics": {
-        "playApp": "com.mnt.aos.applefile.shortcuts",
-        "downloads": 248875,
-        "rating": 2.71,
-        "ratingCount": 688
+        "playApp": "com.me.filemong",
+        "downloads": 262264,
+        "rating": 4.81,
+        "ratingCount": 5012,
+        "search": 25.7,
+        "searchChange": -0.013
       },
-      "index": 58.7
+      "index": 71.4
+    },
+    {
+      "id": "pdpop",
+      "name": "피디팝",
+      "status": "ready",
+      "url": "https://new.pdpop.com/",
+      "logo": "assets/pdpop.svg",
+      "color": "#ff4f8b",
+      "score": "3.6",
+      "reason": "방송·예능 자료를 중심으로 둘러보기 좋은 서비스",
+      "tags": "#방송예능 #최신회차",
+      "metrics": {
+        "playApp": "com.pdpop.download4",
+        "downloads": 278330,
+        "rating": 4.88,
+        "ratingCount": 1680,
+        "search": 38.36,
+        "searchChange": 0.003
+      },
+      "index": 71.0
+    },
+    {
+      "id": "tple",
+      "name": "티플",
+      "status": "ready",
+      "url": "https://www.tple.co.kr/",
+      "logo": "assets/tple.svg",
+      "color": "#5b6cff",
+      "score": "3.1",
+      "reason": "합법 콘텐츠 중심으로 영화·드라마를 둘러보기 좋은 서비스",
+      "tags": "#합법콘텐츠 #영화드라마",
+      "metrics": {
+        "playApp": "kr.co.tple.downapp",
+        "downloads": 169208,
+        "rating": 4.91,
+        "ratingCount": 1866,
+        "search": 17.37,
+        "searchChange": -0.013
+      },
+      "index": 62.4
+    },
+    {
+      "id": "ggulfile",
+      "name": "꿀파일",
+      "status": "ready",
+      "url": "https://ggulfile.com/",
+      "logo": "assets/ggul.svg",
+      "color": "#f5af23",
+      "score": "3.0",
+      "reason": "가입 혜택과 단순한 이용 흐름으로 알려진 서비스",
+      "tags": "#가입혜택 #간결UI",
+      "metrics": {
+        "playApp": "com.ggulfile.app.ggulfile_app",
+        "downloads": 185153,
+        "rating": 4.59,
+        "ratingCount": 2746,
+        "search": 11.09,
+        "searchChange": 0.03
+      },
+      "index": 60.3
+    },
+    {
+      "id": "kdisk",
+      "name": "케이디스크",
+      "status": "ready",
+      "url": "https://kdisk.co.kr/",
+      "logo": "assets/kdisk.svg",
+      "color": "#16a89c",
+      "score": "2.8",
+      "reason": "간결한 화면과 직관적인 카테고리가 돋보이는 서비스",
+      "tags": "#쉬운탐색 #다양한장르",
+      "metrics": {
+        "playApp": "com.kdisk.mobileapp5",
+        "downloads": 54478,
+        "rating": 4.79,
+        "ratingCount": 527,
+        "search": 29.76,
+        "searchChange": 0.013
+      },
+      "index": 55.9
     },
     {
       "id": "filecookie",
@@ -266,9 +232,51 @@
         "playApp": "com.filekukiv6",
         "downloads": 58016,
         "rating": 4.61,
-        "ratingCount": 1136
+        "ratingCount": 1136,
+        "search": 25.99,
+        "searchChange": -0.015
       },
-      "index": 57.2
+      "index": 57.4
+    },
+    {
+      "id": "applefile",
+      "name": "애플파일",
+      "status": "ready",
+      "url": "https://www.applefile.com/",
+      "logo": "assets/applefile.svg",
+      "color": "#e2363b",
+      "score": "2.8",
+      "reason": "신규 가입 혜택을 비교해 보기 좋은 서비스",
+      "tags": "#가입혜택 #이벤트",
+      "metrics": {
+        "playApp": "com.mnt.aos.applefile.shortcuts",
+        "downloads": 248875,
+        "rating": 2.71,
+        "ratingCount": 688,
+        "search": 17.69,
+        "searchChange": -0.016
+      },
+      "index": 55.2
+    },
+    {
+      "id": "filebogo",
+      "name": "파일보고",
+      "status": "ready",
+      "url": "https://www.filebogo.com/",
+      "logo": "assets/filebogo.svg",
+      "color": "#f2672a",
+      "score": "2.6",
+      "reason": "영상 위주 자료를 빠르게 찾아보기 좋은 서비스",
+      "tags": "#영상자료 #빠른검색",
+      "metrics": {
+        "playApp": "com.winpeople.filebogo",
+        "downloads": 192771,
+        "rating": 3.51,
+        "ratingCount": 4034,
+        "search": 5.5,
+        "searchChange": -0.027
+      },
+      "index": 52.2
     },
     {
       "id": "filemaru",
@@ -277,16 +285,58 @@
       "url": "https://www.filemaru.com/",
       "logo": "assets/filemaru.svg",
       "color": "#2bb673",
-      "score": "2.8",
+      "score": "2.5",
       "reason": "카테고리별로 자료를 정리해 찾기 쉬운 서비스",
       "tags": "#카테고리 #자료정리",
       "metrics": {
         "playApp": "com.mideak.fmav7",
         "downloads": 224778,
         "rating": 2.37,
-        "ratingCount": 752
+        "ratingCount": 752,
+        "search": 12.42,
+        "searchChange": -0.035
       },
-      "index": 56.8
+      "index": 51.0
+    },
+    {
+      "id": "ssadafile",
+      "name": "싸다파일",
+      "status": "ready",
+      "url": "https://ssadafile.com/",
+      "logo": "assets/ssada.svg",
+      "color": "#ff7950",
+      "score": "2.5",
+      "reason": "신규 혜택과 구독형 이용 방식을 비교하기 좋은 서비스",
+      "tags": "#신규인기 #이벤트",
+      "metrics": {
+        "playApp": "com.ssadafile.app.ssadafilev1",
+        "downloads": 230717,
+        "rating": 4.5,
+        "ratingCount": 2165,
+        "search": 5.53,
+        "searchChange": -0.323
+      },
+      "index": 50.5
+    },
+    {
+      "id": "filecity",
+      "name": "파일시티",
+      "status": "ready",
+      "url": "https://www.filecity.co.kr/",
+      "logo": "assets/filecity.svg",
+      "color": "#0ea5e9",
+      "score": "2.4",
+      "reason": "오래 운영된 서비스로 자료 범위가 넓은 서비스",
+      "tags": "#장기운영 #다양한자료",
+      "metrics": {
+        "playApp": "kr.co.filecity.filecity_mobile_flutter_google2",
+        "downloads": 59657,
+        "rating": 3.91,
+        "ratingCount": 113,
+        "search": 27.13,
+        "searchChange": -0.004
+      },
+      "index": 48.4
     },
     {
       "id": "todisk",
@@ -302,27 +352,11 @@
         "playApp": "com.todisk.aosdown",
         "downloads": 71401,
         "rating": 3.23,
-        "ratingCount": 215
+        "ratingCount": 215,
+        "search": 13.53,
+        "searchChange": -0.101
       },
-      "index": 45.0
-    },
-    {
-      "id": "filecity",
-      "name": "파일시티",
-      "status": "ready",
-      "url": "https://www.filecity.co.kr/",
-      "logo": "assets/filecity.svg",
-      "color": "#0ea5e9",
-      "score": "2.1",
-      "reason": "오래 운영된 서비스로 자료 범위가 넓은 서비스",
-      "tags": "#장기운영 #다양한자료",
-      "metrics": {
-        "playApp": "kr.co.filecity.filecity_mobile_flutter_google2",
-        "downloads": 59657,
-        "rating": 3.91,
-        "ratingCount": 113
-      },
-      "index": 41.6
+      "index": 43.7
     },
     {
       "id": "filestar",
@@ -331,16 +365,18 @@
       "url": "https://filestar.co.kr/",
       "logo": "assets/filestar.svg",
       "color": "#ed4c77",
-      "score": "1.0",
+      "score": "0.9",
       "reason": "다운로드 중심 기능과 이벤트를 확인하기 좋은 서비스",
       "tags": "#다운로드 #이벤트",
       "metrics": {
         "playApp": "com.me.filestar2",
         "downloads": 16046,
         "rating": 3.86,
-        "ratingCount": 21
+        "ratingCount": 21,
+        "search": 3.03,
+        "searchChange": -0.054
       },
-      "index": 20.4
+      "index": 17.6
     }
   ]
 }

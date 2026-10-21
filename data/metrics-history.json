@@ -1,0 +1,130 @@
+{
+ "2026-10-21": {
+  "ondisk": {
+   "downloads": 962576,
+   "rating": 4.76,
+   "ratingCount": 15254,
+   "search": 100.0,
+   "searchChange": -0.011
+  },
+  "filesun": {
+   "downloads": 780581,
+   "rating": 4.7,
+   "ratingCount": 14983,
+   "search": 40.67,
+   "searchChange": -0.01
+  },
+  "smartfile": {
+   "downloads": 568157,
+   "rating": 4.66,
+   "ratingCount": 3924,
+   "search": 30.82,
+   "searchChange": -0.038
+  },
+  "filemong": {
+   "downloads": 262264,
+   "rating": 4.81,
+   "ratingCount": 5012,
+   "search": 25.7,
+   "searchChange": -0.013
+  },
+  "yesfile": {
+   "downloads": 682765,
+   "rating": 3.81,
+   "ratingCount": 1602,
+   "search": 53.92,
+   "searchChange": 0.098
+  },
+  "pdpop": {
+   "downloads": 278330,
+   "rating": 4.88,
+   "ratingCount": 1680,
+   "search": 38.36,
+   "searchChange": 0.003
+  },
+  "ssadafile": {
+   "downloads": 230717,
+   "rating": 4.5,
+   "ratingCount": 2165,
+   "search": 5.53,
+   "searchChange": -0.323
+  },
+  "ggulfile": {
+   "downloads": 185153,
+   "rating": 4.59,
+   "ratingCount": 2746,
+   "search": 11.09,
+   "searchChange": 0.03
+  },
+  "tple": {
+   "downloads": 169208,
+   "rating": 4.91,
+   "ratingCount": 1866,
+   "search": 17.37,
+   "searchChange": -0.013
+  },
+  "kdisk": {
+   "downloads": 54478,
+   "rating": 4.79,
+   "ratingCount": 527,
+   "search": 29.76,
+   "searchChange": 0.013
+  },
+  "filebogo": {
+   "downloads": 192771,
+   "rating": 3.51,
+   "ratingCount": 4034,
+   "search": 5.5,
+   "searchChange": -0.027
+  },
+  "filejo": {
+   "downloads": 298560,
+   "rating": 4.5,
+   "ratingCount": 436,
+   "search": 93.57,
+   "searchChange": -0.004
+  },
+  "applefile": {
+   "downloads": 248875,
+   "rating": 2.71,
+   "ratingCount": 688,
+   "search": 17.69,
+   "searchChange": -0.016
+  },
+  "filecookie": {
+   "downloads": 58016,
+   "rating": 4.61,
+   "ratingCount": 1136,
+   "search": 25.99,
+   "searchChange": -0.015
+  },
+  "filemaru": {
+   "downloads": 224778,
+   "rating": 2.37,
+   "ratingCount": 752,
+   "search": 12.42,
+   "searchChange": -0.035
+  },
+  "todisk": {
+   "downloads": 71401,
+   "rating": 3.23,
+   "ratingCount": 215,
+   "search": 13.53,
+   "searchChange": -0.101
+  },
+  "filecity": {
+   "downloads": 59657,
+   "rating": 3.91,
+   "ratingCount": 113,
+   "search": 27.13,
+   "searchChange": -0.004
+  },
+  "filestar": {
+   "downloads": 16046,
+   "rating": 3.86,
+   "ratingCount": 21,
+   "search": 3.03,
+   "searchChange": -0.054
+  }
+ }
+}
