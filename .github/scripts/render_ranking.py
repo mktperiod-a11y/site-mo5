@@ -103,21 +103,27 @@ def live_row(i, s):
     )
 
 
-PARTS = (("popularity", "인기"), ("usability", "사용감"), ("affection", "애정"))
+PARTS = (("popularity", "인기"), ("usability", "사용성"), ("affection", "애정"))
 
 
 def bar(i, s):
-    """One stacked bar: popularity, usability and affection points, adding up to the index."""
-    parts = s.get("parts")
+    """One pastel bar per service; hovering shows that service's three scales, each against its own maximum."""
+    parts, w = s.get("parts"), data["weights"]
     if parts:
-        segs = "".join(f'<i class="seg {k}" style="--p:{parts[k] / s["index"] * 100:.1f}%"></i>' for k, _ in PARTS)
-        tip = " · ".join(f"{label} {parts[k]}" for k, label in PARTS)
+        total = sum(w.values())
+        rows = "".join(
+            f'<span class="scale"><span>{label}</span><i style="--v:{min(100, parts[k] / (100 * w[k] / total) * 100):.0f}%"></i>'
+            f'<em>{parts[k]}<small>/{100 * w[k] / total:.0f}</small></em></span>'
+            for k, label in PARTS
+        )
+        detail = ", ".join(f"{label} {parts[k]}" for k, label in PARTS)
     else:
-        segs, tip = '<i class="seg all" style="--p:100%"></i>', f"모아온 지수 {s['index']}"
+        rows, detail = "", ""
     return (
-        f'<div class="bar" tabindex="0" style="--h:{round(s["index"] / top * 88)}%;--d:{i * 0.07:.2f}s" '
-        f'data-name="{e(s["name"])}" aria-label="{e(s["name"])} 모아온 지수 {s["index"]}, {tip}">'
-        f'<b data-v="{s["index"]}">{s["index"]}</b>{segs}<span class="tip" aria-hidden="true">{tip}</span></div>'
+        f'<div class="bar" tabindex="0" style="--h:{round(s["index"] / top * 88)}%;--c:{s["color"]};--d:{i * 0.07:.2f}s" '
+        f'data-name="{e(s["name"])}" aria-label="{e(s["name"])} 모아온 지수 {s["index"]}{", " + detail if detail else ""}">'
+        f'<b data-v="{s["index"]}">{s["index"]}</b>'
+        f'<span class="tip" aria-hidden="true"><strong>{e(s["name"])} {s["index"]}</strong>{rows}</span></div>'
     )
 
 

@@ -5,12 +5,12 @@ Usage:
   python3 .github/scripts/score.py --baseline save the current data as data/baseline.json (the default)
   python3 .github/scripts/score.py --restore  put data/baseline.json back as data/webhards.json
 
-지수(0-100) = 인기 × w_popularity + 사용감 × w_usability + 애정 × w_affection (weights in data/webhards.json)
+지수(0-100) = 인기 × w_popularity + 사용성 × w_usability + 애정 × w_affection (weights in data/webhards.json)
 - 인기: 검색 수준(로그 척도, 70%) + 지난주 검색 변동 폭(30%)
   검색 수준은 월간 조회수(searchMonthly)가 모두 있으면 그것을, 없으면 최근 4주 상대 검색량(search)을 쓴다.
   변동 폭은 지난주 검색량이 그 전 4주 평균보다 늘거나 준 비율로, ±50%에서 자른다.
   검색 데이터가 하나도 없으면 인기 비중을 나머지에 비율대로 나눠 준다.
-- 사용감: 추정 다운로드(로그 척도, 60%) + 보정 평점(40%)
+- 사용성: 추정 다운로드(로그 척도, 60%) + 보정 평점(40%)
 - 애정: 평가 수(로그 척도), 좋은 평가든 나쁜 평가든 관심의 크기로 본다
 보정 평점은 평가 수가 적을수록 전체 평균 쪽으로 당긴 값이다(베이즈 평균, prior 300건).
 로그 척도는 모은 값의 가장 작은 값을 0, 가장 큰 값을 1로 둔다.
