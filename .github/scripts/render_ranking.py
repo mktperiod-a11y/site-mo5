@@ -37,7 +37,17 @@ def weekly(start):
         s["index"] = round(min(100, max(0, s["index"] + rng.uniform(-cfg["max"], cfg["max"]))), 1)
     for s in ready:
         s["score"] = f"{s['index'] / 20:.1f}"
-    return sorted(ready, key=lambda s: -s["index"])
+    return keep_in_top(sorted(ready, key=lambda s: -s["index"]))
+
+
+def keep_in_top(ranked):
+    """Entries listed in keepInTop always stay inside the shown top rankLimit (moved up to the last slot)."""
+    limit = data["rankLimit"]
+    for sid in data.get("keepInTop", []):
+        pos = next((i for i, s in enumerate(ranked) if s["id"] == sid), None)
+        if pos is not None and pos >= limit:
+            ranked.insert(limit - 1, ranked.pop(pos))
+    return ranked
 
 
 ranked = weekly(week_start)

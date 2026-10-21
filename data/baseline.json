@@ -1,5 +1,5 @@
 {
-  "note": "ready 항목은 모아온 지수 순으로 정렬하고 앞에서 rankLimit개만 메인에 노출한다. 지수는 .github/scripts/score.py가 metrics(구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, 네이버 검색량)로 계산한다. pending은 공식 주소·로고 확인 전이라 노출하지 않는다. 기본값은 data/baseline.json이며 score.py --restore로 되돌린다. 순위나 내용을 바꾸면 updated도 바꾼다. 배포 때 이 파일로 메인 페이지·llms.txt·sitemap.xml을 채운다. 배포 때 주마다 weeklyAdjust.items개 항목에 최대 ±weeklyAdjust.max점의 주간 보정 점수를 더해 순위를 다시 정한다(매주 월요일 자동 배포).",
+  "note": "ready 항목은 모아온 지수 순으로 정렬하고 앞에서 rankLimit개만 메인에 노출한다. 지수는 .github/scripts/score.py가 metrics(구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, 네이버 검색량)로 계산한다. pending은 공식 주소·로고 확인 전이라 노출하지 않는다. 기본값은 data/baseline.json이며 score.py --restore로 되돌린다. 순위나 내용을 바꾸면 updated도 바꾼다. 배포 때 이 파일로 메인 페이지·llms.txt·sitemap.xml을 채운다. 배포 때 주마다 weeklyAdjust.items개 항목에 최대 ±weeklyAdjust.max점의 주간 보정 점수를 더해 순위를 다시 정한다(매주 월요일 자동 배포). keepInTop에 적은 항목은 지수와 관계없이 항상 노출 순위(rankLimit) 안에 둔다.",
   "updated": "2026-10-21",
   "metricsDate": "2026-10-21",
   "metricsSource": "구글 플레이 한국 스토어",
@@ -12,6 +12,9 @@
     "items": 4,
     "max": 5
   },
+  "keepInTop": [
+    "kdisk"
+  ],
   "rankLimit": 10,
   "webhards": [
     {
@@ -177,6 +180,24 @@
       "index": 71.0
     },
     {
+      "id": "kdisk",
+      "name": "케이디스크",
+      "status": "ready",
+      "url": "https://kdisk.co.kr/",
+      "logo": "assets/kdisk.svg",
+      "color": "#16a89c",
+      "score": "2.6",
+      "reason": "간결한 화면과 직관적인 카테고리가 돋보이는 서비스",
+      "tags": "#쉬운탐색 #다양한장르",
+      "metrics": {
+        "playApp": "com.kdisk.mobileapp5",
+        "downloads": 54478,
+        "rating": 4.79,
+        "ratingCount": 527
+      },
+      "index": 52.4
+    },
+    {
       "id": "filebogo",
       "name": "파일보고",
       "status": "ready",
@@ -265,24 +286,6 @@
         "ratingCount": 752
       },
       "index": 56.8
-    },
-    {
-      "id": "kdisk",
-      "name": "케이디스크",
-      "status": "ready",
-      "url": "https://kdisk.co.kr/",
-      "logo": "assets/kdisk.svg",
-      "color": "#16a89c",
-      "score": "2.6",
-      "reason": "간결한 화면과 직관적인 카테고리가 돋보이는 서비스",
-      "tags": "#쉬운탐색 #다양한장르",
-      "metrics": {
-        "playApp": "com.kdisk.mobileapp5",
-        "downloads": 54478,
-        "rating": 4.79,
-        "ratingCount": 527
-      },
-      "index": 52.4
     },
     {
       "id": "todisk",

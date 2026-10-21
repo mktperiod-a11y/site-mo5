@@ -58,6 +58,11 @@ for s in rows:
 
 # ready entries ranked by index; entries without metrics and pending ones keep their relative order after them
 ranked = sorted(rows, key=lambda s: -s["index"])
+# entries listed in keepInTop always stay inside the shown top rankLimit (moved up to the last slot)
+for sid in data.get("keepInTop", []):
+    pos = next((i for i, s in enumerate(ranked) if s["id"] == sid), None)
+    if pos is not None and pos >= data["rankLimit"]:
+        ranked.insert(data["rankLimit"] - 1, ranked.pop(pos))
 rest = [s for s in data["webhards"] if not s.get("metrics")]
 data["webhards"] = ranked + rest
 DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
