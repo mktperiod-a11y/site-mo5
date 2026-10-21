@@ -3,27 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>모아온 | 2026 웹하드 순위와 콘텐츠 가이드</title>
+    <title>웹하드 순위 TOP {{count}} ({{updated_ym}}) | 모아온</title>
     <link rel="icon" href="favicon.ico?v=2" sizes="32x32" />
     <link rel="icon" href="assets/moa-symbol.svg?v=2" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2" />
     <meta
       name="description"
-      content="온디스크, 케이디스크 등 주요 웹하드를 순위와 혜택, 이용 특징으로 비교하는 모아온 가이드입니다."
+      content="{{updated_ym}} 기준 웹하드 순위 TOP {{count}}. {{top3}} 등 주요 웹하드의 선정이유와 혜택, 이용 특징, 합법 웹하드 확인법을 한눈에 비교합니다."
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href="https://site-url.invalid/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="모아온" />
     <meta property="og:locale" content="ko_KR" />
-    <meta property="og:title" content="모아온 | 2026 웹하드 순위와 콘텐츠 가이드" />
-    <meta property="og:description" content="온디스크, 케이디스크 등 주요 웹하드를 순위와 혜택, 이용 특징으로 비교하는 모아온 가이드입니다." />
+    <meta property="og:title" content="웹하드 순위 TOP {{count}} ({{updated_ym}}) | 모아온" />
+    <meta property="og:description" content="{{updated_ym}} 기준 웹하드 순위 TOP {{count}}. {{top3}} 등 주요 웹하드의 선정이유와 혜택, 이용 특징, 합법 웹하드 확인법을 한눈에 비교합니다." />
     <meta property="og:url" content="https://site-url.invalid/" />
     <meta property="og:image" content="https://site-url.invalid/assets/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="모아온 2026 웹하드 순위" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "모아온", "url": "https://site-url.invalid/", "inLanguage": "ko-KR"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "웹하드 순위는 어떤 기준으로 정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "운영 안정성, 혜택의 명확성, 이용 편의성, 결제 안내 네 가지를 비교해 정한 편집 순위입니다. 기준별 확인 방법은 순위 검증 가이드에 정리했고, 마지막 갱신일은 페이지 맨 위에 표시합니다."}}, {"@type": "Question", "name": "합법 웹하드인지 어떻게 확인하나요?", "acceptedAnswer": {"@type": "Answer", "text": "국내 웹하드는 전기통신사업법에 따라 특수한 유형의 부가통신사업자로 등록해야 운영할 수 있습니다. 서비스 하단의 사업자 정보와 등록 번호, 저작권 보호를 위한 필터링 안내가 있는지 확인하세요."}}, {"@type": "Question", "name": "가입 무료 포인트는 바로 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "대부분 사용 기한과 사용 범위가 정해져 있습니다. 일부 콘텐츠에는 쓸 수 없거나 기간이 지나면 사라질 수 있으니, 가입 전에 이벤트 안내의 유효기간과 제한 조건을 확인하세요."}}, {"@type": "Question", "name": "정액제 자동 결제는 어떻게 해지하나요?", "acceptedAnswer": {"@type": "Answer", "text": "보통 마이페이지의 결제 관리 메뉴에서 자동 연장을 끌 수 있습니다. 결제하기 전에 이용약관에서 해지 방법과 환불 조건을 먼저 확인하는 것이 안전합니다."}}]}</script>
+    <!-- ranking:jsonld -->
     <style>
       :root {
         --blue: #087df2;
@@ -506,6 +509,65 @@
       }
       .mobile-menu {
         display: none;
+      }
+      /* answer-first summary and FAQ: short, quotable sentences for search and AI answers */
+      .summary {
+        max-width: 760px;
+        margin: 10px 0 0;
+        color: #4a5868;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .summary b {
+        color: var(--navy);
+      }
+      .summary a {
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .faq {
+        grid-column: 1/-1;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        background: #fff;
+      }
+      .faq h2 {
+        margin: 0 0 6px;
+        color: var(--navy);
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+      .faq dl {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 28px;
+        margin: 0;
+      }
+      .faq-item {
+        padding: 14px 0;
+        border-top: 1px solid #edf0f3;
+      }
+      .faq dt {
+        margin-bottom: 6px;
+        color: var(--navy);
+        font-size: 15px;
+        font-weight: 800;
+      }
+      .faq dd {
+        margin: 0;
+        color: #4a5868;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+      @media (max-width: 600px) {
+        .faq dl {
+          grid-template-columns: 1fr;
+        }
+        .summary {
+          font-size: 14px;
+        }
       }
       .disclaimer {
         grid-column: 1/-1;
@@ -1089,15 +1151,16 @@
       </nav>
     </div>
     <section class="wrap intro">
-      <span class="update">순위 업데이트 일자 2026년 07월 15일</span>
-      <h1>2026 3분기 웹하드 순위</h1>
+      <span class="update">순위 업데이트 <time datetime="{{updated_iso}}">{{updated_date}}</time></span>
+      <h1>{{updated_ym}} 웹하드 순위 TOP {{count}}</h1>
+      <p class="summary"><!-- ranking:summary --></p>
     </section>
     <main class="wrap layout">
-      <div class="cards" id="cards"></div>
+      <div class="cards" id="cards"><!-- ranking:cards --></div>
       <aside class="sidebar">
         <section class="side-box">
           <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></span>웹하드 실시간 순위</h3>
-          <div id="live"></div>
+          <div id="live"><!-- ranking:live --></div>
         </section>
         <section class="side-box events">
           <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M3 9h18M12 9v11M12 9c-1.5-3.5-6-3.5-5.5-1S12 9 12 9zm0 0c1.5-3.5 6-3.5 5.5-1S12 9 12 9z"/></svg></span>7월 웹하드 이벤트</h3>
@@ -1115,7 +1178,28 @@
           <h2>사이트별 월별 클릭 수</h2>
           <p>최근 30일 바로가기 클릭 수 · 막대를 가리키거나 누르면 그 사이트만 강조돼요 (편집용 예시 데이터)</p>
         </div>
-        <div class="chart wait" id="chart"></div>
+        <div class="chart wait" id="chart"><!-- ranking:chart --></div>
+      </section>
+      <section class="faq">
+        <h2>자주 묻는 질문</h2>
+        <dl>
+          <div class="faq-item">
+            <dt>웹하드 순위는 어떤 기준으로 정하나요?</dt>
+            <dd>운영 안정성, 혜택의 명확성, 이용 편의성, 결제 안내 네 가지를 비교해 정한 편집 순위입니다. 기준별 확인 방법은 순위 검증 가이드에 정리했고, 마지막 갱신일은 페이지 맨 위에 표시합니다.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>합법 웹하드인지 어떻게 확인하나요?</dt>
+            <dd>국내 웹하드는 전기통신사업법에 따라 특수한 유형의 부가통신사업자로 등록해야 운영할 수 있습니다. 서비스 하단의 사업자 정보와 등록 번호, 저작권 보호를 위한 필터링 안내가 있는지 확인하세요.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>가입 무료 포인트는 바로 쓸 수 있나요?</dt>
+            <dd>대부분 사용 기한과 사용 범위가 정해져 있습니다. 일부 콘텐츠에는 쓸 수 없거나 기간이 지나면 사라질 수 있으니, 가입 전에 이벤트 안내의 유효기간과 제한 조건을 확인하세요.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>정액제 자동 결제는 어떻게 해지하나요?</dt>
+            <dd>보통 마이페이지의 결제 관리 메뉴에서 자동 연장을 끌 수 있습니다. 결제하기 전에 이용약관에서 해지 방법과 환불 조건을 먼저 확인하는 것이 안전합니다.</dd>
+          </div>
+        </dl>
       </section>
       <p class="disclaimer">
         ※ 순위와 클릭 수는 편집용 예시 데이터이며 실제 서비스 이용 조건은 각
@@ -1129,38 +1213,11 @@
       </div>
     </footer>
     <script>
-      // Ranking data lives in data/webhards.json: list order is the rank, and only the
-      // first rankLimit entries with status "ready" are shown.
-      const clicks = (s) => parseFloat(s.click) || 0;
-      fetch("data/webhards.json")
-        .then((r) => r.json())
-        .then(({ rankLimit, webhards }) => {
-          const services = webhards.filter((s) => s.status === "ready").slice(0, rankLimit);
-          const top = Math.max(...services.map(clicks));
-          document.querySelector("#cards").innerHTML = services
-            .map(
-              (s, i) =>
-                `<article class="card ${i < 3 ? "top" : ""}" style="--brand:${s.color}"><span class="rank-flag">${i + 1}</span><div class="visual"><img src="${s.logo}" alt="${s.name} 로고" width="170" height="76" loading="lazy"></div><div class="card-body"><h2>${s.name}</h2><p class="tags">${s.tags.split(/\s+/).map((t) => `<i>${t}</i>`).join("")}</p><div class="reason"><b>선정이유</b><span>${s.reason}</span></div><div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span><span class="score">${s.score}<small>/5</small></span></div><a class="go" href="go/${s.id}/" target="_blank" rel="noopener noreferrer sponsored nofollow" aria-label="${s.name} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>`,
-            )
-            .join("");
-          document.querySelector("#live").innerHTML = services
-            .slice(0, 5)
-            .map(
-              (s, i) =>
-                `<div class="live-row${i < 3 ? ` r${i + 1}` : ""}"><b>${i + 1}</b><div><span class="live-name">${s.name}</span><i class="live-bar" style="--w:${Math.round((clicks(s) / top) * 100)}%"></i></div><small>${s.click}</small></div>`,
-            )
-            .join("");
-          const chart = document.querySelector("#chart");
-          chart.innerHTML = services
-            .map(
-              (s, i) =>
-                `<div class="bar" tabindex="0" style="--h:${Math.round((clicks(s) / top) * 88)}%;--c:${s.color};--d:${i * 0.07}s" data-name="${s.name}" aria-label="${s.name} ${s.click}"><b>${s.click}</b></div>`,
-            )
-            .join("");
-          growChart(chart, services);
-        });
+      // The ranking (cards, side ranking, chart) is written into this page at deploy time
+      // from data/webhards.json by .github/scripts/render_ranking.py.
+      growChart(document.querySelector("#chart"));
       // grow the bars and count the numbers up the first time the chart comes into view
-      function growChart(chart, services) {
+      function growChart(chart) {
         const labels = [...chart.querySelectorAll(".bar b")];
         const show = () => {
           chart.classList.remove("wait");
@@ -1169,8 +1226,8 @@
           const step = (now) => {
             const t = Math.min((now - start) / 1100, 1);
             const ease = 1 - Math.pow(1 - t, 3);
-            labels.forEach((b, i) => {
-              b.textContent = services[i].click.replace(/[\d.]+/, (n) => (parseFloat(n) * ease).toFixed(1));
+            labels.forEach((b) => {
+              b.textContent = b.dataset.v.replace(/[\d.]+/, (n) => (parseFloat(n) * ease).toFixed(1));
             });
             if (t < 1) requestAnimationFrame(step);
           };

@@ -1,3 +1,13 @@
 # 모아온
-웹하드 순위, 혜택과 안전한 콘텐츠 이용 정보를 모은 한국어 가이드입니다.
-핵심 페이지: /, /content-guide.html, /criteria.html
+
+> 국내 웹하드를 순위, 선정이유, 혜택, 이용 특징으로 비교하는 한국어 가이드입니다. 순위는 운영 안정성·혜택의 명확성·이용 편의성·결제 안내 네 가지 기준을 바탕으로 정한 편집 순위이며, 마지막 갱신일은 {{updated_iso}}입니다.
+
+## 웹하드 순위 TOP {{count}} ({{updated_ym}})
+
+{{ranking_list}}
+
+## 페이지
+
+- [웹하드 순위](https://site-url.invalid/): 순위, 선정이유, 종합신뢰도, 자주 묻는 질문
+- [순위 검증 가이드](https://site-url.invalid/criteria.html): 순위를 정하는 네 가지 기준과 확인 방법
+- [콘텐츠 가이드](https://site-url.invalid/content-guide.html): 영화·드라마·예능 콘텐츠를 고르는 기준

@@ -71,6 +71,8 @@
 - 웹하드 목록과 순위는 `data/webhards.json`에 있다. 배열 순서가 순위이고, `status`가 `ready`인 항목 중 앞에서 `rankLimit`(10)개만 메인에 노출한다. 나머지는 저장만 해 둔다.
   - `pending`은 공식 주소·로고를 확인하지 못한 항목이다. 주소를 추측해서 채우지 않는다. 확인되면 `url`·`logo`를 채우고 `go/<id>/index.html`을 만든 뒤 `ready`로 바꾼다.
   - 업체 로고는 sharp로 다시 저장해 SVG에 넣고, 다른 로고와 같은 229×100 상자에 비슷한 넓이로 맞춘다.
-- 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다.
+  - 순위·내용을 바꾸면 `updated`(갱신일)도 바꾼다. 페이지 제목·갱신일·sitemap 날짜가 이 값을 따른다.
+- 메인 순위(카드·실시간 순위·차트·요약 문장·구조화 데이터)는 브라우저에서 만들지 않는다. 배포 때 `.github/scripts/render_ranking.py`가 `data/webhards.json`으로 `index.html`·`llms.txt`·`sitemap.xml`의 `{{…}}`와 `<!-- ranking:… -->` 자리를 채운다. 자바스크립트를 실행하지 않는 검색·AI 수집기도 순위를 읽게 하려는 것이다. 저장소의 `index.html`은 빈 자리만 있으므로, 로컬에서 볼 때는 사본에 이 스크립트를 돌려서 본다.
+- 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 순위 채우기 → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다.
 - 쓰는 Secret은 `PRIVACY_PATTERNS`(금지 문자열) 하나다.
 - 사이트 결과물에서 `.github`, `README.md`, `CLAUDE.md`는 빠진다. 사이트에 올리지 않을 파일을 루트에 추가하면 `deploy.yml`의 제외 목록에도 넣는다.
