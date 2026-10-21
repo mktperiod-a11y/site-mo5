@@ -117,12 +117,13 @@
       }
       .update {
         color: #6f7b89;
-        font-size: 13px;
+        font-size: 15px;
+        font-weight: 600;
       }
       .intro h1 {
-        margin: 4px 0 0;
+        margin: 6px 0 0;
         color: var(--navy);
-        font-size: 32px;
+        font-size: 40px;
         font-weight: 900;
         letter-spacing: -1.6px;
       }
@@ -157,7 +158,7 @@
         width: 38px;
         height: 52px;
         padding-top: 9px;
-        background: #aeb8c4;
+        background: #8e99a8;
         color: #fff;
         text-align: center;
         font-size: 20px;
@@ -334,7 +335,7 @@
       }
       /* big rank numbers + index bars; ranks 1 > 2 > 3 step down in size, colour and weight */
       .live-row b {
-        color: #c3cbd5;
+        color: #9aa5b3;
         font-size: 17px;
         font-style: italic;
         font-weight: 900;
@@ -342,20 +343,27 @@
       }
       /* rank change since last week: red up, blue down, grey same */
       .mv {
-        margin-left: 6px;
-        font-size: 11px;
+        display: inline-block;
+        margin-left: 7px;
+        padding: 2px 7px;
+        border-radius: 999px;
+        font-size: 12px;
         font-style: normal;
         font-weight: 800;
+        line-height: 1.35;
         letter-spacing: 0;
-        vertical-align: 1px;
+        vertical-align: 2px;
       }
       .mv.up {
+        background: #ffecec;
         color: #e5484d;
       }
       .mv.down {
+        background: #e9f1ff;
         color: #2f6fde;
       }
       .mv.same {
+        background: #f1f3f6;
         color: #a0aab6;
       }
       .live-name {
@@ -367,7 +375,7 @@
         height: 5px;
         width: var(--w);
         border-radius: 3px;
-        background: #e3e9f0;
+        background: #cfd7e1;
       }
       .live-row small {
         color: #8a96a5;
@@ -523,10 +531,9 @@
       }
       /* answer-first summary and FAQ: short, quotable sentences for search and AI answers */
       .summary {
-        max-width: 760px;
-        margin: 10px 0 0;
-        color: #4a5868;
-        font-size: 15px;
+        margin: 0 0 4px;
+        color: #5d6876;
+        font-size: 14px;
         line-height: 1.7;
       }
       .summary b {
@@ -831,10 +838,10 @@
           font-size: 25px;
         }
         .intro h1 {
-          font-size: clamp(24px, 8vw, 30px);
+          font-size: clamp(28px, 8.5vw, 34px);
         }
         .update {
-          font-size: 13px;
+          font-size: 14px;
         }
         .card {
           grid-template-columns: minmax(105px, 125px) minmax(0, 1fr);
@@ -1164,7 +1171,6 @@
     <section class="wrap intro">
       <span class="update">순위 업데이트 <time datetime="{{updated_iso}}">{{updated_date}}</time></span>
       <h1>{{updated_ym}} 웹하드 순위 TOP {{count}}</h1>
-      <p class="summary"><!-- ranking:summary --></p>
     </section>
     <main class="wrap layout">
       <div class="cards" id="cards"><!-- ranking:cards --></div>
@@ -1193,6 +1199,7 @@
       </section>
       <section class="faq">
         <h2>자주 묻는 질문</h2>
+        <p class="summary"><!-- ranking:summary --></p>
         <dl>
           <div class="faq-item">
             <dt>웹하드 순위는 어떤 기준으로 정하나요?</dt>
