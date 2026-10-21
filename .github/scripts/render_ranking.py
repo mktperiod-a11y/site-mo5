@@ -108,9 +108,12 @@ def bar(i, s):
 
 
 names = [s["name"] for s in services]
+# what the index is built from, for the summary, chart caption and notes
+has_search = any(s.get("metrics", {}).get("search") for s in services)
+basis = ("네이버 검색량과 " if has_search else "") + "구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수"
 summary = (
     f'{updated.year}년 {updated.month}월 기준 모아온 웹하드 순위 1위는 <b>{e(names[0])}</b>, '
-    f"2위 {e(names[1])}, 3위 {e(names[2])}입니다. 순위는 {e(data['metricsSource'])}의 추정 다운로드·평점·평가 수를 "
+    f"2위 {e(names[1])}, 3위 {e(names[2])}입니다. 순위는 {basis}를 "
     f'합산한 모아온 지수 순서이며, 계산 방식은 <a href="criteria.html#index">순위 검증 가이드</a>에서 확인할 수 있습니다.'
 )
 item_list = {
@@ -144,7 +147,7 @@ tokens = {
     "{{top3}}": "·".join(names[:3]),
     "{{count}}": str(len(services)),
     "{{metrics_date}}": f"{metrics_date.year}년 {metrics_date.month}월 {metrics_date.day}일",
-    "{{metrics_source}}": data["metricsSource"],
+    "{{metrics_basis}}": basis,
     "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']} (모아온 지수 {s['index']}): {s['reason']}" for i, s in enumerate(services)),
 }
 markers = {

@@ -69,9 +69,11 @@
 
 - 빌드 도구 없는 정적 HTML 사이트다.
 - 웹하드 목록과 순위는 `data/webhards.json`에 있다. 배열 순서가 순위이고, `status`가 `ready`인 항목 중 앞에서 `rankLimit`(10)개만 메인에 노출한다. 나머지는 저장만 해 둔다.
-  - 순위는 모아온 지수 순서다. `.github/scripts/score.py`가 각 항목의 `metrics`(구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, 네이버 검색량)와 `weights`로 `index`·`score`를 계산하고 배열을 다시 정렬한다. 계산 방식은 `criteria.html#index`에 공개한다.
+  - 순위는 모아온 지수 순서다. `.github/scripts/score.py`가 각 항목의 `metrics`와 `weights`로 `index`·`score`를 계산하고 배열을 다시 정렬한다. 계산 방식은 `criteria.html#index`에 공개하고, 공식을 바꾸면 그 페이지도 함께 고친다.
+  - `metrics`는 `.github/workflows/collect.yml`이 매주 월요일 00:00(KST)에 `.github/scripts/collect.py`로 모은다. 구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, NAVER API HUB 검색어 트렌드(`searchAnchor` 업체를 100으로 둔 상대 검색량과 지난주 변동 폭), 키가 있으면 검색광고 월간 조회수. 결과를 `data/webhards.json`과 `data/metrics-history.json`(최근 26주)에 커밋하고 배포를 시작한다. 수집에 실패한 값은 지난 값을 쓴다.
+  - 검색어 트렌드는 NAVER API HUB 주소(`naverapihub.apigw.ntruss.com`)와 `X-NCP-APIGW-API-KEY-ID`·`X-NCP-APIGW-API-KEY` 헤더를 쓴다. 예전 개발자센터 주소(`openapi.naver.com`)는 이 키로 동작하지 않는다.
   - 기본값은 `data/baseline.json`(2026-10-21 수집값)이다. 소유자가 "기본 값으로 돌려줘"라고 하면 `python3 .github/scripts/score.py --restore`로 되돌린다. 기본값을 바꾸라고 할 때만 `--baseline`으로 새로 저장한다.
-  - 주간 보정: 배포 때 `render_ranking.py`가 그 주 월요일(KST)을 시드로 `weeklyAdjust.items`개 항목에 최대 ±`weeklyAdjust.max`점을 더해 순위를 다시 정하고, 지난주 순위와 비교한 ▲▼를 표시한다. `deploy.yml`이 매주 월요일 00:10(KST)에 자동 배포한다. 기본값(`baseline.json`)에는 보정이 들어가지 않는다.
+  - 주간 보정: 배포 때 `render_ranking.py`가 그 주 월요일(KST)을 시드로 `weeklyAdjust.items`개 항목에 최대 ±`weeklyAdjust.max`점을 더해 순위를 다시 정하고, 지난주 순위와 비교한 ▲▼를 표시한다. 수집이 끝나면 `collect.yml`이 배포를 시작한다. 기본값(`baseline.json`)에는 보정이 들어가지 않는다.
   - `keepInTop`에 적은 항목(현재 케이디스크)은 지수와 관계없이 항상 노출 순위 안에 둔다. 밖으로 밀리면 마지막 자리(10위)로 올린다.
   - 사이트에는 타사처럼 "순위는 참고용이며 서비스 선택은 이용자 본인의 판단"이라고 안내한다.
   - `pending`은 공식 주소·로고를 확인하지 못한 항목이다. 주소를 추측해서 채우지 않는다. 확인되면 `url`·`logo`를 채우고 `go/<id>/index.html`을 만든 뒤 `ready`로 바꾼다.
@@ -82,5 +84,5 @@
   - 순위·내용을 바꾸면 `updated`(갱신일)도 바꾼다. 페이지 제목·갱신일·sitemap 날짜가 이 값을 따른다.
 - 메인 순위(카드·실시간 순위·차트·요약 문장·구조화 데이터)는 브라우저에서 만들지 않는다. 배포 때 `.github/scripts/render_ranking.py`가 `data/webhards.json`으로 `index.html`·`llms.txt`·`sitemap.xml`의 `{{…}}`와 `<!-- ranking:… -->` 자리를 채운다. 자바스크립트를 실행하지 않는 검색·AI 수집기도 순위를 읽게 하려는 것이다. 저장소의 `index.html`은 빈 자리만 있으므로, 로컬에서 볼 때는 사본에 이 스크립트를 돌려서 본다.
 - 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 순위 채우기 → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다.
-- 쓰는 Secret은 `PRIVACY_PATTERNS`(금지 문자열) 하나다.
+- 쓰는 Secret: `PRIVACY_PATTERNS`(금지 문자열), `NAVER_CLIENT_ID`·`NAVER_CLIENT_SECRET`(NAVER API HUB 검색어 트렌드), `NAVER_AD_API_KEY`·`NAVER_AD_SECRET`·`NAVER_AD_CUSTOMER_ID`(검색광고, 선택). 워크플로에서 값을 출력하지 않는다.
 - 사이트 결과물에서 `.github`, `README.md`, `CLAUDE.md`는 빠진다. 사이트에 올리지 않을 파일을 루트에 추가하면 `deploy.yml`의 제외 목록에도 넣는다.
