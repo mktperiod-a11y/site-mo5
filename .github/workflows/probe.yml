@@ -1,0 +1,20 @@
+# Temporary dry run of the metrics collector; prints collected values only. Delete before merging.
+name: Probe
+on:
+  push:
+    branches: [claude/site-viewing-guide-kbo6by]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Collect (dry run)
+        env:
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+        run: |
+          python3 .github/scripts/collect.py --dry-run
+          python3 .github/scripts/collect.py
+          git diff --stat
