@@ -241,27 +241,46 @@
       }
       .live-row {
         display: grid;
-        grid-template-columns: 25px 1fr auto;
-        gap: 7px;
+        grid-template-columns: 24px 1fr auto;
+        gap: 10px;
         align-items: center;
-        padding: 7px 8px;
-        border-radius: 5px;
+        padding: 9px 8px;
+        border-bottom: 1px solid #edf0f3;
+        color: #3d4856;
+        font-size: 13px;
+      }
+      .live-row:last-child {
+        border-bottom: 0;
+      }
+      .live-row b {
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
         background: #eef2f6;
+        color: #6f7b89;
         font-size: 12px;
+        font-weight: 800;
       }
-      .live-row + .live-row {
-        margin-top: 5px;
-      }
-      .live-row:nth-child(2) {
+      .live-row.top b {
         background: var(--blue);
         color: #fff;
       }
-      .live-row:nth-child(3) {
-        background: #62aff8;
-        color: #fff;
+      .live-row.first {
+        border-bottom-color: transparent;
+        border-radius: 8px;
+        background: #eaf4ff;
+        color: var(--navy);
+        font-weight: 800;
       }
-      .live-row b {
+      .live-row small {
+        color: #8a96a5;
         font-size: 12px;
+        font-weight: 700;
+      }
+      .live-row.first small {
+        color: var(--blue);
       }
       .events li {
         display: flex;
@@ -881,7 +900,7 @@
             .slice(0, 5)
             .map(
               (s, i) =>
-                `<div class="live-row"><b>${i + 1}</b><span>${s.name}</span><small>${s.click}</small></div>`,
+                `<div class="live-row${i < 3 ? " top" : ""}${i === 0 ? " first" : ""}"><b>${i + 1}</b><span>${s.name}</span><small>${s.click}</small></div>`,
             )
             .join("");
           document.querySelector("#chart").innerHTML = services
