@@ -454,6 +454,7 @@
           #eef2f6 38px
         );
       }
+      /* bars grow in one after another when the chart scrolls into view; hovering one dims the rest */
       .bar {
         flex: 1;
         position: relative;
@@ -461,6 +462,37 @@
         border-radius: 7px 7px 0 0;
         background: var(--c);
         opacity: 0.88;
+        transition:
+          height 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
+          width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
+          min-width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
+          opacity 0.2s;
+      }
+      .chart.wait .bar {
+        height: 0;
+      }
+      .chart:hover .bar,
+      .chart:focus-within .bar {
+        opacity: 0.35;
+      }
+      .chart .bar:hover,
+      .chart .bar:focus {
+        opacity: 1;
+        outline: none;
+      }
+      .bar b {
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 5px);
+        transform: translateX(-50%);
+        color: var(--navy);
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+        transition: opacity 0.3s calc(var(--d) + 0.5s);
+      }
+      .chart.wait .bar b {
+        opacity: 0;
       }
       .bar:after {
         content: attr(data-name);
@@ -816,6 +848,16 @@
           border-radius: 6px;
           opacity: 0.95;
         }
+        .chart.wait .bar {
+          width: 0;
+          min-width: 0;
+        }
+        .bar b {
+          left: calc(100% + 8px);
+          bottom: auto;
+          top: 50%;
+          transform: translateY(-50%);
+        }
         .bar:after {
           left: 10px;
           bottom: auto;
@@ -886,6 +928,10 @@
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
+        }
+        .bar,
+        .bar b {
+          transition: none;
         }
       }
       /* small screens: compact header logo */
@@ -1067,9 +1113,9 @@
       <section class="chart-box">
         <div class="chart-head">
           <h2>사이트별 월별 클릭 수</h2>
-          <p>최근 30일 기준, 실제 버튼 클릭 흐름을 예시로 구성했습니다.</p>
+          <p>최근 30일 바로가기 클릭 수 · 막대를 가리키거나 누르면 그 사이트만 강조돼요 (편집용 예시 데이터)</p>
         </div>
-        <div class="chart" id="chart"></div>
+        <div class="chart wait" id="chart"></div>
       </section>
       <p class="disclaimer">
         ※ 순위와 클릭 수는 편집용 예시 데이터이며 실제 서비스 이용 조건은 각
@@ -1104,13 +1150,41 @@
                 `<div class="live-row${i < 3 ? ` r${i + 1}` : ""}"><b>${i + 1}</b><div><span class="live-name">${s.name}</span><i class="live-bar" style="--w:${Math.round((clicks(s) / top) * 100)}%"></i></div><small>${s.click}</small></div>`,
             )
             .join("");
-          document.querySelector("#chart").innerHTML = services
+          const chart = document.querySelector("#chart");
+          chart.innerHTML = services
             .map(
-              (s) =>
-                `<div class="bar" style="--h:${Math.round((clicks(s) / top) * 88)}%;--c:${s.color}" data-name="${s.name}"></div>`,
+              (s, i) =>
+                `<div class="bar" tabindex="0" style="--h:${Math.round((clicks(s) / top) * 88)}%;--c:${s.color};--d:${i * 0.07}s" data-name="${s.name}" aria-label="${s.name} ${s.click}"><b>${s.click}</b></div>`,
             )
             .join("");
+          growChart(chart, services);
         });
+      // grow the bars and count the numbers up the first time the chart comes into view
+      function growChart(chart, services) {
+        const labels = [...chart.querySelectorAll(".bar b")];
+        const show = () => {
+          chart.classList.remove("wait");
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          const start = performance.now();
+          const step = (now) => {
+            const t = Math.min((now - start) / 1100, 1);
+            const ease = 1 - Math.pow(1 - t, 3);
+            labels.forEach((b, i) => {
+              b.textContent = services[i].click.replace(/[\d.]+/, (n) => (parseFloat(n) * ease).toFixed(1));
+            });
+            if (t < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        };
+        if (!("IntersectionObserver" in window)) return show();
+        const io = new IntersectionObserver((entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            io.disconnect();
+            show();
+          }
+        }, { threshold: 0.3 });
+        io.observe(chart);
+      }
       function toggleMenu(force) {
         const menu = document.querySelector("#mobileMenu");
         const button = document.querySelector("#menuButton");
