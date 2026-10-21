@@ -89,9 +89,9 @@
     {
       "id": "smartfile",
       "name": "스마트파일",
-      "status": "ready",
+      "status": "pending",
       "url": "https://smartfile.co.kr/",
-      "logo": "assets/smartfile.svg",
+      "logo": null,
       "color": "#64748b",
       "score": "3.9",
       "reason": "기본 기능과 가벼운 입문 흐름을 확인하기 좋은 서비스",
