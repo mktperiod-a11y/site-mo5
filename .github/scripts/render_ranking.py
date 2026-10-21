@@ -22,11 +22,13 @@ updated = date.fromisoformat(data["updated"])
 e = html.escape
 
 
-def clicks(s):
-    return float(re.match(r"[\d.]+", s["click"]).group())
+top = max(s["index"] for s in services)
+metrics_date = date.fromisoformat(data["metricsDate"])
 
 
-top = max(clicks(s) for s in services)
+def stars(score):
+    filled = round(float(score))
+    return "★" * filled + "☆" * (5 - filled)
 
 
 def card(i, s):
@@ -38,7 +40,7 @@ def card(i, s):
         f'<div class="visual"><img src="{s["logo"]}" alt="{e(s["name"])} 로고" width="170" height="76" loading="{loading}"></div>'
         f'<div class="card-body"><h2>{e(s["name"])}</h2><p class="tags">{tags}</p>'
         f'<div class="reason"><b>선정이유</b><span>{e(s["reason"])}</span></div>'
-        f'<div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span>'
+        f'<div class="trust"><b>종합신뢰도</b><span class="stars" aria-hidden="true">{stars(s["score"])}</span>'
         f'<span class="score">{s["score"]}<small>/5</small></span></div>'
         f'<a class="go" href="go/{s["id"]}/" target="_blank" rel="noopener noreferrer sponsored nofollow" '
         f'aria-label="{e(s["name"])} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>'
@@ -49,22 +51,22 @@ def live_row(i, s):
     grade = f" r{i + 1}" if i < 3 else ""
     return (
         f'<div class="live-row{grade}"><b>{i + 1}</b><div><span class="live-name">{e(s["name"])}</span>'
-        f'<i class="live-bar" style="--w:{round(clicks(s) / top * 100)}%"></i></div><small>{s["click"]}</small></div>'
+        f'<i class="live-bar" style="--w:{round(s["index"] / top * 100)}%"></i></div><small>{s["index"]}</small></div>'
     )
 
 
 def bar(i, s):
     return (
-        f'<div class="bar" tabindex="0" style="--h:{round(clicks(s) / top * 88)}%;--c:{s["color"]};--d:{i * 0.07:.2f}s" '
-        f'data-name="{e(s["name"])}" aria-label="{e(s["name"])} {s["click"]}"><b data-v="{s["click"]}">{s["click"]}</b></div>'
+        f'<div class="bar" tabindex="0" style="--h:{round(s["index"] / top * 88)}%;--c:{s["color"]};--d:{i * 0.07:.2f}s" '
+        f'data-name="{e(s["name"])}" aria-label="{e(s["name"])} 모아온 지수 {s["index"]}"><b data-v="{s["index"]}">{s["index"]}</b></div>'
     )
 
 
 names = [s["name"] for s in services]
 summary = (
     f'{updated.year}년 {updated.month}월 기준 모아온 웹하드 순위 1위는 <b>{e(names[0])}</b>, '
-    f"2위 {e(names[1])}, 3위 {e(names[2])}입니다. 순위는 운영 안정성·혜택의 명확성·이용 편의성·결제 안내 "
-    f'네 가지 기준을 바탕으로 정한 편집 순위이며, 기준은 <a href="criteria.html">순위 검증 가이드</a>에서 확인할 수 있습니다.'
+    f"2위 {e(names[1])}, 3위 {e(names[2])}입니다. 순위는 {e(data['metricsSource'])}의 추정 다운로드·평점·평가 수를 "
+    f'합산한 모아온 지수 순서이며, 계산 방식은 <a href="criteria.html#index">순위 검증 가이드</a>에서 확인할 수 있습니다.'
 )
 item_list = {
     "@context": "https://schema.org",
@@ -73,7 +75,7 @@ item_list = {
     "itemListOrder": "https://schema.org/ItemListOrderAscending",
     "numberOfItems": len(services),
     "itemListElement": [
-        {"@type": "ListItem", "position": i + 1, "name": s["name"], "url": s["url"], "description": s["reason"]}
+        {"@type": "ListItem", "position": i + 1, "name": s["name"], "url": s["url"], "description": f"{s['reason']} (모아온 지수 {s['index']})"}
         for i, s in enumerate(services)
     ],
 }
@@ -96,7 +98,9 @@ tokens = {
     "{{updated_iso}}": updated.isoformat(),
     "{{top3}}": "·".join(names[:3]),
     "{{count}}": str(len(services)),
-    "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']}: {s['reason']}" for i, s in enumerate(services)),
+    "{{metrics_date}}": f"{metrics_date.year}년 {metrics_date.month}월 {metrics_date.day}일",
+    "{{metrics_source}}": data["metricsSource"],
+    "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']} (모아온 지수 {s['index']}): {s['reason']}" for i, s in enumerate(services)),
 }
 markers = {
     "cards": "".join(card(i, s) for i, s in enumerate(services)),

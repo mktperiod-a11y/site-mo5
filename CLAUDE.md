@@ -69,6 +69,9 @@
 
 - 빌드 도구 없는 정적 HTML 사이트다.
 - 웹하드 목록과 순위는 `data/webhards.json`에 있다. 배열 순서가 순위이고, `status`가 `ready`인 항목 중 앞에서 `rankLimit`(10)개만 메인에 노출한다. 나머지는 저장만 해 둔다.
+  - 순위는 모아온 지수 순서다. `.github/scripts/score.py`가 각 항목의 `metrics`(구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, 네이버 검색량)와 `weights`로 `index`·`score`를 계산하고 배열을 다시 정렬한다. 계산 방식은 `criteria.html#index`에 공개한다.
+  - 기본값은 `data/baseline.json`(2026-10-21 수집값)이다. 소유자가 "기본 값으로 돌려줘"라고 하면 `python3 .github/scripts/score.py --restore`로 되돌린다. 기본값을 바꾸라고 할 때만 `--baseline`으로 새로 저장한다.
+  - 순위를 바꾸려고 근거 없는 점수를 넣지 않는다. 지수에 들어가는 값은 모두 수집한 공개 데이터여야 한다.
   - `pending`은 공식 주소·로고를 확인하지 못한 항목이다. 주소를 추측해서 채우지 않는다. 확인되면 `url`·`logo`를 채우고 `go/<id>/index.html`을 만든 뒤 `ready`로 바꾼다.
   - 업체 로고는 sharp로 다시 저장해 SVG에 넣고, 다른 로고와 같은 229×100 상자에 비슷한 넓이로 맞춘다.
   - 순위·내용을 바꾸면 `updated`(갱신일)도 바꾼다. 페이지 제목·갱신일·sitemap 날짜가 이 값을 따른다.
