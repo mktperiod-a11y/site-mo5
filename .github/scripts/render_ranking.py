@@ -144,6 +144,8 @@ tokens = {
     "{{top3}}": "·".join(names[:3]),
     "{{count}}": str(len(services)),
     "{{metrics_date}}": f"{metrics_date.year}년 {metrics_date.month}월 {metrics_date.day}일",
+    "{{metrics_short}}": metrics_date.strftime("%Y.%m.%d"),
+    "{{metrics_iso}}": metrics_date.isoformat(),
     "{{metrics_basis}}": basis,
     "{{w_popularity}}": str(data["weights"]["popularity"]),
     "{{w_usability}}": str(data["weights"]["usability"]),
