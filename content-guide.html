@@ -67,7 +67,7 @@
         padding: 55px 0 90px;
       }
       h1 {
-        margin: 9px 0 12px;
+        margin: 4px 0 12px;
         font-size: 30px;
       }
       .lead {
@@ -361,6 +361,23 @@
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
+        }
+      }
+      /* small screens: compact header logo */
+      @media (max-width: 600px) {
+        .brand-moa {
+          gap: 6px;
+        }
+        .moa-symbol {
+          width: 30px;
+          height: 30px;
+        }
+        .moa-word b {
+          font-size: 18px;
+          letter-spacing: -1px;
+        }
+        .moa-word small {
+          display: none;
         }
       }
     </style>
