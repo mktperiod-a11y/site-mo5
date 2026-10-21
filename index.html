@@ -270,10 +270,10 @@
       }
       .live-row {
         display: grid;
-        grid-template-columns: 24px 1fr auto;
+        grid-template-columns: 30px 1fr auto;
         gap: 10px;
         align-items: center;
-        padding: 9px 8px;
+        padding: 10px 4px;
         border-bottom: 1px solid #edf0f3;
         color: #3d4856;
         font-size: 14px;
@@ -281,50 +281,68 @@
       .live-row:last-child {
         border-bottom: 0;
       }
+      /* big rank numbers + click-share bars; ranks 1 > 2 > 3 step down in size, colour and weight */
       .live-row b {
-        display: grid;
-        place-items: center;
-        width: 24px;
-        height: 24px;
-        color: #9aa5b3;
-        font-size: 13px;
-        font-weight: 800;
+        color: #c3cbd5;
+        font-size: 17px;
+        font-style: italic;
+        font-weight: 900;
+        text-align: center;
       }
-      /* top 3 as gold / silver / bronze medals (reference: medal-style ranking lists) */
-      .live-row.r1 b,
-      .live-row.r2 b,
-      .live-row.r3 b {
-        border-radius: 50%;
-        color: #fff;
-        font-size: 12px;
-        text-shadow: 0 1px 1px #0003;
+      .live-name {
+        display: block;
+        margin-bottom: 5px;
       }
-      .live-row.r1 b {
-        background: linear-gradient(145deg, #ffd54a, #e9a400);
-        box-shadow: 0 0 0 2px #fff3c4, 0 3px 8px #e9a40055;
-      }
-      .live-row.r2 b {
-        background: linear-gradient(145deg, #d3dae3, #9aa6b4);
-        box-shadow: 0 0 0 2px #eef1f5;
-      }
-      .live-row.r3 b {
-        background: linear-gradient(145deg, #e8b48a, #c47a45);
-        box-shadow: 0 0 0 2px #f8e6d8;
-      }
-      .live-row.first {
-        border-bottom-color: transparent;
-        border-radius: 8px;
-        background: #eaf4ff;
-        color: var(--navy);
-        font-weight: 800;
+      .live-bar {
+        display: block;
+        height: 5px;
+        width: var(--w);
+        border-radius: 3px;
+        background: #e3e9f0;
       }
       .live-row small {
         color: #8a96a5;
         font-size: 12px;
         font-weight: 700;
       }
-      .live-row.first small {
+      .live-row.r1 b {
         color: var(--blue);
+        font-size: 26px;
+      }
+      .live-row.r1 .live-name {
+        color: var(--navy);
+        font-size: 15px;
+        font-weight: 800;
+      }
+      .live-row.r1 .live-bar {
+        height: 6px;
+        background: var(--blue);
+      }
+      .live-row.r1 small {
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .live-row.r2 b {
+        color: #2f6fb5;
+        font-size: 22px;
+      }
+      .live-row.r2 .live-name {
+        color: var(--navy);
+        font-weight: 700;
+      }
+      .live-row.r2 .live-bar {
+        background: #5aa7f6;
+      }
+      .live-row.r3 b {
+        color: #6c8fb4;
+        font-size: 19px;
+      }
+      .live-row.r3 .live-name {
+        font-weight: 600;
+      }
+      .live-row.r3 .live-bar {
+        background: #a9d0fa;
       }
       .events li {
         display: flex;
@@ -944,7 +962,7 @@
             .slice(0, 5)
             .map(
               (s, i) =>
-                `<div class="live-row${i < 3 ? ` r${i + 1}` : ""}${i === 0 ? " first" : ""}"><b>${i + 1}</b><span>${s.name}</span><small>${s.click}</small></div>`,
+                `<div class="live-row${i < 3 ? ` r${i + 1}` : ""}"><b>${i + 1}</b><div><span class="live-name">${s.name}</span><i class="live-bar" style="--w:${Math.round((clicks(s) / top) * 100)}%"></i></div><small>${s.click}</small></div>`,
             )
             .join("");
           document.querySelector("#chart").innerHTML = services
