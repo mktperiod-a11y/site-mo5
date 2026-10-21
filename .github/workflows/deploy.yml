@@ -43,6 +43,9 @@ jobs:
           git archive HEAD | tar -x -C _site
           rm -rf _site/.github _site/README.md _site/CLAUDE.md
 
+          # write the ranking into static HTML so crawlers that do not run JavaScript can read it
+          python3 .github/scripts/render_ranking.py _site
+
           grep -rlZ 'https://site-url\.invalid' _site \
             | xargs -0 -r sed -i "s|https://site-url\.invalid|${BASE_URL}|g"
 
