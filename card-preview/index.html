@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>모아온 | 카드 시안</title>
+    <link rel="icon" href="../favicon.ico" sizes="32x32" />
+    <style>
+      :root {
+        --blue: #087df2;
+        --navy: #17212b;
+        --bg: #f4f7fb;
+        --line: #e2e8f0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #1d2834;
+        font-family: Arial, "Noto Sans KR", sans-serif;
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+      }
+      main {
+        width: min(835px, calc(100% - 32px));
+        margin: auto;
+        padding: 40px 0 80px;
+      }
+      h1 {
+        margin: 0 0 6px;
+        color: var(--navy);
+        font-size: 26px;
+        font-weight: 900;
+      }
+      .lead {
+        margin: 0 0 8px;
+        color: #5d6876;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      section {
+        margin-top: 46px;
+      }
+      section > h2 {
+        margin: 0 0 4px;
+        color: var(--navy);
+        font-size: 20px;
+        font-weight: 900;
+      }
+      .opt {
+        margin-top: 26px;
+      }
+      .opt h3 {
+        margin: 0 0 4px;
+        color: var(--navy);
+        font-size: 16px;
+        font-weight: 800;
+      }
+      .opt h3 em {
+        margin-left: 6px;
+        padding: 2px 7px;
+        border-radius: 10px;
+        background: #e6f1fd;
+        color: var(--blue);
+        font-size: 12px;
+        font-style: normal;
+      }
+      .opt p {
+        margin: 0 0 12px;
+        color: #6b7684;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* ---- base card (the main page after this round's fixes) ---- */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        background: #fff;
+        box-shadow: 0 5px 15px #15263a08;
+      }
+      .rank-flag {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 12px;
+        width: 38px;
+        height: 52px;
+        padding-top: 9px;
+        color: #fff;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 900;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+      }
+      .card:nth-child(1) .rank-flag {
+        background: var(--blue);
+      }
+      .card:nth-child(2) .rank-flag {
+        background: var(--navy);
+      }
+      .card:nth-child(3) .rank-flag {
+        background: #5d6b7c;
+      }
+      .visual {
+        position: relative;
+        flex: none;
+        height: 105px;
+        margin: 13px 13px 0;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #f8fbff, #edf3f8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .visual img {
+        width: 170px;
+        height: 76px;
+        padding: 7px 14px;
+        border-radius: 14px;
+        background: #fff;
+        object-fit: contain;
+        box-shadow: 0 7px 20px #20384f16;
+      }
+      .card-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 18px 15px 15px;
+      }
+      .card h4 {
+        margin: 0 0 12px;
+        color: var(--navy);
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+      .reason,
+      .trust {
+        display: grid;
+        grid-template-columns: 66px 1fr;
+        gap: 10px;
+        align-items: center;
+      }
+      .reason {
+        margin-bottom: 11px;
+      }
+      .trust {
+        grid-template-columns: 66px 1fr auto;
+      }
+      .reason b,
+      .trust b {
+        padding: 5px 0;
+        border-radius: 15px;
+        background: #eef1f4;
+        color: #7a8594;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .reason span {
+        color: #3d4856;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .stars {
+        color: #f5b301;
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+      .score {
+        color: var(--navy);
+        font-size: 16px;
+        font-weight: 800;
+      }
+      .tags {
+        margin: auto 0 10px;
+        padding-top: 10px;
+        color: #6b7c93;
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .go {
+        display: block;
+        padding: 10px;
+        border-radius: 7px;
+        background: var(--navy);
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .chips i {
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: #f1f4f8;
+        color: #4a5868;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+      }
+
+      /* ---- logo options ---- */
+      .l-flat .visual {
+        height: 100px;
+        margin: 0;
+        border-radius: 0;
+        background: #fff;
+        border-bottom: 1px solid #edf0f3;
+      }
+      .l-flat .visual img,
+      .l-tint .visual img {
+        width: 160px;
+        height: 70px;
+        padding: 0;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+      }
+      .l-tint .visual {
+        height: 100px;
+        margin: 0;
+        border-radius: 0;
+        background: color-mix(in srgb, var(--brand) 8%, #fff);
+      }
+      /* the logo files carry a white backdrop; multiply drops it onto the tint */
+      .l-tint .visual img {
+        mix-blend-mode: multiply;
+      }
+      .l-row .visual {
+        display: none;
+      }
+      .l-row .card-body {
+        padding-top: 0;
+      }
+      .head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 -15px 14px;
+        padding: 12px 15px 12px 60px;
+        border-bottom: 1px solid #edf0f3;
+      }
+      .head img {
+        width: 96px;
+        height: 42px;
+        object-fit: contain;
+      }
+      .head h4 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      /* ---- reason options ---- */
+      .r-stack .reason,
+      .r-stack .trust {
+        display: block;
+      }
+      .r-stack .reason b,
+      .r-stack .trust b,
+      .r-line .reason b,
+      .r-line .trust b {
+        padding: 0;
+        border-radius: 0;
+        background: none;
+        color: #8a96a5;
+        font-size: 12px;
+        font-weight: 700;
+        text-align: left;
+      }
+      .r-stack .reason b {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .r-stack .trust {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .r-stack .trust .score {
+        margin-left: auto;
+      }
+      .r-line .card h4 {
+        margin-bottom: 0;
+        padding-bottom: 12px;
+      }
+      .r-line .reason,
+      .r-line .trust {
+        align-items: start;
+        margin: 0;
+        padding: 12px 0;
+        border-top: 1px solid #edf0f3;
+      }
+      .r-line .trust {
+        align-items: center;
+        border-bottom: 1px solid #edf0f3;
+      }
+      .r-line .reason b {
+        padding-top: 2px;
+      }
+      .r-in .visual {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        padding: 16px 14px 14px;
+      }
+      .r-in .visual span {
+        color: #3d4856;
+        font-size: 13px;
+        line-height: 1.55;
+        text-align: center;
+      }
+      .r-head .reason {
+        display: block;
+        margin: -4px 0 14px;
+      }
+      .r-head .reason b {
+        display: none;
+      }
+      .r-head .reason span {
+        color: #2b3644;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+      .r-head .trust {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-top: 12px;
+        border-top: 1px solid #edf0f3;
+      }
+      .r-head .trust b {
+        padding: 0;
+        background: none;
+        color: #8a96a5;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .r-head .trust .score {
+        margin-left: auto;
+      }
+
+      /* ---- tag options ---- */
+      .t-chips .tags,
+      .t-name .tags {
+        color: inherit;
+        font-size: inherit;
+      }
+      .t-name .card h4 {
+        margin-bottom: 8px;
+      }
+      .t-name .tags {
+        order: -1;
+        margin: 0 0 14px;
+        padding: 0;
+      }
+      .t-name .card-body {
+        display: flex;
+      }
+      .t-name .card-body > h4 {
+        order: -2;
+      }
+      .t-name .go {
+        margin-top: auto;
+      }
+      .t-name .trust {
+        margin-bottom: 14px;
+      }
+      .t-logo .tags {
+        position: absolute;
+        left: 10px;
+        bottom: 8px;
+        margin: 0;
+        padding: 0;
+      }
+      .t-logo .tags i {
+        padding: 3px 7px;
+        background: #ffffffe6;
+        box-shadow: 0 1px 3px #1c2c3d1f;
+        font-size: 11px;
+      }
+      .t-logo .visual {
+        height: 118px;
+        align-items: flex-start;
+        padding-top: 10px;
+      }
+      .t-logo .visual img {
+        height: 66px;
+      }
+      .t-logo .go {
+        margin-top: auto;
+      }
+      .t-logo .trust {
+        margin-bottom: 14px;
+      }
+
+      @media (max-width: 760px) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>메인 카드 시안</h1>
+      <p class="lead">
+        메인에 아직 적용하지 않은 비교용 페이지예요. 모든 시안에 이번에 메인에 넣은 두 가지(바로가기 버튼·해시태그 하단 고정, 순위 색 1 파랑 · 2 남색 · 3 회청색)가
+        들어가 있어요. 항목마다 마음에 드는 알파벳을 골라 주세요.
+      </p>
+
+      <section>
+        <h2>1. 로고 노출 방식</h2>
+        <div id="logo"></div>
+      </section>
+      <section>
+        <h2>2. 선정이유 — 제목과 설명 구분</h2>
+        <div id="reason"></div>
+      </section>
+      <section>
+        <h2>3. 해시태그 위치</h2>
+        <div id="tags"></div>
+      </section>
+      <section>
+        <h2>4. 추천 조합</h2>
+        <div id="combo"></div>
+      </section>
+    </main>
+    <script>
+      const OPTIONS = {
+        logo: [
+          ["A", "지금 그대로", "회색 상자 안에 흰 로고 카드가 한 번 더 들어간 구조예요. 카드 → 상자 → 로고 카드로 세 겹이에요.", ""],
+          ["B", "평면형", "상자와 그림자를 빼고 로고를 카드 위쪽에 바로 올렸어요. 아래 가는 선 하나로만 나눠요. 한 겹이에요.", "l-flat"],
+          ["C", "브랜드 톤 띠", "카드 윗부분을 각 업체 대표색을 아주 옅게 깐 띠로 바꿨어요. 카드마다 색이 달라 구분은 쉬워지지만 화면이 조금 다채로워져요.", "l-tint"],
+          ["D", "가로 헤더형", "로고 영역을 없애고 로고와 이름을 한 줄에 놓았어요. 카드가 짧아져 한 화면에 더 많이 보여요. 대신 로고가 작아져요.", "l-row"],
+        ],
+        reason: [
+          ["A", "라벨 위 · 설명 아래", "칩을 없애고 '선정이유'를 작은 회색 제목으로 위에 올렸어요. 제목 → 설명 순서로 읽혀요.", "r-stack"],
+          ["B", "라인 구분", "이름 · 선정이유 · 종합신뢰도 사이에 가는 선을 넣고, 라벨을 왼쪽 위에 맞췄어요. 표처럼 읽혀요.", "r-line"],
+          ["C", "이미지 카드 안", "선정이유를 로고 아래 같은 영역에 넣었어요. 로고와 설명이 한 묶음, 아래는 점수와 버튼만 남아요.", "r-in"],
+          ["D", "헤드라인형", "라벨 없이 선정이유를 이름 바로 아래 부제처럼 놓았어요. 이름이 제목, 선정이유가 설명이라는 게 자연스럽게 읽혀요. 종합신뢰도는 선 아래 한 줄 정보로 내렸어요.", "r-head"],
+        ],
+        tags: [
+          ["A", "버튼 위 칩", "자리는 그대로(버튼 바로 위 고정)지만 글자 나열 대신 낱개 칩으로 나눴어요. 크기·색을 키우지 않아도 '키워드'라는 게 보여요.", "t-chips"],
+          ["B", "이름 아래", "이름 바로 아래로 옮겼어요. 이름 → 키워드 → 선정이유 순서로 '어떤 서비스인지'를 먼저 알려줘요.", "t-name"],
+          ["C", "로고 영역 위", "로고 영역 아래쪽 모서리에 칩으로 얹었어요. 이미지와 함께 첫눈에 들어오고, 본문은 글과 점수만 남아요.", "t-logo"],
+        ],
+        combo: [
+          ["추천", "평면형 로고 + 헤드라인형 선정이유 + 이름 아래 해시태그", "카드 안 겹을 한 겹으로 줄이고, 위에서 아래로 '누구인지 → 어떤 곳인지 → 왜 골랐는지 → 점수 → 버튼' 한 방향으로 읽히게 했어요.", "l-flat r-head t-name"],
+        ],
+      };
+
+      const card = (s, i, cls) => {
+        const chips = s.tags.split(/\s+/).map((t) => `<i>${t}</i>`).join("");
+        const tags = /t-/.test(cls) ? `<div class="tags chips">${chips}</div>` : `<p class="tags">${s.tags}</p>`;
+        const inVisual = /r-in/.test(cls) ? `<span>${s.reason}</span>` : "";
+        const tagsInVisual = /t-logo/.test(cls);
+        const row = /l-row/.test(cls);
+        return `<article class="card" style="--brand:${s.color}"><span class="rank-flag">${i + 1}</span>` +
+          `<div class="visual"><img src="../${s.logo}" alt="${s.name} 로고">${inVisual}${tagsInVisual ? tags : ""}</div>` +
+          `<div class="card-body">` +
+          (row ? `<div class="head"><img src="../${s.logo}" alt=""><h4>${s.name}</h4></div>` : `<h4>${s.name}</h4>`) +
+          (/r-in/.test(cls) ? "" : `<div class="reason"><b>선정이유</b><span>${s.reason}</span></div>`) +
+          `<div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span><span class="score">${s.score}/5</span></div>` +
+          (tagsInVisual ? "" : tags) +
+          `<a class="go" href="#" onclick="return false">사이트 바로가기 ›</a></div></article>`;
+      };
+
+      fetch("../data/webhards.json")
+        .then((r) => r.json())
+        .then(({ webhards }) => {
+          const top = webhards.filter((s) => s.status === "ready").slice(0, 3);
+          for (const [id, list] of Object.entries(OPTIONS)) {
+            document.getElementById(id).innerHTML = list
+              .map(([key, title, note, cls]) =>
+                `<div class="opt"><h3>${key}. ${title}${key === "추천" ? "" : ""}</h3><p>${note}</p>` +
+                `<div class="cards ${cls}">${top.map((s, i) => card(s, i, cls)).join("")}</div></div>`)
+              .join("");
+          }
+        });
+    </script>
+  </body>
+</html>
