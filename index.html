@@ -863,129 +863,34 @@
       </div>
     </footer>
     <script>
-      const services = [
-        {
-          name: "온디스크",
-          score: "4.9",
-          reason: "콘텐츠 범위와 이용 편의성이 균형 잡힌 종합 서비스",
-          tags: "#종합콘텐츠 #PC모바일",
-          color: "#0c82f5",
-          url: "go/ondisk/",
-          click: "8.4K",
-          height: "88%",
-        },
-        {
-          name: "케이디스크",
-          score: "4.8",
-          reason: "간결한 화면과 직관적인 카테고리가 돋보이는 서비스",
-          tags: "#쉬운탐색 #다양한장르",
-          color: "#16a89c",
-          url: "go/kdisk/",
-          click: "7.9K",
-          height: "82%",
-        },
-        {
-          name: "싸다파일",
-          score: "4.7",
-          reason: "신규 혜택과 구독형 이용 방식을 비교하기 좋은 서비스",
-          tags: "#신규인기 #이벤트",
-          color: "#ff7950",
-          url: "go/ssadafile/",
-          click: "7.1K",
-          height: "75%",
-        },
-        {
-          name: "꿀파일",
-          score: "4.6",
-          reason: "가입 혜택과 단순한 이용 흐름으로 알려진 서비스",
-          tags: "#가입혜택 #간결UI",
-          color: "#f5af23",
-          url: "go/ggulfile/",
-          click: "6.5K",
-          height: "68%",
-        },
-        {
-          name: "파일썬",
-          score: "4.4",
-          reason: "다양한 장르와 프로모션을 함께 살펴보기 좋은 서비스",
-          tags: "#프로모션 #여러장르",
-          color: "#3b82f6",
-          url: "go/filesun/",
-          click: "5.8K",
-          height: "60%",
-        },
-        {
-          name: "파일스타",
-          score: "4.3",
-          reason: "다운로드 중심 기능과 이벤트를 확인하기 좋은 서비스",
-          tags: "#다운로드 #이벤트",
-          color: "#ed4c77",
-          url: "go/filestar/",
-          click: "5.1K",
-          height: "54%",
-        },
-        {
-          name: "투디스크",
-          score: "4.1",
-          reason: "PC와 모바일에서 익숙한 이용 환경을 제공하는 서비스",
-          tags: "#PC모바일 #자료검색",
-          color: "#8c5ce8",
-          url: "go/todisk/",
-          click: "4.7K",
-          height: "48%",
-        },
-        {
-          name: "파일캐스트",
-          score: "4.0",
-          reason: "방송과 영상 콘텐츠 탐색에 특화된 기존 서비스",
-          tags: "#영상콘텐츠 #카테고리",
-          color: "#0ea5e9",
-          url: "go/filecast/",
-          click: "4.2K",
-          height: "43%",
-        },
-        {
-          name: "스마트파일",
-          score: "3.9",
-          reason: "기본 기능과 가벼운 입문 흐름을 확인하기 좋은 서비스",
-          tags: "#입문형 #간편이용",
-          color: "#64748b",
-          url: "go/smartfile/",
-          click: "3.8K",
-          height: "37%",
-        },
-      ];
-      const logoMap = {
-        온디스크: "ondisk.svg",
-        케이디스크: "kdisk.svg",
-        싸다파일: "ssada.svg",
-        꿀파일: "ggul.svg",
-        파일썬: "filesun.svg",
-        파일스타: "filestar.svg",
-        투디스크: "todisk.svg",
-        파일캐스트: "filecast.svg",
-        스마트파일: "smartfile.svg",
-      };
-      const logo = (s) => `assets/${logoMap[s.name]}`;
-      document.querySelector("#cards").innerHTML = services
-        .map(
-          (s, i) =>
-            `<article class="card ${i < 3 ? "top" : ""}" style="--brand:${s.color}"><span class="rank-flag">${i + 1}</span><div class="visual"><img src="${logo(s)}" alt="${s.name} 로고" width="170" height="76" loading="lazy"></div><div class="card-body"><h2>${s.name}</h2><div class="reason"><b>선정이유</b><span>${s.reason}</span></div><div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span><span class="score">${s.score}/5</span></div><p class="tags">${s.tags}</p><a class="go" href="${s.url}" target="_blank" rel="noopener noreferrer sponsored nofollow" aria-label="${s.name} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>`,
-        )
-        .join("");
-      document.querySelector("#live").innerHTML = services
-        .slice(0, 5)
-        .map(
-          (s, i) =>
-            `<div class="live-row"><b>${i + 1}</b><span>${s.name}</span><small>${s.click}</small></div>`,
-        )
-        .join("");
-      document.querySelector("#chart").innerHTML = services
-        .map(
-          (s) =>
-            `<div class="bar" style="--h:${s.height};--c:${s.color}" data-name="${s.name}"></div>`,
-        )
-        .join("");
+      // Ranking data lives in data/webhards.json: list order is the rank, and only the
+      // first rankLimit entries with status "ready" are shown.
+      const clicks = (s) => parseFloat(s.click) || 0;
+      fetch("data/webhards.json")
+        .then((r) => r.json())
+        .then(({ rankLimit, webhards }) => {
+          const services = webhards.filter((s) => s.status === "ready").slice(0, rankLimit);
+          const top = Math.max(...services.map(clicks));
+          document.querySelector("#cards").innerHTML = services
+            .map(
+              (s, i) =>
+                `<article class="card ${i < 3 ? "top" : ""}" style="--brand:${s.color}"><span class="rank-flag">${i + 1}</span><div class="visual"><img src="${s.logo}" alt="${s.name} 로고" width="170" height="76" loading="lazy"></div><div class="card-body"><h2>${s.name}</h2><div class="reason"><b>선정이유</b><span>${s.reason}</span></div><div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span><span class="score">${s.score}/5</span></div><p class="tags">${s.tags}</p><a class="go" href="go/${s.id}/" target="_blank" rel="noopener noreferrer sponsored nofollow" aria-label="${s.name} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>`,
+            )
+            .join("");
+          document.querySelector("#live").innerHTML = services
+            .slice(0, 5)
+            .map(
+              (s, i) =>
+                `<div class="live-row"><b>${i + 1}</b><span>${s.name}</span><small>${s.click}</small></div>`,
+            )
+            .join("");
+          document.querySelector("#chart").innerHTML = services
+            .map(
+              (s) =>
+                `<div class="bar" style="--h:${Math.round((clicks(s) / top) * 88)}%;--c:${s.color}" data-name="${s.name}"></div>`,
+            )
+            .join("");
+        });
       function toggleMenu(force) {
         const menu = document.querySelector("#mobileMenu");
         const button = document.querySelector("#menuButton");
