@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>실시간 순위 시안</title><style>
+:root{--blue:#087df2;--navy:#17212b;--bg:#f4f7fb;--line:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#1d2834;font-family:Arial,"Noto Sans KR",sans-serif}
+.wrap{width:min(1120px,calc(100% - 32px));margin:auto;padding:40px 0 80px}h1{margin:0 0 8px;font-size:26px}
+.lead{margin:0 0 28px;color:#728096;font-size:14px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.opt h2{margin:0 0 4px;font-size:16px}.opt p{margin:0 0 12px;color:#728096;font-size:13px;line-height:1.6;min-height:42px}
+.side-box{padding:17px;border:1px solid var(--line);border-radius:12px;background:#fff;width:265px}
+.side-box h3{display:flex;align-items:center;gap:8px;margin:0 0 12px;color:var(--navy);font-size:15px}
+.box-icon{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#eaf4ff}
+.box-icon svg{width:17px;height:17px;fill:none;stroke:var(--blue);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.row{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:9px 8px;border-bottom:1px solid #edf0f3;color:#3d4856;font-size:14px}
+.row:last-child{border-bottom:0}.row small{color:#8a96a5;font-size:12px;font-weight:700}
+.row b{display:grid;place-items:center;width:24px;height:24px;color:#9aa5b3;font-size:13px;font-weight:800;position:relative}
+/* A medals */
+.a .r1 b,.a .r2 b,.a .r3 b{border-radius:50%;color:#fff;font-size:12px;text-shadow:0 1px 1px #0003}
+.a .r1 b{background:linear-gradient(145deg,#ffd54a,#e9a400);box-shadow:0 0 0 2px #fff3c4,0 3px 8px #e9a40055}
+.a .r2 b{background:linear-gradient(145deg,#d3dae3,#9aa6b4);box-shadow:0 0 0 2px #eef1f5}
+.a .r3 b{background:linear-gradient(145deg,#e8b48a,#c47a45);box-shadow:0 0 0 2px #f8e6d8}
+.a .first{border-bottom-color:transparent;border-radius:8px;background:#eaf4ff;color:var(--navy);font-weight:800}.a .first small{color:var(--blue)}
+/* B blue steps + crown */
+.b .r1 b,.b .r2 b,.b .r3 b{border-radius:8px;color:#fff;font-size:12px}
+.b .r1 b{background:var(--blue);box-shadow:0 3px 8px #087df255}.b .r2 b{background:#4ea3f6}.b .r3 b{background:#9cccfa}
+.b .r1{color:var(--navy);font-weight:800}.b .r1 small{color:var(--blue)}
+.crown{position:absolute;top:-11px;left:50%;width:14px;height:14px;transform:translateX(-50%);fill:#f5b301}
+.b .r1{padding-top:13px}
+/* C big numbers + bars */
+.c .row{grid-template-columns:28px 1fr auto;padding:10px 4px}
+.c .row b{width:auto;font-size:20px;font-style:italic;font-weight:900;color:#c3cbd5}
+.c .r1 b{color:var(--blue)}.c .r2 b,.c .r3 b{color:var(--navy)}
+.c .mid span{display:block;margin-bottom:5px}.c .mid i{display:block;height:5px;width:var(--w);border-radius:3px;background:#dbe6f2}
+.c .r1 .mid i{background:var(--blue)}.c .r2 .mid i,.c .r3 .mid i{background:#7bb8f7}.c .r1 span{font-weight:800;color:var(--navy)}
+/* D hero */
+.hero{position:relative;margin-bottom:6px;padding:14px;border-radius:10px;background:linear-gradient(135deg,#0a84ff,#0866d6);color:#fff}
+.hero em{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;background:#ffffff26;font-style:normal;font-size:11px;font-weight:800}
+.hero em .crown{position:static;transform:none;width:12px;height:12px}
+.hero strong{display:block;margin:8px 0 2px;font-size:18px}.hero small{color:#d6e9ff;font-size:12px}
+.hero img{position:absolute;right:10px;bottom:10px;width:76px;height:34px;padding:3px 6px;border-radius:7px;background:#fff}
+.d .r2 b,.d .r3 b{border-radius:50%;background:#eaf4ff;color:var(--blue)}
+@media(max-width:600px){.side-box{width:100%}}
+</style></head>
+<body><main class="wrap"><h1>실시간 순위 시안</h1><p class="lead">오른쪽 '웹하드 실시간 순위' 박스의 시안이에요. 실제 사이트와 같은 폭(265px)으로 보여 드려요. 이 페이지는 메뉴에 없고 검색에도 잡히지 않아요.</p><div class="grid"><div class="opt"><h2>지금 적용된 버전 · 메달 배지</h2><p>1~3위를 금·은·동 메달로, 1위 줄은 연한 파란 배경으로 강조해요.</p><section class="side-box a"><h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></span>웹하드 실시간 순위</h3><div class="row r1 first"><b>1</b><span>온디스크</span><small>8.4K</small></div><div class="row r2"><b>2</b><span>케이디스크</span><small>7.9K</small></div><div class="row r3"><b>3</b><span>싸다파일</span><small>7.1K</small></div><div class="row"><b>4</b><span>꿀파일</span><small>6.5K</small></div><div class="row"><b>5</b><span>파일썬</span><small>5.8K</small></div></section></div><div class="opt"><h2>시안 B · 파랑 단계 + 왕관</h2><p>사이트 파랑 한 가지 색으로 1위는 진하게, 3위로 갈수록 옅게 했어요. 1위 배지 위에 작은 왕관을 얹었어요.</p><section class="side-box b"><h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></span>웹하드 실시간 순위</h3><div class="row r1"><b><svg class="crown" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>1</b><span>온디스크</span><small>8.4K</small></div><div class="row r2"><b>2</b><span>케이디스크</span><small>7.9K</small></div><div class="row r3"><b>3</b><span>싸다파일</span><small>7.1K</small></div><div class="row"><b>4</b><span>꿀파일</span><small>6.5K</small></div><div class="row"><b>5</b><span>파일썬</span><small>5.8K</small></div></section></div><div class="opt"><h2>시안 C · 큰 숫자 + 클릭 막대</h2><p>배지 대신 큰 순위 숫자를 쓰고, 이름 아래에 클릭 수 비율 막대를 넣어 차이가 한눈에 보여요.</p><section class="side-box c"><h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></span>웹하드 실시간 순위</h3><div class="row r1"><b>1</b><div class="mid"><span>온디스크</span><i style="--w:100%"></i></div><small>8.4K</small></div><div class="row r2"><b>2</b><div class="mid"><span>케이디스크</span><i style="--w:94%"></i></div><small>7.9K</small></div><div class="row r3"><b>3</b><div class="mid"><span>싸다파일</span><i style="--w:85%"></i></div><small>7.1K</small></div><div class="row"><b>4</b><div class="mid"><span>꿀파일</span><i style="--w:77%"></i></div><small>6.5K</small></div><div class="row"><b>5</b><div class="mid"><span>파일썬</span><i style="--w:69%"></i></div><small>5.8K</small></div></section></div><div class="opt"><h2>시안 D · 1위 하이라이트 카드</h2><p>1위만 로고가 들어간 작은 카드로 크게 보여 주고, 2위부터는 간단한 목록으로 이어가요.</p><section class="side-box d"><h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></span>웹하드 실시간 순위</h3><div class="hero"><em><svg class="crown" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg>1위</em><strong>온디스크</strong><small>최근 30일 클릭 8.4K</small><img src="../assets/ondisk.svg" alt=""></div><div class="row r2"><b>2</b><span>케이디스크</span><small>7.9K</small></div><div class="row r3"><b>3</b><span>싸다파일</span><small>7.1K</small></div><div class="row"><b>4</b><span>꿀파일</span><small>6.5K</small></div><div class="row"><b>5</b><span>파일썬</span><small>5.8K</small></div></section></div></div></main></body></html>
