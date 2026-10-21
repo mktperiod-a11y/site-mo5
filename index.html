@@ -480,10 +480,10 @@
       .bar {
         flex: 1;
         position: relative;
+        display: flex;
+        flex-direction: column-reverse;
         height: var(--h);
-        border-radius: 7px 7px 0 0;
-        background: var(--c);
-        opacity: 0.88;
+        opacity: 0.92;
         transition:
           height 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
           width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
@@ -515,6 +515,130 @@
       }
       .chart.wait .bar b {
         opacity: 0;
+      }
+      /* stacked segments: popularity at the bottom, then usability, affection on top */
+      .seg {
+        display: block;
+        flex: none;
+        height: var(--p);
+      }
+      .seg:last-of-type {
+        border-radius: 7px 7px 0 0;
+      }
+      .popularity {
+        background: #087df2;
+      }
+      .usability {
+        background: #36c2a4;
+      }
+      .affection {
+        background: #ff9466;
+      }
+      .seg.all {
+        background: #8e99a8;
+      }
+      .tip {
+        display: none;
+        position: absolute;
+        z-index: 3;
+        left: 50%;
+        bottom: calc(100% + 26px);
+        transform: translateX(-50%);
+        padding: 6px 9px;
+        border-radius: 8px;
+        background: var(--navy);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: 0 6px 16px #17212b33;
+      }
+      .bar:first-child .tip {
+        left: 0;
+        transform: none;
+      }
+      .bar:last-child .tip {
+        left: auto;
+        right: 0;
+        transform: none;
+      }
+      .bar:hover .tip,
+      .bar:focus .tip {
+        display: block;
+      }
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 14px;
+        margin: -8px 0 18px;
+        color: #5d6876;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .legend em,
+      .info-pop em {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        border-radius: 3px;
+        vertical-align: -1px;
+      }
+      .info {
+        position: relative;
+        display: inline-grid;
+        place-items: center;
+        width: 18px;
+        height: 18px;
+        margin-left: 4px;
+        border-radius: 50%;
+        background: #e9eef4;
+        color: #5d6876;
+        font-family: Georgia, serif;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 700;
+        vertical-align: 2px;
+        cursor: help;
+      }
+      .info-pop {
+        display: none;
+        position: absolute;
+        z-index: 10;
+        left: -8px;
+        top: calc(100% + 8px);
+        width: min(340px, 80vw);
+        padding: 13px 15px;
+        border-radius: 10px;
+        background: var(--navy);
+        color: #dfe6ee;
+        font-family: Arial, "Noto Sans KR", sans-serif;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.6;
+        letter-spacing: 0;
+        text-align: left;
+        box-shadow: 0 10px 30px #17212b40;
+      }
+      .info-pop b {
+        display: block;
+        margin-bottom: 6px;
+        color: #fff;
+      }
+      .info-pop span {
+        display: block;
+        margin-top: 3px;
+      }
+      .info-pop small {
+        display: block;
+        margin-top: 8px;
+        color: #a9b4c1;
+        font-size: 12px;
+      }
+      .info:hover .info-pop,
+      .info:focus .info-pop {
+        display: block;
       }
       .bar:after {
         content: attr(data-name);
@@ -922,11 +1046,43 @@
         }
         .bar {
           flex: none;
+          flex-direction: row;
           height: 36px !important;
           width: var(--h);
           min-width: 112px;
-          border-radius: 6px;
           opacity: 0.95;
+        }
+        .seg {
+          height: 100%;
+          width: var(--p);
+        }
+        .seg:first-of-type {
+          border-radius: 6px 0 0 6px;
+        }
+        .seg:last-of-type {
+          border-radius: 0 6px 6px 0;
+        }
+        /* the info popup spans the chart header instead of hanging off the small icon */
+        .chart-head {
+          position: relative;
+        }
+        .info {
+          position: static;
+        }
+        .info-pop {
+          left: 0;
+          right: 0;
+          top: 40px;
+          width: auto;
+        }
+        .tip,
+        .bar:first-child .tip,
+        .bar:last-child .tip {
+          left: 0;
+          right: auto;
+          bottom: auto;
+          top: calc(100% + 4px);
+          transform: none;
         }
         .chart.wait .bar {
           width: 0;
@@ -1192,8 +1348,21 @@
       </aside>
       <section class="chart-box">
         <div class="chart-head">
-          <h2>사이트별 모아온 지수</h2>
-          <p>{{metrics_basis}} 기준 ({{metrics_date}} 수집) · 막대를 가리키거나 누르면 그 사이트만 강조돼요</p>
+          <h2>
+            사이트별 모아온 지수
+            <span class="info" tabindex="0" aria-describedby="indexHow">i<span class="info-pop" id="indexHow" role="tooltip"
+                ><b>모아온 지수(0~100)는 이렇게 계산해요</b>
+                <span><em class="popularity"></em>인기 {{w_popularity}}%: 네이버 데이터랩 검색량. 최근 4주 검색 수준 70% + 지난주 변동 폭 30%</span>
+                <span><em class="usability"></em>사용감 {{w_usability}}%: 구글 플레이 추정 다운로드 60% + 보정 평점 40%</span>
+                <span><em class="affection"></em>애정 {{w_affection}}%: 구글 플레이 평가 수(좋은 평가·나쁜 평가 모두)</span>
+                <small>매주 월요일 같은 조건으로 다시 수집해 계산하며, 주간 보정 점수가 더해질 수 있어요.</small></span
+              ></span
+            >
+          </h2>
+          <p>{{metrics_basis}} 기준 ({{metrics_date}} 수집) · 막대를 가리키거나 누르면 항목별 점수가 보여요</p>
+          <div class="legend" aria-hidden="true">
+            <span><em class="popularity"></em>인기 {{w_popularity}}%</span><span><em class="usability"></em>사용감 {{w_usability}}%</span><span><em class="affection"></em>애정 {{w_affection}}%</span>
+          </div>
         </div>
         <div class="chart wait" id="chart"><!-- ranking:chart --></div>
       </section>

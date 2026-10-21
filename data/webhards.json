@@ -1,5 +1,5 @@
 {
-  "note": "ready 항목은 모아온 지수 순으로 정렬하고 앞에서 rankLimit개만 메인에 노출한다. metrics는 매주 월요일 collect.yml이 collect.py로 모으고(구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, 네이버 API HUB 검색어 트렌드, 검색광고 월간 조회수는 키가 있을 때), 지수는 score.py가 계산한다. searchAnchor는 검색량 비교의 기준 업체다. pending은 공식 주소·로고 확인 전이라 노출하지 않는다. 기본값은 data/baseline.json이며 score.py --restore로 되돌린다. 순위나 내용을 바꾸면 updated도 바꾼다. 배포 때 이 파일로 메인 페이지·llms.txt·sitemap.xml을 채운다. 배포 때 주마다 weeklyAdjust.items개 항목에 최대 ±weeklyAdjust.max점의 주간 보정 점수를 더해 순위를 다시 정한다(매주 월요일 자동 배포). keepInTop에 적은 항목은 지수와 관계없이 항상 노출 순위(rankLimit) 안에 둔다.",
+  "note": "ready 항목은 모아온 지수 순으로 정렬하고 앞에서 rankLimit개만 메인에 노출한다. metrics는 매주 월요일 collect.yml이 collect.py로 모으고(구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, 네이버 API HUB 검색어 트렌드, 검색광고 월간 조회수는 키가 있을 때), 지수는 score.py가 계산한다. searchAnchor는 검색량 비교의 기준 업체다. pending은 공식 주소·로고 확인 전이라 노출하지 않는다. 기본값은 data/baseline.json이며 score.py --restore로 되돌린다. 순위나 내용을 바꾸면 updated도 바꾼다. 배포 때 이 파일로 메인 페이지·llms.txt·sitemap.xml을 채운다. 배포 때 주마다 weeklyAdjust.items개 항목에 최대 ±weeklyAdjust.max점의 주간 보정 점수를 더해 순위를 다시 정한다(매주 월요일 자동 배포). maxRank는 {id: 최저 순위}로, 지수와 주간 보정과 관계없이 그 순위 아래로 내려가지 않게 한다(온디스크 2위, 케이디스크 10위).",
   "updated": "2026-10-21",
   "metricsDate": "2026-10-21",
   "metricsSource": "네이버 데이터랩 검색량과 구글 플레이 한국 스토어",
@@ -13,9 +13,10 @@
     "items": 4,
     "max": 5
   },
-  "keepInTop": [
-    "kdisk"
-  ],
+  "maxRank": {
+    "ondisk": 2,
+    "kdisk": 10
+  },
   "rankLimit": 10,
   "webhards": [
     {
@@ -36,7 +37,12 @@
         "search": 100.0,
         "searchChange": -0.011
       },
-      "index": 93.0
+      "index": 93.0,
+      "parts": {
+        "popularity": 33.9,
+        "usability": 34.1,
+        "affection": 25.0
+      }
     },
     {
       "id": "filesun",
@@ -56,7 +62,12 @@
         "search": 40.67,
         "searchChange": -0.01
       },
-      "index": 84.5
+      "index": 84.5,
+      "parts": {
+        "popularity": 26.7,
+        "usability": 32.9,
+        "affection": 24.9
+      }
     },
     {
       "id": "yesfile",
@@ -76,7 +87,12 @@
         "search": 53.92,
         "searchChange": 0.098
       },
-      "index": 76.2
+      "index": 76.2,
+      "parts": {
+        "popularity": 30.2,
+        "usability": 29.5,
+        "affection": 16.4
+      }
     },
     {
       "id": "smartfile",
@@ -96,7 +112,12 @@
         "search": 30.82,
         "searchChange": -0.038
       },
-      "index": 75.0
+      "index": 75.0,
+      "parts": {
+        "popularity": 24.1,
+        "usability": 31.1,
+        "affection": 19.8
+      }
     },
     {
       "id": "filejo",
@@ -116,7 +137,12 @@
         "search": 93.57,
         "searchChange": -0.004
       },
-      "index": 72.2
+      "index": 72.2,
+      "parts": {
+        "popularity": 33.4,
+        "usability": 27.3,
+        "affection": 11.5
+      }
     },
     {
       "id": "filemong",
@@ -136,7 +162,12 @@
         "search": 25.7,
         "searchChange": -0.013
       },
-      "index": 71.4
+      "index": 71.4,
+      "parts": {
+        "popularity": 23.0,
+        "usability": 27.6,
+        "affection": 20.8
+      }
     },
     {
       "id": "pdpop",
@@ -156,7 +187,12 @@
         "search": 38.36,
         "searchChange": 0.003
       },
-      "index": 71.0
+      "index": 71.0,
+      "parts": {
+        "popularity": 26.4,
+        "usability": 28.0,
+        "affection": 16.6
+      }
     },
     {
       "id": "tple",
@@ -176,7 +212,12 @@
         "search": 17.37,
         "searchChange": -0.013
       },
-      "index": 62.4
+      "index": 62.4,
+      "parts": {
+        "popularity": 19.8,
+        "usability": 25.6,
+        "affection": 17.0
+      }
     },
     {
       "id": "ggulfile",
@@ -196,7 +237,12 @@
         "search": 11.09,
         "searchChange": 0.03
       },
-      "index": 60.3
+      "index": 60.3,
+      "parts": {
+        "popularity": 16.7,
+        "usability": 25.1,
+        "affection": 18.5
+      }
     },
     {
       "id": "kdisk",
@@ -216,7 +262,12 @@
         "search": 29.76,
         "searchChange": 0.013
       },
-      "index": 55.9
+      "index": 55.9,
+      "parts": {
+        "popularity": 24.5,
+        "usability": 19.2,
+        "affection": 12.2
+      }
     },
     {
       "id": "filecookie",
@@ -236,7 +287,12 @@
         "search": 25.99,
         "searchChange": -0.015
       },
-      "index": 57.4
+      "index": 57.4,
+      "parts": {
+        "popularity": 23.0,
+        "usability": 19.2,
+        "affection": 15.1
+      }
     },
     {
       "id": "applefile",
@@ -256,7 +312,12 @@
         "search": 17.69,
         "searchChange": -0.016
       },
-      "index": 55.2
+      "index": 55.2,
+      "parts": {
+        "popularity": 19.9,
+        "usability": 22.0,
+        "affection": 13.2
+      }
     },
     {
       "id": "filebogo",
@@ -276,7 +337,12 @@
         "search": 5.5,
         "searchChange": -0.027
       },
-      "index": 52.2
+      "index": 52.2,
+      "parts": {
+        "popularity": 10.5,
+        "usability": 21.8,
+        "affection": 20.0
+      }
     },
     {
       "id": "filemaru",
@@ -296,7 +362,12 @@
         "search": 12.42,
         "searchChange": -0.035
       },
-      "index": 51.0
+      "index": 51.0,
+      "parts": {
+        "popularity": 16.9,
+        "usability": 20.5,
+        "affection": 13.6
+      }
     },
     {
       "id": "ssadafile",
@@ -316,7 +387,12 @@
         "search": 5.53,
         "searchChange": -0.323
       },
-      "index": 50.5
+      "index": 50.5,
+      "parts": {
+        "popularity": 6.9,
+        "usability": 25.9,
+        "affection": 17.6
+      }
     },
     {
       "id": "filecity",
@@ -336,7 +412,12 @@
         "search": 27.13,
         "searchChange": -0.004
       },
-      "index": 48.4
+      "index": 48.4,
+      "parts": {
+        "popularity": 23.5,
+        "usability": 18.5,
+        "affection": 6.4
+      }
     },
     {
       "id": "todisk",
@@ -356,7 +437,12 @@
         "search": 13.53,
         "searchChange": -0.101
       },
-      "index": 43.7
+      "index": 43.7,
+      "parts": {
+        "popularity": 16.8,
+        "usability": 18.2,
+        "affection": 8.8
+      }
     },
     {
       "id": "filestar",
@@ -376,7 +462,12 @@
         "search": 3.03,
         "searchChange": -0.054
       },
-      "index": 17.6
+      "index": 17.6,
+      "parts": {
+        "popularity": 5.4,
+        "usability": 12.3,
+        "affection": 0.0
+      }
     }
   ]
 }

@@ -58,17 +58,23 @@ for s in rows:
     affection = ratings(m["ratingCount"])
     change = max(-0.5, min(0.5, m.get("searchChange", 0)))
     popularity = 0.7 * level(m.get(level_key)) + 0.3 * (change + 0.5) if has_search else 0
-    index = 100 * (parts["usability"] * usability + parts["affection"] * affection + parts["popularity"] * popularity) / total
+    points = {
+        "popularity": 100 * parts["popularity"] * popularity / total,
+        "usability": 100 * parts["usability"] * usability / total,
+        "affection": 100 * parts["affection"] * affection / total,
+    }
+    index = sum(points.values())
     s["index"] = round(index, 1)
+    s["parts"] = {k: round(v, 1) for k, v in points.items()}
     s["score"] = f"{index / 20:.1f}"
 
 # ready entries ranked by index; entries without metrics and pending ones keep their relative order after them
 ranked = sorted(rows, key=lambda s: -s["index"])
-# entries listed in keepInTop always stay inside the shown top rankLimit (moved up to the last slot)
-for sid in data.get("keepInTop", []):
+# maxRank {id: lowest allowed rank}: an entry ranked below it is moved up to that rank
+for sid, worst in sorted(data.get("maxRank", {}).items(), key=lambda kv: kv[1]):
     pos = next((i for i, s in enumerate(ranked) if s["id"] == sid), None)
-    if pos is not None and pos >= data["rankLimit"]:
-        ranked.insert(data["rankLimit"] - 1, ranked.pop(pos))
+    if pos is not None and pos >= worst:
+        ranked.insert(worst - 1, ranked.pop(pos))
 rest = [s for s in data["webhards"] if not s.get("metrics")]
 data["webhards"] = ranked + rest
 DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
