@@ -160,23 +160,20 @@
       .card:nth-child(3) .rank-flag {
         background: #5d6b7c;
       }
+      /* one layer: the logo sits straight on the card, a hairline below */
       .visual {
-        height: 105px;
-        margin: 13px 13px 0;
-        border-radius: 8px;
-        background: linear-gradient(135deg, #f8fbff, #edf3f8);
+        flex: none;
+        height: 100px;
+        border-bottom: 1px solid #edf0f3;
+        background: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
       }
       .visual img {
-        width: 170px;
-        height: 76px;
-        padding: 7px 14px;
-        border-radius: 14px;
-        background: #fff;
+        width: 160px;
+        height: 70px;
         object-fit: contain;
-        box-shadow: 0 7px 20px #20384f16;
       }
       .card-body {
         display: flex;
@@ -185,35 +182,37 @@
         padding: 18px 15px 15px;
       }
       .card h2 {
-        margin: 0 0 12px;
+        margin: 0 0 8px;
         color: var(--navy);
         font-size: 18px;
         font-weight: 800;
         letter-spacing: -0.5px;
       }
+      /* label | text rows split by hairlines, labels top-aligned like a table */
       .reason,
       .trust {
         display: grid;
         grid-template-columns: 66px 1fr;
         gap: 10px;
-        align-items: center;
-      }
-      .reason {
-        margin-bottom: 11px;
+        align-items: start;
+        padding: 12px 0;
+        border-top: 1px solid #edf0f3;
       }
       .trust {
         grid-template-columns: 66px 1fr auto;
+        align-items: center;
+        margin-bottom: 14px;
+        border-bottom: 1px solid #edf0f3;
       }
       .reason b,
       .trust b {
-        padding: 5px 0;
-        border-radius: 15px;
-        background: #eef1f4;
-        color: #7a8594;
+        color: #8a96a5;
         font-size: 12px;
-        font-weight: 600;
-        text-align: center;
+        font-weight: 700;
         white-space: nowrap;
+      }
+      .reason b {
+        padding-top: 3px;
       }
       .reason span {
         color: #3d4856;
@@ -232,15 +231,25 @@
         font-size: 16px;
         font-weight: 800;
       }
+      /* keywords right under the name: who it is, then what kind of service */
       .tags {
-        margin: auto 0 10px;
-        padding-top: 10px;
-        color: #6b7c93;
-        font-size: 13px;
-        font-weight: 500;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin: 0 0 14px;
+      }
+      .tags i {
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: #f1f4f8;
+        color: #4a5868;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
       }
       .go {
         display: block;
+        margin-top: auto;
         padding: 10px;
         border-radius: 7px;
         background: var(--navy);
@@ -504,20 +513,19 @@
           grid-template-columns: 145px 1fr;
           min-height: 155px;
         }
+        /* logo column on the left, split from the text by a hairline */
         .visual {
           height: auto;
           min-height: 125px;
-          margin: 12px;
-          border-radius: 7px;
-          font-size: 16px;
+          border-bottom: 0;
+          border-right: 1px solid #edf0f3;
         }
         .visual img {
           width: 125px;
           height: 62px;
-          padding: 6px 9px;
         }
         .card-body {
-          padding: 17px 12px 12px 0;
+          padding: 17px 12px 12px;
         }
         .card h2 {
           font-size: 14px;
@@ -533,10 +541,6 @@
         }
         .reason span {
           font-size: 14px;
-        }
-        .tags {
-          white-space: nowrap;
-          overflow: hidden;
         }
         .sidebar {
           grid-template-columns: 1fr;
@@ -712,23 +716,31 @@
         }
         .visual {
           min-width: 0;
-          margin: 10px;
+          padding: 0 10px;
         }
         .visual img {
           width: 100%;
-          max-width: 115px;
-          height: 64px;
+          max-width: 105px;
+          height: 60px;
         }
         .card-body {
-          padding: 15px 12px 12px 0;
+          padding: 15px 12px 12px;
         }
         .reason,
         .trust {
           grid-template-columns: 62px 1fr;
           gap: 8px;
+          padding: 8px 0;
         }
         .trust {
           grid-template-columns: 62px 1fr auto;
+          margin-bottom: 10px;
+        }
+        .card h2 {
+          margin-bottom: 6px;
+        }
+        .tags {
+          margin-bottom: 10px;
         }
         .reason span {
           font-size: 14px;
@@ -742,12 +754,6 @@
         .score {
           margin-left: 0;
           font-size: 15px;
-        }
-        .tags {
-          white-space: normal;
-          overflow: visible;
-          font-size: 13px;
-          line-height: 1.5;
         }
         .go {
           display: flex;
@@ -840,7 +846,8 @@
         .visual {
           height: 100px;
           min-height: 0;
-          margin: 10px 10px 0;
+          border-right: 0;
+          border-bottom: 1px solid #edf0f3;
         }
         .visual img {
           max-width: 160px;
@@ -986,7 +993,7 @@
           document.querySelector("#cards").innerHTML = services
             .map(
               (s, i) =>
-                `<article class="card ${i < 3 ? "top" : ""}" style="--brand:${s.color}"><span class="rank-flag">${i + 1}</span><div class="visual"><img src="${s.logo}" alt="${s.name} 로고" width="170" height="76" loading="lazy"></div><div class="card-body"><h2>${s.name}</h2><div class="reason"><b>선정이유</b><span>${s.reason}</span></div><div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span><span class="score">${s.score}/5</span></div><p class="tags">${s.tags}</p><a class="go" href="go/${s.id}/" target="_blank" rel="noopener noreferrer sponsored nofollow" aria-label="${s.name} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>`,
+                `<article class="card ${i < 3 ? "top" : ""}" style="--brand:${s.color}"><span class="rank-flag">${i + 1}</span><div class="visual"><img src="${s.logo}" alt="${s.name} 로고" width="170" height="76" loading="lazy"></div><div class="card-body"><h2>${s.name}</h2><p class="tags">${s.tags.split(/\s+/).map((t) => `<i>${t}</i>`).join("")}</p><div class="reason"><b>선정이유</b><span>${s.reason}</span></div><div class="trust"><b>종합신뢰도</b><span class="stars">★★★★★</span><span class="score">${s.score}/5</span></div><a class="go" href="go/${s.id}/" target="_blank" rel="noopener noreferrer sponsored nofollow" aria-label="${s.name} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>`,
             )
             .join("");
           document.querySelector("#live").innerHTML = services
