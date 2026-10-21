@@ -244,8 +244,29 @@
         background: #fff;
       }
       .side-box h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         margin: 0 0 12px;
-        font-size: 13px;
+        color: var(--navy);
+        font-size: 15px;
+      }
+      .box-icon {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: #eaf4ff;
+      }
+      .box-icon svg {
+        width: 17px;
+        height: 17px;
+        fill: none;
+        stroke: var(--blue);
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
       .live-row {
         display: grid;
@@ -265,25 +286,30 @@
         place-items: center;
         width: 24px;
         height: 24px;
-        border-radius: 50%;
-        background: #eef2f6;
-        color: #6f7b89;
-        font-size: 12px;
+        color: #9aa5b3;
+        font-size: 13px;
         font-weight: 800;
       }
-      /* top 3 badges step down in brightness: 1 > 2 > 3 */
-      .live-row.r1 b {
-        background: var(--blue);
+      /* top 3 as gold / silver / bronze medals (reference: medal-style ranking lists) */
+      .live-row.r1 b,
+      .live-row.r2 b,
+      .live-row.r3 b {
+        border-radius: 50%;
         color: #fff;
-        box-shadow: 0 3px 8px #087df255;
+        font-size: 12px;
+        text-shadow: 0 1px 1px #0003;
+      }
+      .live-row.r1 b {
+        background: linear-gradient(145deg, #ffd54a, #e9a400);
+        box-shadow: 0 0 0 2px #fff3c4, 0 3px 8px #e9a40055;
       }
       .live-row.r2 b {
-        background: #4ea3f6;
-        color: #fff;
+        background: linear-gradient(145deg, #d3dae3, #9aa6b4);
+        box-shadow: 0 0 0 2px #eef1f5;
       }
       .live-row.r3 b {
-        background: #cfe5fc;
-        color: #0a6fd6;
+        background: linear-gradient(145deg, #e8b48a, #c47a45);
+        box-shadow: 0 0 0 2px #f8e6d8;
       }
       .live-row.first {
         border-bottom-color: transparent;
@@ -867,11 +893,11 @@
       <div class="cards" id="cards"></div>
       <aside class="sidebar">
         <section class="side-box">
-          <h3>⌕ 웹하드 실시간 순위</h3>
+          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></span>웹하드 실시간 순위</h3>
           <div id="live"></div>
         </section>
         <section class="side-box events">
-          <h3>♧ 7월 웹하드 이벤트</h3>
+          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M3 9h18M12 9v11M12 9c-1.5-3.5-6-3.5-5.5-1S12 9 12 9zm0 0c1.5-3.5 6-3.5 5.5-1S12 9 12 9z"/></svg></span>7월 웹하드 이벤트</h3>
           <ul>
             <li><span>온디스크</span><b>신규 혜택</b></li>
             <li><span>케이디스크</span><b>가입 이벤트</b></li>
