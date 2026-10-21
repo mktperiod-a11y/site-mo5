@@ -87,7 +87,10 @@
       }
       .menu a.active,
       .menu a:hover {
-        color: var(--blue);
+        color: var(--navy);
+      }
+      .menu a.active {
+        box-shadow: inset 0 -2px 0 var(--blue);
       }
       .hamb {
         display: none;
@@ -144,7 +147,11 @@
         font-weight: 900;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
       }
+      /* blue is reserved for rank 1; 2-3 use navy so the eye is not pulled along a row of blue */
       .card.top .rank-flag {
+        background: var(--navy);
+      }
+      .card:first-child .rank-flag {
         background: var(--blue);
       }
       .visual {
@@ -218,7 +225,7 @@
       }
       .tags {
         margin: 10px 0;
-        color: var(--blue);
+        color: #6b7c93;
         font-size: 13px;
         font-weight: 500;
       }
@@ -333,7 +340,7 @@
         font-weight: 800;
       }
       .live-row.r2 b {
-        color: #2f6fb5;
+        color: var(--navy);
         font-size: 22px;
       }
       .live-row.r2 .live-name {
@@ -341,17 +348,17 @@
         font-weight: 700;
       }
       .live-row.r2 .live-bar {
-        background: #5aa7f6;
+        background: #8796a8;
       }
       .live-row.r3 b {
-        color: #6c8fb4;
+        color: #5d6b7c;
         font-size: 19px;
       }
       .live-row.r3 .live-name {
         font-weight: 600;
       }
       .live-row.r3 .live-bar {
-        background: #a9d0fa;
+        background: #b9c3cf;
       }
       .events li {
         display: flex;
@@ -363,9 +370,9 @@
         list-style: none;
       }
       .events li b {
-        color: var(--blue);
+        color: #5d6876;
         font-size: 13px;
-        font-weight: 700;
+        font-weight: 600;
       }
       .events li:last-child {
         border: 0;
