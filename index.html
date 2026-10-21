@@ -32,6 +32,9 @@
         background: var(--bg);
         color: #1d2834;
         font-family: Arial, "Noto Sans KR", sans-serif;
+        /* Korean: wrap between words, not inside them */
+        word-break: keep-all;
+        overflow-wrap: anywhere;
       }
       a {
         text-decoration: none;
@@ -97,11 +100,13 @@
       }
       .update {
         color: #6f7b89;
-        font-size: 12px;
+        font-size: 13px;
       }
       .intro h1 {
         margin: 4px 0 0;
-        font-size: 31px;
+        color: var(--navy);
+        font-size: 32px;
+        font-weight: 900;
         letter-spacing: -1.6px;
       }
       .layout {
@@ -166,37 +171,39 @@
       .card h2 {
         margin: 0 0 12px;
         color: var(--navy);
-        font-size: 19px;
+        font-size: 18px;
         font-weight: 800;
         letter-spacing: -0.5px;
       }
-      .reason {
+      .reason,
+      .trust {
         display: grid;
-        grid-template-columns: 48px 1fr;
-        gap: 8px;
-        align-items: start;
+        grid-template-columns: 66px 1fr;
+        gap: 10px;
+        align-items: center;
+      }
+      .reason {
         margin-bottom: 11px;
+      }
+      .trust {
+        grid-template-columns: 66px 1fr auto;
       }
       .reason b,
       .trust b {
-        padding: 5px 6px;
+        padding: 5px 0;
         border-radius: 15px;
         background: #eef1f4;
         color: #7a8594;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
         text-align: center;
+        white-space: nowrap;
       }
       .reason span {
         color: #3d4856;
         font-size: 14px;
         line-height: 1.6;
         font-weight: 400;
-      }
-      .trust {
-        display: flex;
-        align-items: center;
-        gap: 7px;
       }
       .stars {
         color: #f5b301;
@@ -249,7 +256,9 @@
         gap: 8px;
         margin: 0 0 12px;
         color: var(--navy);
-        font-size: 15px;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
       }
       .box-icon {
         display: grid;
@@ -349,9 +358,14 @@
         justify-content: space-between;
         padding: 9px 0;
         border-bottom: 1px solid #edf0f3;
-        color: #687484;
-        font-size: 12px;
+        color: #3d4856;
+        font-size: 14px;
         list-style: none;
+      }
+      .events li b {
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 700;
       }
       .events li:last-child {
         border: 0;
@@ -369,12 +383,15 @@
       }
       .chart-head h2 {
         margin: 0;
-        font-size: 17px;
+        color: var(--navy);
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
       }
       .chart-head p {
         margin: 5px 0 20px;
         color: #8792a1;
-        font-size: 12px;
+        font-size: 13px;
       }
       .chart {
         height: 190px;
@@ -688,19 +705,16 @@
         .card-body {
           padding: 15px 12px 12px 0;
         }
-        .reason {
-          grid-template-columns: 1fr;
-          gap: 5px;
+        .reason,
+        .trust {
+          grid-template-columns: 62px 1fr;
+          gap: 8px;
         }
-        .reason b {
-          justify-self: start;
+        .trust {
+          grid-template-columns: 62px 1fr auto;
         }
         .reason span {
           font-size: 14px;
-        }
-        .trust {
-          align-items: flex-start;
-          flex-wrap: wrap;
         }
         .trust b {
           font-size: 11px;
@@ -736,7 +750,7 @@
         .events li {
           min-height: 42px;
           align-items: center;
-          font-size: 13px;
+          font-size: 14px;
         }
         .chart-head p {
           font-size: 13px;
