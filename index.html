@@ -263,9 +263,19 @@
         font-size: 12px;
         font-weight: 800;
       }
-      .live-row.top b {
+      /* top 3 badges step down in brightness: 1 > 2 > 3 */
+      .live-row.r1 b {
         background: var(--blue);
         color: #fff;
+        box-shadow: 0 3px 8px #087df255;
+      }
+      .live-row.r2 b {
+        background: #4ea3f6;
+        color: #fff;
+      }
+      .live-row.r3 b {
+        background: #cfe5fc;
+        color: #0a6fd6;
       }
       .live-row.first {
         border-bottom-color: transparent;
@@ -900,7 +910,7 @@
             .slice(0, 5)
             .map(
               (s, i) =>
-                `<div class="live-row${i < 3 ? " top" : ""}${i === 0 ? " first" : ""}"><b>${i + 1}</b><span>${s.name}</span><small>${s.click}</small></div>`,
+                `<div class="live-row${i < 3 ? ` r${i + 1}` : ""}${i === 0 ? " first" : ""}"><b>${i + 1}</b><span>${s.name}</span><small>${s.click}</small></div>`,
             )
             .join("");
           document.querySelector("#chart").innerHTML = services
