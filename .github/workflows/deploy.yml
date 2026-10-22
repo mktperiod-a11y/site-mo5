@@ -3,9 +3,6 @@ name: Deploy Pages
 on:
   push:
     branches: [main]
-  # every day at 00:05 KST: the home benefit box draws a new set (the weekly ranking itself stays the same all week)
-  schedule:
-    - cron: "5 15 * * *"
   workflow_dispatch:
 
 permissions:
