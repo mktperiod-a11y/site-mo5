@@ -60,6 +60,10 @@
         {
           "kind": "join",
           "text": "300P 지급"
+        },
+        {
+          "kind": "event",
+          "text": "야간 50% 페이백 이벤트"
         }
       ],
       "metrics": {
@@ -83,7 +87,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "2,000P 지급"
+          "text": "본인인증 시 1,000P 증정"
+        },
+        {
+          "kind": "event",
+          "text": "첫 달 100원"
         }
       ],
       "metrics": {
@@ -108,6 +116,10 @@
         {
           "kind": "join",
           "text": "300P 지급"
+        },
+        {
+          "kind": "event",
+          "text": "100원으로 30일 무제한"
         }
       ],
       "metrics": {
@@ -268,6 +280,10 @@
         {
           "kind": "join",
           "text": "1,000P 지급"
+        },
+        {
+          "kind": "event",
+          "text": "앱 설치 시 쿠폰 3장"
         }
       ],
       "metrics": {
@@ -316,6 +332,10 @@
         {
           "kind": "join",
           "text": "500P 지급"
+        },
+        {
+          "kind": "event",
+          "text": "방송 3사 콘텐츠 100원"
         }
       ],
       "metrics": {
@@ -339,7 +359,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "1,000P 지급"
+          "text": "가입 즉시 500P"
+        },
+        {
+          "kind": "event",
+          "text": "콘텐츠 100원 이벤트"
         }
       ],
       "metrics": {
@@ -388,7 +412,12 @@
       "score": "2.8",
       "reason": "카테고리별로 자료를 정리해 찾기 쉬운 서비스",
       "tags": "#카테고리 #자료정리",
-      "benefits": [],
+      "benefits": [
+        {
+          "kind": "event",
+          "text": "인스타그램 팔로우 이벤트"
+        }
+      ],
       "metrics": {
         "playApp": "com.mideak.fmav7",
         "downloads": 224778,
