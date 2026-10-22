@@ -201,16 +201,13 @@ def scales(s):
     return out
 
 
-def benefit(s):
-    """The service's sign-up benefits and events, filled in by hand in data/webhards.json, or a pointer to the site."""
-    label = {"join": "가입", "event": "이벤트"}
-    rows = "".join(
-        f'<span class="benefit-row"><em class="benefit-kind {b["kind"]}">{label[b["kind"]]}</em><b>{e(b["text"])}</b></span>'
-        for b in s.get("benefits", [])
-    )
-    if rows:
-        return rows, "지급 조건과 기간은 공식 사이트에서 확인하세요"
-    return '<span class="benefit-row"><b>공식 사이트에서 확인</b></span>', "혜택은 자주 바뀌니 가입 전에 공식 사이트 안내를 확인하세요"
+def benefit(s, kind):
+    """One benefit panel: the service's sign-up benefits or events, filled in by hand in data/webhards.json."""
+    items = [b["text"] for b in s.get("benefits", []) if b["kind"] == kind]
+    if not items:
+        return '<p class="benefit-empty">공식 사이트에서 확인하세요.</p>'
+    rows = "".join(f"<li>{e(t)}</li>" for t in items)
+    return f'<ul class="benefit-list">{rows}</ul><p class="benefit-note">지급 조건과 기간은 공식 사이트에서 확인하세요.</p>'
 
 
 def icon(x):
@@ -253,8 +250,8 @@ for i, s in enumerate(ranked):
         "{{stars}}": stars(s["score"]),
         "{{tags}}": "".join(f"<i>{e(t)}</i>" for t in s["tags"].split()),
         "{{scales}}": scales(s),
-        "{{benefit}}": benefit(s)[0],
-        "{{benefit_note}}": e(benefit(s)[1]),
+        "{{benefit_join}}": benefit(s, "join"),
+        "{{benefit_event}}": benefit(s, "event"),
         "{{metrics_short}}": metrics_date.strftime("%Y.%m.%d"),
         "{{metrics_basis}}": basis,
         "{{updated_ym}}": f"{updated.year}년 {updated.month}월",
