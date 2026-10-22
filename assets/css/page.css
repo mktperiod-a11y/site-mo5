@@ -155,9 +155,40 @@
   padding: 13px;
   font-size: 15px;
 }
+/* index box: scales on top, quick facts below, the note pinned to the bottom so the box has no empty tail */
+.detail-index {
+  display: flex;
+  flex-direction: column;
+}
+.detail-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 18px 0 0;
+}
+.detail-facts div {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f5f7fa;
+}
+.detail-facts dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.detail-facts dd {
+  margin: 4px 0 0;
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 700;
+}
+.detail-index .detail-note {
+  margin-top: auto !important;
+  padding-top: 16px;
+}
 .detail-scales .scale {
   grid-template-columns: 52px 1fr 64px;
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 14px;
 }
 .detail-scales .scale i {
