@@ -1,6 +1,7 @@
 {
   "updated": "2026-10-21",
   "metricsDate": "2026-10-21",
+  "benefitsChecked": "2026-10-20",
   "searchAnchor": "ondisk",
   "weights": {
     "popularity": 40,
@@ -41,7 +42,8 @@
         "popularity": 33.9,
         "usability": 34.1,
         "affection": 25.0
-      }
+      },
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "filesun",
@@ -66,7 +68,8 @@
         "popularity": 26.7,
         "usability": 32.9,
         "affection": 24.9
-      }
+      },
+      "benefit": "가입 혜택 300P"
     },
     {
       "id": "yesfile",
@@ -91,7 +94,8 @@
         "popularity": 30.2,
         "usability": 29.5,
         "affection": 16.4
-      }
+      },
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "smartfile",
@@ -116,7 +120,8 @@
         "popularity": 24.1,
         "usability": 31.1,
         "affection": 19.8
-      }
+      },
+      "benefit": "가입 혜택 2,000P"
     },
     {
       "id": "filejo",
@@ -141,7 +146,8 @@
         "popularity": 33.4,
         "usability": 27.3,
         "affection": 11.5
-      }
+      },
+      "benefit": "가입 혜택 500P"
     },
     {
       "id": "filemong",
@@ -166,7 +172,8 @@
         "popularity": 23.0,
         "usability": 27.6,
         "affection": 20.8
-      }
+      },
+      "benefit": "가입 혜택 300P"
     },
     {
       "id": "pdpop",
@@ -216,7 +223,8 @@
         "popularity": 24.5,
         "usability": 19.2,
         "affection": 12.2
-      }
+      },
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "tple",
@@ -266,7 +274,8 @@
         "popularity": 16.7,
         "usability": 25.1,
         "affection": 18.5
-      }
+      },
+      "benefit": "가입 혜택 300P"
     },
     {
       "id": "filecookie",
@@ -316,7 +325,8 @@
         "popularity": 19.9,
         "usability": 22.0,
         "affection": 13.2
-      }
+      },
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "filebogo",
@@ -341,7 +351,8 @@
         "popularity": 10.5,
         "usability": 21.8,
         "affection": 20.0
-      }
+      },
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "filemaru",
@@ -391,7 +402,8 @@
         "popularity": 6.9,
         "usability": 25.9,
         "affection": 17.6
-      }
+      },
+      "benefit": "가입 혜택 300P"
     },
     {
       "id": "filecity",
@@ -466,7 +478,8 @@
         "popularity": 5.4,
         "usability": 12.3,
         "affection": 0.0
-      }
+      },
+      "benefit": "가입 혜택 300P"
     }
   ]
 }

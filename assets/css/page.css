@@ -31,6 +31,9 @@
 .live-list .live-name {
   margin: 0;
 }
+.live-list .live-bar {
+  margin-top: 6px;
+}
 /* long-form text sits in the same white card as the home chart and FAQ */
 .page-box {
   padding: var(--box-pad);
@@ -545,6 +548,57 @@
   color: var(--blue);
   font-weight: 600;
 }
+/* sign-up benefit: the amount large on the left, what to check before joining on the right */
+.benefit-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--gap);
+  align-items: stretch;
+}
+.benefit-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #eef5ff, #f7faff);
+}
+.benefit-main b {
+  color: var(--navy);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+.benefit-main small {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.benefit-checks > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+.benefit-checks ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.benefit-checks li {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f5f7fa;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
 .page-box tbody th {
   width: 170px;
   color: #5d6876;
@@ -561,6 +615,12 @@
 @media (max-width: 600px) {
   .detail-top {
     grid-template-columns: 1fr;
+  }
+  .benefit-body {
+    grid-template-columns: 1fr;
+  }
+  .benefit-main b {
+    font-size: 21px;
   }
   .page-box tbody th {
     width: 120px;

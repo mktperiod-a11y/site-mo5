@@ -1,6 +1,7 @@
 {
   "updated": "2026-10-21",
   "metricsDate": "2026-10-21",
+  "benefitsChecked": "2026-10-20",
   "searchAnchor": "ondisk",
   "weights": {
     "popularity": 40,
@@ -34,7 +35,8 @@
         "rating": 4.76,
         "ratingCount": 15254
       },
-      "index": 98.6
+      "index": 98.6,
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "filesun",
@@ -52,7 +54,8 @@
         "rating": 4.7,
         "ratingCount": 14983
       },
-      "index": 96.3
+      "index": 96.3,
+      "benefit": "가입 혜택 300P"
     },
     {
       "id": "smartfile",
@@ -70,7 +73,8 @@
         "rating": 4.66,
         "ratingCount": 3923
       },
-      "index": 84.9
+      "index": 84.9,
+      "benefit": "가입 혜택 2,000P"
     },
     {
       "id": "filemong",
@@ -88,7 +92,8 @@
         "rating": 4.81,
         "ratingCount": 5012
       },
-      "index": 80.7
+      "index": 80.7,
+      "benefit": "가입 혜택 300P"
     },
     {
       "id": "yesfile",
@@ -106,7 +111,8 @@
         "rating": 3.81,
         "ratingCount": 1602
       },
-      "index": 76.5
+      "index": 76.5,
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "pdpop",
@@ -142,7 +148,8 @@
         "rating": 4.5,
         "ratingCount": 2165
       },
-      "index": 72.6
+      "index": 72.6,
+      "benefit": "가입 혜택 300P"
     },
     {
       "id": "ggulfile",
@@ -160,7 +167,8 @@
         "rating": 4.59,
         "ratingCount": 2745
       },
-      "index": 72.6
+      "index": 72.6,
+      "benefit": "가입 혜택 300P"
     },
     {
       "id": "tple",
@@ -196,7 +204,8 @@
         "rating": 4.79,
         "ratingCount": 527
       },
-      "index": 52.4
+      "index": 52.4,
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "filebogo",
@@ -214,7 +223,8 @@
         "rating": 3.51,
         "ratingCount": 4034
       },
-      "index": 69.6
+      "index": 69.6,
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "filejo",
@@ -232,7 +242,8 @@
         "rating": 4.5,
         "ratingCount": 436
       },
-      "index": 64.7
+      "index": 64.7,
+      "benefit": "가입 혜택 500P"
     },
     {
       "id": "applefile",
@@ -250,7 +261,8 @@
         "rating": 2.71,
         "ratingCount": 688
       },
-      "index": 58.7
+      "index": 58.7,
+      "benefit": "가입 혜택 1,000P"
     },
     {
       "id": "filecookie",
@@ -340,7 +352,8 @@
         "rating": 3.86,
         "ratingCount": 21
       },
-      "index": 20.4
+      "index": 20.4,
+      "benefit": "가입 혜택 300P"
     }
   ]
 }
