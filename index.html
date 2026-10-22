@@ -25,9 +25,9 @@
     <meta property="og:image:alt" content="모아온 2026 웹하드 순위" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "모아온", "url": "https://site-url.invalid/", "inLanguage": "ko-KR"}</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "웹하드 순위는 어떤 기준으로 정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "네이버 검색량으로 인기를, 구글 플레이 한국 스토어에 공개된 앱의 추정 다운로드 수와 평점으로 사용성을, 평가 수로 관심도를 계산해 합친 모아온 지수 순서입니다. 계산 방식은 순위 검증 가이드에 공개했고, 마지막 갱신일은 페이지 맨 위에 표시합니다."}}, {"@type": "Question", "name": "합법 웹하드인지 어떻게 확인하나요?", "acceptedAnswer": {"@type": "Answer", "text": "국내 웹하드는 전기통신사업법에 따라 특수한 유형의 부가통신사업자로 등록해야 운영할 수 있습니다. 서비스 하단의 사업자 정보와 등록 번호, 저작권 보호를 위한 필터링 안내가 있는지 확인하세요."}}, {"@type": "Question", "name": "가입 무료 포인트는 바로 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "대부분 사용 기한과 사용 범위가 정해져 있습니다. 일부 콘텐츠에는 쓸 수 없거나 기간이 지나면 사라질 수 있으니, 가입 전에 이벤트 안내의 유효기간과 제한 조건을 확인하세요."}}, {"@type": "Question", "name": "정액제 자동 결제는 어떻게 해지하나요?", "acceptedAnswer": {"@type": "Answer", "text": "보통 마이페이지의 결제 관리 메뉴에서 자동 연장을 끌 수 있습니다. 결제하기 전에 이용약관에서 해지 방법과 환불 조건을 먼저 확인하는 것이 안전합니다."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "웹하드 순위는 어떤 기준으로 정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "네이버 검색 관심도, 구글 플레이 앱 이용 지표, 이용자 반응 등 공개된 데이터를 종합해 산정한 모아온 지수 순서입니다. 지표는 매주 다시 수집해 반영하며, 마지막 갱신일은 페이지 맨 위에 표시합니다."}}, {"@type": "Question", "name": "합법 웹하드인지 어떻게 확인하나요?", "acceptedAnswer": {"@type": "Answer", "text": "국내 웹하드는 전기통신사업법에 따라 특수한 유형의 부가통신사업자로 등록해야 운영할 수 있습니다. 서비스 하단의 사업자 정보와 등록 번호, 저작권 보호를 위한 필터링 안내가 있는지 확인하세요."}}, {"@type": "Question", "name": "가입 무료 포인트는 바로 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "대부분 사용 기한과 사용 범위가 정해져 있습니다. 일부 콘텐츠에는 쓸 수 없거나 기간이 지나면 사라질 수 있으니, 가입 전에 이벤트 안내의 유효기간과 제한 조건을 확인하세요."}}, {"@type": "Question", "name": "정액제 자동 결제는 어떻게 해지하나요?", "acceptedAnswer": {"@type": "Answer", "text": "보통 마이페이지의 결제 관리 메뉴에서 자동 연장을 끌 수 있습니다. 결제하기 전에 이용약관에서 해지 방법과 환불 조건을 먼저 확인하는 것이 안전합니다."}}]}</script>
     <!-- ranking:jsonld -->
-    <link rel="stylesheet" href="assets/css/main.css?v=6" />
+    <link rel="stylesheet" href="assets/css/main.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#cards">본문 바로가기</a>
@@ -105,38 +105,41 @@
           </ul>
         </section>
       </aside>
-      <section class="chart-box">
-        <div class="chart-head">
-          <h2>
-            사이트별 모아온 지수
-            <span class="info">
-              <button type="button" class="info-btn" aria-label="모아온 지수 계산 방식" aria-describedby="indexHow">
-                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.25" /><path d="M7.75 7.6a2.3 2.3 0 0 1 4.45.75c0 1.55-2.2 1.9-2.2 3.3" /><circle class="dot" cx="10" cy="14.4" r=".9" /></svg>
-              </button>
-              <span class="info-pop" id="indexHow" role="tooltip"
-                ><b>모아온 지수(0~100)는 세 항목을 더해 계산해요.</b>
-                <span>· 인기 {{w_popularity}}%: 네이버 검색량</span>
-                <span>· 사용성 {{w_usability}}%: 구글 플레이 추정 다운로드·평점</span>
-                <span>· 애정 {{w_affection}}%: 구글 플레이 평가 수</span>
-                <small>매주 월요일 다시 수집하며, 주간 보정 점수가 더해질 수 있어요.</small></span
-              >
-            </span>
-          </h2>
-          <p>{{metrics_basis}} 기준 · 막대를 가리키거나 누르면 그 서비스의 항목별 점수가 보여요</p>
-          <div class="chart-meta">
-            <span class="meta-row"><span class="live-dot" aria-hidden="true"></span><b><time datetime="{{metrics_iso}}">{{metrics_short}}</time> 수집</b> · 매주 월요일 갱신</span>
-            <span class="next-update" id="nextUpdate" hidden></span>
+      <section class="block">
+        <h2 class="section-title">
+          사이트별 모아온 지수
+          <span class="info">
+            <button type="button" class="info-btn" aria-label="모아온 지수 산정 기준" aria-describedby="indexHow">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.25" /><path d="M7.75 7.6a2.3 2.3 0 0 1 4.45.75c0 1.55-2.2 1.9-2.2 3.3" /><circle class="dot" cx="10" cy="14.4" r=".9" /></svg>
+            </button>
+            <span class="info-pop" id="indexHow" role="tooltip"
+              ><b>모아온 지수는 공개된 지표를 종합해 산정해요.</b>
+              <span>· 인기: 네이버 검색 관심도</span>
+              <span>· 사용성: 구글 플레이 앱 이용 지표</span>
+              <span>· 애정: 이용자 반응</span>
+              <small>지표는 매주 월요일 다시 수집해 반영해요.</small></span
+            >
+          </span>
+        </h2>
+        <div class="chart-box">
+          <div class="chart-head">
+            <p>{{metrics_basis}} 기준 · 막대를 가리키거나 누르면 그 서비스의 항목별 점수가 보여요</p>
+            <div class="chart-meta">
+              <span class="meta-row"><span class="live-dot" aria-hidden="true"></span><b><time datetime="{{metrics_iso}}">{{metrics_short}}</time> 수집</b> · 매주 월요일 갱신</span>
+              <span class="next-update" id="nextUpdate" hidden></span>
+            </div>
           </div>
+            <div class="chart wait" id="chart"><!-- ranking:chart --></div>
         </div>
-        <div class="chart wait" id="chart"><!-- ranking:chart --></div>
       </section>
-      <section class="faq">
-        <h2>자주 묻는 질문</h2>
+      <section class="block">
+        <h2 class="section-title">자주 묻는 질문</h2>
+        <div class="faq">
         <p class="summary"><!-- ranking:summary --></p>
         <dl>
           <div class="faq-item">
             <dt>웹하드 순위는 어떤 기준으로 정하나요?</dt>
-            <dd>네이버 검색량으로 인기를, 구글 플레이 한국 스토어에 공개된 앱의 추정 다운로드 수와 평점으로 사용성을, 평가 수로 관심도를 계산해 합친 모아온 지수 순서입니다. 계산 방식은 순위 검증 가이드에 공개했고, 마지막 갱신일은 페이지 맨 위에 표시합니다.</dd>
+            <dd>네이버 검색 관심도, 구글 플레이 앱 이용 지표, 이용자 반응 등 공개된 데이터를 종합해 산정한 모아온 지수 순서입니다. 지표는 매주 다시 수집해 반영하며, 마지막 갱신일은 페이지 맨 위에 표시합니다.</dd>
           </div>
           <div class="faq-item">
             <dt>합법 웹하드인지 어떻게 확인하나요?</dt>
@@ -151,6 +154,7 @@
             <dd>보통 마이페이지의 결제 관리 메뉴에서 자동 연장을 끌 수 있습니다. 결제하기 전에 이용약관에서 해지 방법과 환불 조건을 먼저 확인하는 것이 안전합니다.</dd>
           </div>
         </dl>
+        </div>
       </section>
       <p class="disclaimer">
         ※ 모아온 지수는 {{metrics_basis}}로 계산하며({{metrics_date}} 수집), 매주 월요일 갱신됩니다.
