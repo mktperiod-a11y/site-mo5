@@ -11,6 +11,7 @@ sitemap.xml, and exits non-zero if any are left over.
 import base64
 import html
 import json
+import random
 import re
 import sys
 from datetime import date, datetime, timedelta, timezone
@@ -201,26 +202,31 @@ def scales(s):
 
 
 def benefit(s):
-    """The service's sign-up benefit while the last check is under 45 days old, otherwise a pointer to the site."""
-    checked = data.get("benefitsChecked")
-    if s.get("benefit") and checked and (today - date.fromisoformat(checked)).days <= 45:
-        amount = s["benefit"].removeprefix("가입 혜택").strip()  # the box title already says 가입 혜택
-        return f"가입 시 {amount}", f"{date.fromisoformat(checked):%Y.%m.%d} 기준 · 지급 조건과 기간은 공식 사이트에서 확인하세요"
-    return "공식 사이트에서 확인", "혜택은 자주 바뀌니 가입 전에 공식 사이트 안내를 확인하세요"
+    """The service's benefits as written in data/webhards.json (filled in by hand), or a pointer to the site."""
+    if s.get("benefits"):
+        return "".join(f"<b>{e(b)}</b>" for b in s["benefits"]), "지급 조건과 기간은 공식 사이트에서 확인하세요"
+    return "<b>공식 사이트에서 확인</b>", "혜택은 자주 바뀌니 가입 전에 공식 사이트 안내를 확인하세요"
+
+
+def icon(x):
+    """App icon when assets/app/<id>.webp exists, otherwise the wordmark logo in the same rounded tile."""
+    if (site / "assets/app" / f"{x['id']}.webp").exists():
+        return f'<img src="../../assets/app/{x["id"]}.webp" alt="" width="44" height="44" loading="lazy" />'
+    return f'<img class="wordmark" src="../../{x["logo"]}" alt="" width="44" height="44" loading="lazy" />'
 
 
 def other_row(x):
-    """Rank row like the home side ranking (1·2·3 numbers in color), with the name linking to the detail page."""
-    i = ranked.index(x)
-    grade = f" r{i + 1}" if i < 3 else ""
+    """A linked row: icon, name and one-line reason. No rank numbers."""
     return (
-        f'\n          <div class="live-row{grade}"><b>{i + 1}</b><div><a class="live-name" href="../{x["id"]}/">{e(x["name"])}</a></div>'
-        f'<small>{x["index"]}</small></div>'
+        f'\n          <a class="other-row" href="../{x["id"]}/"><span class="other-icon">{icon(x)}</span>'
+        f'<span class="other-text"><b>{e(x["name"])}</b><small>{e(x["reason"])}</small></span></a>'
     )
 
 
 for i, s in enumerate(ranked):
-    others = [x for x in ranked[:6] if x["id"] != s["id"]][:5]
+    # five other services from this week's ranking, a different mix per page and per week
+    pool = [x for x in services if x["id"] != s["id"]]
+    others = random.Random(f"{week_start.isoformat()}-{s['id']}").sample(pool, min(5, len(pool)))
     page_ld = [
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "모아온", "item": "https://site-url.invalid/"},
@@ -242,7 +248,7 @@ for i, s in enumerate(ranked):
         "{{stars}}": stars(s["score"]),
         "{{tags}}": "".join(f"<i>{e(t)}</i>" for t in s["tags"].split()),
         "{{scales}}": scales(s),
-        "{{benefit}}": e(benefit(s)[0]),
+        "{{benefit}}": benefit(s)[0],
         "{{benefit_note}}": e(benefit(s)[1]),
         "{{metrics_short}}": metrics_date.strftime("%Y.%m.%d"),
         "{{metrics_basis}}": basis,

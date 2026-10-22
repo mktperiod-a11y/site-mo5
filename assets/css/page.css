@@ -566,6 +566,66 @@
   font-size: 13px;
   line-height: 1.6;
 }
+.benefit-main b + b {
+  margin-top: 2px;
+}
+/* other services: app icon, name and one-line reason, no rank numbers */
+.other-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.other-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 4px;
+  border-top: 1px solid #edf0f3;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+.other-row:first-child {
+  border-top: 0;
+}
+.other-row:hover {
+  background: #f5f7fa;
+}
+.other-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+.other-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.other-icon img.wordmark {
+  width: 90%;
+  object-fit: contain;
+}
+.other-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.other-text b {
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 700;
+}
+.other-text small {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .page-box tbody th {
   width: 170px;
   color: #5d6876;

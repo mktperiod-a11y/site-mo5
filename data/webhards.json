@@ -1,7 +1,6 @@
 {
   "updated": "2026-10-21",
   "metricsDate": "2026-10-21",
-  "benefitsChecked": "2026-10-20",
   "searchAnchor": "ondisk",
   "weights": {
     "popularity": 40,
@@ -29,6 +28,9 @@
       "score": "4.7",
       "reason": "콘텐츠 범위와 이용 편의성이 균형 잡힌 종합 서비스",
       "tags": "#종합콘텐츠 #PC모바일",
+      "benefits": [
+        "앱 설치 이벤트 2,000P"
+      ],
       "metrics": {
         "playApp": "com.ondisk.mobile4v18M",
         "downloads": 962576,
@@ -42,8 +44,7 @@
         "popularity": 33.9,
         "usability": 34.1,
         "affection": 25.0
-      },
-      "benefit": "가입 혜택 1,000P"
+      }
     },
     {
       "id": "filesun",
@@ -55,6 +56,9 @@
       "score": "4.2",
       "reason": "다양한 장르와 프로모션을 함께 살펴보기 좋은 서비스",
       "tags": "#프로모션 #여러장르",
+      "benefits": [
+        "가입 시 300P"
+      ],
       "metrics": {
         "playApp": "com.is.filesun.version4",
         "downloads": 780581,
@@ -68,8 +72,7 @@
         "popularity": 26.7,
         "usability": 32.9,
         "affection": 24.9
-      },
-      "benefit": "가입 혜택 300P"
+      }
     },
     {
       "id": "yesfile",
@@ -81,6 +84,9 @@
       "score": "3.8",
       "reason": "오래 운영된 대형 서비스로 자료 범위가 넓은 서비스",
       "tags": "#대형자료실 #장기운영",
+      "benefits": [
+        "가입 시 1,000P"
+      ],
       "metrics": {
         "playApp": "com.mnt.aos.yesfile.shortcuts",
         "downloads": 682765,
@@ -94,8 +100,7 @@
         "popularity": 30.2,
         "usability": 29.5,
         "affection": 16.4
-      },
-      "benefit": "가입 혜택 1,000P"
+      }
     },
     {
       "id": "smartfile",
@@ -107,6 +112,9 @@
       "score": "3.8",
       "reason": "기본 기능과 가벼운 입문 흐름을 확인하기 좋은 서비스",
       "tags": "#입문형 #간편이용",
+      "benefits": [
+        "가입 시 2,000P"
+      ],
       "metrics": {
         "playApp": "kr.smartfile.smartcrew3down",
         "downloads": 568157,
@@ -120,8 +128,7 @@
         "popularity": 24.1,
         "usability": 31.1,
         "affection": 19.8
-      },
-      "benefit": "가입 혜택 2,000P"
+      }
     },
     {
       "id": "filejo",
@@ -133,6 +140,9 @@
       "score": "3.6",
       "reason": "카테고리 구성이 촘촘해 자료를 고르기 쉬운 서비스",
       "tags": "#카테고리 #다양한장르",
+      "benefits": [
+        "가입 시 500P"
+      ],
       "metrics": {
         "playApp": "com.funbox.jlsco",
         "downloads": 298560,
@@ -146,8 +156,7 @@
         "popularity": 33.4,
         "usability": 27.3,
         "affection": 11.5
-      },
-      "benefit": "가입 혜택 500P"
+      }
     },
     {
       "id": "filemong",
@@ -159,6 +168,9 @@
       "score": "3.6",
       "reason": "간결한 화면과 빠른 검색을 갖춘 서비스",
       "tags": "#간결UI #빠른검색",
+      "benefits": [
+        "가입 시 300P"
+      ],
       "metrics": {
         "playApp": "com.me.filemong",
         "downloads": 262264,
@@ -172,8 +184,7 @@
         "popularity": 23.0,
         "usability": 27.6,
         "affection": 20.8
-      },
-      "benefit": "가입 혜택 300P"
+      }
     },
     {
       "id": "pdpop",
@@ -185,6 +196,7 @@
       "score": "3.6",
       "reason": "방송·예능 자료를 중심으로 둘러보기 좋은 서비스",
       "tags": "#방송예능 #최신회차",
+      "benefits": [],
       "metrics": {
         "playApp": "com.pdpop.download4",
         "downloads": 278330,
@@ -210,6 +222,9 @@
       "score": "3.5",
       "reason": "간결한 화면과 직관적인 카테고리가 돋보이는 서비스",
       "tags": "#쉬운탐색 #다양한장르",
+      "benefits": [
+        "가입 시 1,000P"
+      ],
       "metrics": {
         "playApp": "com.kdisk.mobileapp5",
         "downloads": 54478,
@@ -223,8 +238,7 @@
         "popularity": 24.5,
         "usability": 19.2,
         "affection": 12.2
-      },
-      "benefit": "가입 혜택 1,000P"
+      }
     },
     {
       "id": "tple",
@@ -236,6 +250,7 @@
       "score": "3.5",
       "reason": "합법 콘텐츠 중심으로 영화·드라마를 둘러보기 좋은 서비스",
       "tags": "#합법콘텐츠 #영화드라마",
+      "benefits": [],
       "metrics": {
         "playApp": "kr.co.tple.downapp",
         "downloads": 169208,
@@ -261,6 +276,9 @@
       "score": "3.5",
       "reason": "가입 혜택과 단순한 이용 흐름으로 알려진 서비스",
       "tags": "#가입혜택 #간결UI",
+      "benefits": [
+        "가입 시 300P"
+      ],
       "metrics": {
         "playApp": "com.ggulfile.app.ggulfile_app",
         "downloads": 185153,
@@ -274,8 +292,7 @@
         "popularity": 16.7,
         "usability": 25.1,
         "affection": 18.5
-      },
-      "benefit": "가입 혜택 300P"
+      }
     },
     {
       "id": "filecookie",
@@ -287,6 +304,7 @@
       "score": "3.5",
       "reason": "가벼운 화면과 간단한 결제 흐름을 갖춘 서비스",
       "tags": "#간편결제 #가벼운화면",
+      "benefits": [],
       "metrics": {
         "playApp": "com.filekukiv6",
         "downloads": 58016,
@@ -312,6 +330,9 @@
       "score": "3.5",
       "reason": "신규 가입 혜택을 비교해 보기 좋은 서비스",
       "tags": "#가입혜택 #이벤트",
+      "benefits": [
+        "가입 시 1,000P"
+      ],
       "metrics": {
         "playApp": "com.mnt.aos.applefile.shortcuts",
         "downloads": 248875,
@@ -325,8 +346,7 @@
         "popularity": 19.9,
         "usability": 22.0,
         "affection": 13.2
-      },
-      "benefit": "가입 혜택 1,000P"
+      }
     },
     {
       "id": "filebogo",
@@ -338,6 +358,9 @@
       "score": "3.5",
       "reason": "영상 위주 자료를 빠르게 찾아보기 좋은 서비스",
       "tags": "#영상자료 #빠른검색",
+      "benefits": [
+        "가입 시 1,000P"
+      ],
       "metrics": {
         "playApp": "com.winpeople.filebogo",
         "downloads": 192771,
@@ -351,8 +374,7 @@
         "popularity": 10.5,
         "usability": 21.8,
         "affection": 20.0
-      },
-      "benefit": "가입 혜택 1,000P"
+      }
     },
     {
       "id": "filemaru",
@@ -364,6 +386,7 @@
       "score": "3.5",
       "reason": "카테고리별로 자료를 정리해 찾기 쉬운 서비스",
       "tags": "#카테고리 #자료정리",
+      "benefits": [],
       "metrics": {
         "playApp": "com.mideak.fmav7",
         "downloads": 224778,
@@ -389,6 +412,9 @@
       "score": "3.5",
       "reason": "신규 혜택과 구독형 이용 방식을 비교하기 좋은 서비스",
       "tags": "#신규인기 #이벤트",
+      "benefits": [
+        "가입 시 300P"
+      ],
       "metrics": {
         "playApp": "com.ssadafile.app.ssadafilev1",
         "downloads": 230717,
@@ -402,8 +428,7 @@
         "popularity": 6.9,
         "usability": 25.9,
         "affection": 17.6
-      },
-      "benefit": "가입 혜택 300P"
+      }
     },
     {
       "id": "filecity",
@@ -415,6 +440,7 @@
       "score": "3.5",
       "reason": "오래 운영된 서비스로 자료 범위가 넓은 서비스",
       "tags": "#장기운영 #다양한자료",
+      "benefits": [],
       "metrics": {
         "playApp": "kr.co.filecity.filecity_mobile_flutter_google2",
         "downloads": 59657,
@@ -440,6 +466,7 @@
       "score": "3.5",
       "reason": "PC와 모바일에서 익숙한 이용 환경을 제공하는 서비스",
       "tags": "#PC모바일 #자료검색",
+      "benefits": [],
       "metrics": {
         "playApp": "com.todisk.aosdown",
         "downloads": 71401,
@@ -465,6 +492,9 @@
       "score": "3.5",
       "reason": "다운로드 중심 기능과 이벤트를 확인하기 좋은 서비스",
       "tags": "#다운로드 #이벤트",
+      "benefits": [
+        "가입 시 300P"
+      ],
       "metrics": {
         "playApp": "com.me.filestar2",
         "downloads": 16046,
@@ -478,8 +508,7 @@
         "popularity": 5.4,
         "usability": 12.3,
         "affection": 0.0
-      },
-      "benefit": "가입 혜택 300P"
+      }
     }
   ]
 }
