@@ -451,6 +451,9 @@ header {
 .events li:last-child {
   border: 0;
 }
+.events li[hidden] {
+  display: none;
+}
 .events ul {
   margin: 0;
   padding: 0;

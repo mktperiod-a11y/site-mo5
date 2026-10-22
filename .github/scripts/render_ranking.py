@@ -158,18 +158,19 @@ tokens = {
     ),
     "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']} (모아온 지수 {s['index']}): {s['reason']}" for i, s in enumerate(services)),
 }
-def daily_benefits():
-    """Home side box: five of this week's top services with one of their benefits, a new draw every day (KST).
-    A short line is preferred so it fits the narrow box; the daily scheduled deploy refreshes it."""
+def benefit_rows():
+    """Home side box: every benefit of this week's top services, one row each. The page script shows five services
+    with one of their lines, a new draw on every load; without the script the first draw below stays visible."""
     rng = random.Random(today.isoformat())
     pool = [s for s in services if s.get("benefits")]
-    rows = ""
-    for s in rng.sample(pool, min(5, len(pool))):
-        texts = [b["text"] for b in s["benefits"]]
-        short = [t for t in texts if len(t) <= 14] or [min(texts, key=len)]
-        text = rng.choice(short)
-        rows += (f'\n            <li><a href="webhard/{s["id"]}/">{e(s["name"])}</a>'
-                 f'<b title="{e(text)}">{e(text)}</b></li>')
+    shown = {s["id"] for s in rng.sample(pool, min(5, len(pool)))}
+    rows, used = "", set()
+    for s in pool:
+        for b in s["benefits"]:
+            first = s["id"] in shown and s["id"] not in used
+            used |= {s["id"]} if first else set()
+            rows += (f'\n            <li data-id="{s["id"]}"{"" if first else " hidden"}><a href="webhard/{s["id"]}/">{e(s["name"])}</a>'
+                     f'<b title="{e(b["text"])}">{e(b["text"])}</b></li>')
     return rows + "\n          "
 
 
@@ -178,7 +179,7 @@ markers = {
     "live": "".join(live_row(i, s) for i, s in enumerate(services[:5])),
     "chart": "".join(bar(i, s) for i, s in enumerate(services)),
     "summary": summary,
-    "benefits": daily_benefits(),
+    "benefits": benefit_rows(),
     "jsonld": jsonld,
     "sitemap_details": "\n".join(
         f"<url><loc>https://site-url.invalid/webhard/{s['id']}/</loc><lastmod>{updated.isoformat()}</lastmod></url>" for s in ranked
