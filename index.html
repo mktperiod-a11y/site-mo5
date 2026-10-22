@@ -27,7 +27,7 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "모아온", "url": "https://site-url.invalid/", "inLanguage": "ko-KR"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "웹하드 순위는 어떤 기준으로 정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "네이버 검색 관심도, 구글 플레이 앱 이용 지표, 이용자 반응을 종합한 모아온 지수 순서입니다. 지표는 매주 월요일 다시 수집해 반영합니다."}}, {"@type": "Question", "name": "합법 웹하드인지 어떻게 확인하나요?", "acceptedAnswer": {"@type": "Answer", "text": "국내 웹하드는 부가통신사업자로 등록해야 운영할 수 있습니다. 서비스 하단에서 사업자 정보와 등록 번호, 저작권 필터링 안내를 확인하세요."}}, {"@type": "Question", "name": "가입 무료 포인트는 바로 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "대부분 사용 기한과 사용 범위가 정해져 있습니다. 가입 전에 이벤트의 유효기간과 제한 조건을 확인하세요."}}, {"@type": "Question", "name": "정액제 자동 결제는 어떻게 해지하나요?", "acceptedAnswer": {"@type": "Answer", "text": "보통 마이페이지의 결제 관리에서 자동 연장을 끌 수 있습니다. 해지 방법과 환불 조건은 결제 전에 이용약관에서 확인하세요."}}]}</script>
     <!-- ranking:jsonld -->
-    <link rel="stylesheet" href="assets/css/main.css?v=18" />
+    <link rel="stylesheet" href="assets/css/main.css?v=19" />
   </head>
   <body>
     <a class="skip-link" href="#cards">본문 바로가기</a>
@@ -98,14 +98,8 @@
           <div id="live"><!-- ranking:live --></div>
         </section>
         <section class="side-box events">
-          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5a2.5 2.5 0 0 1 0 5v3A2.5 2.5 0 0 0 5.5 20h13a2.5 2.5 0 0 0 2.5-2.5v-3a2.5 2.5 0 0 1 0-5v-3A2.5 2.5 0 0 0 18.5 4h-13A2.5 2.5 0 0 0 3 6.5Z"/><path d="m14.5 9.5-5 5M9.5 9.5h.01M14.5 14.5h.01"/></svg></span>{{this_month}} 가입 전 혜택 확인</h3>
-          <ul>
-            <li><span>신규 가입</span><b>보너스 지급 범위</b></li>
-            <li><span>본인인증</span><b>추가 지급 여부</b></li>
-            <li><span>정액제</span><b>첫 결제 할인</b></li>
-            <li><span>이벤트 포인트</span><b>사용 기한</b></li>
-            <li><span>자동 결제</span><b>해지 방법</b></li>
-          </ul>
+          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5a2.5 2.5 0 0 1 0 5v3A2.5 2.5 0 0 0 5.5 20h13a2.5 2.5 0 0 0 2.5-2.5v-3a2.5 2.5 0 0 1 0-5v-3A2.5 2.5 0 0 0 18.5 4h-13A2.5 2.5 0 0 0 3 6.5Z"/><path d="m14.5 9.5-5 5M9.5 9.5h.01M14.5 14.5h.01"/></svg></span>{{this_month}} 웹하드 혜택</h3>
+          <ul><!-- ranking:benefits --></ul>
         </section>
       </aside>
       <section class="block">

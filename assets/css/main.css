@@ -428,10 +428,25 @@ header {
   font-size: 14px;
   list-style: none;
 }
+.events li {
+  gap: 12px;
+}
+.events li a {
+  flex: none;
+  color: #3d4856;
+}
+.events li a:hover {
+  color: var(--navy);
+  text-decoration: underline;
+}
 .events li b {
+  min-width: 0;
+  overflow: hidden;
   color: #5d6876;
   font-size: 13px;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .events li:last-child {
   border: 0;
