@@ -153,7 +153,7 @@ tokens = {
     "{{w_usability}}": str(data["weights"]["usability"]),
     "{{w_affection}}": str(data["weights"]["affection"]),
     "{{detail_links}}": "\n".join(
-        f"- [{s['name']}](https://site-url.invalid/webhard/{s['id']}/): 모아온 지수·평점·다운로드·검색 관심도" for s in ranked
+        f"- [{s['name']}](https://site-url.invalid/webhard/{s['id']}/): 모아온 지수·가입 혜택" for s in ranked
     ),
     "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']} (모아온 지수 {s['index']}): {s['reason']}" for i, s in enumerate(services)),
 }
@@ -200,21 +200,23 @@ def scales(s):
     return out
 
 
-def metric_rows(s):
-    m = s.get("metrics", {})
-    rows = []
-    if "rating" in m:
-        rows.append(("구글 플레이 평점", f"{m['rating']:.2f} / 5 (평가 {m['ratingCount']:,}개)"))
-    if "downloads" in m:
-        rows.append(("추정 다운로드", f"약 {m['downloads'] / 10000:,.0f}만 회"))
-    if "search" in m:
-        anchor = next((x["name"] for x in ranked if x["id"] == data.get("searchAnchor")), "기준 업체")
-        rows.append(("네이버 검색 관심도", f"{m['search']} ({anchor} = 100, 최근 4주)"))
-    if "searchChange" in m:
-        rows.append(("지난주 검색 변동", f"{m['searchChange'] * 100:+.1f}%"))
-    if "searchMonthly" in m:
-        rows.append(("네이버 월간 조회수", f"{m['searchMonthly']:,}회"))
-    return "".join(f"\n            <tr><th>{a}</th><td>{b}</td></tr>" for a, b in rows)
+def benefit(s):
+    """The service's sign-up benefit while the last check is under 45 days old, otherwise a pointer to the site."""
+    checked = data.get("benefitsChecked")
+    if s.get("benefit") and checked and (today - date.fromisoformat(checked)).days <= 45:
+        amount = s["benefit"].removeprefix("가입 혜택").strip()  # the box title already says 가입 혜택
+        return f"가입 시 {amount}", f"{date.fromisoformat(checked):%Y.%m.%d} 기준 · 지급 조건과 기간은 공식 사이트에서 확인하세요"
+    return "공식 사이트에서 확인", "혜택은 자주 바뀌니 가입 전에 공식 사이트 안내를 확인하세요"
+
+
+def other_row(x):
+    """Same rank row as the home side ranking (1·2·3 highlighted, bar), with the name linking to the detail page."""
+    i = ranked.index(x)
+    grade = f" r{i + 1}" if i < 3 else ""
+    return (
+        f'\n          <div class="live-row{grade}"><b>{i + 1}</b><div><a class="live-name" href="../{x["id"]}/">{e(x["name"])}</a>'
+        f'<i class="live-bar" style="--w:{round(x["index"] / top * 100)}%"></i></div><small>{x["index"]}</small></div>'
+    )
 
 
 for i, s in enumerate(ranked):
@@ -223,7 +225,7 @@ for i, s in enumerate(ranked):
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "모아온", "item": "https://site-url.invalid/"},
             {"@type": "ListItem", "position": 2, "name": s["name"], "item": f"https://site-url.invalid/webhard/{s['id']}/"}]},
-        {"@context": "https://schema.org", "@type": "WebPage", "name": f"{s['name']} 순위·평점·다운로드 정보",
+        {"@context": "https://schema.org", "@type": "WebPage", "name": f"{s['name']} 순위·가입 혜택 정보",
          "url": f"https://site-url.invalid/webhard/{s['id']}/", "inLanguage": "ko-KR", "dateModified": updated.isoformat()},
     ]
     fill = {
@@ -240,17 +242,16 @@ for i, s in enumerate(ranked):
         "{{stars}}": stars(s["score"]),
         "{{tags}}": "".join(f"<i>{e(t)}</i>" for t in s["tags"].split()),
         "{{scales}}": scales(s),
-        "{{metric_rows}}": metric_rows(s),
+        "{{benefit}}": e(benefit(s)[0]),
+        "{{benefit_note}}": e(benefit(s)[1]),
         "{{metrics_short}}": metrics_date.strftime("%Y.%m.%d"),
         "{{metrics_basis}}": basis,
         "{{updated_ym}}": f"{updated.year}년 {updated.month}월",
         "{{description}}": e(f"{s['name']} {updated.year}년 {updated.month}월 모아온 지수 {s['index']}·{i + 1}위. "
-                             f"{s['reason']}. 구글 플레이 평점, 추정 다운로드, 네이버 검색 관심도를 한눈에 확인하세요."),
+                             f"{s['reason']}. 모아온 지수 구성과 가입 혜택을 한눈에 확인하세요."),
         "{{jsonld}}": "".join('<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
                               + "</script>" for d in page_ld),
-        "{{others}}": "".join(
-            f'\n          <div class="live-row"><b>{ranked.index(x) + 1}</b><div><a class="live-name" href="../{x["id"]}/">{e(x["name"])}</a></div>'
-            f'<small>{x["index"]}</small></div>' for x in others),
+        "{{others}}": "".join(other_row(x) for x in others),
     }
     text = TEMPLATE
     for key, value in fill.items():
