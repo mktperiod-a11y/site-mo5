@@ -559,7 +559,8 @@ header {
   position: relative;
   height: var(--h);
   border-radius: 7px 7px 0 0;
-  background: #c4dbfa;
+  background: var(--c);
+  opacity: 0.9;
   transition:
     height 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
     width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
@@ -570,14 +571,13 @@ header {
 .chart.wait .bar {
   height: 0;
 }
-/* one calm blue for every bar (length carries the value, the name under it the service); the one pointed at turns solid */
+/* each bar in its service's vivid logo color; pointing at one dims the rest */
 .chart:hover .bar,
 .chart:focus-within .bar {
-  opacity: 0.55;
+  opacity: 0.35;
 }
 .chart .bar:hover,
 .chart .bar:focus {
-  background: var(--blue);
   opacity: 1;
   outline: none;
 }
@@ -1138,13 +1138,10 @@ img {
     bottom: auto;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--navy);
+    color: #fff;
     font-size: 13px;
     font-weight: 700;
-  }
-  .chart .bar:hover:after,
-  .chart .bar:focus:after {
-    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
   }
   .chart-box {
     grid-column: auto;
