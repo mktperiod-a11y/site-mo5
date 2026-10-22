@@ -231,6 +231,7 @@ for i, s in enumerate(ranked):
         "{{reason}}": e(s["reason"]),
         "{{logo}}": s["logo"],
         "{{rank}}": str(i + 1),
+        "{{total}}": str(len(ranked)),
         "{{move}}": move(i, s),
         "{{index}}": str(s["index"]),
         "{{score}}": s["score"],
