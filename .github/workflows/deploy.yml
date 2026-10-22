@@ -45,6 +45,8 @@ jobs:
 
           # write the ranking into static HTML so crawlers that do not run JavaScript can read it
           python3 .github/scripts/render_ranking.py _site
+          # the raw data (metrics, weights, rank rules) stays in the repo only, not on the site
+          rm -rf _site/data
 
           grep -rlZ 'https://site-url\.invalid' _site \
             | xargs -0 -r sed -i "s|https://site-url\.invalid|${BASE_URL}|g"

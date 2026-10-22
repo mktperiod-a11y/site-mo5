@@ -86,4 +86,4 @@
 - 메인 순위(카드·실시간 순위·차트·요약 문장·구조화 데이터)는 브라우저에서 만들지 않는다. 배포 때 `.github/scripts/render_ranking.py`가 `data/webhards.json`으로 `index.html`·`llms.txt`·`sitemap.xml`의 `{{…}}`와 `<!-- ranking:… -->` 자리를 채운다. 자바스크립트를 실행하지 않는 검색·AI 수집기도 순위를 읽게 하려는 것이다. 저장소의 `index.html`은 빈 자리만 있으므로, 로컬에서 볼 때는 사본에 이 스크립트를 돌려서 본다.
 - 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 순위 채우기 → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다.
 - 쓰는 Secret: `PRIVACY_PATTERNS`(금지 문자열), `NAVER_CLIENT_ID`·`NAVER_CLIENT_SECRET`(NAVER API HUB 검색어 트렌드), `NAVER_AD_API_KEY`·`NAVER_AD_SECRET`·`NAVER_AD_CUSTOMER_ID`(검색광고, 선택). 워크플로에서 값을 출력하지 않는다.
-- 사이트 결과물에서 `.github`, `.gitattributes`, `.gitignore`, `README.md`, `CLAUDE.md`는 빠진다. `.gitattributes`는 GitHub 언어 통계에 `.github/scripts`의 파이썬을 넣으려고 둔다. 사이트에 올리지 않을 파일을 루트에 추가하면 `deploy.yml`의 제외 목록에도 넣는다.
+- 사이트 결과물에서 `.github`, `.gitattributes`, `.gitignore`, `README.md`, `CLAUDE.md`와 `data/`(순위를 채운 뒤 지운다)는 빠진다. `.gitattributes`는 GitHub 언어 통계에 `.github/scripts`의 파이썬을 넣으려고 둔다. 사이트에 올리지 않을 파일을 루트에 추가하면 `deploy.yml`의 제외 목록에도 넣는다.
