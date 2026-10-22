@@ -98,7 +98,7 @@
           <div id="live"><!-- ranking:live --></div>
         </section>
         <section class="side-box events">
-          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5a2.5 2.5 0 0 1 0 5v3A2.5 2.5 0 0 0 5.5 20h13a2.5 2.5 0 0 0 2.5-2.5v-3a2.5 2.5 0 0 1 0-5v-3A2.5 2.5 0 0 0 18.5 4h-13A2.5 2.5 0 0 0 3 6.5Z"/><path d="m14.5 9.5-5 5M9.5 9.5h.01M14.5 14.5h.01"/></svg></span>{{this_month}} 웹하드 혜택</h3>
+          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5a2.5 2.5 0 0 1 0 5v3A2.5 2.5 0 0 0 5.5 20h13a2.5 2.5 0 0 0 2.5-2.5v-3a2.5 2.5 0 0 1 0-5v-3A2.5 2.5 0 0 0 18.5 4h-13A2.5 2.5 0 0 0 3 6.5Z"/><path d="m14.5 9.5-5 5M9.5 9.5h.01M14.5 14.5h.01"/></svg></span><span><span id="benefitMonth">{{this_month}}</span> 웹하드 혜택</span></h3>
           <ul><!-- ranking:benefits --></ul>
         </section>
       </aside>
@@ -176,6 +176,8 @@
       growChart(document.querySelector("#chart"));
       countdown(document.querySelector("#nextUpdate"));
       pickBenefits(document.querySelector(".events ul"));
+      // the month in the benefit box follows today's date (KST), so it turns over on the 1st without a new deploy
+      document.querySelector("#benefitMonth").textContent = `${new Date(Date.now() + 9 * 3600e3).getUTCMonth() + 1}월`;
       liveBadge(document.querySelector("#liveBadge"), document.querySelector(".chart-meta time"));
       faqLayout([...document.querySelectorAll(".faq-item")]);
       // five services with one of their benefits, drawn again on every page load
