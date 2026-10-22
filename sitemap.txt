@@ -1,3 +1,0 @@
-https://site-url.invalid/
-https://site-url.invalid/content-guide.html
-https://site-url.invalid/criteria.html

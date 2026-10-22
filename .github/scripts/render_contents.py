@@ -86,4 +86,7 @@ for key, value in fills.items():
         sys.exit(f"::error::content-guide.html에 {key} 자리가 없습니다.")
     html = html.replace(key, value)
 page.write_text(html, encoding="utf-8")
+# the sitemap dates the content guide by its last collection
+sitemap = site / "sitemap.xml"
+sitemap.write_text(sitemap.read_text(encoding="utf-8").replace("{{contents_iso}}", fills["{{contents_iso}}"]), encoding="utf-8")
 print(f"콘텐츠 순위 채움: {period}")
