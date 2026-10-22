@@ -166,6 +166,9 @@ header {
   flex-direction: column;
   padding: 18px 15px 15px;
 }
+.card h2 a:hover {
+  text-decoration: underline;
+}
 .card h2 {
   margin: 0 0 8px;
   color: var(--navy);
@@ -241,9 +244,15 @@ header {
   font-style: normal;
   font-weight: 600;
 }
+/* the go button is a <button>, so it also resets the browser button look */
 .go {
   display: block;
+  width: 100%;
   margin-top: auto;
+  border: 0;
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
   padding: 10px;
   border-radius: 7px;
   background: var(--navy);
@@ -1271,7 +1280,7 @@ img {
     background: #f8fafc;
   }
   .card-body,
-  .trust {
+  .card .trust {
     display: contents;
   }
   .visual {
@@ -1293,13 +1302,13 @@ img {
     margin: 0;
     font-size: 15px;
   }
-  .trust b,
-  .stars,
-  .score small,
-  .reason b {
+  .card .trust b,
+  .card .stars,
+  .card .score small,
+  .card .reason b {
     display: none;
   }
-  .score {
+  .card .score {
     grid-area: score;
     margin: 0;
     padding: 2px 7px;
@@ -1309,21 +1318,21 @@ img {
     font-size: 12px;
     white-space: nowrap;
   }
-  .score::before {
+  .card .score::before {
     content: "★ ";
   }
-  .tags {
+  .card .tags {
     grid-area: tags;
     margin: 12px 0 8px;
   }
-  .reason {
+  .card .reason {
     grid-area: reason;
     display: block;
     margin: 0 0 12px;
     padding: 0;
     border: 0;
   }
-  .go {
+  .card .go {
     grid-area: go;
     margin: 0;
   }

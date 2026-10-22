@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{name}} 순위·평점·다운로드 정보 ({{updated_ym}}) | 모아온</title>
+    <link rel="icon" href="{{root}}favicon.ico?v=2" sizes="32x32" />
+    <link rel="icon" href="{{root}}assets/moa-symbol.svg?v=2" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="{{root}}assets/apple-touch-icon.png?v=2" />
+    <meta name="description" content="{{description}}" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://site-url.invalid/webhard/{{id}}/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="모아온" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="{{name}} 순위·평점·다운로드 정보 | 모아온" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:url" content="https://site-url.invalid/webhard/{{id}}/" />
+    <meta property="og:image" content="https://site-url.invalid/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {{jsonld}}
+    <link rel="stylesheet" href="{{root}}assets/css/main.css?v=5" />
+    <link rel="stylesheet" href="{{root}}assets/css/page.css?v=2" />
+  </head>
+  <body data-root="{{root}}">
+    <a class="skip-link" href="#main">본문 바로가기</a>
+    <header>
+      <nav class="wrap nav">
+        <a class="brand-moa" href="{{root}}index.html"
+          ><img class="moa-symbol" src="{{root}}assets/moa-symbol.svg" alt="" width="40" height="40" /><span class="moa-word"
+            ><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span
+          ></a
+        >
+        <div class="menu">
+          <a href="{{root}}index.html">웹하드 순위</a
+          ><a href="{{root}}content-guide.html">콘텐츠 가이드</a
+          ><a href="{{root}}criteria.html">순위 검증 가이드</a>
+        </div>
+        <button
+          class="hamb"
+          id="menuButton"
+          onclick="toggleMenu()"
+          aria-label="메뉴 열기"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </nav>
+    </header>
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-hidden="true"
+      onclick="if(event.target===this)toggleMenu(false)"
+    >
+      <nav class="drawer" aria-label="모바일 메뉴">
+        <div class="drawer-head">
+          <span class="brand-moa"
+            ><img class="moa-symbol" src="{{root}}assets/moa-symbol.svg" alt="" width="40" height="40" /><span class="moa-word"
+              ><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span
+            ></span
+          ><button
+            id="closeMenu"
+            onclick="toggleMenu(false)"
+            aria-label="메뉴 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <a href="{{root}}index.html" onclick="toggleMenu(false)">웹하드 순위</a
+        ><a href="{{root}}content-guide.html" onclick="toggleMenu(false)"
+          >콘텐츠 가이드</a
+        ><a href="{{root}}criteria.html" onclick="toggleMenu(false)"
+          >순위 검증 가이드</a
+        >
+      </nav>
+    </div>
+    <section class="wrap intro">
+      <a class="back-link" href="{{root}}index.html">‹ 전체 순위 보기</a>
+      <span class="update">{{updated_ym}} 모아온 지수 {{rank}}위 {{move}}</span>
+      <h1>{{name}}</h1>
+      <p class="page-lead">{{reason}}</p>
+    </section>
+    <main class="wrap page" id="main">
+      <div class="detail-top">
+        <section class="side-box detail-hero">
+          <div class="detail-logo"><img src="{{root}}{{logo}}" alt="{{name}} 로고" width="229" height="100" /></div>
+          <p class="tags">{{tags}}</p>
+          <div class="trust"><b>종합신뢰도</b><span class="stars" aria-hidden="true">{{stars}}</span><span class="score">{{score}}<small>/5</small></span></div>
+          <button type="button" class="go" data-go="{{id}}" aria-label="{{name}} 공식 사이트 새 창으로 열기">공식 사이트 이동 ›</button>
+        </section>
+        <section class="side-box">
+          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></span>모아온 지수 {{index}}</h3>
+          <div class="detail-scales">{{scales}}</div>
+          <p class="detail-note">각 막대는 항목 만점 대비 점수예요. 계산 방식은 <a href="{{root}}criteria.html#index">순위 검증 가이드</a>에 공개했어요.</p>
+        </section>
+      </div>
+      <section class="page-box">
+        <h2>{{name}} 지표 ({{metrics_short}} 수집)</h2>
+        <table>
+          <tbody>{{metric_rows}}
+          </tbody>
+        </table>
+      </section>
+      <section class="side-box">
+        <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>다른 웹하드 보기</h3>
+        <div class="live-list">{{others}}
+        </div>
+      </section>
+      <p class="disclaimer">
+        ※ 지표는 {{metrics_basis}}로 수집한 값이며 매주 월요일 갱신됩니다. 순위는 참고용이며, 서비스 선택은 이용자 본인의 판단에 따라 결정하세요.
+        실제 이용 조건은 공식 사이트에서 확인하세요.
+      </p>
+    </main>
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <span>© 2026 모아온. All rights reserved.</span
+        ><span>더 나은 선택을 위한 미디어 데이터 가이드</span>
+      </div>
+    </footer>
+    <script src="{{root}}assets/js/menu.js?v=1"></script>
+    <script src="{{root}}assets/js/go.js?v=1"></script>
+  </body>
+</html>

@@ -61,12 +61,12 @@ def card(i, s):
         f'<article class="card{" top" if i < 3 else ""}" style="--brand:{s["color"]}">'
         f'<span class="rank-flag">{i + 1}</span>'
         f'<div class="visual"><img src="{s["logo"]}" alt="{e(s["name"])} 로고" width="170" height="76" loading="{loading}"></div>'
-        f'<div class="card-body"><h2>{e(s["name"])}{move(i, s)}</h2><p class="tags">{tags}</p>'
+        f'<div class="card-body"><h2><a href="webhard/{s["id"]}/">{e(s["name"])}</a>{move(i, s)}</h2><p class="tags">{tags}</p>'
         f'<div class="reason"><b>선정이유</b><span>{e(s["reason"])}</span></div>'
         f'<div class="trust"><b>종합신뢰도</b><span class="stars" aria-hidden="true">{stars(s["score"])}</span>'
         f'<span class="score">{s["score"]}<small>/5</small></span></div>'
-        f'<a class="go" href="go/{s["id"]}/" target="_blank" rel="noopener noreferrer sponsored nofollow" '
-        f'aria-label="{e(s["name"])} 사이트 새 창으로 열기">사이트 바로가기 ›</a></div></article>'
+        f'<button type="button" class="go" data-go="{s["id"]}" data-detail '
+        f'aria-label="{e(s["name"])} 사이트 새 창으로 열기">사이트 바로가기 ›</button></div></article>'
     )
 
 
@@ -150,6 +150,9 @@ tokens = {
     "{{w_popularity}}": str(data["weights"]["popularity"]),
     "{{w_usability}}": str(data["weights"]["usability"]),
     "{{w_affection}}": str(data["weights"]["affection"]),
+    "{{detail_links}}": "\n".join(
+        f"- [{s['name']}](https://site-url.invalid/webhard/{s['id']}/): 모아온 지수·평점·다운로드·검색 관심도" for s in ranked
+    ),
     "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']} (모아온 지수 {s['index']}): {s['reason']}" for i, s in enumerate(services)),
 }
 markers = {
@@ -158,6 +161,9 @@ markers = {
     "chart": "".join(bar(i, s) for i, s in enumerate(services)),
     "summary": summary,
     "jsonld": jsonld,
+    "sitemap_details": "\n".join(
+        f"<url><loc>https://site-url.invalid/webhard/{s['id']}/</loc><lastmod>{updated.isoformat()}</lastmod></url>" for s in ranked
+    ),
 }
 
 failed = False
@@ -174,4 +180,84 @@ for name in ("index.html", "llms.txt", "sitemap.xml"):
         failed = True
     path.write_text(text, encoding="utf-8")
     print(f"{name}: 순위 {len(services)}개 반영")
+
+
+# ---- one detail page per ranked service: webhard/<id>/index.html
+TEMPLATE = (Path(__file__).resolve().parents[1] / "templates/webhard.html").read_text(encoding="utf-8")
+weights_total = sum(data["weights"].values())
+
+
+def scales(s):
+    if not s.get("parts"):
+        return ""
+    out = ""
+    for k, label in PARTS:
+        full = 100 * data["weights"][k] / weights_total
+        out += (f'<span class="scale"><span>{label}</span><i style="--v:{min(100, s["parts"][k] / full * 100):.0f}%"></i>'
+                f'<em>{s["parts"][k]}<small>/{full:.0f}</small></em></span>')
+    return out
+
+
+def metric_rows(s):
+    m = s.get("metrics", {})
+    rows = []
+    if "rating" in m:
+        rows.append(("구글 플레이 평점", f"{m['rating']:.2f} / 5 (평가 {m['ratingCount']:,}개)"))
+    if "downloads" in m:
+        rows.append(("추정 다운로드", f"약 {m['downloads'] / 10000:,.0f}만 회"))
+    if "search" in m:
+        anchor = next((x["name"] for x in ranked if x["id"] == data.get("searchAnchor")), "기준 업체")
+        rows.append(("네이버 검색 관심도", f"{m['search']} ({anchor} = 100, 최근 4주)"))
+    if "searchChange" in m:
+        rows.append(("지난주 검색 변동", f"{m['searchChange'] * 100:+.1f}%"))
+    if "searchMonthly" in m:
+        rows.append(("네이버 월간 조회수", f"{m['searchMonthly']:,}회"))
+    return "".join(f"\n            <tr><th>{a}</th><td>{b}</td></tr>" for a, b in rows)
+
+
+for i, s in enumerate(ranked):
+    others = [x for x in ranked[:6] if x["id"] != s["id"]][:5]
+    page_ld = [
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "모아온", "item": "https://site-url.invalid/"},
+            {"@type": "ListItem", "position": 2, "name": s["name"], "item": f"https://site-url.invalid/webhard/{s['id']}/"}]},
+        {"@context": "https://schema.org", "@type": "WebPage", "name": f"{s['name']} 순위·평점·다운로드 정보",
+         "url": f"https://site-url.invalid/webhard/{s['id']}/", "inLanguage": "ko-KR", "dateModified": updated.isoformat()},
+    ]
+    fill = {
+        "{{root}}": "../../",
+        "{{id}}": s["id"],
+        "{{name}}": e(s["name"]),
+        "{{reason}}": e(s["reason"]),
+        "{{logo}}": s["logo"],
+        "{{rank}}": str(i + 1),
+        "{{move}}": move(i, s),
+        "{{index}}": str(s["index"]),
+        "{{score}}": s["score"],
+        "{{stars}}": stars(s["score"]),
+        "{{tags}}": "".join(f"<i>{e(t)}</i>" for t in s["tags"].split()),
+        "{{scales}}": scales(s),
+        "{{metric_rows}}": metric_rows(s),
+        "{{metrics_short}}": metrics_date.strftime("%Y.%m.%d"),
+        "{{metrics_basis}}": basis,
+        "{{updated_ym}}": f"{updated.year}년 {updated.month}월",
+        "{{description}}": e(f"{s['name']} {updated.year}년 {updated.month}월 모아온 지수 {s['index']}·{i + 1}위. "
+                             f"{s['reason']}. 구글 플레이 평점, 추정 다운로드, 네이버 검색 관심도를 한눈에 확인하세요."),
+        "{{jsonld}}": "".join('<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
+                              + "</script>" for d in page_ld),
+        "{{others}}": "".join(
+            f'\n          <div class="live-row"><b>{ranked.index(x) + 1}</b><div><a class="live-name" href="../{x["id"]}/">{e(x["name"])}</a></div>'
+            f'<small>{x["index"]}</small></div>' for x in others),
+    }
+    text = TEMPLATE
+    for key, value in fill.items():
+        text = text.replace(key, value)
+    left = re.findall(r"\{\{\w+\}\}", text)
+    if left:
+        print(f"::error::webhard/{s['id']}에 채우지 못한 자리가 남았습니다: {sorted(set(left))}")
+        failed = True
+    out = site / "webhard" / s["id"]
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "index.html").write_text(text, encoding="utf-8")
+print(f"webhard/: 상세 페이지 {len(ranked)}개")
 sys.exit(1 if failed else 0)
