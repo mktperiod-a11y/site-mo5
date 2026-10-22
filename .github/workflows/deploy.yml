@@ -47,6 +47,8 @@ jobs:
           python3 .github/scripts/render_ranking.py _site
           # the raw data (metrics, weights, rank rules) stays in the repo only, not on the site
           rm -rf _site/data
+          # developer comments stay in the repo; the published files carry none
+          python3 .github/scripts/strip_comments.py _site
 
           grep -rlZ 'https://site-url\.invalid' _site \
             | xargs -0 -r sed -i "s|https://site-url\.invalid|${BASE_URL}|g"
