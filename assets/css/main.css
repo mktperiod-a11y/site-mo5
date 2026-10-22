@@ -1,4 +1,9 @@
 :root {
+  /* shared look for every page: box padding, box radius, gap between boxes, body and muted text */
+  --box-pad: 20px;
+  --box-radius: 13px;
+  --gap: 16px;
+  --text: #4a5868;
   --blue: #087df2;
   --navy: #17212b;
   --bg: #f4f7fb;
@@ -100,14 +105,14 @@ header {
 .layout {
   display: grid;
   grid-template-columns: 1fr 265px;
-  gap: 20px;
+  gap: var(--gap);
   align-items: start;
-  padding-bottom: 80px;
+  padding-bottom: 56px;
 }
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: var(--gap);
 }
 /* column layout: logo on top, text fills the middle, tags + button pinned to the bottom so they line up across a row */
 .card {
@@ -209,9 +214,9 @@ header {
   padding-top: 3px;
 }
 .reason span {
-  color: #3d4856;
+  color: var(--text);
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
   font-weight: 400;
 }
 .stars {
@@ -264,19 +269,19 @@ header {
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--gap);
 }
 .side-box {
-  padding: 17px;
+  padding: var(--box-pad);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--box-radius);
   background: #fff;
 }
 .side-box h3 {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   color: var(--navy);
   font-size: 18px;
   font-weight: 700;
@@ -423,9 +428,9 @@ header {
 }
 .chart-box {
   grid-column: 1/-1;
-  padding: 20px;
+  padding: var(--box-pad);
   border: 1px solid var(--line);
-  border-radius: 13px;
+  border-radius: var(--box-radius);
   background: #fff;
 }
 /* title and caption on the left, collection date and live countdown on the right */
@@ -506,7 +511,7 @@ header {
 }
 .chart-head p {
   margin: 5px 0 20px;
-  color: #8792a1;
+  color: var(--muted);
   font-size: 13px;
 }
 .chart {
@@ -726,7 +731,7 @@ header {
 /* answer-first summary and FAQ: short, quotable sentences for search and AI answers */
 .summary {
   margin: 0 0 4px;
-  color: #5d6876;
+  color: var(--text);
   font-size: 14px;
   line-height: 1.7;
 }
@@ -739,13 +744,13 @@ header {
 }
 .faq {
   grid-column: 1/-1;
-  padding: 20px;
+  padding: var(--box-pad);
   border: 1px solid var(--line);
-  border-radius: 13px;
+  border-radius: var(--box-radius);
   background: #fff;
 }
 .faq h2 {
-  margin: 0 0 6px;
+  margin: 0 0 14px;
   color: var(--navy);
   font-size: 18px;
   font-weight: 700;
@@ -769,11 +774,14 @@ header {
 }
 .faq dd {
   margin: 0;
-  color: #4a5868;
+  color: var(--text);
   font-size: 14px;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 @media (max-width: 600px) {
+  :root {
+    --box-pad: 16px;
+  }
   .faq dl {
     grid-template-columns: 1fr;
   }
@@ -783,11 +791,12 @@ header {
 }
 .disclaimer {
   grid-column: 1/-1;
-  color: #929ba8;
+  margin: 4px 0 0;
+  color: var(--muted);
   font-size: 12px;
 }
 .footer {
-  padding: 40px 0;
+  padding: 28px 0;
   background: #fff;
   border-top: 1px solid var(--line);
   color: #8a95a2;
@@ -812,7 +821,7 @@ header {
 }
 @media (max-width: 600px) {
   .wrap {
-    width: calc(100% - 24px);
+    width: calc(100% - 32px);
   }
   .nav {
     height: 62px;
@@ -872,7 +881,7 @@ header {
     grid-template-columns: 1fr;
   }
   .chart-box {
-    padding: 15px;
+    padding: var(--box-pad);
   }
   .chart {
     height: 160px;
@@ -1011,7 +1020,7 @@ img {
 }
 @media (max-width: 900px) {
   .layout {
-    padding-bottom: 60px;
+    padding-bottom: 40px;
   }
   .chart-box {
     grid-column: auto;
@@ -1088,8 +1097,11 @@ img {
     padding: 9px 8px;
     font-size: 13px;
   }
-  .side-box h3 {
-    font-size: 14px;
+  .side-box h3,
+  .chart-head h2,
+  .faq h2,
+  .page-box h2 {
+    font-size: 16px;
   }
   .live-row {
     min-height: 38px;
@@ -1195,7 +1207,7 @@ img {
 }
 @media (max-width: 360px) {
   .wrap {
-    width: calc(100% - 20px);
+    width: calc(100% - 28px);
   }
   .moa-symbol {
     width: 37px;
