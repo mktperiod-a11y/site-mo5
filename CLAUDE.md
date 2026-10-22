@@ -83,6 +83,8 @@
     - 흰 글자 로고는 어두운 상자를 깔지 않는다. 글자 색을 어둡게 바꿔 흰 카드 위에 바로 올린다(파일몽: #2f2a26).
     - 넣은 뒤에는 흰 카드 위에서 렌더링해 보고, 상자·여백·잘린 조각이 남지 않았는지 확인한다.
   - 순위·내용을 바꾸면 `updated`(갱신일)도 바꾼다. 페이지 제목·갱신일·sitemap 날짜가 이 값을 따른다.
+- 업체별 상세 페이지(`webhard/<id>/`)는 배포 때 `render_ranking.py`가 `.github/templates/webhard.html`로 순위에 오른 모든 업체에 대해 만든다(저장소에는 없다). 모아온 지수 구성, 순위 변동, 구글 플레이 평점·추정 다운로드, 네이버 검색 관심도를 보여주고 sitemap·llms.txt에도 넣는다. 지어낸 후기·평가는 넣지 않는다.
+- "사이트 바로가기"는 링크가 아니라 `<button data-go="<id>">`다. `assets/js/go.js`가 새 탭으로 `go/<id>/`를 열고, `data-detail`이 있으면 지금 탭을 그 업체 상세 페이지로 옮긴다. 상세 페이지의 "공식 사이트 이동"은 새 탭만 연다. 카드의 업체 이름은 상세 페이지로 가는 일반 링크라 검색엔진이 따라간다.
 - 메인 순위(카드·실시간 순위·차트·요약 문장·구조화 데이터)는 브라우저에서 만들지 않는다. 배포 때 `.github/scripts/render_ranking.py`가 `data/webhards.json`으로 `index.html`·`llms.txt`·`sitemap.xml`의 `{{…}}`와 `<!-- ranking:… -->` 자리를 채운다. 자바스크립트를 실행하지 않는 검색·AI 수집기도 순위를 읽게 하려는 것이다. 저장소의 `index.html`은 빈 자리만 있으므로, 로컬에서 볼 때는 사본에 이 스크립트를 돌려서 본다.
 - 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 순위 채우기 → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다.
 - 쓰는 Secret: `PRIVACY_PATTERNS`(금지 문자열), `NAVER_CLIENT_ID`·`NAVER_CLIENT_SECRET`(NAVER API HUB 검색어 트렌드), `NAVER_AD_API_KEY`·`NAVER_AD_SECRET`·`NAVER_AD_CUSTOMER_ID`(검색광고, 선택). 워크플로에서 값을 출력하지 않는다.

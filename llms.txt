@@ -11,3 +11,7 @@
 - [웹하드 순위](https://site-url.invalid/): 순위, 선정이유, 종합신뢰도, 자주 묻는 질문
 - [순위 검증 가이드](https://site-url.invalid/criteria.html): 모아온 지수 계산 방식과 서비스 확인 기준
 - [콘텐츠 가이드](https://site-url.invalid/content-guide.html): 영화·드라마·예능 콘텐츠를 고르는 기준
+
+## 업체별 상세
+
+{{detail_links}}
