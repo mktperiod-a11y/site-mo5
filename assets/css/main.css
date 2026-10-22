@@ -95,6 +95,36 @@ header {
   font-size: 15px;
   font-weight: 600;
 }
+.intro-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 11px 4px 10px;
+  border: 1px solid #d5eadf;
+  border-radius: 999px;
+  background: #effaf4;
+  color: #16794b;
+  font-size: 13px;
+  font-weight: 600;
+}
+.live-badge[hidden] {
+  display: none;
+}
+.live-badge.collecting {
+  border-color: #cfe0fb;
+  background: #eef5ff;
+  color: var(--blue);
+}
+.live-badge.collecting .live-dot,
+.live-badge.collecting .live-dot:after {
+  background: var(--blue);
+}
 .intro h1 {
   margin: 6px 0 0;
   color: var(--navy);
@@ -872,6 +902,12 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+/* three cards beside the sidebar get too narrow for the reason and stars rows below this width */
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
@@ -1446,5 +1482,28 @@ img {
   }
   .cd-short {
     display: inline;
+  }
+}
+/* wide screens: every answer stays open in two columns, nothing to toggle */
+@media (min-width: 901px) {
+  .faq-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 28px;
+  }
+  .faq-item {
+    border-top: 1px solid #edf0f3;
+  }
+  .faq-item:nth-child(-n + 2) {
+    border-top: 0;
+  }
+  .faq-item summary {
+    cursor: default;
+  }
+  .faq-item summary:hover {
+    color: var(--navy);
+  }
+  .faq-item summary:after {
+    display: none;
   }
 }
