@@ -764,24 +764,49 @@ header {
   border-radius: var(--box-radius);
   background: #fff;
 }
-.faq dl {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 28px;
-  margin: 0;
+.faq-list {
+  margin-top: 10px;
 }
 .faq-item {
-  padding: 14px 0;
   border-top: 1px solid #edf0f3;
 }
-.faq dt {
-  margin-bottom: 6px;
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 2px;
   color: var(--navy);
   font-size: 15px;
   font-weight: 700;
+  cursor: pointer;
+  list-style: none;
 }
-.faq dd {
-  margin: 0;
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary:after {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  border-radius: 1px;
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+.faq-item[open] summary:after {
+  margin-top: 4px;
+  transform: rotate(225deg);
+}
+.faq-item summary:hover {
+  color: var(--blue);
+}
+.faq-item p {
+  margin: -4px 0 0;
+  padding: 0 2px 16px;
   color: var(--text);
   font-size: 14px;
   line-height: 1.7;
@@ -789,9 +814,6 @@ header {
 @media (max-width: 600px) {
   :root {
     --box-pad: 16px;
-  }
-  .faq dl {
-    grid-template-columns: 1fr;
   }
   .summary {
     font-size: 14px;
@@ -1030,6 +1052,56 @@ img {
   .layout {
     padding-bottom: 40px;
   }
+  /* below desktop width the bars turn horizontal so long names never touch, and the collection info drops under the description */
+  .chart {
+    height: auto;
+    display: grid;
+    align-items: initial;
+    gap: 8px;
+    padding: 4px 0;
+    border: 0;
+    background: none;
+  }
+  .bar {
+    flex: none;
+    height: 36px !important;
+    width: var(--h);
+    min-width: 112px;
+    border-radius: 6px;
+    opacity: 0.95;
+  }
+  .section-head {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .chart-meta {
+    align-items: flex-start;
+  }
+  .tip,
+  .bar:nth-last-child(-n + 2) .tip {
+    left: 0;
+    right: auto;
+    top: calc(100% + 6px);
+  }
+  .chart.wait .bar {
+    width: 0;
+    min-width: 0;
+  }
+  .bar b {
+    left: calc(100% + 8px);
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .bar:after {
+    left: 10px;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+  }
   .chart-box {
     grid-column: auto;
   }
@@ -1127,30 +1199,26 @@ img {
   .section-desc {
     line-height: 1.6;
   }
-  .chart {
-    height: auto;
-    display: grid;
-    align-items: initial;
-    gap: 8px;
-    padding: 4px 0;
+  /* on phones the collection info is one quiet line: date and a coarse countdown */
+  .chart-meta {
+    padding: 0;
     border: 0;
     background: none;
   }
-  .bar {
-    flex: none;
-    height: 36px !important;
-    width: var(--h);
-    min-width: 112px;
-    border-radius: 6px;
-    opacity: 0.95;
+  .meta-row {
+    flex-wrap: wrap;
+    gap: 6px;
   }
-  /* the tooltip spans the chart header under the title (above it would slide under the sticky header) */
-  .section-head {
-    flex-direction: column;
-    gap: 12px;
+  .meta-long,
+  .cd-long {
+    display: none;
   }
-  .chart-meta {
-    align-items: flex-start;
+  .next-update {
+    font-weight: 600;
+  }
+  .next-update:before {
+    content: "· ";
+    color: var(--muted);
   }
   .info {
     position: static;
@@ -1165,31 +1233,6 @@ img {
   }
   .info-pop:after {
     display: none;
-  }
-  .tip,
-  .bar:nth-last-child(-n + 2) .tip {
-    left: 0;
-    right: auto;
-    top: calc(100% + 6px);
-  }
-  .chart.wait .bar {
-    width: 0;
-    min-width: 0;
-  }
-  .bar b {
-    left: calc(100% + 8px);
-    bottom: auto;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .bar:after {
-    left: 10px;
-    bottom: auto;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
   }
   .disclaimer,
   .footer {
@@ -1354,5 +1397,21 @@ img {
   .card .go {
     grid-area: go;
     margin: 0;
+  }
+}
+
+.cd-short {
+  display: none;
+}
+@media (max-width: 600px) {
+  .chart-meta {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    white-space: normal;
+  }
+  .cd-short {
+    display: inline;
   }
 }
