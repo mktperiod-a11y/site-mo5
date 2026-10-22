@@ -1,5 +1,5 @@
 {
-  "note": "ready 항목은 모아온 지수 순으로 정렬하고 앞에서 rankLimit개만 메인에 노출한다. metrics는 매주 월요일 collect.yml이 collect.py로 모으고(구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, 네이버 API HUB 검색어 트렌드, 검색광고 월간 조회수는 키가 있을 때), 지수는 score.py가 계산한다. searchAnchor는 검색량 비교의 기준 업체다. pending은 공식 주소·로고 확인 전이라 노출하지 않는다. 기본값은 data/baseline.json이며 score.py --restore로 되돌린다. 순위나 내용을 바꾸면 updated도 바꾼다. 배포 때 이 파일로 메인 페이지·llms.txt·sitemap.xml을 채운다. 배포 때 주마다 weeklyAdjust.items개 항목에 최대 ±weeklyAdjust.max점의 주간 보정 점수를 더해 순위를 다시 정한다(매주 월요일 자동 배포). maxRank는 {id: 최저 순위}로, 지수와 주간 보정과 관계없이 그 순위 아래로 내려가지 않게 한다(온디스크 2위, 케이디스크 10위).",
+  "note": "ready 항목은 모아온 지수 순으로 정렬하고 앞에서 rankLimit개만 메인에 노출한다. metrics는 매주 월요일 collect.yml이 collect.py로 모으고(구글 플레이 한국 스토어의 추정 다운로드·평점·평가 수, 네이버 API HUB 검색어 트렌드, 검색광고 월간 조회수는 키가 있을 때), 지수는 score.py가 계산한다. searchAnchor는 검색량 비교의 기준 업체다. pending은 공식 주소·로고 확인 전이라 노출하지 않는다. 기본값은 data/baseline.json이며 score.py --restore로 되돌린다. 순위나 내용을 바꾸면 updated도 바꾼다. 배포 때 이 파일로 메인 페이지·llms.txt·sitemap.xml을 채운다. 배포 때 주마다 weeklyAdjust.items개 항목에 최대 ±weeklyAdjust.max점의 주간 보정 점수를 더해 순위를 다시 정한다(매주 월요일 자동 배포). maxRank는 {id: 최저 순위}로, 지수와 주간 보정과 관계없이 그 순위 아래로 내려가지 않게 한다(온디스크 2위, 케이디스크 8위). minScore는 카드 종합신뢰도(별점)의 최저값이다.",
   "updated": "2026-10-21",
   "metricsDate": "2026-10-21",
   "metricsSource": "구글 플레이 한국 스토어",
@@ -15,8 +15,9 @@
   },
   "maxRank": {
     "ondisk": 2,
-    "kdisk": 10
+    "kdisk": 8
   },
+  "minScore": 3.5,
   "rankLimit": 10,
   "webhards": [
     {

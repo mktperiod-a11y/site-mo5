@@ -50,7 +50,7 @@ header {
   align-items: center;
   gap: 10px;
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .logo-mark {
   display: grid;
@@ -94,7 +94,7 @@ header {
   margin: 6px 0 0;
   color: var(--navy);
   font-size: 40px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -1.6px;
 }
 .layout {
@@ -132,7 +132,7 @@ header {
   color: #fff;
   text-align: center;
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
 }
 /* same 1 > 2 > 3 colour steps as the live ranking: blue, navy, slate, then grey */
@@ -170,7 +170,7 @@ header {
   margin: 0 0 8px;
   color: var(--navy);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 /* label | text rows split by hairlines, labels top-aligned like a table */
@@ -220,7 +220,7 @@ header {
   margin-left: auto;
   color: var(--navy);
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .score small {
   font-size: inherit;
@@ -250,7 +250,7 @@ header {
   color: #fff;
   text-align: center;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .sidebar {
   display: flex;
@@ -270,7 +270,7 @@ header {
   margin: 0 0 12px;
   color: var(--navy);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 .box-icon {
@@ -308,7 +308,7 @@ header {
   color: #9aa5b3;
   font-size: 17px;
   font-style: italic;
-  font-weight: 900;
+  font-weight: 700;
   text-align: center;
 }
 /* rank change since last week: red up, blue down, grey same */
@@ -319,7 +319,7 @@ header {
   border-radius: 999px;
   font-size: 12px;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0;
   vertical-align: 2px;
@@ -359,7 +359,7 @@ header {
 .live-row.r1 .live-name {
   color: var(--navy);
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .live-row.r1 .live-bar {
   height: 6px;
@@ -368,7 +368,7 @@ header {
 .live-row.r1 small {
   color: var(--blue);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .live-row.r2 b {
   color: var(--navy);
@@ -455,7 +455,7 @@ header {
 }
 .next-update {
   color: var(--blue);
-  font-weight: 800;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 .live-dot {
@@ -492,7 +492,7 @@ header {
   margin: 0;
   color: var(--navy);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 .chart-head p {
@@ -548,7 +548,7 @@ header {
   transform: translateX(-50%);
   color: var(--navy);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
   white-space: nowrap;
   transition: opacity 0.3s calc(var(--d) + 0.5s);
 }
@@ -608,7 +608,7 @@ header {
 .scale em {
   color: var(--navy);
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   text-align: right;
 }
 .scale em small {
@@ -657,7 +657,7 @@ header {
   left: 50%;
   bottom: calc(100% + 12px);
   transform: translateX(-50%);
-  width: 320px;
+  width: 370px;
   padding: 16px 20px;
   border: 1px solid #c9d1db;
   border-radius: 10px;
@@ -681,6 +681,21 @@ header {
   border-bottom: 1px solid #c9d1db;
   background: #fff;
   transform: translateX(-50%) rotate(45deg);
+}
+.info-pop b,
+.info-pop span,
+.info-pop small {
+  display: block;
+}
+.info-pop b {
+  margin-bottom: 4px;
+  color: var(--navy);
+  font-weight: 700;
+}
+.info-pop small {
+  margin-top: 6px;
+  color: #6b7684;
+  font-size: 13px;
 }
 .info:hover .info-pop,
 .info:focus-within .info-pop {
@@ -724,7 +739,7 @@ header {
   margin: 0 0 6px;
   color: var(--navy);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 .faq dl {
@@ -741,7 +756,7 @@ header {
   margin-bottom: 6px;
   color: var(--navy);
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .faq dd {
   margin: 0;
@@ -881,7 +896,7 @@ header {
     padding-bottom: 18px;
     border-bottom: 1px solid var(--line);
     font-size: 17px;
-    font-weight: 900;
+    font-weight: 700;
   }
   .drawer button {
     border: 0;
@@ -893,7 +908,7 @@ header {
     padding: 17px 0;
     border-bottom: 1px solid #edf0f3;
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 700;
   }
 }
 .brand-moa {
@@ -955,7 +970,7 @@ img {
   background: #17212b;
   color: #fff;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   box-shadow: 0 8px 24px #0003;
 }
 .skip-link:focus {
@@ -1146,7 +1161,7 @@ img {
     transform: translateY(-50%);
     color: #fff;
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
   }
   .disclaimer,
   .footer {

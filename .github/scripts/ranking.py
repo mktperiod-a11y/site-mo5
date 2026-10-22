@@ -27,5 +27,5 @@ def weekly(data, start):
             s["parts"] = {k: round(v * new / s["index"], 1) for k, v in s["parts"].items()}
         s["index"] = new
     for s in ready:
-        s["score"] = f"{s['index'] / 20:.1f}"
+        s["score"] = f"{max(data.get('minScore', 0), s['index'] / 20):.1f}"
     return apply_max_rank(data, sorted(ready, key=lambda s: -s["index"]))

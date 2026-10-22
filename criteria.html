@@ -24,7 +24,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://site-url.invalid/criteria.html" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "모아온", "item": "https://site-url.invalid/"}, {"@type": "ListItem", "position": 2, "name": "순위 검증 가이드", "item": "https://site-url.invalid/criteria.html"}]}</script>
-    <link rel="stylesheet" href="assets/css/criteria.css?v=1" />
+    <link rel="stylesheet" href="assets/css/main.css?v=4" />
+    <link rel="stylesheet" href="assets/css/page.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main">본문 바로가기</a>
@@ -38,48 +39,73 @@
         <div class="menu">
           <a href="index.html">웹하드 순위</a
           ><a href="content-guide.html">콘텐츠 가이드</a
-          ><a class="active" aria-current="page" href="criteria.html"
-            >순위 검증 가이드</a
-          >
+          ><a class="active" aria-current="page" href="criteria.html">순위 검증 가이드</a>
         </div>
+        <button
+          class="hamb"
+          id="menuButton"
+          onclick="toggleMenu()"
+          aria-label="메뉴 열기"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
       </nav>
     </header>
-    <main class="wrap" id="main">
-      <span class="kicker">VERIFICATION GUIDE</span>
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-hidden="true"
+      onclick="if(event.target===this)toggleMenu(false)"
+    >
+      <nav class="drawer" aria-label="모바일 메뉴">
+        <div class="drawer-head">
+          <span class="brand-moa"
+            ><img class="moa-symbol" src="assets/moa-symbol.svg" alt="" width="40" height="40" /><span class="moa-word"
+              ><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span
+            ></span
+          ><button
+            id="closeMenu"
+            onclick="toggleMenu(false)"
+            aria-label="메뉴 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <a href="index.html" onclick="toggleMenu(false)">웹하드 순위</a
+        ><a href="content-guide.html" onclick="toggleMenu(false)"
+          >콘텐츠 가이드</a
+        ><a href="criteria.html" onclick="toggleMenu(false)"
+          >순위 검증 가이드</a
+        >
+      </nav>
+    </div>
+    <section class="wrap intro">
+      <span class="update">서비스를 고르기 전에 확인할 기준</span>
       <h1>순위 검증 가이드</h1>
-      <p class="lead">
-        높은 순위보다 중요한 것은 자신에게 맞는 서비스인지 확인하는 과정입니다.
-      </p>
-      <div class="criteria-grid">
-        <article class="criterion">
-          <b>01</b>
-          <h2>운영 안정성</h2>
+      <p class="page-lead">높은 순위보다 중요한 것은 자신에게 맞는 서비스인지 확인하는 과정입니다.</p>
+    </section>
+    <main class="wrap page" id="main">
+      <div class="page-grid">
+        <section class="side-box">
+          <h3><span class="box-icon num" aria-hidden="true">1</span>운영 안정성</h3>
           <p>접속 오류와 서비스 유지 상태, 공식 공지 관리 여부를 확인합니다.</p>
-        </article>
-        <article class="criterion">
-          <b>02</b>
-          <h2>혜택의 명확성</h2>
-          <p>
-            무료 포인트의 유효기간과 사용 제한이 명확하게 안내되는지 살펴봅니다.
-          </p>
-        </article>
-        <article class="criterion">
-          <b>03</b>
-          <h2>이용 편의성</h2>
-          <p>
-            검색·카테고리·모바일 화면이 처음 이용하는 사람에게도 편리한지
-            봅니다.
-          </p>
-        </article>
-        <article class="criterion">
-          <b>04</b>
-          <h2>결제 안내</h2>
-          <p>
-            자동 연장 여부와 해지 방법, 포인트 차감 구조가 투명한지 확인합니다.
-          </p>
-        </article>
+        </section>
+        <section class="side-box">
+          <h3><span class="box-icon num" aria-hidden="true">2</span>혜택의 명확성</h3>
+          <p>무료 포인트의 유효기간과 사용 제한이 명확하게 안내되는지 살펴봅니다.</p>
+        </section>
+        <section class="side-box">
+          <h3><span class="box-icon num" aria-hidden="true">3</span>이용 편의성</h3>
+          <p>검색·카테고리·모바일 화면이 처음 이용하는 사람에게도 편리한지 봅니다.</p>
+        </section>
+        <section class="side-box">
+          <h3><span class="box-icon num" aria-hidden="true">4</span>결제 안내</h3>
+          <p>자동 연장 여부와 해지 방법, 포인트 차감 구조가 투명한지 확인합니다.</p>
+        </section>
       </div>
-      <section class="index-box" id="index">
+      <section class="page-box" id="index">
         <h2>모아온 지수 계산 방식</h2>
         <p>
           메인 순위는 공개된 데이터로 계산한 모아온 지수(0~100) 순서입니다. 데이터는 매주 월요일 네이버
@@ -103,10 +129,17 @@
           <li>순위는 매주 월요일에 갱신되며, 주간 갱신 때 보정 점수가 더해질 수 있습니다. 순위 옆 ▲▼는 지난주 대비 변동입니다.</li>
         </ul>
       </section>
-      <div class="note">
-        순위는 참고용 자료이며, 서비스 선택은 이용자 본인의 판단에 따라 결정하세요.
+      <p class="disclaimer">
+        ※ 순위는 참고용 자료이며, 서비스 선택은 이용자 본인의 판단에 따라 결정하세요.
         결제 전에는 각 서비스의 이용약관과 공식 이벤트 안내를 반드시 확인하세요.
-      </div>
+      </p>
     </main>
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <span>© 2026 모아온. All rights reserved.</span
+        ><span>더 나은 선택을 위한 미디어 데이터 가이드</span>
+      </div>
+    </footer>
+    <script src="assets/js/menu.js?v=1"></script>
   </body>
 </html>

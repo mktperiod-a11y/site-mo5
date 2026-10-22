@@ -24,7 +24,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://site-url.invalid/content-guide.html" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "모아온", "item": "https://site-url.invalid/"}, {"@type": "ListItem", "position": 2, "name": "콘텐츠 가이드", "item": "https://site-url.invalid/content-guide.html"}]}</script>
-    <link rel="stylesheet" href="assets/css/content-guide.css?v=1" />
+    <link rel="stylesheet" href="assets/css/main.css?v=4" />
+    <link rel="stylesheet" href="assets/css/page.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main">본문 바로가기</a>
@@ -37,44 +38,82 @@
         >
         <div class="menu">
           <a href="index.html">웹하드 순위</a
-          ><a class="active" aria-current="page" href="content-guide.html"
-            >콘텐츠 가이드</a
+          ><a class="active" aria-current="page" href="content-guide.html">콘텐츠 가이드</a
           ><a href="criteria.html">순위 검증 가이드</a>
         </div>
+        <button
+          class="hamb"
+          id="menuButton"
+          onclick="toggleMenu()"
+          aria-label="메뉴 열기"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
       </nav>
     </header>
-    <main class="wrap" id="main">
-      <span class="kicker">CONTENT GUIDE</span>
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-hidden="true"
+      onclick="if(event.target===this)toggleMenu(false)"
+    >
+      <nav class="drawer" aria-label="모바일 메뉴">
+        <div class="drawer-head">
+          <span class="brand-moa"
+            ><img class="moa-symbol" src="assets/moa-symbol.svg" alt="" width="40" height="40" /><span class="moa-word"
+              ><b>모아온</b><small>COLLECT · COMPARE · CHOOSE</small></span
+            ></span
+          ><button
+            id="closeMenu"
+            onclick="toggleMenu(false)"
+            aria-label="메뉴 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <a href="index.html" onclick="toggleMenu(false)">웹하드 순위</a
+        ><a href="content-guide.html" onclick="toggleMenu(false)"
+          >콘텐츠 가이드</a
+        ><a href="criteria.html" onclick="toggleMenu(false)"
+          >순위 검증 가이드</a
+        >
+      </nav>
+    </div>
+    <section class="wrap intro">
+      <span class="update">영화·드라마·예능 인기 흐름</span>
       <h1>콘텐츠 가이드</h1>
-      <p class="lead">
-        영화·드라마·예능을 찾을 때 참고할 수 있는 인기 흐름과 선택 기준을
-        정리했습니다.
-      </p>
-      <div class="panels">
-        <section class="panel">
-          <h2>◉ 종합 인기 순위</h2>
-          <div class="ranking hot"><b>1</b>다 이루어질지니</div>
-          <div class="ranking"><b>2</b>살인자 리포트</div>
-          <div class="ranking"><b>3</b>사마귀</div>
-          <div class="ranking"><b>4</b>킹 오브 킹스</div>
-          <div class="ranking"><b>5</b>태풍상사</div>
+      <p class="page-lead">영화·드라마·예능을 찾을 때 참고할 수 있는 인기 흐름과 선택 기준을 정리했습니다.</p>
+    </section>
+    <main class="wrap page" id="main">
+      <div class="page-grid">
+        <section class="side-box">
+          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V5M19 20v-6"/></svg></span>종합 인기 순위</h3>
+          <div class="live-list">
+            <div class="live-row r1"><b>1</b><div><span class="live-name">다 이루어질지니</span></div></div>
+            <div class="live-row r2"><b>2</b><div><span class="live-name">살인자 리포트</span></div></div>
+            <div class="live-row r3"><b>3</b><div><span class="live-name">사마귀</span></div></div>
+            <div class="live-row"><b>4</b><div><span class="live-name">킹 오브 킹스</span></div></div>
+            <div class="live-row"><b>5</b><div><span class="live-name">태풍상사</span></div></div>
+          </div>
         </section>
-        <section class="panel">
-          <h2>◉ 카테고리 인기 콘텐츠</h2>
-          <div class="ranking"><b>영화</b> 어쩔수가없다</div>
-          <div class="ranking"><b>드라마</b> 다 이루어질지니</div>
-          <div class="ranking"><b>예능</b> 크라임씬 제로</div>
-          <div class="ranking"><b>애니</b> 체인소 맨</div>
-          <div class="ranking"><b>다큐</b> 자연 다큐멘터리</div>
+        <section class="side-box events">
+          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M8 5v5M16 5v5"/></svg></span>카테고리 인기 콘텐츠</h3>
+          <ul>
+            <li><span>영화</span><b>어쩔수가없다</b></li>
+            <li><span>드라마</span><b>다 이루어질지니</b></li>
+            <li><span>예능</span><b>크라임씬 제로</b></li>
+            <li><span>애니</span><b>체인소 맨</b></li>
+            <li><span>다큐</span><b>자연 다큐멘터리</b></li>
+          </ul>
         </section>
       </div>
-      <article class="article">
+      <article class="page-box">
         <h2>영화·드라마·예능 인기 콘텐츠 가이드</h2>
         <p>
-          어떤 콘텐츠를 먼저 볼지 고민된다면
-          <strong>장르별 인기 흐름과 이용 목적</strong>을 함께 살펴보는 것이
-          좋습니다. 실시간 순위는 화제성을 보여주지만 자신에게 맞는 작품인지는
-          별도로 확인해야 합니다.
+          어떤 콘텐츠를 먼저 볼지 고민된다면 <strong>장르별 인기 흐름과 이용 목적</strong>을 함께 살펴보는 것이
+          좋습니다. 실시간 순위는 화제성을 보여주지만 자신에게 맞는 작품인지는 별도로 확인해야 합니다.
         </p>
         <h2>콘텐츠를 고르는 네 가지 기준</h2>
         <ul>
@@ -85,11 +124,17 @@
         </ul>
         <h2>카테고리별 이용 팁</h2>
         <p>
-          <strong>영화</strong>는 러닝타임과 자막·화질을,
-          <strong>드라마</strong>는 완결 여부와 회차를, <strong>예능</strong>은
-          최신 회차 업데이트 흐름을 우선 확인하면 선택이 쉬워집니다.
+          <strong>영화</strong>는 러닝타임과 자막·화질을, <strong>드라마</strong>는 완결 여부와 회차를,
+          <strong>예능</strong>은 최신 회차 업데이트 흐름을 우선 확인하면 선택이 쉬워집니다.
         </p>
       </article>
     </main>
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <span>© 2026 모아온. All rights reserved.</span
+        ><span>더 나은 선택을 위한 미디어 데이터 가이드</span>
+      </div>
+    </footer>
+    <script src="assets/js/menu.js?v=1"></script>
   </body>
 </html>
