@@ -824,8 +824,9 @@ header {
 }
 .faq-item summary:before {
   content: "Q";
-  background: #e8f1fe;
-  color: var(--blue);
+  background: #eef1f5;
+  color: var(--navy);
+  font-weight: 900;
 }
 .faq-item summary:after {
   content: "";
