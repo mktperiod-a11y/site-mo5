@@ -295,12 +295,13 @@ header {
   border-radius: 8px;
   background: #eaf4ff;
 }
+/* every box icon: same outlined rounded frame, one stroke weight */
 .box-icon svg {
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
   fill: none;
   stroke: var(--blue);
-  stroke-width: 2.2;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }

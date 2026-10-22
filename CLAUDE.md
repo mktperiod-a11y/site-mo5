@@ -86,6 +86,6 @@
 - 업체별 상세 페이지(`webhard/<id>/`)는 배포 때 `render_ranking.py`가 `.github/templates/webhard.html`로 순위에 오른 모든 업체에 대해 만든다(저장소에는 없다). 모아온 지수 구성, 순위 변동, 구글 플레이 평점·추정 다운로드, 네이버 검색 관심도를 보여주고 sitemap·llms.txt에도 넣는다. 지어낸 후기·평가는 넣지 않는다.
 - "사이트 바로가기"는 링크가 아니라 `<button data-go="<id>">`다. `assets/js/go.js`가 새 탭으로 `go/<id>/`를 열고, `data-detail`이 있으면 지금 탭을 그 업체 상세 페이지로 옮긴다. 상세 페이지의 "공식 사이트 이동"은 새 탭만 연다. 카드의 업체 이름은 상세 페이지로 가는 일반 링크라 검색엔진이 따라간다.
 - 메인 순위(카드·실시간 순위·차트·요약 문장·구조화 데이터)는 브라우저에서 만들지 않는다. 배포 때 `.github/scripts/render_ranking.py`가 `data/webhards.json`으로 `index.html`·`llms.txt`·`sitemap.xml`의 `{{…}}`와 `<!-- ranking:… -->` 자리를 채운다. 자바스크립트를 실행하지 않는 검색·AI 수집기도 순위를 읽게 하려는 것이다. 저장소의 `index.html`은 빈 자리만 있으므로, 로컬에서 볼 때는 사본에 이 스크립트를 돌려서 본다.
-- 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 순위 채우기 → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다.
+- 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 순위 채우기 → `data/` 삭제 → 주석 제거(`strip_comments.py`) → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다. 사이트 소스·개발자 도구에는 내부 파일 이름이나 계산 관련 메모가 보이지 않아야 하므로, 화면에 보이는 문구 말고는 사이트 파일에 설명을 남기지 않는다(주석은 배포 때 지워진다).
 - 쓰는 Secret: `PRIVACY_PATTERNS`(금지 문자열), `NAVER_CLIENT_ID`·`NAVER_CLIENT_SECRET`(NAVER API HUB 검색어 트렌드), `NAVER_AD_API_KEY`·`NAVER_AD_SECRET`·`NAVER_AD_CUSTOMER_ID`(검색광고, 선택). 워크플로에서 값을 출력하지 않는다.
 - 사이트 결과물에서 `.github`, `.gitattributes`, `.gitignore`, `README.md`, `CLAUDE.md`와 `data/`(순위를 채운 뒤 지운다)는 빠진다. `.gitattributes`는 GitHub 언어 통계에 `.github/scripts`의 파이썬을 넣으려고 둔다. 사이트에 올리지 않을 파일을 루트에 추가하면 `deploy.yml`의 제외 목록에도 넣는다.
