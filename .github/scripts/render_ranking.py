@@ -202,10 +202,15 @@ def scales(s):
 
 
 def benefit(s):
-    """The service's benefits as written in data/webhards.json (filled in by hand), or a pointer to the site."""
-    if s.get("benefits"):
-        return "".join(f"<b>{e(b)}</b>" for b in s["benefits"]), "지급 조건과 기간은 공식 사이트에서 확인하세요"
-    return "<b>공식 사이트에서 확인</b>", "혜택은 자주 바뀌니 가입 전에 공식 사이트 안내를 확인하세요"
+    """The service's sign-up benefits and events, filled in by hand in data/webhards.json, or a pointer to the site."""
+    label = {"join": "가입", "event": "이벤트"}
+    rows = "".join(
+        f'<span class="benefit-row"><em class="benefit-kind {b["kind"]}">{label[b["kind"]]}</em><b>{e(b["text"])}</b></span>'
+        for b in s.get("benefits", [])
+    )
+    if rows:
+        return rows, "지급 조건과 기간은 공식 사이트에서 확인하세요"
+    return '<span class="benefit-row"><b>공식 사이트에서 확인</b></span>', "혜택은 자주 바뀌니 가입 전에 공식 사이트 안내를 확인하세요"
 
 
 def icon(x):
