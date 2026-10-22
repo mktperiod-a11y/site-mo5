@@ -9,13 +9,13 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2" />
     <meta
       name="description"
-      content="영화, 드라마, 예능 인기 콘텐츠를 고르는 기준을 정리한 모아온 콘텐츠 가이드입니다."
+      content="극장 관객 수와 TV 시청률로 지난주 가장 많이 본 영화·드라마·예능 TOP 5를 매주 정리하는 모아온 콘텐츠 가이드입니다."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="모아온" />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:title" content="콘텐츠 가이드 | 모아온" />
-    <meta property="og:description" content="영화, 드라마, 예능 인기 콘텐츠를 고르는 기준을 정리한 모아온 콘텐츠 가이드입니다." />
+    <meta property="og:description" content="극장 관객 수와 TV 시청률로 지난주 가장 많이 본 영화·드라마·예능 TOP 5를 매주 정리하는 모아온 콘텐츠 가이드입니다." />
     <meta property="og:url" content="https://site-url.invalid/content-guide.html" />
     <meta property="og:image" content="https://site-url.invalid/assets/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -25,7 +25,7 @@
     <link rel="canonical" href="https://site-url.invalid/content-guide.html" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "모아온", "item": "https://site-url.invalid/"}, {"@type": "ListItem", "position": 2, "name": "콘텐츠 가이드", "item": "https://site-url.invalid/content-guide.html"}]}</script>
     <link rel="stylesheet" href="assets/css/main.css?v=15" />
-    <link rel="stylesheet" href="assets/css/page.css?v=5" />
+    <link rel="stylesheet" href="assets/css/page.css?v=6" />
   </head>
   <body>
     <a class="skip-link" href="#main">본문 바로가기</a>
@@ -82,52 +82,83 @@
       </nav>
     </div>
     <section class="wrap intro">
-      <span class="update">영화·드라마·예능 인기 흐름</span>
+      <span class="update">콘텐츠 순위 업데이트 <time datetime="{{contents_iso}}">{{contents_date}}</time></span>
       <h1>콘텐츠 가이드</h1>
-      <p class="page-lead">영화·드라마·예능을 찾을 때 참고할 수 있는 인기 흐름과 선택 기준을 정리했습니다.</p>
+      <p class="page-lead">극장 관객 수와 TV 시청률로 지난주 가장 많이 본 영화·드라마·예능을 모았습니다.</p>
     </section>
     <main class="wrap page" id="main">
-      <div class="page-grid">
-        <section class="side-box">
-          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M8 16v-3M12 16V9M16 16v-5"/></svg></span>종합 인기 순위</h3>
-          <div class="live-list">
-            <div class="live-row r1"><b>1</b><div><span class="live-name">다 이루어질지니</span></div></div>
-            <div class="live-row r2"><b>2</b><div><span class="live-name">살인자 리포트</span></div></div>
-            <div class="live-row r3"><b>3</b><div><span class="live-name">사마귀</span></div></div>
-            <div class="live-row"><b>4</b><div><span class="live-name">킹 오브 킹스</span></div></div>
-            <div class="live-row"><b>5</b><div><span class="live-name">태풍상사</span></div></div>
+      <section class="ct-tops" aria-label="분야별 1위"><!-- contents:top --></section>
+      <section class="block">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">분야별 TOP 5</h2>
+            <p class="section-desc">{{contents_period}} · 영화는 관객 수, 드라마·예능은 가구 시청률 순서예요</p>
           </div>
-        </section>
-        <section class="side-box events">
-          <h3><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m10 9 5 3-5 3Z"/></svg></span>카테고리 인기 콘텐츠</h3>
-          <ul>
-            <li><span>영화</span><b>어쩔수가없다</b></li>
-            <li><span>드라마</span><b>다 이루어질지니</b></li>
-            <li><span>예능</span><b>크라임씬 제로</b></li>
-            <li><span>애니</span><b>체인소 맨</b></li>
-            <li><span>다큐</span><b>자연 다큐멘터리</b></li>
-          </ul>
-        </section>
-      </div>
-      <article class="page-box">
-        <h2>영화·드라마·예능 인기 콘텐츠 가이드</h2>
-        <p>
-          어떤 콘텐츠를 먼저 볼지 고민된다면 <strong>장르별 인기 흐름과 이용 목적</strong>을 함께 살펴보는 것이
-          좋습니다. 실시간 순위는 화제성을 보여주지만 자신에게 맞는 작품인지는 별도로 확인해야 합니다.
-        </p>
-        <h2>콘텐츠를 고르는 네 가지 기준</h2>
-        <ul>
-          <li>공개된 평점과 실제 이용자 후기</li>
-          <li>작품의 장르와 러닝타임</li>
-          <li>완결 여부와 회차 구성</li>
-          <li>합법적인 제공 여부와 이용 조건</li>
-        </ul>
-        <h2>카테고리별 이용 팁</h2>
-        <p>
-          <strong>영화</strong>는 러닝타임과 자막·화질을, <strong>드라마</strong>는 완결 여부와 회차를,
-          <strong>예능</strong>은 최신 회차 업데이트 흐름을 우선 확인하면 선택이 쉬워집니다.
-        </p>
-      </article>
+        </div>
+        <div class="ct-box">
+          <div class="ct-tabs" role="tablist" aria-label="분야">
+            <button type="button" role="tab" id="tab-movie" aria-controls="ct-movie" aria-selected="true">영화</button
+            ><button type="button" role="tab" id="tab-drama" aria-controls="ct-drama" aria-selected="false">드라마</button
+            ><button type="button" role="tab" id="tab-variety" aria-controls="ct-variety" aria-selected="false">예능·교양</button>
+          </div>
+          <div class="ct-panel" id="ct-movie" role="tabpanel" aria-labelledby="tab-movie">
+            <ol class="ct-list"><!-- contents:movie --></ol>
+            <p class="ct-tip"><b>TIP</b>영화는 러닝타임과 자막·화질을 먼저 확인하세요.</p>
+          </div>
+          <div class="ct-panel" id="ct-drama" role="tabpanel" aria-labelledby="tab-drama">
+            <ol class="ct-list"><!-- contents:drama --></ol>
+            <p class="ct-tip"><b>TIP</b>드라마는 완결 여부와 남은 회차를 먼저 확인하세요.</p>
+          </div>
+          <div class="ct-panel" id="ct-variety" role="tabpanel" aria-labelledby="tab-variety">
+            <ol class="ct-list"><!-- contents:variety --></ol>
+            <p class="ct-tip"><b>TIP</b>예능·교양은 최신 회차가 언제 올라오는지 확인하세요.</p>
+          </div>
+        </div>
+      </section>
+      <section class="block" id="pick">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">오늘 뭐 보지?</h2>
+            <p class="section-desc">두 가지만 고르면 위 순위에서 하나를 골라 드려요</p>
+          </div>
+        </div>
+        <div class="ct-box ct-pick">
+          <div class="pick-q">
+            <span>얼마나 볼 수 있어요?</span>
+            <div class="pick-opts" data-q="kind">
+              <button type="button" data-v="movie" aria-pressed="true">두 시간 한 번에</button
+              ><button type="button" data-v="drama" aria-pressed="false">한 회씩 이어서</button
+              ><button type="button" data-v="variety" aria-pressed="false">틀어 두고 가볍게</button>
+            </div>
+          </div>
+          <div class="pick-q">
+            <span>어떤 걸로 볼까요?</span>
+            <div class="pick-opts" data-q="mode">
+              <button type="button" data-v="top" aria-pressed="true">가장 많이 본 것</button
+              ><button type="button" data-v="rising" aria-pressed="false">요즘 뜨는 것</button>
+            </div>
+          </div>
+          <div class="pick-result" id="pickResult" aria-live="polite" hidden></div>
+        </div>
+      </section>
+      <section class="block">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">고르기 전에 확인할 것</h2>
+            <p class="section-desc">순위는 많이 본 정도예요. 나에게 맞는지는 아래를 함께 보세요</p>
+          </div>
+        </div>
+        <div class="ct-checks">
+          <div class="ct-check"><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3.6 2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8Z"/></svg></span><b>평점과 후기</b><p>공개 평점과 실제 이용자 후기로 취향에 맞는지 확인하세요.</p></div>
+          <div class="ct-check"><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M8 9.5h2.5V15M14 9.5h2.5V15M13.5 15h3.5"/></svg></span><b>관람 등급</b><p>함께 볼 사람이 있다면 관람·시청 등급을 먼저 보세요.</p></div>
+          <div class="ct-check"><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 5 6.2v5.3c0 4.2 2.9 7.5 7 9 4.1-1.5 7-4.8 7-9V6.2Z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></svg></span><b>정식 제공처</b><p>정식으로 제공되는 곳이어야 화질·자막이 안정적이고 안전해요.</p></div>
+          <div class="ct-check"><span class="box-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h3"/></svg></span><b>이용 조건</b><p>대여 기간, 구독 요금, 무료 회차 범위를 확인하세요.</p></div>
+        </div>
+      </section>
+      <p class="disclaimer">
+        ※ 출처: 영화관입장권통합전산망 주간 박스오피스(관객 수), 닐슨코리아 주간 가구 시청률(지상파·종편·케이블, 뉴스·스포츠 제외).
+        매주 화요일 지난주 자료로 갱신합니다. 시청률은 채널 종류에 따라 조사 기준이 조금씩 다릅니다.
+      </p>
     </main>
     <footer class="footer">
       <div class="wrap footer-inner">
@@ -136,5 +167,71 @@
       </div>
     </footer>
     <script src="assets/js/menu.js?v=1"></script>
+    <script>
+      tabs(document.querySelector(".ct-tabs"));
+      picker(document.querySelector(".ct-pick"));
+      // one panel at a time; without JavaScript all three lists stay visible
+      function tabs(list) {
+        const buttons = [...list.querySelectorAll("[role=tab]")];
+        const show = (on) =>
+          buttons.forEach((b) => {
+            const active = b === on;
+            b.setAttribute("aria-selected", active);
+            b.tabIndex = active ? 0 : -1;
+            document.getElementById(b.getAttribute("aria-controls")).hidden = !active;
+          });
+        buttons.forEach((b, i) => {
+          b.addEventListener("click", () => show(b));
+          b.addEventListener("keydown", (ev) => {
+            const step = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0;
+            if (!step) return;
+            const next = buttons[(i + step + buttons.length) % buttons.length];
+            show(next);
+            next.focus();
+          });
+        });
+        show(buttons[0]);
+      }
+      // picks from the lists above: the top one, or the biggest climber / newcomer
+      function picker(box) {
+        const out = box.querySelector("#pickResult");
+        const choice = { kind: "movie", mode: "top" };
+        const label = { movie: "영화", drama: "드라마", variety: "예능·교양" };
+        const render = () => {
+          const rows = [...document.querySelectorAll(`.ct-row[data-kind="${choice.kind}"]`)];
+          if (!rows.length) return (out.hidden = true);
+          const lift = (r) => (r.dataset.change === "new" ? 99 : Number(r.dataset.change));
+          let row = rows[0], why = "지난주 이 분야에서 가장 많이 봤어요.";
+          if (choice.mode === "rising") {
+            const best = rows.slice(1).sort((a, b) => lift(b) - lift(a))[0];
+            if (best && lift(best) > 0) {
+              row = best;
+              why = best.dataset.change === "new" ? "이번 주 순위에 새로 들어왔어요." : `지난주보다 ${best.dataset.change}계단 올랐어요.`;
+            } else {
+              row = rows[1] || rows[0];
+              why = "1위 바로 뒤에서 꾸준히 많이 보고 있어요.";
+            }
+          }
+          out.innerHTML = "";
+          const tag = Object.assign(document.createElement("span"), { className: "ct-chip", textContent: `${label[choice.kind]} 추천` });
+          const title = Object.assign(document.createElement("b"), { textContent: row.dataset.title });
+          const meta = Object.assign(document.createElement("small"), { textContent: `${row.dataset.sub} · ${row.dataset.metric}` });
+          const note = Object.assign(document.createElement("p"), { textContent: why });
+          out.className = `pick-result ${choice.kind}`;
+          out.append(tag, title, meta, note);
+          out.hidden = false;
+        };
+        box.querySelectorAll(".pick-opts").forEach((group) =>
+          group.addEventListener("click", (ev) => {
+            const b = ev.target.closest("button");
+            if (!b) return;
+            group.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+            choice[group.dataset.q] = b.dataset.v;
+            render();
+          })
+        );
+        render();
+      }
+    </script>
   </body>
 </html>

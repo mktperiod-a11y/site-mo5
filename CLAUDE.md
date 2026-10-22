@@ -84,8 +84,13 @@
     - 넣은 뒤에는 흰 카드 위에서 렌더링해 보고, 상자·여백·잘린 조각이 남지 않았는지 확인한다.
   - 순위·내용을 바꾸면 `updated`(갱신일)도 바꾼다. 페이지 제목·갱신일·sitemap 날짜가 이 값을 따른다.
 - 업체별 상세 페이지(`webhard/<id>/`)는 배포 때 `render_ranking.py`가 `.github/templates/webhard.html`로 순위에 오른 모든 업체에 대해 만든다(저장소에는 없다). 모아온 지수 구성, 순위 변동, 구글 플레이 평점·추정 다운로드, 네이버 검색 관심도를 보여주고 sitemap·llms.txt에도 넣는다. 지어낸 후기·평가는 넣지 않는다.
+- 콘텐츠 가이드(`content-guide.html`)의 순위는 `data/contents.json`에 있다. `.github/workflows/collect-contents.yml`이 매주 화요일 09:07(KST)에 `.github/scripts/collect_contents.py`로 지난주(월~일) 자료를 모아 커밋하고 배포를 시작한다. 월요일 0시에는 지난주 자료가 아직 나오지 않아 따로 돈다. 키 없이 공개 페이지만 쓴다.
+  - 영화: 영화관입장권통합전산망 주간 박스오피스 페이지(관객 수 순서, ▲▼·NEW는 그 페이지 값).
+  - 드라마·예능·교양: 닐슨코리아 주간 가구 시청률(지상파 TOP 20, 종편·케이블 TOP 10)을 합쳐 시청률 순서로 둔다. 뉴스·스포츠는 뺀다. 제목에 드라마·특별기획·오리지널 등이 있으면 드라마, 나머지는 예능·교양이다. 잘못 나뉘면 `genres`({제목: "drama"|"variety"})에 적는다. 닐슨 제목은 띄어쓰기가 없어서, 잘 알려진 제목만 `names`({원래 제목: 표시 제목})로 고친다. 모르는 제목의 띄어쓰기를 추측해서 넣지 않는다.
+  - 출처 하나가 실패하면 그 분야는 지난 값을 쓴다. 분야별 1위 카드·TOP 5 목록은 배포 때 `.github/scripts/render_contents.py`가 HTML에 채운다. "오늘 뭐 보지?"는 페이지 안 목록에서만 고른다.
+  - 애니·다큐는 키 없이 쓸 수 있는 믿을 만한 순위 출처가 없어 넣지 않았다(2026-10 소유자 결정).
 - "사이트 바로가기"는 링크가 아니라 `<button data-go="<id>">`다. `assets/js/go.js`가 새 탭으로 `go/<id>/`를 열고, `data-detail`이 있으면 지금 탭을 그 업체 상세 페이지로 옮긴다. 상세 페이지의 "공식 사이트 이동"은 새 탭만 연다. 카드의 업체 이름은 상세 페이지로 가는 일반 링크라 검색엔진이 따라간다.
 - 메인 순위(카드·실시간 순위·차트·요약 문장·구조화 데이터)는 브라우저에서 만들지 않는다. 배포 때 `.github/scripts/render_ranking.py`가 `data/webhards.json`으로 `index.html`·`llms.txt`·`sitemap.xml`의 `{{…}}`와 `<!-- ranking:… -->` 자리를 채운다. 자바스크립트를 실행하지 않는 검색·AI 수집기도 순위를 읽게 하려는 것이다. 저장소의 `index.html`은 빈 자리만 있으므로, 로컬에서 볼 때는 사본에 이 스크립트를 돌려서 본다.
-- 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 순위 채우기 → `data/` 삭제 → 주석 제거(`strip_comments.py`) → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다. 사이트 소스·개발자 도구에는 내부 파일 이름이나 계산 관련 메모가 보이지 않아야 하므로, 화면에 보이는 문구 말고는 사이트 파일에 설명을 남기지 않는다(주석은 배포 때 지워진다).
+- 배포는 `.github/workflows/deploy.yml`이 맡는다. 개인정보 검사 → 순위 채우기(웹하드 `render_ranking.py`, 콘텐츠 `render_contents.py`) → `data/` 삭제 → 주석 제거(`strip_comments.py`) → 자리표시 치환 → Pages 배포 순서이고, 앞 단계가 실패하면 배포하지 않는다. 사이트 소스·개발자 도구에는 내부 파일 이름이나 계산 관련 메모가 보이지 않아야 하므로, 화면에 보이는 문구 말고는 사이트 파일에 설명을 남기지 않는다(주석은 배포 때 지워진다).
 - 쓰는 Secret: `PRIVACY_PATTERNS`(금지 문자열), `NAVER_CLIENT_ID`·`NAVER_CLIENT_SECRET`(NAVER API HUB 검색어 트렌드), `NAVER_AD_API_KEY`·`NAVER_AD_SECRET`·`NAVER_AD_CUSTOMER_ID`(검색광고, 선택). 워크플로에서 값을 출력하지 않는다.
 - 사이트 결과물에서 `.github`, `.gitattributes`, `.gitignore`, `README.md`, `CLAUDE.md`와 `data/`(순위를 채운 뒤 지운다)는 빠진다. `.gitattributes`는 GitHub 언어 통계에 `.github/scripts`의 파이썬을 넣으려고 둔다. 사이트에 올리지 않을 파일을 루트에 추가하면 `deploy.yml`의 제외 목록에도 넣는다.
