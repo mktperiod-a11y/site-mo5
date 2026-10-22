@@ -9,7 +9,12 @@
     <title>페이지를 찾을 수 없어요 | 모아온</title>
     <link rel="icon" href="https://site-url.invalid/favicon.ico?v=2" sizes="32x32" />
     <link rel="stylesheet" href="https://site-url.invalid/assets/css/main.css?v=20" />
-    <link rel="stylesheet" href="https://site-url.invalid/assets/css/page.css?v=12" />
+    <style>
+      .not-found { display: grid; place-items: center; align-content: center; gap: 6px; min-height: 60vh; text-align: center; }
+      .not-found b { color: var(--blue); font-size: 64px; font-weight: 800; line-height: 1; letter-spacing: -2px; }
+      .not-found h1 { margin: 8px 0 0; color: var(--navy); font-size: 24px; font-weight: 700; }
+      .not-found p { margin: 0; color: var(--muted); font-size: 15px; }
+    </style>
   </head>
   <body>
     <header>
@@ -21,16 +26,10 @@
         >
       </nav>
     </header>
-    <section class="wrap intro">
-      <span class="update">404</span>
+    <main class="wrap not-found">
+      <b>404</b>
       <h1>페이지를 찾을 수 없어요</h1>
-      <p class="page-lead">주소가 바뀌었거나 없는 페이지예요. 아래에서 다시 찾아보세요.</p>
-    </section>
-    <main class="wrap page">
-      <div class="page-grid">
-        <a class="side-box" href="https://site-url.invalid/"><h3>웹하드 순위</h3><p>이번 주 모아온 지수 순위 TOP 10</p></a>
-        <a class="side-box" href="https://site-url.invalid/content-guide.html"><h3>콘텐츠 가이드</h3><p>지난주 많이 본 영화·드라마·예능</p></a>
-      </div>
+      <p>주소가 바뀌었거나 없는 페이지예요.</p>
     </main>
   </body>
 </html>
