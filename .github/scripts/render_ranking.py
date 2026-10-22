@@ -298,6 +298,7 @@ GO = """<!doctype html>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'" />
     <title>{name}(으)로 이동 중 | 모아온</title>
   </head>
   <body>
