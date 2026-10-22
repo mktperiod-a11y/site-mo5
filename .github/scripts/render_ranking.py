@@ -210,12 +210,12 @@ def benefit(s):
 
 
 def other_row(x):
-    """Same rank row as the home side ranking (1·2·3 highlighted, bar), with the name linking to the detail page."""
+    """Rank row like the home side ranking (1·2·3 numbers in color), with the name linking to the detail page."""
     i = ranked.index(x)
     grade = f" r{i + 1}" if i < 3 else ""
     return (
-        f'\n          <div class="live-row{grade}"><b>{i + 1}</b><div><a class="live-name" href="../{x["id"]}/">{e(x["name"])}</a>'
-        f'<i class="live-bar" style="--w:{round(x["index"] / top * 100)}%"></i></div><small>{x["index"]}</small></div>'
+        f'\n          <div class="live-row{grade}"><b>{i + 1}</b><div><a class="live-name" href="../{x["id"]}/">{e(x["name"])}</a></div>'
+        f'<small>{x["index"]}</small></div>'
     )
 
 
