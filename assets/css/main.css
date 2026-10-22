@@ -559,7 +559,7 @@ header {
   position: relative;
   height: var(--h);
   border-radius: 7px 7px 0 0;
-  background: color-mix(in srgb, var(--c) 45%, #fff);
+  background: #c4dbfa;
   transition:
     height 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
     width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
@@ -570,14 +570,14 @@ header {
 .chart.wait .bar {
   height: 0;
 }
-/* bars rest as a light tint of each service's logo color; the one pointed at takes the full color */
+/* one calm blue for every bar (length carries the value, the name under it the service); the one pointed at turns solid */
 .chart:hover .bar,
 .chart:focus-within .bar {
   opacity: 0.55;
 }
 .chart .bar:hover,
 .chart .bar:focus {
-  background: var(--c);
+  background: var(--blue);
   opacity: 1;
   outline: none;
 }

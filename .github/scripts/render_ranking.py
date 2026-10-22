@@ -8,6 +8,7 @@ Usage: python3 render_ranking.py <site_dir>
 Fills {{...}} tokens and <!-- ranking:... --> markers in index.html, llms.txt and
 sitemap.xml, and exits non-zero if any are left over.
 """
+import base64
 import html
 import json
 import re
@@ -58,7 +59,7 @@ def card(i, s):
     tags = "".join(f"<i>{e(t)}</i>" for t in s["tags"].split())
     loading = "eager" if i < 3 else "lazy"
     return (
-        f'<article class="card{" top" if i < 3 else ""}" style="--brand:{s["color"]}">'
+        f'<article class="card{" top" if i < 3 else ""}">'
         f'<span class="rank-flag">{i + 1}</span>'
         f'<div class="visual"><img src="{s["logo"]}" alt="{e(s["name"])} 로고" width="170" height="76" loading="{loading}"></div>'
         f'<div class="card-body"><h2><a href="webhard/{s["id"]}/">{e(s["name"])}</a>{move(i, s)}</h2><p class="tags">{tags}</p>'
@@ -95,7 +96,7 @@ def bar(i, s):
     else:
         rows, detail = "", ""
     return (
-        f'<div class="bar" tabindex="0" style="--h:{round(s["index"] / top * 88)}%;--c:{s["color"]};--d:{i * 0.07:.2f}s" '
+        f'<div class="bar" tabindex="0" style="--h:{round(s["index"] / top * 88)}%;--d:{i * 0.07:.2f}s" '
         f'data-name="{e(s["name"])}" aria-label="{e(s["name"])} 모아온 지수 {s["index"]}{", " + detail if detail else ""}">'
         f'<b data-v="{s["index"]}">{s["index"]}</b>'
         f'<span class="tip" aria-hidden="true"><strong>{e(s["name"])} {s["index"]}</strong>{rows}</span></div>'
@@ -118,7 +119,7 @@ item_list = {
     "itemListOrder": "https://schema.org/ItemListOrderAscending",
     "numberOfItems": len(services),
     "itemListElement": [
-        {"@type": "ListItem", "position": i + 1, "name": s["name"], "url": s["url"], "description": f"{s['reason']} (모아온 지수 {s['index']})"}
+        {"@type": "ListItem", "position": i + 1, "name": s["name"], "url": f"https://site-url.invalid/webhard/{s['id']}/", "description": f"{s['reason']} (모아온 지수 {s['index']})"}
         for i, s in enumerate(services)
     ],
 }
@@ -261,4 +262,32 @@ for i, s in enumerate(ranked):
     out.mkdir(parents=True, exist_ok=True)
     (out / "index.html").write_text(text, encoding="utf-8")
 print(f"webhard/: 상세 페이지 {len(ranked)}개")
+
+# ---- go/<id>/: the page "사이트 바로가기" opens. The official address is only in data/webhards.json; here it is
+# stored base64-encoded and reversed, so the page source and developer tools show no plain address.
+GO = """<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>{name}(으)로 이동 중 | 모아온</title>
+  </head>
+  <body>
+    <p>{name} 공식 사이트로 이동 중입니다.</p>
+    <noscript><p>이동하려면 브라우저의 자바스크립트를 켜 주세요.</p></noscript>
+    <script>location.replace(atob("{code}".split("").reverse().join("")));</script>
+  </body>
+</html>
+"""
+gone = 0
+for s in data["webhards"]:
+    if s["status"] != "ready" or not s.get("url"):
+        continue
+    code = base64.b64encode(s["url"].encode()).decode()[::-1]
+    out = site / "go" / s["id"]
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "index.html").write_text(GO.format(name=e(s["name"]), code=code), encoding="utf-8")
+    gone += 1
+print(f"go/: 이동 페이지 {gone}개")
 sys.exit(1 if failed else 0)
