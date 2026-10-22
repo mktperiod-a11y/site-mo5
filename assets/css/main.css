@@ -559,23 +559,25 @@ header {
   position: relative;
   height: var(--h);
   border-radius: 7px 7px 0 0;
-  background: var(--c);
-  opacity: 0.88;
+  background: color-mix(in srgb, var(--c) 45%, #fff);
   transition:
     height 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
     width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
     min-width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
+    background-color 0.2s,
     opacity 0.2s;
 }
 .chart.wait .bar {
   height: 0;
 }
+/* bars rest as a light tint of each service's logo color; the one pointed at takes the full color */
 .chart:hover .bar,
 .chart:focus-within .bar {
-  opacity: 0.35;
+  opacity: 0.55;
 }
 .chart .bar:hover,
 .chart .bar:focus {
+  background: var(--c);
   opacity: 1;
   outline: none;
 }
@@ -1136,9 +1138,13 @@ img {
     bottom: auto;
     top: 50%;
     transform: translateY(-50%);
-    color: #fff;
+    color: var(--navy);
     font-size: 13px;
     font-weight: 700;
+  }
+  .chart .bar:hover:after,
+  .chart .bar:focus:after {
+    color: #fff;
   }
   .chart-box {
     grid-column: auto;
