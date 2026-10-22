@@ -650,10 +650,24 @@ header {
   display: block;
 }
 .tip > strong {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 8px;
   color: var(--navy);
   font-size: 13px;
+}
+/* the hover card takes the bar's own color: a dot by the name and the three part bars */
+.tip > strong:before {
+  content: "";
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c);
+}
+.tip .scale i {
+  background: linear-gradient(var(--c), var(--c)) 0 0 / var(--v) 100% no-repeat, #e9edf2;
 }
 .scale {
   display: grid;
