@@ -66,7 +66,7 @@ for s in rows:
     index = sum(points.values())
     s["index"] = round(index, 1)
     s["parts"] = {k: round(v, 1) for k, v in points.items()}
-    s["score"] = f"{index / 20:.1f}"
+    s["score"] = f"{max(data.get('minScore', 0), index / 20):.1f}"  # shown stars never go below minScore
 
 # ready entries ranked by index; entries without metrics and pending ones keep their relative order after them
 ranked = sorted(rows, key=lambda s: -s["index"])
