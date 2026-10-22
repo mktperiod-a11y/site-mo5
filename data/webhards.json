@@ -31,11 +31,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "1,000P 지급"
+          "text": "가입 1,000P"
         },
         {
           "kind": "event",
-          "text": "앱 설치 시 2,000P"
+          "text": "앱 설치 2,000P"
         }
       ],
       "metrics": {
@@ -66,11 +66,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "300P 지급"
+          "text": "가입 300P"
         },
         {
           "kind": "event",
-          "text": "야간 50% 페이백 이벤트"
+          "text": "야간 50% 페이백"
         }
       ],
       "metrics": {
@@ -101,7 +101,7 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "1,000P 지급"
+          "text": "가입 1,000P"
         }
       ],
       "metrics": {
@@ -132,7 +132,7 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "본인인증 시 1,000P 증정"
+          "text": "본인인증 1,000P"
         },
         {
           "kind": "event",
@@ -167,11 +167,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "500P 지급"
+          "text": "가입 500P"
         },
         {
           "kind": "event",
-          "text": "방송 3사 콘텐츠 100원"
+          "text": "방송 3사 100원"
         }
       ],
       "metrics": {
@@ -202,11 +202,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "300P 지급"
+          "text": "가입 300P"
         },
         {
           "kind": "event",
-          "text": "100원으로 30일 무제한"
+          "text": "30일 무제한 100원"
         }
       ],
       "metrics": {
@@ -237,11 +237,15 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "본인인증 시 보너스 500B + 웹툰포인트 1,000WP"
+          "text": "본인인증 500B"
+        },
+        {
+          "kind": "join",
+          "text": "웹툰포인트 1,000WP"
         },
         {
           "kind": "event",
-          "text": "앱 리뷰 작성 시 스토어당 2,000P"
+          "text": "앱 리뷰 스토어당 2,000P"
         }
       ],
       "metrics": {
@@ -272,11 +276,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "1,000P 지급"
+          "text": "가입 1,000P"
         },
         {
           "kind": "event",
-          "text": "앱 설치 시 쿠폰 3장"
+          "text": "앱 설치 쿠폰 3장"
         }
       ],
       "metrics": {
@@ -307,11 +311,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "본인인증 시 보너스 1,000B"
+          "text": "본인인증 1,000B"
         },
         {
           "kind": "event",
-          "text": "앱 리뷰 작성 시 스토어당 보너스 3,000P"
+          "text": "앱 리뷰 스토어당 3,000P"
         }
       ],
       "metrics": {
@@ -342,11 +346,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "300P 지급"
+          "text": "가입 300P"
         },
         {
           "kind": "event",
-          "text": "페이백 이벤트 진행 중"
+          "text": "페이백 이벤트"
         }
       ],
       "metrics": {
@@ -377,11 +381,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "1,000P 지급"
+          "text": "가입 1,000P"
         },
         {
           "kind": "event",
-          "text": "VIP 이벤트 진행 중"
+          "text": "VIP 이벤트"
         }
       ],
       "metrics": {
@@ -416,7 +420,7 @@
         },
         {
           "kind": "event",
-          "text": "콘텐츠 100원 이벤트"
+          "text": "콘텐츠 100원"
         }
       ],
       "metrics": {
@@ -447,7 +451,7 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "1,000P 지급"
+          "text": "가입 1,000P"
         }
       ],
       "metrics": {
@@ -478,7 +482,7 @@
       "benefits": [
         {
           "kind": "event",
-          "text": "인스타그램 팔로우 이벤트"
+          "text": "인스타 팔로우 이벤트"
         }
       ],
       "metrics": {
@@ -509,11 +513,11 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "300P 지급"
+          "text": "가입 300P"
         },
         {
           "kind": "event",
-          "text": "페이백 이벤트 진행 중"
+          "text": "페이백 이벤트"
         }
       ],
       "metrics": {
@@ -548,7 +552,7 @@
         },
         {
           "kind": "event",
-          "text": "출근 타임 콘텐츠 무료"
+          "text": "출근 시간 콘텐츠 무료"
         }
       ],
       "metrics": {
@@ -579,11 +583,11 @@
       "benefits": [
         {
           "kind": "event",
-          "text": "매일 선착순 100명 이용권 100원"
+          "text": "선착순 이용권 100원"
         },
         {
           "kind": "event",
-          "text": "1만P 이상 충전 시 보너스 지급"
+          "text": "1만P 충전 시 보너스"
         }
       ],
       "metrics": {
@@ -614,7 +618,7 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "300P 지급"
+          "text": "가입 300P"
         }
       ],
       "metrics": {
