@@ -435,35 +435,41 @@ header {
   background: #fff;
 }
 /* full-width sections: the title sits above the card, like a page section heading */
+/* sections are set apart by space: a large title, a short description, then the card */
 .block {
   grid-column: 1/-1;
   min-width: 0;
+  margin-top: 32px;
 }
 .section-title {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin: 12px 0 12px;
+  gap: 6px;
+  margin: 0 0 14px;
   color: var(--navy);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.8px;
 }
-/* caption on the left, collection date and live countdown on the right */
-.chart-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  column-gap: 16px;
-  align-items: center;
-  margin-bottom: 20px;
+/* title and description on the left, collection date and live countdown on the right, tops aligned */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
 }
-.chart-head p {
-  grid-column: 1;
+.section-head .section-title {
+  margin: 0;
+}
+.section-desc {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
 }
 .chart-meta {
-  grid-column: 2;
-  grid-row: 1;
+  flex: none;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -518,11 +524,6 @@ header {
   .live-dot:after {
     animation: none;
   }
-}
-.chart-head p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
 }
 .chart {
   height: 190px;
@@ -601,6 +602,10 @@ header {
 .bar:nth-last-child(-n + 2) .tip {
   left: auto;
   right: calc(100% + 8px);
+}
+.bar:hover,
+.bar:focus {
+  z-index: 5;
 }
 .bar:hover .tip,
 .bar:focus .tip {
@@ -1104,10 +1109,6 @@ img {
   .page-box h2 {
     font-size: 16px;
   }
-  .section-title {
-    margin-top: 8px;
-    font-size: 18px;
-  }
   .live-row {
     min-height: 38px;
     font-size: 14px;
@@ -1117,8 +1118,13 @@ img {
     align-items: center;
     font-size: 14px;
   }
-  .chart-head p {
-    font-size: 13px;
+  .block {
+    margin-top: 24px;
+  }
+  .section-title {
+    font-size: 20px;
+  }
+  .section-desc {
     line-height: 1.6;
   }
   .chart {
@@ -1139,15 +1145,12 @@ img {
     opacity: 0.95;
   }
   /* the tooltip spans the chart header under the title (above it would slide under the sticky header) */
-  .chart-head {
-    grid-template-columns: minmax(0, 1fr);
+  .section-head {
+    flex-direction: column;
+    gap: 12px;
   }
   .chart-meta {
-    grid-column: 1;
-    grid-row: auto;
     align-items: flex-start;
-    justify-self: start;
-    margin: 12px 0 0;
   }
   .info {
     position: static;
