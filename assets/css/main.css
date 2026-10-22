@@ -50,23 +50,6 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 20px;
-  font-weight: 700;
-}
-.logo-mark {
-  display: grid;
-  place-items: center;
-  width: 31px;
-  height: 31px;
-  border-radius: 9px 9px 3px 9px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 15px;
-}
 .menu {
   display: flex;
   gap: 32px;
@@ -670,10 +653,6 @@ header {
   font-weight: 700;
   text-align: right;
 }
-.scale em small {
-  color: #98a2ae;
-  font-weight: 600;
-}
 /* tooltip: outlined question icon, white popover above it with a small arrow */
 .info {
   position: relative;
@@ -917,14 +896,8 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 @media (max-width: 600px) {
-  .wrap {
-    width: calc(100% - 32px);
-  }
   .nav {
     height: 62px;
   }
@@ -976,18 +949,11 @@ header {
   .go {
     padding: 8px;
   }
-  .reason span {
-    font-size: 14px;
-  }
   .sidebar {
     grid-template-columns: 1fr;
   }
   .chart-box {
     padding: var(--box-pad);
-  }
-  .chart {
-    height: 160px;
-    gap: 6px;
   }
   .footer-inner {
     align-items: start;
@@ -1225,17 +1191,8 @@ img {
   .card h2 {
     margin-bottom: 6px;
   }
-  .tags {
-    margin-bottom: 10px;
-  }
-  .reason span {
-    font-size: 14px;
-  }
   .trust b {
     font-size: 11px;
-  }
-  .stars {
-    font-size: 14px;
   }
   .score {
     margin-left: 0;
@@ -1310,27 +1267,8 @@ img {
   .wrap {
     width: calc(100% - 28px);
   }
-  .moa-symbol {
-    width: 37px;
-    height: 37px;
-  }
-  .moa-word b {
-    font-size: 19px;
-  }
   .moa-word small {
     letter-spacing: 0.35px;
-  }
-  .card {
-    grid-template-columns: 1fr;
-  }
-  .visual {
-    height: 100px;
-    min-height: 0;
-    border-right: 0;
-    border-bottom: 1px solid #edf0f3;
-  }
-  .visual img {
-    max-width: 160px;
   }
   .card-body {
     padding: 14px;
@@ -1491,9 +1429,6 @@ img {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 28px;
-  }
-  .faq-item {
-    border-top: 1px solid #edf0f3;
   }
   .faq-item:nth-child(-n + 2) {
     border-top: 0;
