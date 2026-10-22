@@ -744,9 +744,8 @@ header {
   display: none;
 }
 /* answer-first summary and FAQ: short, quotable sentences for search and AI answers */
+/* the summary sentence sits under the FAQ title like a section description */
 .summary {
-  margin: 0 0 4px;
-  color: var(--text);
   font-size: 14px;
   line-height: 1.7;
 }
@@ -757,25 +756,22 @@ header {
   color: var(--blue);
   font-weight: 700;
 }
+/* one answer open at a time; Q and A marks set questions apart from answers */
 .faq {
   grid-column: 1/-1;
-  padding: var(--box-pad);
+  padding: 4px var(--box-pad);
   border: 1px solid var(--line);
   border-radius: var(--box-radius);
   background: #fff;
 }
-.faq-list {
-  margin-top: 10px;
-}
-.faq-item {
+.faq-item + .faq-item {
   border-top: 1px solid #edf0f3;
 }
 .faq-item summary {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  padding: 15px 2px;
+  padding: 16px 2px;
   color: var(--navy);
   font-size: 15px;
   font-weight: 700;
@@ -785,12 +781,28 @@ header {
 .faq-item summary::-webkit-details-marker {
   display: none;
 }
+.faq-item summary:before,
+.faq-item p:before {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 800;
+}
+.faq-item summary:before {
+  content: "Q";
+  background: #e8f1fe;
+  color: var(--blue);
+}
 .faq-item summary:after {
   content: "";
   flex: none;
   width: 8px;
   height: 8px;
-  margin-top: -4px;
+  margin: -4px 4px 0 auto;
   border-right: 2px solid var(--muted);
   border-bottom: 2px solid var(--muted);
   border-radius: 1px;
@@ -805,18 +817,41 @@ header {
   color: var(--blue);
 }
 .faq-item p {
-  margin: -4px 0 0;
-  padding: 0 2px 16px;
+  position: relative;
+  margin: -2px 0 16px;
+  padding: 13px 16px 13px 52px;
+  border-radius: 10px;
+  background: #f5f7fa;
   color: var(--text);
   font-size: 14px;
   line-height: 1.7;
+}
+.faq-item p:before {
+  content: "A";
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  background: #fff;
+  color: var(--muted);
+  box-shadow: inset 0 0 0 1px var(--line);
 }
 @media (max-width: 600px) {
   :root {
     --box-pad: 16px;
   }
-  .summary {
-    font-size: 14px;
+  .faq-item summary {
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .faq-item summary:after {
+    margin-top: 6px;
+  }
+  .faq-item[open] summary:after {
+    margin-top: 10px;
+  }
+  .faq-item p {
+    padding-left: 48px;
   }
 }
 .disclaimer {
