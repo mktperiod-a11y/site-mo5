@@ -96,7 +96,7 @@ def bar(i, s):
     else:
         rows, detail = "", ""
     return (
-        f'<div class="bar" tabindex="0" style="--h:{round(s["index"] / top * 88)}%;--d:{i * 0.07:.2f}s" '
+        f'<div class="bar" tabindex="0" style="--h:{round(s["index"] / top * 88)}%;--c:{s["color"]};--d:{i * 0.07:.2f}s" '
         f'data-name="{e(s["name"])}" aria-label="{e(s["name"])} 모아온 지수 {s["index"]}{", " + detail if detail else ""}">'
         f'<b data-v="{s["index"]}">{s["index"]}</b>'
         f'<span class="tip" aria-hidden="true"><strong>{e(s["name"])} {s["index"]}</strong>{rows}</span></div>'
@@ -140,6 +140,7 @@ jsonld = "".join(
 
 tokens = {
     "{{updated_ym}}": f"{updated.year}년 {updated.month}월",
+    "{{this_month}}": f"{today.month}월",
     "{{updated_date}}": f"{updated.year}년 {updated.month:02d}월 {updated.day:02d}일",
     "{{updated_iso}}": updated.isoformat(),
     "{{top3}}": "·".join(names[:3]),
