@@ -1199,27 +1199,6 @@ img {
   .section-desc {
     line-height: 1.6;
   }
-  /* on phones the collection info is one quiet line: date and a coarse countdown */
-  .chart-meta {
-    padding: 0;
-    border: 0;
-    background: none;
-  }
-  .meta-row {
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .meta-long,
-  .cd-long {
-    display: none;
-  }
-  .next-update {
-    font-weight: 600;
-  }
-  .next-update:before {
-    content: "· ";
-    color: var(--muted);
-  }
   .info {
     position: static;
   }
@@ -1403,13 +1382,32 @@ img {
 .cd-short {
   display: none;
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  /* once the chart turns horizontal the collection info is one quiet line: date and a coarse countdown */
   .chart-meta {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
     gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
     white-space: normal;
+  }
+  .meta-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .meta-long,
+  .cd-long {
+    display: none;
+  }
+  .next-update {
+    font-weight: 600;
+  }
+  .next-update:before {
+    content: "· ";
+    color: var(--muted);
   }
   .cd-short {
     display: inline;
