@@ -572,8 +572,7 @@
   font-size: 14px;
 }
 .benefit-note {
-  margin: auto 0 0;
-  padding-top: 12px;
+  margin: -6px 0 0;
   color: var(--muted);
   font-size: 12px;
 }

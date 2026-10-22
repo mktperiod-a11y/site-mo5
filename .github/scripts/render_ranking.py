@@ -207,7 +207,7 @@ def benefit(s, kind):
     if not items:
         return '<p class="benefit-empty">공식 사이트에서 확인하세요.</p>'
     rows = "".join(f"<li>{e(t)}</li>" for t in items)
-    return f'<ul class="benefit-list">{rows}</ul><p class="benefit-note">지급 조건과 기간은 공식 사이트에서 확인하세요.</p>'
+    return f'<ul class="benefit-list">{rows}</ul>'
 
 
 def icon(x):
