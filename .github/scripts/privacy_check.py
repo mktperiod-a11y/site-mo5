@@ -6,6 +6,8 @@
   python3 .github/scripts/privacy_check.py commits <범위>    커밋 이메일·메시지 검사 (예: origin/main..HEAD)
 
 금지 문자열은 환경 변수 PRIVACY_PATTERNS(한 줄에 하나, 대소문자 무시)로만 받는다.
+GitHub 계정 이름과 저장소 이름은 Secret 없이도 늘 검사한다. 값은 코드에 적지 않고 실행할 때
+GITHUB_REPOSITORY(Actions) 또는 origin 주소(로컬)에서 읽는다.
 값은 출력하지 않고 "금지 문자열 #번호"로만 알린다. 다른 검사도 찾은 값은 출력하지 않는다.
 """
 import base64
@@ -60,12 +62,24 @@ def git(*args):
     return subprocess.run(["git", *args], check=True, capture_output=True).stdout
 
 
+def repo_names():
+    """(account, repository) of this repository, read at run time so neither is written in code."""
+    full = os.environ.get("GITHUB_REPOSITORY", "")
+    if not full:
+        try:
+            url = git("remote", "get-url", "origin").decode().strip()
+        except subprocess.CalledProcessError:
+            return []
+        full = "/".join(re.sub(r"\.git$", "", url).rstrip("/").split("/")[-2:])
+    return [p.lower() for p in full.split("/") if len(p) >= 4]
+
+
 def load_patterns():
     raw = os.environ.get("PRIVACY_PATTERNS", "")
     patterns = [p.strip().lower() for p in raw.splitlines() if p.strip()]
     if not patterns:
-        print("::warning::PRIVACY_PATTERNS 값이 없어 금지 문자열 검사를 건너뜁니다.")
-    return patterns
+        print("::warning::PRIVACY_PATTERNS 값이 없어 직접 넣은 금지 문자열 검사는 건너뜁니다(계정·저장소 이름은 검사).")
+    return patterns + [p for p in repo_names() if p not in patterns]
 
 
 def find_patterns(text, patterns):
