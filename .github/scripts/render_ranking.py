@@ -110,8 +110,8 @@ has_search = any(s.get("metrics", {}).get("search") for s in services)
 basis = ("네이버 검색 관심도와 " if has_search else "") + "구글 플레이 공개 지표"
 summary = (
     f'현재 모아온 웹하드 순위 1위는 <b>{e(names[0])}</b>, '
-    f"2위 {e(names[1])}, 3위 {e(names[2])}입니다.<br>순위는 {basis}를 "
-    f'종합한 모아온 지수 순서이며,<br>산정 기준은 <a href="criteria.html#index">순위 검증 가이드</a>에서 확인할 수 있습니다.'
+    f"2위 {e(names[1])}, 3위 {e(names[2])}입니다.<br>"
+    f'산정 기준은 <a href="criteria.html#index">순위 검증 가이드</a>에서 확인할 수 있습니다.'
 )
 item_list = {
     "@context": "https://schema.org",
