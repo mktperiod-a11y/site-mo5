@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://site-url.invalid/</loc><lastmod>{{updated_iso}}</lastmod></url>
-<url><loc>https://site-url.invalid/content-guide.html</loc><lastmod>2026-10-21</lastmod></url>
+<url><loc>https://site-url.invalid/content-guide.html</loc><lastmod>{{contents_iso}}</lastmod></url>
 <url><loc>https://site-url.invalid/criteria.html</loc><lastmod>2026-10-21</lastmod></url>
 <!-- ranking:sitemap_details -->
 </urlset>
