@@ -158,11 +158,27 @@ tokens = {
     ),
     "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']} (모아온 지수 {s['index']}): {s['reason']}" for i, s in enumerate(services)),
 }
+def daily_benefits():
+    """Home side box: five of this week's top services with one of their benefits, a new draw every day (KST).
+    A short line is preferred so it fits the narrow box; the daily scheduled deploy refreshes it."""
+    rng = random.Random(today.isoformat())
+    pool = [s for s in services if s.get("benefits")]
+    rows = ""
+    for s in rng.sample(pool, min(5, len(pool))):
+        texts = [b["text"] for b in s["benefits"]]
+        short = [t for t in texts if len(t) <= 14] or [min(texts, key=len)]
+        text = rng.choice(short)
+        rows += (f'\n            <li><a href="webhard/{s["id"]}/">{e(s["name"])}</a>'
+                 f'<b title="{e(text)}">{e(text)}</b></li>')
+    return rows + "\n          "
+
+
 markers = {
     "cards": "".join(card(i, s) for i, s in enumerate(services)),
     "live": "".join(live_row(i, s) for i, s in enumerate(services[:5])),
     "chart": "".join(bar(i, s) for i, s in enumerate(services)),
     "summary": summary,
+    "benefits": daily_benefits(),
     "jsonld": jsonld,
     "sitemap_details": "\n".join(
         f"<url><loc>https://site-url.invalid/webhard/{s['id']}/</loc><lastmod>{updated.isoformat()}</lastmod></url>" for s in ranked
