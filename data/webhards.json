@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "metricsDate": "2026-10-21",
   "searchAnchor": "ondisk",
   "weights": {
@@ -120,41 +120,6 @@
       }
     },
     {
-      "id": "smartfile",
-      "name": "스마트파일",
-      "status": "ready",
-      "url": "https://smartfile.co.kr/",
-      "logo": "assets/smartfile.svg",
-      "color": "#06b6d4",
-      "score": "3.8",
-      "reason": "기본 기능과 가벼운 입문 흐름을 확인하기 좋은 서비스",
-      "tags": "#입문형 #간편이용",
-      "benefits": [
-        {
-          "kind": "join",
-          "text": "본인인증 1,000P"
-        },
-        {
-          "kind": "event",
-          "text": "첫 달 100원"
-        }
-      ],
-      "metrics": {
-        "playApp": "kr.smartfile.smartcrew3down",
-        "downloads": 568157,
-        "rating": 4.66,
-        "ratingCount": 3924,
-        "search": 30.82,
-        "searchChange": -0.038
-      },
-      "index": 75.0,
-      "parts": {
-        "popularity": 24.1,
-        "usability": 31.1,
-        "affection": 19.8
-      }
-    },
-    {
       "id": "filejo",
       "name": "파일조",
       "status": "ready",
@@ -182,7 +147,7 @@
         "search": 93.57,
         "searchChange": -0.004
       },
-      "index": 72.2,
+      "index": 72.3,
       "parts": {
         "popularity": 33.4,
         "usability": 27.3,
@@ -227,7 +192,7 @@
     {
       "id": "pdpop",
       "name": "피디팝",
-      "status": "ready",
+      "status": "hidden",
       "url": "https://new.pdpop.com/",
       "logo": "assets/pdpop.svg",
       "color": "#ec4899",
@@ -257,6 +222,41 @@
         "popularity": 26.4,
         "usability": 28.0,
         "affection": 16.6
+      }
+    },
+    {
+      "id": "tple",
+      "name": "티플",
+      "status": "ready",
+      "url": "https://www.tple.co.kr/",
+      "logo": "assets/tple.svg",
+      "color": "#64748b",
+      "score": "3.5",
+      "reason": "합법 콘텐츠 중심으로 영화·드라마를 둘러보기 좋은 서비스",
+      "tags": "#합법콘텐츠 #영화드라마",
+      "benefits": [
+        {
+          "kind": "join",
+          "text": "본인인증 1,000B"
+        },
+        {
+          "kind": "event",
+          "text": "앱 리뷰 스토어당 3,000P"
+        }
+      ],
+      "metrics": {
+        "playApp": "kr.co.tple.downapp",
+        "downloads": 169208,
+        "rating": 4.91,
+        "ratingCount": 1866,
+        "search": 17.37,
+        "searchChange": -0.013
+      },
+      "index": 62.5,
+      "parts": {
+        "popularity": 19.8,
+        "usability": 25.6,
+        "affection": 17.0
       }
     },
     {
@@ -292,41 +292,6 @@
         "popularity": 24.5,
         "usability": 19.2,
         "affection": 12.2
-      }
-    },
-    {
-      "id": "tple",
-      "name": "티플",
-      "status": "ready",
-      "url": "https://www.tple.co.kr/",
-      "logo": "assets/tple.svg",
-      "color": "#64748b",
-      "score": "3.5",
-      "reason": "합법 콘텐츠 중심으로 영화·드라마를 둘러보기 좋은 서비스",
-      "tags": "#합법콘텐츠 #영화드라마",
-      "benefits": [
-        {
-          "kind": "join",
-          "text": "본인인증 1,000B"
-        },
-        {
-          "kind": "event",
-          "text": "앱 리뷰 스토어당 3,000P"
-        }
-      ],
-      "metrics": {
-        "playApp": "kr.co.tple.downapp",
-        "downloads": 169208,
-        "rating": 4.91,
-        "ratingCount": 1866,
-        "search": 17.37,
-        "searchChange": -0.013
-      },
-      "index": 62.4,
-      "parts": {
-        "popularity": 19.8,
-        "usability": 25.6,
-        "affection": 17.0
       }
     },
     {
@@ -397,41 +362,6 @@
         "popularity": 23.0,
         "usability": 19.2,
         "affection": 15.1
-      }
-    },
-    {
-      "id": "applefile",
-      "name": "애플파일",
-      "status": "ready",
-      "url": "https://www.applefile.com/",
-      "logo": "assets/applefile.svg",
-      "color": "#be123c",
-      "score": "3.5",
-      "reason": "신규 가입 혜택을 비교해 보기 좋은 서비스",
-      "tags": "#가입혜택 #이벤트",
-      "benefits": [
-        {
-          "kind": "join",
-          "text": "가입 즉시 500P"
-        },
-        {
-          "kind": "event",
-          "text": "콘텐츠 100원"
-        }
-      ],
-      "metrics": {
-        "playApp": "com.mnt.aos.applefile.shortcuts",
-        "downloads": 248875,
-        "rating": 2.71,
-        "ratingCount": 688,
-        "search": 17.69,
-        "searchChange": -0.016
-      },
-      "index": 55.2,
-      "parts": {
-        "popularity": 19.9,
-        "usability": 22.0,
-        "affection": 13.2
       }
     },
     {
@@ -527,7 +457,7 @@
       "index": 50.5,
       "parts": {
         "popularity": 6.9,
-        "usability": 25.9,
+        "usability": 26.0,
         "affection": 17.6
       }
     },
@@ -559,10 +489,10 @@
         "search": 27.13,
         "searchChange": -0.004
       },
-      "index": 48.4,
+      "index": 48.5,
       "parts": {
         "popularity": 23.5,
-        "usability": 18.5,
+        "usability": 18.6,
         "affection": 6.4
       }
     },
@@ -590,7 +520,7 @@
         "search": 13.53,
         "searchChange": -0.101
       },
-      "index": 43.7,
+      "index": 43.8,
       "parts": {
         "popularity": 16.8,
         "usability": 18.2,
@@ -621,7 +551,7 @@
         "search": 3.03,
         "searchChange": -0.054
       },
-      "index": 17.6,
+      "index": 17.7,
       "parts": {
         "popularity": 5.4,
         "usability": 12.3,

@@ -75,34 +75,6 @@
       "index": 96.3
     },
     {
-      "id": "smartfile",
-      "name": "스마트파일",
-      "status": "ready",
-      "url": "https://smartfile.co.kr/",
-      "logo": "assets/smartfile.svg",
-      "color": "#06b6d4",
-      "score": "4.2",
-      "reason": "기본 기능과 가벼운 입문 흐름을 확인하기 좋은 서비스",
-      "tags": "#입문형 #간편이용",
-      "benefits": [
-        {
-          "kind": "join",
-          "text": "본인인증 1,000P"
-        },
-        {
-          "kind": "event",
-          "text": "첫 달 100원"
-        }
-      ],
-      "metrics": {
-        "playApp": "kr.smartfile.smartcrew3down",
-        "downloads": 568157,
-        "rating": 4.66,
-        "ratingCount": 3923
-      },
-      "index": 84.9
-    },
-    {
       "id": "filemong",
       "name": "파일몽",
       "status": "ready",
@@ -157,7 +129,7 @@
     {
       "id": "pdpop",
       "name": "피디팝",
-      "status": "ready",
+      "status": "hidden",
       "url": "https://new.pdpop.com/",
       "logo": "assets/pdpop.svg",
       "color": "#ec4899",
@@ -345,34 +317,6 @@
         "ratingCount": 436
       },
       "index": 64.7
-    },
-    {
-      "id": "applefile",
-      "name": "애플파일",
-      "status": "ready",
-      "url": "https://www.applefile.com/",
-      "logo": "assets/applefile.svg",
-      "color": "#be123c",
-      "score": "2.9",
-      "reason": "신규 가입 혜택을 비교해 보기 좋은 서비스",
-      "tags": "#가입혜택 #이벤트",
-      "benefits": [
-        {
-          "kind": "join",
-          "text": "가입 즉시 500P"
-        },
-        {
-          "kind": "event",
-          "text": "콘텐츠 100원"
-        }
-      ],
-      "metrics": {
-        "playApp": "com.mnt.aos.applefile.shortcuts",
-        "downloads": 248875,
-        "rating": 2.71,
-        "ratingCount": 688
-      },
-      "index": 58.7
     },
     {
       "id": "filecookie",

@@ -21,6 +21,8 @@ import shutil
 import sys
 from pathlib import Path
 
+from ranking import check_blocked
+
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data/webhards.json"
 BASELINE = ROOT / "data/baseline.json"
@@ -32,6 +34,7 @@ if "--restore" in sys.argv:
     sys.exit()
 
 data = json.loads(DATA.read_text(encoding="utf-8"))
+check_blocked(data)
 w = data["weights"]
 rows = [s for s in data["webhards"] if s.get("metrics")]
 
