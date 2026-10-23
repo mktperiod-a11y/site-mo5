@@ -127,34 +127,6 @@
       "index": 76.5
     },
     {
-      "id": "pdpop",
-      "name": "피디팝",
-      "status": "hidden",
-      "url": "https://new.pdpop.com/",
-      "logo": "assets/pdpop.svg",
-      "color": "#ec4899",
-      "score": "3.7",
-      "reason": "방송·예능 자료를 중심으로 둘러보기 좋은 서비스",
-      "tags": "#방송예능 #최신회차",
-      "benefits": [
-        {
-          "kind": "join",
-          "text": "본인인증 500B"
-        },
-        {
-          "kind": "event",
-          "text": "앱 리뷰 스토어당 2,000P"
-        }
-      ],
-      "metrics": {
-        "playApp": "com.pdpop.download4",
-        "downloads": 278330,
-        "rating": 4.88,
-        "ratingCount": 1680
-      },
-      "index": 74.4
-    },
-    {
       "id": "ssadafile",
       "name": "싸다파일",
       "status": "ready",

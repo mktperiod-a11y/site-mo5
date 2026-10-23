@@ -3,7 +3,8 @@ import random
 import sys
 
 # services the owner decided never to list (2026-10); ask the owner before touching this
-BLOCKED = {"미투디스크": "me2disk", "파일캐스트": "filecast", "파일이즈": "fileis", "애플파일": "applefile"}
+BLOCKED = {"미투디스크": "me2disk", "파일캐스트": "filecast", "파일이즈": "fileis", "애플파일": "applefile",
+           "스마트파일": "smartfile", "피디팝": "pdpop"}
 
 
 def check_blocked(data):
