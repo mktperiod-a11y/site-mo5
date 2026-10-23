@@ -17,10 +17,11 @@ import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from ranking import weekly
+from ranking import check_blocked, weekly
 
 site = Path(sys.argv[1])
 data = json.loads((site / "data/webhards.json").read_text(encoding="utf-8"))
+check_blocked(data)
 e = html.escape
 today = datetime.now(timezone(timedelta(hours=9))).date()
 week_start = today - timedelta(days=today.weekday())

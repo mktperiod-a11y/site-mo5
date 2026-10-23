@@ -26,7 +26,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from ranking import weekly
+from ranking import check_blocked, weekly
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data/webhards.json"
@@ -35,7 +35,8 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 DRY = "--dry-run" in sys.argv
 
 data = json.loads(DATA.read_text(encoding="utf-8"))
-rows = [s for s in data["webhards"] if s["status"] == "ready" and s.get("metrics")]
+check_blocked(data)
+rows = [s for s in data["webhards"] if s["status"] in ("ready", "hidden") and s.get("metrics")]
 today = datetime.now(timezone(timedelta(hours=9))).date()
 
 

@@ -1,5 +1,22 @@
 """Weekly ranking shared by render_ranking.py (what the page shows) and collect.py (what it showed last week)."""
 import random
+import sys
+
+# services the owner decided never to list (2026-10); ask the owner before touching this
+BLOCKED = {"미투디스크": "me2disk", "파일캐스트": "filecast", "파일이즈": "fileis", "애플파일": "applefile"}
+
+
+def check_blocked(data):
+    """Stop when a blocked service is in the data, whatever its status."""
+    found = [
+        s.get("name") or s.get("id")
+        for s in data["webhards"]
+        for name, key in BLOCKED.items()
+        if name in s.get("name", "").replace(" ", "")
+        or key in " ".join(str(s.get(k, "")) for k in ("id", "url", "logo")).lower()
+    ]
+    if found:
+        sys.exit(f"::error::다루지 않기로 한 웹하드가 데이터에 있습니다: {', '.join(found)}. 소유자에게 먼저 확인하세요.")
 
 
 def full_shares(data):
