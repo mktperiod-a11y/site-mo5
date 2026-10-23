@@ -455,18 +455,39 @@
       "color": "#0891b2",
       "reason": "찜해 둔 자료를 다시 보고 화면 전송으로 이어 보기 좋은 서비스",
       "tags": "#찜다시보기 #화면전송",
-      "benefits": []
+      "benefits": [
+        {
+          "kind": "join",
+          "text": "가입 2,000P"
+        },
+        {
+          "kind": "event",
+          "text": "포인트 3배 사은행사"
+        }
+      ]
     },
     {
       "id": "filenori",
       "name": "파일노리",
-      "status": "pending",
+      "status": "ready",
       "url": "https://www.filenori.com/",
       "logo": "assets/filenori.svg",
       "color": "#4f46e5",
       "reason": "모바일 탐색과 전용 플레이어로 이용하기 좋은 서비스",
       "tags": "#모바일탐색 #전용플레이어",
-      "benefits": []
+      "benefits": [
+        {
+          "kind": "join",
+          "text": "가입 2,000P"
+        },
+        {
+          "kind": "event",
+          "text": "골라받기 3배 행사"
+        }
+      ],
+      "metrics": {
+        "playApp": "com.FNoriShopGo"
+      }
     }
   ]
 }

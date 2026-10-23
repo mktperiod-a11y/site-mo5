@@ -36,7 +36,8 @@ if "--restore" in sys.argv:
 data = json.loads(DATA.read_text(encoding="utf-8"))
 check_blocked(data)
 w = data["weights"]
-rows = [s for s in data["webhards"] if s.get("metrics")]
+# an entry is scored once its app numbers have been collected (a new entry has only "playApp" until then)
+rows = [s for s in data["webhards"] if all(k in s.get("metrics", {}) for k in ("downloads", "rating", "ratingCount"))]
 
 
 def lognorm(key):
@@ -78,7 +79,7 @@ for sid, worst in sorted(data.get("maxRank", {}).items(), key=lambda kv: kv[1]):
     pos = next((i for i, s in enumerate(ranked) if s["id"] == sid), None)
     if pos is not None and pos >= worst:
         ranked.insert(worst - 1, ranked.pop(pos))
-rest = [s for s in data["webhards"] if not s.get("metrics")]
+rest = [s for s in data["webhards"] if s not in rows]
 data["webhards"] = ranked + rest
 DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 for i, s in enumerate(ranked, 1):
