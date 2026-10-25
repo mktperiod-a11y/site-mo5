@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-23",
-  "metricsDate": "2026-10-21",
+  "updated": "2026-10-26",
+  "metricsDate": "2026-10-26",
   "searchAnchor": "ondisk",
   "weights": {
     "popularity": 40,
@@ -25,7 +25,7 @@
       "url": "https://new.ondisk.co.kr/",
       "logo": "assets/ondisk.svg",
       "color": "#2f7cf6",
-      "score": "4.7",
+      "score": "4.6",
       "reason": "콘텐츠 범위와 이용 편의성이 균형 잡힌 종합 서비스",
       "tags": "#종합콘텐츠 #PC모바일",
       "benefits": [
@@ -40,15 +40,15 @@
       ],
       "metrics": {
         "playApp": "com.ondisk.mobile4v18M",
-        "downloads": 962576,
+        "downloads": 963724,
         "rating": 4.76,
-        "ratingCount": 15254,
+        "ratingCount": 15279,
         "search": 100.0,
-        "searchChange": -0.011
+        "searchChange": -0.15
       },
-      "index": 93.0,
+      "index": 91.3,
       "parts": {
-        "popularity": 33.9,
+        "popularity": 32.2,
         "usability": 34.1,
         "affection": 25.0
       }
@@ -60,7 +60,7 @@
       "url": "https://www.filesun.com/",
       "logo": "assets/filesun.svg",
       "color": "#ff7a29",
-      "score": "4.2",
+      "score": "4.1",
       "reason": "다양한 장르와 프로모션을 함께 살펴보기 좋은 서비스",
       "tags": "#프로모션 #여러장르",
       "benefits": [
@@ -75,15 +75,15 @@
       ],
       "metrics": {
         "playApp": "com.is.filesun.version4",
-        "downloads": 780581,
+        "downloads": 781152,
         "rating": 4.7,
-        "ratingCount": 14983,
-        "search": 40.67,
-        "searchChange": -0.01
+        "ratingCount": 14994,
+        "search": 40.54,
+        "searchChange": -0.152
       },
-      "index": 84.5,
+      "index": 82.8,
       "parts": {
-        "popularity": 26.7,
+        "popularity": 25.0,
         "usability": 32.9,
         "affection": 24.9
       }
@@ -95,7 +95,7 @@
       "url": "https://www.yesfile.com/",
       "logo": "assets/yesfile.svg",
       "color": "#20b26b",
-      "score": "3.8",
+      "score": "3.7",
       "reason": "오래 운영된 대형 서비스로 자료 범위가 넓은 서비스",
       "tags": "#대형자료실 #장기운영",
       "benefits": [
@@ -106,15 +106,15 @@
       ],
       "metrics": {
         "playApp": "com.mnt.aos.yesfile.shortcuts",
-        "downloads": 682765,
-        "rating": 3.81,
-        "ratingCount": 1602,
-        "search": 53.92,
-        "searchChange": 0.098
+        "downloads": 683438,
+        "rating": 3.83,
+        "ratingCount": 1603,
+        "search": 55.68,
+        "searchChange": -0.084
       },
-      "index": 76.2,
+      "index": 74.3,
       "parts": {
-        "popularity": 30.2,
+        "popularity": 28.3,
         "usability": 29.5,
         "affection": 16.4
       }
@@ -126,7 +126,7 @@
       "url": "https://www.filejo.com/main/",
       "logo": "assets/filejo.svg",
       "color": "#ef4444",
-      "score": "3.6",
+      "score": "3.5",
       "reason": "카테고리 구성이 촘촘해 자료를 고르기 쉬운 서비스",
       "tags": "#카테고리 #다양한장르",
       "benefits": [
@@ -141,17 +141,17 @@
       ],
       "metrics": {
         "playApp": "com.funbox.jlsco",
-        "downloads": 298560,
-        "rating": 4.5,
-        "ratingCount": 436,
-        "search": 93.57,
-        "searchChange": -0.004
+        "downloads": 298903,
+        "rating": 4.42,
+        "ratingCount": 441,
+        "search": 93.62,
+        "searchChange": -0.16
       },
-      "index": 72.3,
+      "index": 70.3,
       "parts": {
-        "popularity": 33.4,
-        "usability": 27.3,
-        "affection": 11.5
+        "popularity": 31.6,
+        "usability": 27.2,
+        "affection": 11.6
       }
     },
     {
@@ -161,7 +161,7 @@
       "url": "https://filemong.com/",
       "logo": "assets/filemong.svg",
       "color": "#8b5cf6",
-      "score": "3.6",
+      "score": "3.5",
       "reason": "간결한 화면과 빠른 검색을 갖춘 서비스",
       "tags": "#간결UI #빠른검색",
       "benefits": [
@@ -176,15 +176,15 @@
       ],
       "metrics": {
         "playApp": "com.me.filemong",
-        "downloads": 262264,
+        "downloads": 262439,
         "rating": 4.81,
-        "ratingCount": 5012,
-        "search": 25.7,
-        "searchChange": -0.013
+        "ratingCount": 5019,
+        "search": 25.73,
+        "searchChange": -0.145
       },
-      "index": 71.4,
+      "index": 69.8,
       "parts": {
-        "popularity": 23.0,
+        "popularity": 21.4,
         "usability": 27.6,
         "affection": 20.8
       }
@@ -211,15 +211,15 @@
       ],
       "metrics": {
         "playApp": "kr.co.tple.downapp",
-        "downloads": 169208,
+        "downloads": 169517,
         "rating": 4.91,
-        "ratingCount": 1866,
-        "search": 17.37,
-        "searchChange": -0.013
+        "ratingCount": 1872,
+        "search": 17.43,
+        "searchChange": -0.134
       },
-      "index": 62.4,
+      "index": 61.1,
       "parts": {
-        "popularity": 19.8,
+        "popularity": 18.5,
         "usability": 25.6,
         "affection": 17.0
       }
@@ -246,16 +246,16 @@
       ],
       "metrics": {
         "playApp": "com.ggulfile.app.ggulfile_app",
-        "downloads": 185153,
-        "rating": 4.59,
-        "ratingCount": 2746,
-        "search": 11.09,
-        "searchChange": 0.03
+        "downloads": 186690,
+        "rating": 4.62,
+        "ratingCount": 2760,
+        "search": 11.06,
+        "searchChange": -0.158
       },
-      "index": 60.3,
+      "index": 58.3,
       "parts": {
-        "popularity": 16.7,
-        "usability": 25.1,
+        "popularity": 14.5,
+        "usability": 25.2,
         "affection": 18.5
       }
     },
@@ -281,17 +281,17 @@
       ],
       "metrics": {
         "playApp": "com.kdisk.mobileapp5",
-        "downloads": 54478,
+        "downloads": 56270,
         "rating": 4.79,
-        "ratingCount": 527,
-        "search": 29.76,
-        "searchChange": 0.013
+        "ratingCount": 533,
+        "search": 29.9,
+        "searchChange": -0.147
       },
-      "index": 55.9,
+      "index": 54.3,
       "parts": {
-        "popularity": 24.5,
-        "usability": 19.2,
-        "affection": 12.2
+        "popularity": 22.6,
+        "usability": 19.4,
+        "affection": 12.3
       }
     },
     {
@@ -316,18 +316,53 @@
       ],
       "metrics": {
         "playApp": "com.filekukiv6",
-        "downloads": 58016,
+        "downloads": 58315,
         "rating": 4.61,
-        "ratingCount": 1136,
-        "search": 25.99,
-        "searchChange": -0.015
+        "ratingCount": 1144,
+        "search": 25.34,
+        "searchChange": -0.184
       },
-      "index": 57.4,
+      "index": 55.2,
       "parts": {
-        "popularity": 23.0,
+        "popularity": 20.8,
         "usability": 19.2,
-        "affection": 15.1
+        "affection": 15.2
       }
+    },
+    {
+      "id": "filenori",
+      "name": "파일노리",
+      "status": "ready",
+      "url": "https://www.filenori.com/",
+      "logo": "assets/filenori.svg",
+      "color": "#4f46e5",
+      "reason": "모바일 탐색과 전용 플레이어로 이용하기 좋은 서비스",
+      "tags": "#모바일탐색 #전용플레이어",
+      "benefits": [
+        {
+          "kind": "join",
+          "text": "가입 2,000P"
+        },
+        {
+          "kind": "event",
+          "text": "골라받기 3배 행사"
+        }
+      ],
+      "metrics": {
+        "playApp": "com.FNoriShopGo",
+        "downloads": 85345,
+        "rating": 4.28,
+        "ratingCount": 212,
+        "search": 40.05,
+        "searchChange": -0.156
+      },
+      "index": 54.2,
+      "parts": {
+        "popularity": 24.8,
+        "usability": 20.6,
+        "affection": 8.8
+      },
+      "score": "3.5"
     },
     {
       "id": "filebogo",
@@ -347,17 +382,17 @@
       ],
       "metrics": {
         "playApp": "com.winpeople.filebogo",
-        "downloads": 192771,
+        "downloads": 192864,
         "rating": 3.51,
         "ratingCount": 4034,
-        "search": 5.5,
-        "searchChange": -0.027
+        "search": 5.44,
+        "searchChange": -0.163
       },
-      "index": 52.2,
+      "index": 50.5,
       "parts": {
-        "popularity": 10.5,
+        "popularity": 8.8,
         "usability": 21.8,
-        "affection": 20.0
+        "affection": 19.9
       }
     },
     {
@@ -378,15 +413,15 @@
       ],
       "metrics": {
         "playApp": "com.mideak.fmav7",
-        "downloads": 224778,
+        "downloads": 224943,
         "rating": 2.37,
         "ratingCount": 752,
-        "search": 12.42,
-        "searchChange": -0.035
+        "search": 12.38,
+        "searchChange": -0.144
       },
-      "index": 51.0,
+      "index": 49.7,
       "parts": {
-        "popularity": 16.9,
+        "popularity": 15.6,
         "usability": 20.5,
         "affection": 13.6
       }
@@ -413,15 +448,15 @@
       ],
       "metrics": {
         "playApp": "com.ssadafile.app.ssadafilev1",
-        "downloads": 230717,
+        "downloads": 230970,
         "rating": 4.5,
         "ratingCount": 2165,
-        "search": 5.53,
-        "searchChange": -0.323
+        "search": 4.93,
+        "searchChange": -0.336
       },
-      "index": 50.5,
+      "index": 49.5,
       "parts": {
-        "popularity": 6.9,
+        "popularity": 6.0,
         "usability": 25.9,
         "affection": 17.6
       }
@@ -448,15 +483,15 @@
       ],
       "metrics": {
         "playApp": "kr.co.filecity.filecity_mobile_flutter_google2",
-        "downloads": 59657,
+        "downloads": 60150,
         "rating": 3.91,
-        "ratingCount": 113,
-        "search": 27.13,
-        "searchChange": -0.004
+        "ratingCount": 114,
+        "search": 27.26,
+        "searchChange": -0.155
       },
-      "index": 48.4,
+      "index": 46.8,
       "parts": {
-        "popularity": 23.5,
+        "popularity": 21.8,
         "usability": 18.6,
         "affection": 6.4
       }
@@ -479,15 +514,15 @@
       ],
       "metrics": {
         "playApp": "com.todisk.aosdown",
-        "downloads": 71401,
-        "rating": 3.23,
-        "ratingCount": 215,
-        "search": 13.53,
-        "searchChange": -0.101
+        "downloads": 71728,
+        "rating": 3.25,
+        "ratingCount": 216,
+        "search": 13.02,
+        "searchChange": -0.222
       },
-      "index": 43.8,
+      "index": 42.1,
       "parts": {
-        "popularity": 16.8,
+        "popularity": 15.1,
         "usability": 18.2,
         "affection": 8.8
       }
@@ -510,15 +545,15 @@
       ],
       "metrics": {
         "playApp": "com.me.filestar2",
-        "downloads": 16046,
+        "downloads": 16117,
         "rating": 3.86,
         "ratingCount": 21,
-        "search": 3.03,
-        "searchChange": -0.054
+        "search": 2.99,
+        "searchChange": -0.163
       },
-      "index": 17.6,
+      "index": 16.3,
       "parts": {
-        "popularity": 5.4,
+        "popularity": 4.0,
         "usability": 12.3,
         "affection": 0.0
       }
@@ -542,29 +577,26 @@
           "text": "포인트 3배 사은행사"
         }
       ]
-    },
-    {
-      "id": "filenori",
-      "name": "파일노리",
-      "status": "ready",
-      "url": "https://www.filenori.com/",
-      "logo": "assets/filenori.svg",
-      "color": "#4f46e5",
-      "reason": "모바일 탐색과 전용 플레이어로 이용하기 좋은 서비스",
-      "tags": "#모바일탐색 #전용플레이어",
-      "benefits": [
-        {
-          "kind": "join",
-          "text": "가입 2,000P"
-        },
-        {
-          "kind": "event",
-          "text": "골라받기 3배 행사"
-        }
-      ],
-      "metrics": {
-        "playApp": "com.FNoriShopGo"
-      }
     }
-  ]
+  ],
+  "previousRanks": {
+    "week": "2026-10-19",
+    "ranks": {
+      "ondisk": 0,
+      "filesun": 1,
+      "yesfile": 2,
+      "filejo": 3,
+      "filemong": 4,
+      "ggulfile": 5,
+      "tple": 6,
+      "kdisk": 7,
+      "filecookie": 8,
+      "filebogo": 9,
+      "filemaru": 10,
+      "filecity": 11,
+      "ssadafile": 12,
+      "todisk": 13,
+      "filestar": 14
+    }
+  }
 }
