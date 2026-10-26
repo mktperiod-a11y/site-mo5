@@ -80,14 +80,37 @@ TOP_STARS = 4.9
 
 
 def set_stars(data, ranked):
-    """Stars on the cards: the first entry gets TOP_STARS, the others the same share of it as their index
-    has of the first index, never below minScore and never above the entry ranked above them."""
-    top = ranked[0]["index"] if ranked and ranked[0]["index"] > 0 else None
-    above = TOP_STARS
-    for s in ranked:
-        stars = TOP_STARS * s["index"] / top if top else data.get("minScore", 0)
-        above = min(above, max(data.get("minScore", 0), round(stars, 1)))
-        s["score"] = f"{above:.1f}"
+    """Stars on the cards. Among the shown entries (rankLimit) the first gets TOP_STARS and the last
+    minScore, the others sit between them in proportion to their index, and each shown entry gets at least
+    0.1 less than the one above it, so no two shown ranks have the same stars. Entries below the shown
+    ones get their proportional value, below the last shown entry and never under minScore."""
+    if not ranked:
+        return ranked
+    top, low = round(TOP_STARS * 10), round(data.get("minScore", 0) * 10)
+    shown = min(len(ranked), data.get("rankLimit", len(ranked)), top - low + 1)
+    hi, lo = ranked[0]["index"], ranked[shown - 1]["index"]
+    above = top + 1
+    for i, s in enumerate(ranked):
+        share = (s["index"] - lo) / (hi - lo) if hi > lo else 0
+        tenths = round(low + (top - low) * share)
+        if i < shown:
+            tenths = max(low + shown - 1 - i, min(top - i, tenths))  # room for the shown ones below
+        tenths = max(low, min(tenths, above - 1))
+        s["score"] = f"{tenths / 10:.1f}"
+        above = tenths
+    return ranked
+    top, low = round(TOP_STARS * 10), round(data.get("minScore", 0) * 10)
+    hi, lo = ranked[0]["index"], ranked[-1]["index"]
+    n = len(ranked)
+    above = top + 1
+    for i, s in enumerate(ranked):
+        share = (s["index"] - lo) / (hi - lo) if hi > lo else 1
+        tenths = round(low + (top - low) * share)
+        tenths = min(tenths, above - 1)  # always below the entry ranked above
+        tenths = max(tenths, low + max(0, min(n - 1 - i, top - low - i)))  # leave room for the ones below
+        tenths = min(tenths, above - 1) if above - 1 >= low else low
+        s["score"] = f"{tenths / 10:.1f}"
+        above = tenths
     return ranked
 
 
