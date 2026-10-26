@@ -25,7 +25,7 @@
       "url": "https://new.ondisk.co.kr/",
       "logo": "assets/ondisk.svg",
       "color": "#2f7cf6",
-      "score": "4.6",
+      "score": "4.9",
       "reason": "콘텐츠 범위와 이용 편의성이 균형 잡힌 종합 서비스",
       "tags": "#종합콘텐츠 #PC모바일",
       "benefits": [
@@ -60,7 +60,7 @@
       "url": "https://www.filesun.com/",
       "logo": "assets/filesun.svg",
       "color": "#ff7a29",
-      "score": "4.1",
+      "score": "4.4",
       "reason": "다양한 장르와 프로모션을 함께 살펴보기 좋은 서비스",
       "tags": "#프로모션 #여러장르",
       "benefits": [
@@ -95,7 +95,7 @@
       "url": "https://www.yesfile.com/",
       "logo": "assets/yesfile.svg",
       "color": "#20b26b",
-      "score": "3.7",
+      "score": "4.0",
       "reason": "오래 운영된 대형 서비스로 자료 범위가 넓은 서비스",
       "tags": "#대형자료실 #장기운영",
       "benefits": [
@@ -126,7 +126,7 @@
       "url": "https://www.filejo.com/main/",
       "logo": "assets/filejo.svg",
       "color": "#ef4444",
-      "score": "3.5",
+      "score": "3.8",
       "reason": "카테고리 구성이 촘촘해 자료를 고르기 쉬운 서비스",
       "tags": "#카테고리 #다양한장르",
       "benefits": [
@@ -161,7 +161,7 @@
       "url": "https://filemong.com/",
       "logo": "assets/filemong.svg",
       "color": "#8b5cf6",
-      "score": "3.5",
+      "score": "3.7",
       "reason": "간결한 화면과 빠른 검색을 갖춘 서비스",
       "tags": "#간결UI #빠른검색",
       "benefits": [

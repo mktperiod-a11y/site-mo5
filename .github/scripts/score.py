@@ -21,7 +21,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from ranking import check_blocked
+from ranking import check_blocked, set_stars
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data/webhards.json"
@@ -70,7 +70,6 @@ for s in rows:
     index = sum(points.values())
     s["index"] = round(index, 1)
     s["parts"] = {k: round(v, 1) for k, v in points.items()}
-    s["score"] = f"{max(data.get('minScore', 0), index / 20):.1f}"  # shown stars never go below minScore
 
 # ready entries ranked by index; entries without metrics and pending ones keep their relative order after them
 ranked = sorted(rows, key=lambda s: -s["index"])
@@ -79,6 +78,7 @@ for sid, worst in sorted(data.get("maxRank", {}).items(), key=lambda kv: kv[1]):
     pos = next((i for i, s in enumerate(ranked) if s["id"] == sid), None)
     if pos is not None and pos >= worst:
         ranked.insert(worst - 1, ranked.pop(pos))
+set_stars(data, ranked)
 rest = [s for s in data["webhards"] if s not in rows]
 data["webhards"] = ranked + rest
 DATA.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
