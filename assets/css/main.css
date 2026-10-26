@@ -168,6 +168,34 @@ header {
 .card:nth-child(3) .rank-flag {
   background: #5d6b7c;
 }
+/* top three: a larger flag with a TOP caption and the flag colour on the card edge */
+.card.top {
+  --flag: var(--blue);
+  border-color: var(--flag);
+  box-shadow: 0 0 0 1px var(--flag), 0 8px 22px #15263a14;
+}
+.card.top:nth-child(2) {
+  --flag: var(--navy);
+}
+.card.top:nth-child(3) {
+  --flag: #5d6b7c;
+}
+.card.top .rank-flag {
+  width: 46px;
+  height: 66px;
+  padding-top: 8px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--flag) 82%, #fff), var(--flag));
+  font-size: 26px;
+  line-height: 1.05;
+  box-shadow: inset 0 -2px 0 #0000001f;
+}
+.card.top .rank-flag::before {
+  content: "TOP";
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
 /* one layer: the logo sits straight on the card, a hairline below */
 .visual {
   flex: none;
@@ -984,6 +1012,15 @@ header {
     width: 30px;
     height: 40px;
     font-size: 15px;
+  }
+  .card.top .rank-flag {
+    width: 36px;
+    height: 52px;
+    padding-top: 6px;
+    font-size: 19px;
+  }
+  .card.top .rank-flag::before {
+    font-size: 8px;
   }
   .go {
     padding: 8px;
