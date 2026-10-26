@@ -168,17 +168,17 @@ header {
 .card:nth-child(3) .rank-flag {
   background: #5d6b7c;
 }
-/* top three: a larger flag with a TOP caption and the flag colour on the card edge */
+/* top three: a larger flag with a TOP caption in three steps of blue, deepest first, and the flag colour on the card edge */
 .card.top {
-  --flag: var(--blue);
+  --flag: #0a4fc4;
   border-color: var(--flag);
   box-shadow: 0 0 0 1px var(--flag), 0 8px 22px #15263a14;
 }
 .card.top:nth-child(2) {
-  --flag: var(--navy);
+  --flag: #1570e8;
 }
 .card.top:nth-child(3) {
-  --flag: #5d6b7c;
+  --flag: #3d8ff0;
 }
 .card.top .rank-flag {
   width: 46px;
