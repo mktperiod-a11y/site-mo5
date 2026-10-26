@@ -73,7 +73,21 @@ def apply_max_rank(data, ranked):
         if s.get("parts"):
             s["parts"] = shift_parts(s["parts"], need, full_shares(data), ("affection", "usability", "popularity"))
         s["index"] = round(sum(s["parts"].values()), 1) if s.get("parts") else round(below + 0.1, 1)
-        s["score"] = f"{max(data.get('minScore', 0), s['index'] / 20):.1f}"
+    return ranked
+
+
+TOP_STARS = 4.9
+
+
+def set_stars(data, ranked):
+    """Stars on the cards: the first entry gets TOP_STARS, the others the same share of it as their index
+    has of the first index, never below minScore and never above the entry ranked above them."""
+    top = ranked[0]["index"] if ranked and ranked[0]["index"] > 0 else None
+    above = TOP_STARS
+    for s in ranked:
+        stars = TOP_STARS * s["index"] / top if top else data.get("minScore", 0)
+        above = min(above, max(data.get("minScore", 0), round(stars, 1)))
+        s["score"] = f"{above:.1f}"
     return ranked
 
 
@@ -96,6 +110,4 @@ def weekly(data, start):
             s["parts"] = shift_parts(s["parts"], new - s["index"], full_shares(data))
             new = round(sum(s["parts"].values()), 1)  # rounded parts decide the index, so they always add up
         s["index"] = new
-    for s in ready:
-        s["score"] = f"{max(data.get('minScore', 0), s['index'] / 20):.1f}"
-    return apply_max_rank(data, sorted(ready, key=lambda s: -s["index"]))
+    return set_stars(data, apply_max_rank(data, sorted(ready, key=lambda s: -s["index"])))
