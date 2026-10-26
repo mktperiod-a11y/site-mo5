@@ -168,7 +168,7 @@ header {
 .card:nth-child(3) .rank-flag {
   background: #5d6b7c;
 }
-/* top three: a larger flag with a TOP caption in three steps of blue, deepest first */
+/* top three: the same flag size with a TOP caption, in three steps of blue, deepest first */
 .card.top {
   --flag: #0a4fc4;
 }
@@ -179,19 +179,17 @@ header {
   --flag: #3d8ff0;
 }
 .card.top .rank-flag {
-  width: 46px;
-  height: 66px;
-  padding-top: 8px;
+  padding-top: 7px;
   background: linear-gradient(180deg, color-mix(in srgb, var(--flag) 82%, #fff), var(--flag));
-  font-size: 26px;
-  line-height: 1.05;
+  line-height: 1;
   box-shadow: inset 0 -2px 0 #0000001f;
 }
 .card.top .rank-flag::before {
   content: "TOP";
   display: block;
-  font-size: 9px;
-  letter-spacing: 1px;
+  margin-bottom: 1px;
+  font-size: 8px;
+  letter-spacing: 0.5px;
   opacity: 0.85;
 }
 /* one layer: the logo sits straight on the card, a hairline below */
@@ -1012,13 +1010,11 @@ header {
     font-size: 15px;
   }
   .card.top .rank-flag {
-    width: 36px;
-    height: 52px;
-    padding-top: 6px;
-    font-size: 19px;
+    padding-top: 5px;
   }
   .card.top .rank-flag::before {
-    font-size: 8px;
+    font-size: 7px;
+    letter-spacing: 0;
   }
   .go {
     padding: 8px;
