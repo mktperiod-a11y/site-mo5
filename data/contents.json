@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-11-03",
   "names": {
     "나혼자산다": "나 혼자 산다",
     "1박2일": "1박 2일",
@@ -18,94 +18,94 @@
   },
   "genres": {},
   "movie": {
-    "period": "2026.10.19 ~ 2026.10.25",
+    "period": "2026.10.26 ~ 2026.11.01",
     "items": [
       {
         "title": "극장판 치이카와: 인어 섬의 비밀",
         "opened": "2026-09-30",
-        "audience": 419223,
+        "audience": 335811,
         "change": 0
+      },
+      {
+        "title": "하트 오브 비스트",
+        "opened": "2026-10-28",
+        "audience": 216060,
+        "change": 52
       },
       {
         "title": "암살자(들)",
         "opened": "2026-09-23",
-        "audience": 125356,
-        "change": 0
+        "audience": 73621,
+        "change": -1
       },
       {
-        "title": "실낙원",
-        "opened": "2026-10-21",
-        "audience": 102782,
-        "change": 22
+        "title": "수능, 출제의 비밀",
+        "opened": "2026-10-28",
+        "audience": 69613,
+        "change": 25
       },
       {
         "title": "타짜: 벨제붑의 노래",
         "opened": "2026-09-23",
-        "audience": 88290,
+        "audience": 56060,
         "change": -1
-      },
-      {
-        "title": "클레이페이스",
-        "opened": "2026-10-21",
-        "audience": 77153,
-        "change": null
       }
     ]
   },
   "drama": {
-    "period": "2026.10.19 ~ 2026.10.25",
+    "period": "2026.10.26 ~ 2026.11.01",
     "items": [
       {
         "title": "닥터X하얀마피아의시대",
         "channel": "SBS",
-        "rating": 18.4,
+        "rating": 16.0,
         "board": "지상파",
         "change": 0
       },
       {
         "title": "사랑이온다",
         "channel": "KBS2",
-        "rating": 15.8,
+        "rating": 15.4,
         "board": "지상파",
         "change": 0
       },
       {
+        "title": "엄마가미쳤어요",
+        "channel": "KBS1",
+        "rating": 9.7,
+        "board": "지상파",
+        "change": 2
+      },
+      {
         "title": "100일의거짓말",
         "channel": "tvN",
-        "rating": 7.943,
+        "rating": 8.54,
         "board": "케이블",
-        "change": 0
+        "change": -1
       },
       {
         "title": "욕망의덫",
         "channel": "KBS2",
         "rating": 7.2,
         "board": "지상파",
-        "change": 1
-      },
-      {
-        "title": "엄마가미쳤어요",
-        "channel": "KBS1",
-        "rating": 6.7,
-        "board": "지상파",
         "change": -1
       }
     ]
   },
   "variety": {
-    "period": "2026.10.19 ~ 2026.10.25",
+    "period": "2026.10.26 ~ 2026.11.01",
     "items": [
       {
         "title": "미운 우리 새끼",
         "channel": "SBS",
-        "rating": 9.4,
+        "rating": 8.9,
         "board": "지상파",
         "change": 0
       },
       {
         "title": "인간극장",
         "channel": "KBS1",
-        "rating": 7.0,
+        "rating": 7.4,
         "board": "지상파",
         "change": 0
       },
@@ -119,14 +119,14 @@
       {
         "title": "전국노래자랑",
         "channel": "KBS1",
-        "rating": 6.5,
+        "rating": 5.9,
         "board": "지상파",
         "change": 0
       },
       {
-        "title": "동네 한 바퀴",
+        "title": "아침마당",
         "channel": "KBS1",
-        "rating": 5.6,
+        "rating": 5.5,
         "board": "지상파",
         "change": null
       }
