@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-02",
-  "metricsDate": "2026-11-02",
+  "updated": "2026-11-09",
+  "metricsDate": "2026-11-09",
   "searchAnchor": "ondisk",
   "weights": {
     "popularity": 40,
@@ -40,15 +40,15 @@
       ],
       "metrics": {
         "playApp": "com.ondisk.mobile4v18M",
-        "downloads": 965188,
+        "downloads": 967706,
         "rating": 4.76,
-        "ratingCount": 15319,
+        "ratingCount": 15344,
         "search": 100.0,
-        "searchChange": -0.16
+        "searchChange": -0.15
       },
-      "index": 91.2,
+      "index": 91.3,
       "parts": {
-        "popularity": 32.1,
+        "popularity": 32.2,
         "usability": 34.1,
         "affection": 25.0
       }
@@ -75,15 +75,15 @@
       ],
       "metrics": {
         "playApp": "com.is.filesun.version4",
-        "downloads": 781897,
+        "downloads": 783243,
         "rating": 4.7,
-        "ratingCount": 15021,
-        "search": 40.44,
-        "searchChange": -0.168
+        "ratingCount": 15050,
+        "search": 40.36,
+        "searchChange": -0.148
       },
-      "index": 82.6,
+      "index": 82.8,
       "parts": {
-        "popularity": 24.8,
+        "popularity": 25.0,
         "usability": 32.9,
         "affection": 24.9
       }
@@ -106,52 +106,17 @@
       ],
       "metrics": {
         "playApp": "com.mnt.aos.yesfile.shortcuts",
-        "downloads": 684310,
-        "rating": 3.83,
-        "ratingCount": 1603,
-        "search": 56.9,
-        "searchChange": -0.123
+        "downloads": 686065,
+        "rating": 3.86,
+        "ratingCount": 1605,
+        "search": 58.46,
+        "searchChange": -0.093
       },
-      "index": 74.0,
+      "index": 74.6,
       "parts": {
-        "popularity": 28.0,
-        "usability": 29.5,
+        "popularity": 28.6,
+        "usability": 29.6,
         "affection": 16.4
-      }
-    },
-    {
-      "id": "filemong",
-      "name": "파일몽",
-      "status": "ready",
-      "url": "https://filemong.com/",
-      "logo": "assets/filemong.svg",
-      "color": "#8b5cf6",
-      "score": "4.1",
-      "reason": "간결한 화면과 빠른 검색을 갖춘 서비스",
-      "tags": "#간결UI #빠른검색",
-      "benefits": [
-        {
-          "kind": "join",
-          "text": "가입 300P"
-        },
-        {
-          "kind": "event",
-          "text": "30일 무제한 100원"
-        }
-      ],
-      "metrics": {
-        "playApp": "com.me.filemong",
-        "downloads": 262643,
-        "rating": 4.82,
-        "ratingCount": 5027,
-        "search": 25.97,
-        "searchChange": -0.09
-      },
-      "index": 70.6,
-      "parts": {
-        "popularity": 22.2,
-        "usability": 27.6,
-        "affection": 20.7
       }
     },
     {
@@ -161,7 +126,7 @@
       "url": "https://www.filejo.com/main/",
       "logo": "assets/filejo.svg",
       "color": "#ef4444",
-      "score": "4.0",
+      "score": "4.1",
       "reason": "카테고리 구성이 촘촘해 자료를 고르기 쉬운 서비스",
       "tags": "#카테고리 #다양한장르",
       "benefits": [
@@ -176,17 +141,52 @@
       ],
       "metrics": {
         "playApp": "com.funbox.jlsco",
-        "downloads": 299511,
-        "rating": 4.42,
-        "ratingCount": 443,
-        "search": 92.57,
-        "searchChange": -0.179
+        "downloads": 300698,
+        "rating": 4.37,
+        "ratingCount": 446,
+        "search": 91.96,
+        "searchChange": -0.16
       },
       "index": 69.9,
       "parts": {
-        "popularity": 31.2,
-        "usability": 27.2,
+        "popularity": 31.4,
+        "usability": 27.0,
         "affection": 11.5
+      }
+    },
+    {
+      "id": "filemong",
+      "name": "파일몽",
+      "status": "ready",
+      "url": "https://filemong.com/",
+      "logo": "assets/filemong.svg",
+      "color": "#8b5cf6",
+      "score": "4.0",
+      "reason": "간결한 화면과 빠른 검색을 갖춘 서비스",
+      "tags": "#간결UI #빠른검색",
+      "benefits": [
+        {
+          "kind": "join",
+          "text": "가입 300P"
+        },
+        {
+          "kind": "event",
+          "text": "30일 무제한 100원"
+        }
+      ],
+      "metrics": {
+        "playApp": "com.me.filemong",
+        "downloads": 263360,
+        "rating": 4.82,
+        "ratingCount": 5031,
+        "search": 25.63,
+        "searchChange": -0.21
+      },
+      "index": 69.1,
+      "parts": {
+        "popularity": 20.7,
+        "usability": 27.6,
+        "affection": 20.7
       }
     },
     {
@@ -211,15 +211,15 @@
       ],
       "metrics": {
         "playApp": "kr.co.tple.downapp",
-        "downloads": 169698,
+        "downloads": 170074,
         "rating": 4.91,
-        "ratingCount": 1877,
-        "search": 17.35,
-        "searchChange": -0.158
+        "ratingCount": 1894,
+        "search": 17.65,
+        "searchChange": -0.09
       },
-      "index": 60.8,
+      "index": 61.8,
       "parts": {
-        "popularity": 18.2,
+        "popularity": 19.2,
         "usability": 25.6,
         "affection": 17.0
       }
@@ -246,16 +246,16 @@
       ],
       "metrics": {
         "playApp": "com.ggulfile.app.ggulfile_app",
-        "downloads": 188432,
-        "rating": 4.63,
-        "ratingCount": 2774,
-        "search": 10.89,
-        "searchChange": -0.198
+        "downloads": 191963,
+        "rating": 4.59,
+        "ratingCount": 2794,
+        "search": 11.08,
+        "searchChange": -0.075
       },
-      "index": 57.8,
+      "index": 59.4,
       "parts": {
-        "popularity": 14.0,
-        "usability": 25.3,
+        "popularity": 15.7,
+        "usability": 25.2,
         "affection": 18.5
       }
     },
@@ -281,17 +281,17 @@
       ],
       "metrics": {
         "playApp": "com.kdisk.mobileapp5",
-        "downloads": 57294,
+        "downloads": 59109,
         "rating": 4.86,
-        "ratingCount": 549,
-        "search": 29.9,
-        "searchChange": -0.157
+        "ratingCount": 566,
+        "search": 29.91,
+        "searchChange": -0.148
       },
-      "index": 54.4,
+      "index": 54.8,
       "parts": {
-        "popularity": 22.5,
-        "usability": 19.6,
-        "affection": 12.3
+        "popularity": 22.7,
+        "usability": 19.8,
+        "affection": 12.4
       }
     },
     {
@@ -316,17 +316,17 @@
       ],
       "metrics": {
         "playApp": "com.filekukiv6",
-        "downloads": 58472,
-        "rating": 4.6,
-        "ratingCount": 1160,
-        "search": 24.91,
-        "searchChange": -0.198
+        "downloads": 58712,
+        "rating": 4.62,
+        "ratingCount": 1172,
+        "search": 24.81,
+        "searchChange": -0.167
       },
-      "index": 54.9,
+      "index": 55.3,
       "parts": {
-        "popularity": 20.6,
+        "popularity": 21.0,
         "usability": 19.2,
-        "affection": 15.1
+        "affection": 15.2
       }
     },
     {
@@ -350,15 +350,15 @@
       ],
       "metrics": {
         "playApp": "com.FNoriShopGo",
-        "downloads": 85708,
-        "rating": 4.28,
-        "ratingCount": 212,
+        "downloads": 86258,
+        "rating": 4.29,
+        "ratingCount": 213,
         "search": 39.59,
-        "searchChange": -0.168
+        "searchChange": -0.148
       },
-      "index": 53.9,
+      "index": 54.2,
       "parts": {
-        "popularity": 24.6,
+        "popularity": 24.9,
         "usability": 20.6,
         "affection": 8.7
       },
@@ -382,16 +382,16 @@
       ],
       "metrics": {
         "playApp": "com.winpeople.filebogo",
-        "downloads": 192988,
+        "downloads": 193273,
         "rating": 3.51,
         "ratingCount": 4033,
-        "search": 5.45,
-        "searchChange": -0.144
+        "search": 5.48,
+        "searchChange": -0.143
       },
-      "index": 50.8,
+      "index": 50.9,
       "parts": {
-        "popularity": 9.2,
-        "usability": 21.8,
+        "popularity": 9.3,
+        "usability": 21.7,
         "affection": 19.9
       }
     },
@@ -417,16 +417,16 @@
       ],
       "metrics": {
         "playApp": "com.ssadafile.app.ssadafilev1",
-        "downloads": 231143,
-        "rating": 4.5,
-        "ratingCount": 2165,
-        "search": 4.59,
-        "searchChange": -0.247
+        "downloads": 231468,
+        "rating": 4.47,
+        "ratingCount": 2169,
+        "search": 4.46,
+        "searchChange": -0.181
       },
-      "index": 50.0,
+      "index": 50.5,
       "parts": {
-        "popularity": 6.6,
-        "usability": 25.9,
+        "popularity": 7.2,
+        "usability": 25.8,
         "affection": 17.5
       }
     },
@@ -448,16 +448,16 @@
       ],
       "metrics": {
         "playApp": "com.mideak.fmav7",
-        "downloads": 225053,
+        "downloads": 225215,
         "rating": 2.4,
         "ratingCount": 753,
-        "search": 12.35,
-        "searchChange": -0.16
+        "search": 12.41,
+        "searchChange": -0.145
       },
-      "index": 49.5,
+      "index": 49.8,
       "parts": {
-        "popularity": 15.5,
-        "usability": 20.6,
+        "popularity": 15.7,
+        "usability": 20.5,
         "affection": 13.5
       }
     },
@@ -486,13 +486,13 @@
         "downloads": 60150,
         "rating": 3.91,
         "ratingCount": 114,
-        "search": 27.79,
-        "searchChange": -0.049
+        "search": 27.62,
+        "searchChange": -0.192
       },
-      "index": 48.1,
+      "index": 46.3,
       "parts": {
-        "popularity": 23.2,
-        "usability": 18.6,
+        "popularity": 21.5,
+        "usability": 18.5,
         "affection": 6.3
       }
     },
@@ -514,17 +514,17 @@
       ],
       "metrics": {
         "playApp": "com.todisk.aosdown",
-        "downloads": 71916,
-        "rating": 3.25,
-        "ratingCount": 216,
-        "search": 12.67,
-        "searchChange": -0.218
+        "downloads": 72256,
+        "rating": 3.17,
+        "ratingCount": 218,
+        "search": 12.82,
+        "searchChange": -0.066
       },
-      "index": 41.9,
+      "index": 43.7,
       "parts": {
-        "popularity": 15.0,
-        "usability": 18.2,
-        "affection": 8.7
+        "popularity": 16.9,
+        "usability": 18.0,
+        "affection": 8.8
       }
     },
     {
@@ -545,16 +545,16 @@
       ],
       "metrics": {
         "playApp": "com.me.filestar2",
-        "downloads": 16214,
+        "downloads": 16354,
         "rating": 3.73,
         "ratingCount": 22,
-        "search": 2.94,
-        "searchChange": -0.184
+        "search": 2.92,
+        "searchChange": -0.166
       },
-      "index": 16.0,
+      "index": 16.3,
       "parts": {
-        "popularity": 3.8,
-        "usability": 12.3,
+        "popularity": 4.0,
+        "usability": 12.2,
         "affection": 0.0
       }
     },
@@ -580,7 +580,7 @@
     }
   ],
   "previousRanks": {
-    "week": "2026-10-26",
+    "week": "2026-11-02",
     "ranks": {
       "ondisk": 0,
       "filesun": 1,
@@ -588,13 +588,13 @@
       "filejo": 3,
       "filemong": 4,
       "tple": 5,
-      "ggulfile": 6,
+      "filecookie": 6,
       "kdisk": 7,
-      "filecookie": 8,
+      "filemaru": 8,
       "filenori": 9,
-      "filebogo": 10,
-      "filemaru": 11,
-      "ssadafile": 12,
+      "ggulfile": 10,
+      "ssadafile": 11,
+      "filebogo": 12,
       "filecity": 13,
       "todisk": 14,
       "filestar": 15
