@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10",
+  "updated": "2026-11-24",
   "names": {
     "나혼자산다": "나 혼자 산다",
     "1박2일": "1박 2일",
@@ -18,36 +18,36 @@
   },
   "genres": {},
   "movie": {
-    "period": "2026.11.02 ~ 2026.11.08",
+    "period": "2026.11.16 ~ 2026.11.22",
     "items": [
+      {
+        "title": "폭설",
+        "opened": "2026-11-18",
+        "audience": 419355,
+        "change": 27
+      },
       {
         "title": "극장판 치이카와: 인어 섬의 비밀",
         "opened": "2026-09-30",
-        "audience": 204998,
-        "change": 0
+        "audience": 120333,
+        "change": -1
       },
       {
-        "title": "하트 오브 비스트",
-        "opened": "2026-10-28",
-        "audience": 162803,
-        "change": 0
+        "title": "폴2: 데드포인트",
+        "opened": "2026-11-11",
+        "audience": 100796,
+        "change": -1
       },
       {
-        "title": "최종면접",
-        "opened": "2026-11-04",
-        "audience": 152235,
-        "change": 10
+        "title": "헝거게임 50번째 추첨의 날",
+        "opened": "2026-11-18",
+        "audience": 90114,
+        "change": 43
       },
       {
-        "title": "명탐정 코난: 30호 살인 사건",
-        "opened": "2026-11-05",
-        "audience": 105378,
-        "change": 22
-      },
-      {
-        "title": "극장판 마법소녀 마도카☆마기카〈발푸르기스의 회천〉",
-        "opened": "2026-11-04",
-        "audience": 43319,
+        "title": "임영웅ㅣ아임 히어로 더 스타디움 2",
+        "opened": "2026-11-18",
+        "audience": 61861,
         "change": null
       }
     ]
