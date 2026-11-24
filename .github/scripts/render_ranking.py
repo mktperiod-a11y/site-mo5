@@ -99,7 +99,7 @@ def bar(i, s):
         rows, detail = "", ""
     return (
         f'<div class="bar" tabindex="0" style="--h:{round(s["index"] / top * 88)}%;--c:{s["color"]};--d:{i * 0.07:.2f}s" '
-        f'data-name="{e(s["name"])}" aria-label="{e(s["name"])} 모아온 지수 {s["index"]}{", " + detail if detail else ""}">'
+        f'data-name="{e(s["name"])}" aria-label="{e(s["name"])} 랭두 지수 {s["index"]}{", " + detail if detail else ""}">'
         f'<b data-v="{s["index"]}">{s["index"]}</b>'
         f'<span class="tip" aria-hidden="true"><strong>{e(s["name"])} {s["index"]}</strong>{rows}</span></div>'
     )
@@ -110,7 +110,7 @@ names = [s["name"] for s in services]
 has_search = any(s.get("metrics", {}).get("search") for s in services)
 basis = ("네이버 검색 관심도와 " if has_search else "") + "구글 플레이 공개 지표"
 summary = (
-    f'현재 모아온 웹하드 순위 1위는 <b>{e(names[0])}</b>, '
+    f'현재 랭두 웹하드 순위 1위는 <b>{e(names[0])}</b>, '
     f"2위 {e(names[1])}, 3위 {e(names[2])}입니다.<br>"
     f'산정 기준은 <a href="criteria.html#index">순위 검증 가이드</a>에서 확인할 수 있습니다.'
 )
@@ -121,7 +121,7 @@ item_list = {
     "itemListOrder": "https://schema.org/ItemListOrderAscending",
     "numberOfItems": len(services),
     "itemListElement": [
-        {"@type": "ListItem", "position": i + 1, "name": s["name"], "url": f"https://site-url.invalid/webhard/{s['id']}/", "description": f"{s['reason']} (모아온 지수 {s['index']})"}
+        {"@type": "ListItem", "position": i + 1, "name": s["name"], "url": f"https://site-url.invalid/webhard/{s['id']}/", "description": f"{s['reason']} (랭두 지수 {s['index']})"}
         for i, s in enumerate(services)
     ],
 }
@@ -132,7 +132,7 @@ page = {
     "url": "https://site-url.invalid/",
     "inLanguage": "ko-KR",
     "dateModified": updated.isoformat(),
-    "isPartOf": {"@type": "WebSite", "name": "모아온", "url": "https://site-url.invalid/"},
+    "isPartOf": {"@type": "WebSite", "name": "랭두", "url": "https://site-url.invalid/"},
 }
 # "</" is escaped so text from the data can never close the script tag early
 jsonld = "".join(
@@ -155,9 +155,9 @@ tokens = {
     "{{w_usability}}": str(data["weights"]["usability"]),
     "{{w_affection}}": str(data["weights"]["affection"]),
     "{{detail_links}}": "\n".join(
-        f"- [{s['name']}](https://site-url.invalid/webhard/{s['id']}/): 모아온 지수·가입 혜택" for s in ranked
+        f"- [{s['name']}](https://site-url.invalid/webhard/{s['id']}/): 랭두 지수·가입 혜택" for s in ranked
     ),
-    "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']} (모아온 지수 {s['index']}): {s['reason']}" for i, s in enumerate(services)),
+    "{{ranking_list}}": "\n".join(f"{i + 1}. {s['name']} (랭두 지수 {s['index']}): {s['reason']}" for i, s in enumerate(services)),
 }
 def benefit_rows():
     """Home side box: every benefit of this week's top services, one row each. The page script shows five services
@@ -249,7 +249,7 @@ for i, s in enumerate(ranked):
     others = random.Random(f"{week_start.isoformat()}-{s['id']}").sample(pool, min(5, len(pool)))
     page_ld = [
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "모아온", "item": "https://site-url.invalid/"},
+            {"@type": "ListItem", "position": 1, "name": "랭두", "item": "https://site-url.invalid/"},
             {"@type": "ListItem", "position": 2, "name": s["name"], "item": f"https://site-url.invalid/webhard/{s['id']}/"}]},
         {"@context": "https://schema.org", "@type": "WebPage", "name": f"{s['name']} 순위·가입 혜택 정보",
          "url": f"https://site-url.invalid/webhard/{s['id']}/", "inLanguage": "ko-KR", "dateModified": updated.isoformat()},
@@ -273,8 +273,8 @@ for i, s in enumerate(ranked):
         "{{metrics_short}}": metrics_date.strftime("%Y.%m.%d"),
         "{{metrics_basis}}": basis,
         "{{updated_ym}}": f"{updated.year}년 {updated.month}월",
-        "{{description}}": e(f"{s['name']} {updated.year}년 {updated.month}월 모아온 지수 {s['index']}·{i + 1}위. "
-                             f"{s['reason']}. 모아온 지수 구성과 가입 혜택을 한눈에 확인하세요."),
+        "{{description}}": e(f"{s['name']} {updated.year}년 {updated.month}월 랭두 지수 {s['index']}·{i + 1}위. "
+                             f"{s['reason']}. 랭두 지수 구성과 가입 혜택을 한눈에 확인하세요."),
         "{{jsonld}}": "".join('<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
                               + "</script>" for d in page_ld),
         "{{others}}": "".join(other_row(x) for x in others),
@@ -300,7 +300,7 @@ GO = """<!doctype html>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'" />
-    <title>{name}(으)로 이동 중 | 모아온</title>
+    <title>{name}(으)로 이동 중 | 랭두</title>
   </head>
   <body>
     <p>{name} 공식 사이트로 이동 중입니다.</p>

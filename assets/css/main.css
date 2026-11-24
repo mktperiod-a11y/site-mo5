@@ -1068,36 +1068,36 @@ header {
     font-weight: 700;
   }
 }
-.brand-moa {
+.brand-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
-.moa-symbol {
+.brand-mark {
   width: 40px;
   height: 40px;
   color: #087df2;
 }
-.moa-word {
+.brand-word {
   display: flex;
   flex-direction: column;
   line-height: 1;
 }
-.moa-word b {
+.brand-word b {
   font-size: 21px;
   letter-spacing: -1.8px;
 }
-.moa-word small {
+.brand-word small {
   margin-top: 5px;
   color: #8a96a5;
   font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.75px;
 }
-.drawer .brand-moa {
+.drawer .brand-link {
   margin-right: auto;
 }
-.drawer .moa-word small {
+.drawer .brand-word small {
   display: none;
 }
 
@@ -1143,7 +1143,7 @@ img {
 .go:focus-visible,
 .drawer a:focus-visible,
 .drawer button:focus-visible,
-.brand-moa:focus-visible,
+.brand-link:focus-visible,
 .menu a:focus-visible {
   outline: 3px solid #62aff8;
   outline-offset: 3px;
@@ -1339,7 +1339,7 @@ img {
   .wrap {
     width: calc(100% - 28px);
   }
-  .moa-word small {
+  .brand-word small {
     letter-spacing: 0.35px;
   }
   .card-body {
@@ -1364,18 +1364,18 @@ img {
 }
 /* small screens: compact header logo */
 @media (max-width: 600px) {
-  .brand-moa {
+  .brand-link {
     gap: 6px;
   }
-  .moa-symbol {
+  .brand-mark {
     width: 30px;
     height: 30px;
   }
-  .moa-word b {
+  .brand-word b {
     font-size: 18px;
     letter-spacing: -1px;
   }
-  .moa-word small {
+  .brand-word small {
     display: none;
   }
 }
