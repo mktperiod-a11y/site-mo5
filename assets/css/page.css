@@ -28,9 +28,6 @@
   font-size: 14px;
   font-weight: 700;
 }
-.live-list .live-name {
-  margin: 0;
-}
 /* long-form text sits in the same white card as the home chart and FAQ */
 .page-box {
   padding: var(--box-pad);
@@ -642,9 +639,6 @@
   color: var(--navy);
   font-weight: 600;
   white-space: normal !important;
-}
-.live-list a.live-name:hover {
-  text-decoration: underline;
 }
 @media (max-width: 600px) {
   .detail-top {

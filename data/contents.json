@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "names": {
     "나혼자산다": "나 혼자 산다",
     "1박2일": "1박 2일",
@@ -53,82 +53,82 @@
     ]
   },
   "drama": {
-    "period": "2026.11.02 ~ 2026.11.08",
+    "period": "2026.11.16 ~ 2026.11.22",
     "items": [
-      {
-        "title": "닥터X하얀마피아의시대",
-        "channel": "SBS",
-        "rating": 16.5,
-        "board": "지상파",
-        "change": 0
-      },
       {
         "title": "사랑이온다",
         "channel": "KBS2",
-        "rating": 15.6,
+        "rating": 15.9,
         "board": "지상파",
-        "change": 0
-      },
-      {
-        "title": "엄마가미쳤어요",
-        "channel": "KBS1",
-        "rating": 10.2,
-        "board": "지상파",
-        "change": 0
+        "change": 1
       },
       {
         "title": "100일의거짓말",
         "channel": "tvN",
-        "rating": 9.051,
+        "rating": 10.847,
         "board": "케이블",
+        "change": 2
+      },
+      {
+        "title": "엄마가미쳤어요",
+        "channel": "KBS1",
+        "rating": 10.8,
+        "board": "지상파",
         "change": 0
       },
       {
         "title": "욕망의덫",
         "channel": "KBS2",
-        "rating": 7.5,
+        "rating": 8.2,
         "board": "지상파",
-        "change": 0
+        "change": 1
+      },
+      {
+        "title": "굿파트너2",
+        "channel": "SBS",
+        "rating": 8.1,
+        "board": "지상파",
+        "change": null
       }
     ]
   },
   "variety": {
-    "period": "2026.11.02 ~ 2026.11.08",
+    "period": "2026.11.16 ~ 2026.11.22",
     "items": [
       {
         "title": "미운 우리 새끼",
         "channel": "SBS",
-        "rating": 8.7,
+        "rating": 8.2,
         "board": "지상파",
         "change": 0
       },
       {
         "title": "1박 2일",
         "channel": "KBS2",
-        "rating": 7.7,
+        "rating": 7.5,
         "board": "지상파",
-        "change": 1
+        "change": 0
       },
       {
         "title": "인간극장",
         "channel": "KBS1",
-        "rating": 7.6,
+        "rating": 7.3,
         "board": "지상파",
-        "change": -1
-      },
-      {
-        "title": "동네 한 바퀴",
-        "channel": "KBS1",
-        "rating": 6.2,
-        "board": "지상파",
-        "change": null
+        "change": 0
       },
       {
         "title": "전국노래자랑",
         "channel": "KBS1",
-        "rating": 6.1,
+        "rating": 6.3,
         "board": "지상파",
-        "change": -1
+        "change": 1
+      },
+      {
+        "title": "6시 내고향",
+        "channel": "KBS1",
+        "rating": 5.8,
+        "board": "지상파",
+        "change": null
       }
     ]
   }

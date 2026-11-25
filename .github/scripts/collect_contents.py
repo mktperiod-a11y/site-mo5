@@ -3,7 +3,7 @@
 Usage: python3 .github/scripts/collect_contents.py [--dry-run]
 
 - Movies: KOBIS (영화관입장권통합전산망) weekly box office page, Monday to Sunday, by audience.
-- TV: Nielsen Korea weekly household ratings, terrestrial TOP 20 + general programming and cable TOP 10.
+- TV: Nielsen Korea weekly household ratings (its ratings API), terrestrial TOP 20 + general programming and cable TOP 10.
   News and sports are left out; the rest is split into dramas and "예능·교양" by the title.
 
 Both are public pages that need no key. Each source keeps last week's values when it fails.
@@ -26,7 +26,7 @@ DRY = "--dry-run" in sys.argv
 TOP_N = 5
 
 KOBIS = "https://www.kobis.or.kr/kobis/business/stat/boxs/findWeeklyBoxOfficeList.do"
-NIELSEN = "https://www.nielsenkorea.co.kr/tv_terrestrial_day.asp?menu=Tit_1&sub_menu={}_2&area=00"
+NIELSEN = "https://www.nielsenkorea.co.kr/api/ratings.asp?ch_group={}&tag=weekly&market=1000&target=household&variable=rating&limit=20"
 NIELSEN_BOARDS = {"1": "지상파", "2": "종편", "3": "케이블"}
 
 SKIP = re.compile(r"뉴스|NEWS|news|KBO|리그|스포츠|중계|축구|야구|배구|농구|골프|올림픽|월드컵|아시안게임|특보|날씨")
@@ -57,10 +57,6 @@ def fetch(url, form=None):
 
 def text(s):
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s))).strip()
-
-
-def rows(table_html):
-    return [[text(td) for td in re.findall(r"(?s)<td[^>]*>(.*?)</td>", tr)] for tr in re.findall(r"(?s)<tr[^>]*>(.*?)</tr>", table_html)]
 
 
 def movies():
@@ -104,6 +100,7 @@ def clean(program):
     inner = re.search(r"\(([^()]+)\)\s*$", program)
     name = inner.group(1) if inner and DRAMA.search(program) else program
     name = PREFIX.sub("", name) or name
+    name = re.sub(r"<[^<>]*>$", "", name)  # broadcast tags such as <본>
     name = re.sub(r"-?\d+부$", "", name).strip()
     return data.get("names", {}).get(name, name)
 
@@ -112,21 +109,15 @@ def tv():
     """Latest published week of all three boards, merged and sorted by household rating."""
     shows, period = {}, None
     for board, label in NIELSEN_BOARDS.items():
-        page = fetch(NIELSEN.format(board))
-        week = re.search(r"(\d{4}\.\d{2}\.\d{2}) ~ (\d{4}\.\d{2}\.\d{2})", text(page))
+        res = json.loads(fetch(NIELSEN.format(board)))
+        if not res.get("success"):
+            raise ValueError("ratings api refused")
+        week = re.match(r"(\d{4})-(\d{2})-(\d{2}) ~ (\d{4})-(\d{2})-(\d{2})", res.get("date", ""))
         if week:
-            period = period or f"{week.group(1)} ~ {week.group(2)}"
-        # the first table on the page is household ratings; the viewer counts follow it
-        part = page[page.find("가구시청률"): page.find("시청자수 TOP")]
-        for cells in rows(part):
-            if len(cells) != 4 or not cells[0].isdigit():
-                continue
-            channel, program = cells[1], cells[2]
-            try:
-                rating = float(cells[3])
-            except ValueError:
-                continue
-            if SKIP.search(program):
+            period = period or "{}.{}.{} ~ {}.{}.{}".format(*week.groups())
+        for row in res.get("data", []):
+            channel, program, rating = row.get("channel", ""), row.get("program", ""), row.get("value")
+            if not program or not isinstance(rating, (int, float)) or SKIP.search(program):
                 continue
             name = clean(program)
             kind = data.get("genres", {}).get(name) or ("drama" if DRAMA.search(program) else "variety")
