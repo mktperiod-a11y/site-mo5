@@ -648,3 +648,57 @@
     width: 120px;
   }
 }
+
+/* condition picks: a numbered list per condition */
+.pick + .pick {
+  margin-top: var(--gap);
+}
+.pick-list {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.pick-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid #edf0f3;
+}
+.pick-rank {
+  width: 22px;
+  color: var(--blue);
+  font-style: italic;
+  text-align: center;
+}
+.pick-list a {
+  color: var(--navy);
+  font-weight: 700;
+}
+.pick-list a:hover {
+  text-decoration: underline;
+}
+.pick-value {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: right;
+}
+.check-list {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  line-height: 1.7;
+}
+.check-list li + li {
+  margin-top: 6px;
+}
+.data-facts dd small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+.detail-data,
+.detail-faq {
+  margin-top: var(--gap);
+}

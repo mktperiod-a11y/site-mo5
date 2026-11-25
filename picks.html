@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>조건별 웹하드 추천 ({{updated_ym}}) | P2P사이트·웹하드 순위</title>
+    <link rel="icon" href="favicon.ico?v=2" sizes="32x32" />
+    <link rel="icon" href="assets/brand-mark.svg?v=3" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2" />
+    <meta
+      name="description"
+      content="{{updated_ym}} 기준 가입 혜택이 큰 웹하드, 앱 평점이 높은 웹하드, 100원 이용권·페이백 이벤트가 있는 웹하드 등 조건별로 P2P사이트를 골라 비교합니다."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="P2P사이트·웹하드 순위" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="조건별 웹하드 추천 ({{updated_ym}}) | P2P사이트·웹하드 순위" />
+    <meta property="og:description" content="{{updated_ym}} 기준 가입 혜택이 큰 웹하드, 앱 평점이 높은 웹하드, 100원 이용권·페이백 이벤트가 있는 웹하드 등 조건별로 P2P사이트를 골라 비교합니다." />
+    <meta property="og:url" content="https://site-url.invalid/picks.html" />
+    <meta property="og:image" content="https://site-url.invalid/assets/og-image.png?v=5" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="P2P사이트·웹하드 순위 TOP 10" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://site-url.invalid/picks.html" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "P2P사이트·웹하드 순위", "item": "https://site-url.invalid/"}, {"@type": "ListItem", "position": 2, "name": "조건별 웹하드 추천", "item": "https://site-url.invalid/picks.html"}]}</script>
+    <link rel="stylesheet" href="assets/css/main.css?v=31" />
+    <link rel="stylesheet" href="assets/css/page.css?v=14" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+    <header>
+      <nav class="wrap nav">
+        <a class="brand-link" href="index.html"
+          ><img class="brand-mark" src="assets/brand-mark.svg" alt="" width="40" height="40" /><span class="brand-word"
+            ><b>P2P사이트·웹하드 순위</b><small>최신 웹하드 추천 · 가입 혜택 비교</small></span
+          ></a
+        >
+        <div class="menu">
+          <a href="index.html">웹하드 순위</a
+          ><a class="active" aria-current="page" href="picks.html">조건별 추천</a
+          ><a href="content-guide.html">콘텐츠 가이드</a
+          ><a href="criteria.html">순위 검증 가이드</a>
+        </div>
+        <button
+          class="hamb"
+          id="menuButton"
+          onclick="toggleMenu()"
+          aria-label="메뉴 열기"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </nav>
+    </header>
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-hidden="true"
+      onclick="if(event.target===this)toggleMenu(false)"
+    >
+      <nav class="drawer" aria-label="모바일 메뉴">
+        <div class="drawer-head">
+          <span class="brand-link"
+            ><img class="brand-mark" src="assets/brand-mark.svg" alt="" width="40" height="40" /><span class="brand-word"
+              ><b>P2P사이트·웹하드 순위</b><small>최신 웹하드 추천 · 가입 혜택 비교</small></span
+            ></span
+          ><button
+            id="closeMenu"
+            onclick="toggleMenu(false)"
+            aria-label="메뉴 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <a href="index.html" onclick="toggleMenu(false)">웹하드 순위</a
+        ><a href="picks.html" onclick="toggleMenu(false)"
+          >조건별 추천</a
+        ><a href="content-guide.html" onclick="toggleMenu(false)"
+          >콘텐츠 가이드</a
+        ><a href="criteria.html" onclick="toggleMenu(false)"
+          >순위 검증 가이드</a
+        >
+      </nav>
+    </div>
+    <section class="wrap intro">
+      <span class="update">{{updated_ym}} 기준 · 매주 월요일 갱신</span>
+      <h1>조건별 웹하드 추천</h1>
+      <p class="page-lead">가입 혜택, 앱 평점, 이벤트처럼 원하는 조건으로 이번 주 순위의 웹하드를 골라 볼 수 있어요.</p>
+    </section>
+    <main class="wrap page" id="main">
+      <!-- ranking:picks -->
+      <p class="disclaimer">
+        ※ 혜택은 각 서비스의 공식 안내를 확인해 정리한 값이며, 지급 조건과 기간은 바뀔 수 있습니다. 앱 지표는 {{metrics_basis}}로 {{metrics_date}}에 수집했습니다.
+        순위와 추천은 참고용이며, 서비스 선택은 이용자 본인의 판단에 따라 결정하세요.
+      </p>
+    </main>
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <span>© 2026 랭두. All rights reserved.</span
+        ><span>더 나은 선택을 위한 미디어 데이터 가이드</span>
+      </div>
+    </footer>
+    <script src="assets/js/menu.js?v=1"></script>
+  </body>
+</html>
