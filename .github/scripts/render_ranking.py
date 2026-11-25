@@ -132,7 +132,7 @@ page = {
     "url": "https://site-url.invalid/",
     "inLanguage": "ko-KR",
     "dateModified": updated.isoformat(),
-    "isPartOf": {"@type": "WebSite", "name": "P2P사이트 순위", "url": "https://site-url.invalid/"},
+    "isPartOf": {"@type": "WebSite", "name": "P2P사이트·웹하드 순위", "url": "https://site-url.invalid/"},
 }
 # "</" is escaped so text from the data can never close the script tag early
 jsonld = "".join(
@@ -249,7 +249,7 @@ for i, s in enumerate(ranked):
     others = random.Random(f"{week_start.isoformat()}-{s['id']}").sample(pool, min(5, len(pool)))
     page_ld = [
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "P2P사이트 순위", "item": "https://site-url.invalid/"},
+            {"@type": "ListItem", "position": 1, "name": "P2P사이트·웹하드 순위", "item": "https://site-url.invalid/"},
             {"@type": "ListItem", "position": 2, "name": s["name"], "item": f"https://site-url.invalid/webhard/{s['id']}/"}]},
         {"@context": "https://schema.org", "@type": "WebPage", "name": f"{s['name']} 순위·가입 혜택 정보",
          "url": f"https://site-url.invalid/webhard/{s['id']}/", "inLanguage": "ko-KR", "dateModified": updated.isoformat()},
@@ -300,7 +300,7 @@ GO = """<!doctype html>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'" />
-    <title>{name}(으)로 이동 중 | P2P사이트 순위</title>
+    <title>{name}(으)로 이동 중 | P2P사이트·웹하드 순위</title>
   </head>
   <body>
     <p>{name} 공식 사이트로 이동 중입니다.</p>
