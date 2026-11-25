@@ -27,9 +27,9 @@
     <meta property="og:image:alt" content="P2P사이트·웹하드 순위 TOP 10" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "P2P사이트·웹하드 순위", "url": "https://site-url.invalid/", "inLanguage": "ko-KR"}</script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "웹하드 순위는 어떤 기준으로 정하나요?", "acceptedAnswer": {"@type": "Answer", "text": "네이버 검색 관심도, 구글 플레이 앱 이용 지표, 이용자 반응을 종합한 종합 지수 순서입니다. 지표는 매주 월요일 다시 수집해 반영합니다."}}, {"@type": "Question", "name": "합법 웹하드인지 어떻게 확인하나요?", "acceptedAnswer": {"@type": "Answer", "text": "국내 웹하드는 부가통신사업자로 등록해야 운영할 수 있습니다. 서비스 하단에서 사업자 정보와 등록 번호, 저작권 필터링 안내를 확인하세요."}}, {"@type": "Question", "name": "가입 무료 포인트는 바로 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "대부분 사용 기한과 사용 범위가 정해져 있습니다. 가입 전에 이벤트의 유효기간과 제한 조건을 확인하세요."}}, {"@type": "Question", "name": "정액제 자동 결제는 어떻게 해지하나요?", "acceptedAnswer": {"@type": "Answer", "text": "보통 마이페이지의 결제 관리에서 자동 연장을 끌 수 있습니다. 해지 방법과 환불 조건은 결제 전에 이용약관에서 확인하세요."}}]}</script>
+    <!-- ranking:faqld -->
     <!-- ranking:jsonld -->
-    <link rel="stylesheet" href="assets/css/main.css?v=30" />
+    <link rel="stylesheet" href="assets/css/main.css?v=31" />
   </head>
   <body>
     <a class="skip-link" href="#cards">본문 바로가기</a>
@@ -42,6 +42,7 @@
         >
         <div class="menu">
           <a class="active" href="index.html">웹하드 순위</a
+          ><a href="picks.html">조건별 추천</a
           ><a href="content-guide.html">콘텐츠 가이드</a
           ><a href="criteria.html">순위 검증 가이드</a>
         </div>
@@ -78,6 +79,8 @@
           </button>
         </div>
         <a href="index.html" onclick="toggleMenu(false)">웹하드 순위</a
+        ><a href="picks.html" onclick="toggleMenu(false)"
+          >조건별 추천</a
         ><a href="content-guide.html" onclick="toggleMenu(false)"
           >콘텐츠 가이드</a
         ><a href="criteria.html" onclick="toggleMenu(false)"
@@ -134,6 +137,23 @@
           <div class="chart wait" id="chart"><!-- ranking:chart --></div>
         </div>
       </section>
+      <section class="block" id="compare">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">웹하드 비교표</h2>
+            <p class="section-desc">이번 주 순위 {{count}}곳의 가입 혜택·이벤트와 구글 플레이 공개 지표를 한 표로 비교해요</p>
+          </div>
+        </div>
+        <div class="compare-wrap" tabindex="0" role="region" aria-label="웹하드 비교표">
+          <table class="compare-table">
+            <thead>
+              <tr><th scope="col">순위</th><th scope="col">웹하드</th><th scope="col">가입 혜택</th><th scope="col">이벤트</th><th scope="col">앱 평점</th><th scope="col">앱 평가 수</th><th scope="col">앱 다운로드</th><th scope="col">종합 지수</th></tr>
+            </thead>
+            <tbody><!-- ranking:compare --></tbody>
+          </table>
+        </div>
+        <p class="compare-note">앱 평점·평가 수·다운로드: 구글 플레이 한국 스토어 공개 값({{metrics_short}} 수집, 다운로드는 추정치). 혜택: 각 서비스 공식 안내 기준, 지급 조건은 공식 사이트에서 확인하세요. "–"는 확인된 값이 없는 칸이에요.</p>
+      </section>
       <section class="block">
         <div class="section-head">
           <div>
@@ -159,6 +179,18 @@
             <summary>정액제 자동 결제는 어떻게 해지하나요?</summary>
             <p>보통 마이페이지의 결제 관리에서 자동 연장을 끌 수 있습니다. 해지 방법과 환불 조건은 결제 전에 이용약관에서 확인하세요.</p>
           </details>
+          <details class="faq-item" name="faq">
+            <summary>P2P사이트와 웹하드는 같은 건가요?</summary>
+            <p>흔히 P2P사이트라고 부르는 국내 파일 공유 서비스는 대부분 웹하드입니다. 이 페이지는 국내 웹하드를 같은 기준으로 비교합니다.</p>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>웹하드 순위는 얼마나 자주 바뀌나요?</summary>
+            <p>매주 월요일에 네이버 검색 관심도와 구글 플레이 공개 지표를 다시 모아 순위를 새로 정합니다. 순위 옆 ▲▼는 지난주 대비 변동입니다.</p>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>제휴나 광고로 순위가 바뀌나요?</summary>
+            <p>순위는 공개 지표로 계산한 종합 지수 순서이며, 제휴 여부를 순위 계산에 넣지 않습니다. 산정 기준은 순위 검증 가이드에서 확인할 수 있습니다.</p>
+          </details><!-- ranking:faq -->
         </div>
         </div>
       </section>

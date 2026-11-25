@@ -175,12 +175,121 @@ def benefit_rows():
     return rows + "\n          "
 
 
+def benefit_text(s, kind):
+    """First benefit line of a kind, or None."""
+    return next((b["text"] for b in s.get("benefits", []) if b["kind"] == kind), None)
+
+
+def join_amount(s):
+    """Sign-up benefit size in points (P or B) when the first sign-up line names one, e.g. "가입 2,000P" -> 2000."""
+    m = re.search(r"([\d,]+)\s*[PB]\b", benefit_text(s, "join") or "")
+    return int(m.group(1).replace(",", "")) if m else None
+
+
+def count_ko(n):
+    """Public counts in a short Korean form: 963724 -> "약 96만", 4034 -> "4,034"."""
+    return f"약 {n / 10000:.0f}만" if n >= 10000 else f"{n:,}"
+
+
+def play_url(s):
+    app = s.get("metrics", {}).get("playApp")
+    return f"https://play.google.com/store/apps/details?id={app}&hl=ko&gl=KR" if app else None
+
+
+def has_app_numbers(s):
+    m = s.get("metrics", {})
+    return all(k in m for k in ("downloads", "rating", "ratingCount"))
+
+
+def compare_row(i, s):
+    m = s.get("metrics", {})
+    app = has_app_numbers(s)
+    cells = [
+        f"<td>{i + 1}</td>",
+        f'<th scope="row"><a href="webhard/{s["id"]}/">{e(s["name"])}</a></th>',
+        f"<td>{e(benefit_text(s, 'join') or '–')}</td>",
+        f"<td>{e(benefit_text(s, 'event') or '–')}</td>",
+        f"<td>{'★ ' + format(m['rating'], '.1f') if app else '–'}</td>",
+        f"<td>{format(m['ratingCount'], ',') if app else '–'}</td>",
+        f"<td>{count_ko(m['downloads']) if app else '–'}</td>",
+        f"<td><b>{s['index']}</b></td>",
+    ]
+    return "\n              <tr>" + "".join(cells) + "</tr>"
+
+
+def faq_item(q, a):
+    return (f'\n          <details class="faq-item" name="faq">\n            <summary>{e(q)}</summary>\n'
+            f"            <p>{e(a)}</p>\n          </details>")
+
+
+def faq_ld(html_text):
+    """FAQPage data built from the questions the page actually shows, so the two never drift apart."""
+    items = re.findall(r'<details class="faq-item"[^>]*>\s*<summary>(.*?)</summary>\s*<p>(.*?)</p>', html_text, re.S)
+    plain = lambda t: html.unescape(re.sub(r"<[^>]+>", "", t)).strip()
+    data = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": plain(q), "acceptedAnswer": {"@type": "Answer", "text": plain(a)}} for q, a in items]}
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + "</script>"
+
+
+def home_faq():
+    """Questions answered from this week's data."""
+    out = faq_item(f"{updated.year}년 {updated.month}월 웹하드 순위 1위는 어디인가요?",
+                   f"이번 주 1위는 {names[0]}(종합 지수 {services[0]['index']}), 2위 {names[1]}, 3위 {names[2]}입니다. "
+                   f"매주 월요일 공개 지표를 다시 모아 갱신합니다.")
+    big = sorted((x for x in services if join_amount(x)), key=lambda x: -join_amount(x))[:3]
+    if big:
+        out += faq_item("가입 혜택이 큰 웹하드는 어디인가요?",
+                        "이번 주 순위에서 확인된 가입 혜택 기준으로 " + ", ".join(f"{x['name']}({benefit_text(x, 'join')})" for x in big)
+                        + " 순입니다. 포인트 단위와 지급 조건은 서비스마다 다르니 공식 사이트에서 확인하세요.")
+    apps = [x["name"] for x in services if x.get("metrics", {}).get("playApp")]
+    if apps:
+        out += faq_item("모바일 앱으로 쓸 수 있는 웹하드는 어디인가요?",
+                        f"이번 주 순위 {len(services)}곳 중 구글 플레이에 앱이 있는 곳은 {', '.join(apps)}입니다.")
+    return out
+
+
+PICKS = [
+    ("join", "가입 혜택이 큰 웹하드", "가입할 때 받는 포인트가 큰 순서예요. 단위(P·B)와 지급 조건은 서비스마다 달라요.",
+     lambda x: join_amount(x), lambda x: benefit_text(x, "join")),
+    ("rating", "앱 평점이 높은 웹하드", "구글 플레이 평가가 100개 이상인 앱 중 평점이 높은 순서예요.",
+     lambda x: x["metrics"]["rating"] if has_app_numbers(x) and x["metrics"]["ratingCount"] >= 100 else None,
+     lambda x: f"★ {x['metrics']['rating']:.1f} · 평가 {x['metrics']['ratingCount']:,}"),
+    ("downloads", "앱 다운로드가 많은 웹하드", "구글 플레이 추정 다운로드가 많은 순서예요.",
+     lambda x: x["metrics"]["downloads"] if has_app_numbers(x) else None,
+     lambda x: f"다운로드 {count_ko(x['metrics']['downloads'])}"),
+    ("100won", "100원 이용권 이벤트가 있는 웹하드", "혜택 안내에 100원 이용권·100원 체험이 있는 곳이에요.",
+     lambda x: x["index"] if any("100원" in b["text"] for b in x.get("benefits", [])) else None,
+     lambda x: next(b["text"] for b in x["benefits"] if "100원" in b["text"])),
+    ("payback", "페이백 이벤트가 있는 웹하드", "결제 금액 일부를 돌려주는 페이백 이벤트가 있는 곳이에요.",
+     lambda x: x["index"] if any("페이백" in b["text"] for b in x.get("benefits", [])) else None,
+     lambda x: next(b["text"] for b in x["benefits"] if "페이백" in b["text"])),
+]
+
+
+def picks_html():
+    """One block per condition, from this week's top services; a condition needs at least two services to show."""
+    out = ""
+    for key, title, desc, value, label in PICKS:
+        hits = sorted((x for x in services if value(x) is not None), key=lambda x: -value(x))[:5]
+        if len(hits) < 2:
+            continue
+        rows = "".join(
+            f'\n          <li><b class="pick-rank">{n}</b><a href="webhard/{x["id"]}/">{e(x["name"])}</a>'
+            f'<span class="pick-value">{e(label(x))}</span></li>' for n, x in enumerate(hits, 1))
+        out += (f'\n      <section class="page-box pick" id="{key}">\n        <h2>{title}</h2>\n        <p>{desc}</p>'
+                f'\n        <ol class="pick-list">{rows}\n        </ol>\n      </section>')
+    return out + "\n"
+
+
 markers = {
     "cards": "".join(card(i, s) for i, s in enumerate(services)),
     "live": "".join(live_row(i, s) for i, s in enumerate(services[:5])),
     "chart": "".join(bar(i, s) for i, s in enumerate(services)),
     "summary": summary,
     "benefits": benefit_rows(),
+    "compare": "".join(compare_row(i, s) for i, s in enumerate(services)) + "\n            ",
+    "faq": home_faq(),
+    "picks": picks_html(),
     "jsonld": jsonld,
     "sitemap_details": "\n".join(
         f"<url><loc>https://site-url.invalid/webhard/{s['id']}/</loc><lastmod>{updated.isoformat()}</lastmod></url>" for s in ranked
@@ -188,13 +297,15 @@ markers = {
 }
 
 failed = False
-for name in ("index.html", "llms.txt", "sitemap.xml"):
+for name in ("index.html", "picks.html", "llms.txt", "sitemap.xml"):
     path = site / name
     text = path.read_text(encoding="utf-8")
     for key, value in tokens.items():
         text = text.replace(key, value)
     for key, value in markers.items():
         text = text.replace(f"<!-- ranking:{key} -->", value)
+    if "<!-- ranking:faqld -->" in text:
+        text = text.replace("<!-- ranking:faqld -->", faq_ld(text))
     left = re.findall(r"\{\{\w+\}\}|<!-- ranking:\w+ -->", text)
     if left:
         print(f"::error::{name}에 채우지 못한 자리가 남았습니다: {sorted(set(left))}")
@@ -243,6 +354,40 @@ def other_row(x):
     )
 
 
+def metrics_panel(s):
+    """Public numbers behind the index, each with its source, and the Google Play page to check them against."""
+    m = s.get("metrics", {})
+    rows = []
+    if has_app_numbers(s):
+        rows += [("앱 평점", f"★ {m['rating']:.2f}", "구글 플레이"), ("앱 평가 수", f"{m['ratingCount']:,}", "구글 플레이"),
+                 ("앱 다운로드", count_ko(m["downloads"]) + " (추정)", "구글 플레이")]
+    if m.get("search") is not None:
+        anchor = next((x["name"] for x in data["webhards"] if x["id"] == data.get("searchAnchor")), "기준 업체")
+        rows.append(("검색 관심도", f"{m['search']:.0f}", f"네이버 검색어 트렌드, {anchor} = 100 기준"))
+    if not rows:
+        return '<p class="benefit-empty">아직 수집된 공개 지표가 없어요.</p>'
+    out = "".join(f"<div><dt>{a}</dt><dd>{b}<small>{c}</small></dd></div>" for a, b, c in rows)
+    link = play_url(s)
+    more = (f'<p class="detail-note">수집일 {metrics_date.strftime("%Y.%m.%d")} · '
+            + (f'<a href="{link}" target="_blank" rel="noopener nofollow">구글 플레이에서 확인</a>' if link else "앱 없음") + "</p>")
+    return f'<dl class="detail-facts data-facts">{out}</dl>{more}'
+
+
+def detail_faq(i, s):
+    qa = [(f"{s['name']} 순위는 몇 위인가요?",
+           f"{updated.year}년 {updated.month}월 기준 종합 지수 {s['index']}로 {len(ranked)}곳 중 {i + 1}위입니다. 순위는 매주 월요일 갱신됩니다.")]
+    join, event = benefit_text(s, "join"), benefit_text(s, "event")
+    if join or event:
+        qa.append((f"{s['name']} 가입 혜택과 이벤트는 무엇인가요?",
+                   "확인된 혜택은 " + ", ".join(t for t in (join, event) if t) + "입니다. 지급 조건과 기간은 공식 사이트에서 확인하세요."))
+    if s.get("metrics", {}).get("playApp"):
+        qa.append((f"{s['name']} 모바일 앱이 있나요?",
+                   f"구글 플레이에 앱이 있습니다." + (f" 평점은 {s['metrics']['rating']:.1f}점입니다." if has_app_numbers(s) else "")))
+    else:
+        qa.append((f"{s['name']} 모바일 앱이 있나요?", "구글 플레이에서 확인된 앱이 없습니다. 모바일 이용 방법은 공식 사이트에서 확인하세요."))
+    return qa
+
+
 for i, s in enumerate(ranked):
     # five other services from this week's ranking, a different mix per page and per week
     pool = [x for x in services if x["id"] != s["id"]]
@@ -253,6 +398,8 @@ for i, s in enumerate(ranked):
             {"@type": "ListItem", "position": 2, "name": s["name"], "item": f"https://site-url.invalid/webhard/{s['id']}/"}]},
         {"@context": "https://schema.org", "@type": "WebPage", "name": f"{s['name']} 순위·가입 혜택 정보",
          "url": f"https://site-url.invalid/webhard/{s['id']}/", "inLanguage": "ko-KR", "dateModified": updated.isoformat()},
+        {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in detail_faq(i, s)]},
     ]
     fill = {
         "{{root}}": "../../",
@@ -278,6 +425,8 @@ for i, s in enumerate(ranked):
         "{{jsonld}}": "".join('<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
                               + "</script>" for d in page_ld),
         "{{others}}": "".join(other_row(x) for x in others),
+        "{{metrics_panel}}": metrics_panel(s),
+        "{{detail_faq}}": "".join(faq_item(q, a).replace("\n          ", "\n          ") for q, a in detail_faq(i, s)),
     }
     text = TEMPLATE
     for key, value in fill.items():
