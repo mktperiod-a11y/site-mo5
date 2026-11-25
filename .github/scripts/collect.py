@@ -1,4 +1,4 @@
-"""Collect this week's metrics for every ranked webhard and recompute the 랭두 지수.
+"""Collect this week's metrics for every ranked webhard and recompute the 종합 지수.
 
 Usage: python3 .github/scripts/collect.py [--dry-run]
 

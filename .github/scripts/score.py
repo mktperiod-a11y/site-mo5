@@ -1,4 +1,4 @@
-"""Compute the 랭두 지수 from collected metrics and reorder the ranking.
+"""Compute the 종합 지수 from collected metrics and reorder the ranking.
 
 Usage:
   python3 .github/scripts/score.py            recompute index/score and reorder data/webhards.json

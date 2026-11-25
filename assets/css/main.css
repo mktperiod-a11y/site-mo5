@@ -1088,11 +1088,11 @@ header {
   letter-spacing: -1.8px;
 }
 .brand-word small {
-  margin-top: 5px;
-  color: #8a96a5;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.75px;
+  margin-top: 4px;
+  color: #7d8999;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 .drawer .brand-link {
   margin-right: auto;
@@ -1338,9 +1338,6 @@ img {
 @media (max-width: 360px) {
   .wrap {
     width: calc(100% - 28px);
-  }
-  .brand-word small {
-    letter-spacing: 0.35px;
   }
   .card-body {
     padding: 14px;
