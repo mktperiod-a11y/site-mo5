@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-23",
+  "updated": "2026-11-26",
   "metricsDate": "2026-11-23",
   "searchAnchor": "ondisk",
   "weights": {
@@ -31,7 +31,7 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "가입 1,000P"
+          "text": "가입 10,000BP"
         },
         {
           "kind": "event",
@@ -272,7 +272,7 @@
       "benefits": [
         {
           "kind": "join",
-          "text": "가입 1,000P"
+          "text": "가입 10,000BP"
         },
         {
           "kind": "event",
