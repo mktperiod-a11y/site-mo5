@@ -181,8 +181,8 @@ def benefit_text(s, kind):
 
 
 def join_amount(s):
-    """Sign-up benefit size in points (P or B) when the first sign-up line names one, e.g. "가입 2,000P" -> 2000."""
-    m = re.search(r"([\d,]+)\s*[PB]\b", benefit_text(s, "join") or "")
+    """Sign-up benefit size in points (P, B or BP) when the first sign-up line names one, e.g. "가입 2,000P" -> 2000."""
+    m = re.search(r"([\d,]+)\s*(?:BP|P|B)\b", benefit_text(s, "join") or "")
     return int(m.group(1).replace(",", "")) if m else None
 
 
