@@ -37,6 +37,17 @@ VERIFY_INLINE = re.compile(
     re.I,
 )
 VERIFY_HINT = "소유자 확인 없이 넣지 마세요(CLAUDE.md 신원 노출 방지 참고)."
+# 소유자가 확인해 넣은 확인 코드: (파일, meta 이름, 값). 네이버 코드는 사이트마다 달라 사이트끼리 묶이지 않는다.
+# 여기에 없는 값·파일·종류(구글 등)는 계속 막는다.
+APPROVED_VERIFY = {
+    ("index.html", "naver-site-verification", "26a4c7c04fd7cda6171d486b7d5b157942d358c7"),  # 2026-11 소유자 확인
+}
+
+
+def approved_verify(path, tag):
+    name = re.search(r'name\s*=\s*["\']([^"\']+)', tag, re.I)
+    value = re.search(r'content\s*=\s*["\']([^"\']+)', tag, re.I)
+    return bool(name and value) and (path, name.group(1).lower(), value.group(1)) in APPROVED_VERIFY
 # (설명, 정규식) — 계정·운영자와 이어지는 값
 IDENTIFIERS = [
     ("이메일 주소", re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")),
@@ -237,7 +248,8 @@ def check_files():
         if match:
             line = text.count("\n", 0, match.start()) + 1
             fail("사이트 주소가 코드에 들어 있습니다. https://site-url.invalid 자리표시를 쓰세요.", path, line)
-        verify = [m for m in META_TAG.finditer(text) if VERIFY_NAME.search(m.group()) and TOKEN_CONTENT.search(m.group())]
+        verify = [m for m in META_TAG.finditer(text) if VERIFY_NAME.search(m.group()) and TOKEN_CONTENT.search(m.group())
+                  and not approved_verify(path, m.group())]
         verify += list(VERIFY_INLINE.finditer(text))
         for match in verify:
             line = text.count("\n", 0, match.start()) + 1
